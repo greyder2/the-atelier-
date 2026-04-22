@@ -133,6 +133,8 @@ export default async function Home() {
                          <h2 className="section-title text-black text-6xl mb-4 font-['Pacifico']">Social Proof</h2>
                          <p className="mb-10 text-lg max-w-[600px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM ELITE PROFESSIONALS ACROSS THE AMERICAS, ASIA, AND EUROPE.</p>
                     </div>
+                    {/* First Generation Section */}
+                    {spotlights.filter(s => !s.category || s.category.includes('FIRST')).length > 0 && (
                         <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <img src="/pages/spotlights first gen.png" alt="First Generation" style={{ height: '60px' }} />
