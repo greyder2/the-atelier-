@@ -29,10 +29,22 @@ export default {
       description: 'The quote that appears in the grid/browser header',
     },
     {
+      name: 'heading',
+      title: 'Profile Heading',
+      type: 'string',
+      description: 'e.g., LEADING THE AVIATION OPERATIONS IN MEXICO',
+    },
+    {
+      name: 'category',
+      title: 'Generation / Category',
+      type: 'string',
+      description: 'e.g., ATELIER SPOTLIGHTS — SECOND GENERATION',
+    },
+    {
       name: 'body',
       title: 'Detailed Story',
-      type: 'array',
-      of: [{ type: 'block' }],
+      type: 'text',
+      description: 'The full bio text',
     },
   ],
   preview: {
