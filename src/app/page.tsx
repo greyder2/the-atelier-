@@ -34,13 +34,17 @@ export default async function Home() {
         // Sanity unavailable — hardcoded data will be used
     }
 
+    const hardcodedBySlug = new Map([...firstGeneration, ...secondGeneration].map(s => [s.slug, s]))
+
     const useHardcoded = !sanitySpotlights || sanitySpotlights.length === 0;
     const firstGenSpotlights: Spotlight[] = useHardcoded
         ? firstGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'FIRST' }))
-        : sanitySpotlights.filter(s => !s.category || s.category.includes('FIRST'));
+        : sanitySpotlights.filter(s => !s.category || s.category.includes('FIRST'))
+            .map(s => ({ ...s, name: s.name || hardcodedBySlug.get(s.slug)?.name || s.slug }));
     const secondGenSpotlights: Spotlight[] = useHardcoded
         ? secondGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'SECOND' }))
-        : sanitySpotlights.filter(s => s.category?.includes('SECOND'));
+        : sanitySpotlights.filter(s => s.category?.includes('SECOND'))
+            .map(s => ({ ...s, name: s.name || hardcodedBySlug.get(s.slug)?.name || s.slug }));
 
 
 
