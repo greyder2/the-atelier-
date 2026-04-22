@@ -132,7 +132,7 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {firstGenSpotlights.map((person, idx) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[220px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[260px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
                                         <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
@@ -159,7 +159,7 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {secondGenSpotlights.map((person, idx) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[220px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[260px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
                                         <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
@@ -203,8 +203,8 @@ export default async function Home() {
                 <section id="spotlights" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-20">
                     <div className="left-col staggered-left">
                         <h2 className="section-title text-[#C8006A] text-6xl mb-8 font-['Pacifico']">Atelier Spotlight</h2>
-                        <div className="bg-white p-12 rounded-[24px] space-y-8 shadow-2xl border-4 border-[#C8006A] relative">
-                             <div className="absolute -top-4 -right-4 bg-[#D9F060] text-black font-black px-4 py-1 text-sm rounded-full shadow-lg transform rotate-3 z-10">
+                        <div className="bg-white p-12 rounded-[24px] space-y-8 shadow-2xl border-4 border-[#C8006A] relative overflow-visible">
+                             <div className="inline-block bg-[#D9F060] text-black font-black px-4 py-1 text-sm rounded-full shadow-lg transform rotate-3 mb-2">
                                 FEATURED
                             </div>
                             <p className="text-2xl font-black italic text-black uppercase leading-relaxed">
@@ -235,33 +235,43 @@ export default async function Home() {
                     
                     <div className="contact-info space-y-12">
                         <div>
-                            <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">WHATSAPP / PHONE</div>
-                            <p className="text-2xl font-black italic mb-4 leading-tight">(+52) 552 113 1676</p>
-                            <p className="text-2xl font-black italic leading-tight">(+52) 561 759 2347</p>
+                            <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">EMAIL</div>
+                            <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic font-black hover:text-[#D9F060] transition-colors break-all">theenglishateliere@gmail.com</a>
                         </div>
                         <div>
-                             <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">EMAIL</div>
-                             <a href="mailto:theenglishateliere@gmail.com" className="text-2xl underline italic font-black hover:text-[#D9F060] transition-colors">theenglishateliere@gmail.com</a>
+                            <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">CONTACT FORM</div>
+                            <Link href="/pages/contact" className="inline-block bg-white text-[#C8006A] font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest hover:bg-[#D9F060] transition-colors no-underline shadow-lg">
+                                SEND A MESSAGE →
+                            </Link>
+                        </div>
+                        <div>
+                            <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">INSTAGRAM</div>
+                            <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="text-xl underline italic font-black hover:text-[#D9F060] transition-colors">@theatelier.lab</a>
                         </div>
                     </div>
 
-                    {/* PHONE MOCKUP - INSTAGRAM SCREENSHOT */}
-                    <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline">
+                    {/* PHONE MOCKUP - INSTAGRAM */}
+                    <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline bg-gradient-to-b from-[#833ab4] via-[#fd1d1d] to-[#fcb045]">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
-                        <img src="/pages/instagram-screenshot.png" alt="@theatelier.lab on Instagram" className="w-full h-full object-cover object-top" />
-                        <div className="absolute bottom-0 left-0 right-0 bg-[#C8006A]/90 text-white text-center font-black text-xs py-3 tracking-widest uppercase">
+                        <img src="/pages/instagram-screenshot.png" alt="@theatelier.lab on Instagram" className="w-full h-full object-cover object-top" onError={(e) => { (e.target as HTMLImageElement).style.display='none' }} />
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6 pointer-events-none">
+                            <div className="text-6xl mb-4">📸</div>
+                            <div className="font-black text-2xl tracking-tight mb-2">@theatelier.lab</div>
+                            <div className="text-sm opacity-80 uppercase tracking-widest">Follow us on Instagram</div>
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-center font-black text-xs py-3 tracking-widest uppercase z-10">
                             ★ follow @theatelier.lab
                         </div>
                     </a>
 
-                    <div className="flex flex-col gap-8 items-start h-full justify-center">
-                         <div className="bg-white/10 p-8 rounded-[30px] backdrop-blur-sm border-2 border-white/20 w-full mb-4">
-                             <p className="font-bold italic text-white uppercase text-xl leading-relaxed">
+                    <div className="flex flex-col gap-6 items-start h-full justify-center">
+                         <div className="bg-white/10 p-6 rounded-[24px] backdrop-blur-sm border-2 border-white/20 w-full">
+                             <p className="font-bold italic text-white uppercase text-base leading-relaxed">
                                 Ready to join our international community of ambitious professionals?
                              </p>
                          </div>
-                        <Link href="/pages/contact" className="btn-pill bg-white text-[#C8006A] font-black no-underline shadow-xl hover:scale-105 transition-transform py-5 px-10 rounded-full text-xl uppercase">SAY HELLO</Link>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-black text-white no-underline shadow-xl hover:scale-105 transition-transform py-5 px-10 rounded-full font-black text-xl uppercase">LINKEDIN Profile</a>
+                        <Link href="/pages/contact" className="btn-pill bg-white text-[#C8006A] font-black no-underline shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full text-lg uppercase">SAY HELLO</Link>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-black text-white no-underline shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full font-black text-lg uppercase">LINKEDIN</a>
                     </div>
                 </section>
             </div>
