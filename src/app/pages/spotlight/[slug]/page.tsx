@@ -16,12 +16,22 @@ async function getSpotlight(slug: string) {
   return data;
 }
 
-export default async function SpotlightProfilePage({ params }: { params: { slug: string } }) {
-  const spotlight = await getSpotlight(params.slug);
+export default async function SpotlightProfilePage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  let spotlight;
+  
+  try {
+    spotlight = await getSpotlight(resolvedParams.slug);
+  } catch (error) {
+    console.error("Error fetching spotlight:", error);
+    notFound();
+  }
 
   if (!spotlight) {
     notFound();
   }
+
+  const slug = resolvedParams.slug;
 
   // Fallback map for local image paths if Sanity image isn't uploaded yet
   const imageMap: Record<string, string> = {
@@ -37,7 +47,7 @@ export default async function SpotlightProfilePage({ params }: { params: { slug:
     "arletthe": "/pages/arletthe.png",
   };
 
-  const localImagePath = imageMap[params.slug] || "/pages/mayan.png";
+  const localImagePath = imageMap[slug] || "/pages/mayan.png";
 
   return (
     <main className="page active bg-hot-pink" style={{ backgroundColor: '#C8006A', minHeight: '100vh', padding: '12px 0' }}>

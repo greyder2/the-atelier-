@@ -14,26 +14,32 @@ export default function BookSessionPage() {
                     Book a Free Session
                 </h2>
                 
-                <div className="session-card" style={{ backgroundColor: '#F4A7C3', border: '4px solid #D9F060', padding: '50px', borderRadius: '24px', width: '100%', maxWidth: '600px' }}>
+                <div className="session-card" style={{ backgroundColor: '#F4A7C3', border: '4px solid #D9F060', padding: '50px', borderRadius: '24px', width: '100%', maxWidth: '600px', position: 'relative' }}>
                     <h3 style={{ color: '#C8006A', fontSize: '2rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 900, marginBottom: '20px' }}>
                         Register to get a free demo!
                     </h3>
                     
                     <div style={{ textAlign: 'left', marginBottom: '20px' }}>
-                        <label style={{ fontStyle: 'italic', color: '#666', fontSize: '0.9rem', marginBottom: '10px', display: 'block', marginLeft: '10px' }}>
-                            Enter your email
-                        </label>
-                        <div className="input-group" style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                            <input 
-                                type="email" 
-                                className="form-input" 
-                                placeholder="name@example.com"
-                                style={{ flex: 1, padding: '12px 20px', borderRadius: '30px', border: '2px solid #ddd' }} 
-                            />
-                            <button className="btn-pill" style={{ padding: '12px 30px', borderRadius: '50px', backgroundColor: '#D9F060', color: '#111', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
-                                Submit
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ fontStyle: 'italic', color: '#666', fontSize: '0.9rem', marginBottom: '5px', display: 'block' }}>Full Name</label>
+                            <input type="text" className="form-input" style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: '2px solid #ddd' }} placeholder="Your Name" />
+                        </div>
+                        
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ fontStyle: 'italic', color: '#666', fontSize: '0.9rem', marginBottom: '5px', display: 'block' }}>Email Address</label>
+                            <input type="email" className="form-input" style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: '2px solid #ddd' }} placeholder="name@example.com" />
+                        </div>
+
+                        <div className="form-group" style={{ marginBottom: '20px' }}>
+                            <label style={{ fontStyle: 'italic', color: '#666', fontSize: '0.9rem', marginBottom: '5px', display: 'block' }}>Message</label>
+                            <textarea className="form-input" rows={3} style={{ width: '100%', padding: '12px 20px', borderRadius: '20px', border: '2px solid #ddd' }} placeholder="How can we help you?"></textarea>
+                        </div>
+
+                        <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                            <button className="btn-pill" style={{ flex: 1, padding: '14px 30px', borderRadius: '50px', backgroundColor: '#D9F060', color: '#111', fontWeight: 'bold', border: 'none', cursor: 'pointer', textTransform: 'uppercase' }}>
+                                Submit / Book Now
                             </button>
-                            <span className="hand-cursor" style={{ fontSize: '1.5rem', marginLeft: '5px' }}>👈</span>
+                            <span className="hand-cursor" style={{ position: 'absolute', right: '-40px', top: '50%', transform: 'translateY(-50%)', fontSize: '2.5rem', pointerEvents: 'none' }}>👈</span>
                         </div>
                     </div>
                     

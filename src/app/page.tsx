@@ -19,15 +19,16 @@ export default async function Home() {
                 
                 {/* 2. HERO / INDEX */}
                 <section id="hero" className="h-screen w-full flex flex-col justify-center items-center relative overflow-hidden pt-3 border-t-[12px] border-[#C8006A]" 
-                         style={{ backgroundImage: "url('/atelier background.png')", backgroundSize: '40px 40px' }}>
-                    <h1 className="hero-title text-white font-['Sarina'] text-[clamp(80px,12vw,160px)] leading-[1.1] text-center z-2" style={{ textShadow: "4px 4px 0px #C8006A" }}>
+                         style={{ backgroundImage: "url('/pages/atelier background.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                    <div className="absolute inset-0 bg-black/20 z-0"></div>
+                    <h1 className="hero-title text-white font-['Sarina'] text-[clamp(80px,12vw,160px)] leading-[1.1] text-center z-10" style={{ textShadow: "4px 4px 6px #C8006A" }}>
                         <div className="line1">The</div>
                         <div className="line2">Atelier</div>
                     </h1>
-                    <div className="w-full bg-[#C8006A] text-white text-center py-4 mt-8 text-[clamp(14px,2vw,20px)] tracking-[2px] z-2 uppercase italic font-bold">
+                    <div className="w-full bg-[#C8006A] text-white text-center py-4 mt-8 text-[clamp(14px,2vw,20px)] tracking-[2px] z-10 uppercase italic font-bold">
                         Where ambitious minds learn to speak the world
                     </div>
-                    <nav className="mt-8 text-center z-2 px-5">
+                    <nav className="mt-8 text-center z-10 px-5">
                         <div className="mb-4">
                             <Link href="/" className="hero-link">Home</Link> &middot; 
                             <Link href="/pages/about-us" className="hero-link">About Us</Link> &middot; 
@@ -61,7 +62,7 @@ export default async function Home() {
                         <Link href="/pages/book-session" className="speech-bubble bg-[#D9F060] rounded-[24px] rounded-br-0 p-8 font-bold text-center text-xl max-w-[300px] text-black mb-4 shadow-[4px_4px_0px_#C8006A] hover:scale-105 transition-transform no-underline">
                             JOIN THE ATELIER! <br/>BOOK A FREE SESSION HERE
                         </Link>
-                        <div className="hand-cursor text-4xl mt-[-10px]">👈</div>
+                        <div className="hand-cursor text-4xl mt-[-10px] animate-bounce">👈</div>
                     </div>
                 </section>
 
@@ -114,28 +115,49 @@ export default async function Home() {
                     <h2 className="section-title text-black text-6xl mb-4 font-['Pacifico']">Social Proof</h2>
                     <p className="mb-10 text-lg max-w-[600px] mx-auto italic uppercase">TESTIMONIALS FROM ELITE PROFESSIONALS ACROSS THE AMERICAS, ASIA, AND EUROPE.</p>
                     
-                    <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
-                        {[
-                            { name: 'Gaby', path: 'gaby', img: '/pages/gaby.png' },
-                            { name: 'Marwa', path: 'marwa', img: '/pages/marwa.png' },
-                            { name: 'Aya', path: 'aya', img: '/pages/aya.png' },
-                            { name: 'Saja', path: 'saja', img: '/pages/saja.png' },
-                            { name: 'Şefika Buse', path: 'buse', img: '/pages/sefika buse.png' },
-                            { name: 'Iris', path: 'iris', img: '/pages/iris.png' },
-                            { name: 'Carolina', path: 'carolina', img: '/pages/carolina.png' },
-                            { name: 'Valeria', path: 'valeria', img: '/pages/valeria.png' },
-                            { name: 'María Fernanda', path: 'maria', img: '/pages/maria fernanda.png' },
-                            { name: 'Arletthe', path: 'arletthe', img: '/pages/arletthe.png' },
-                        ].map((person, idx) => (
-                            <Link key={idx} href={`/pages/spotlight/${person.path}`} className="retro-browser sp-card group no-underline flex flex-col h-[200px] transition-transform hover:scale-105">
-                                <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
-                                    <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
-                                </div>
-                                <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.img}')` }}></div>
-                                <div className="bg-white text-[#C8006A] font-bold py-1 group-hover:bg-[#D9F060] transition-colors">&lt; &gt;</div>
-                            </Link>
-                        ))}
-                    </div>
+                    {/* First Generation Section */}
+                    {spotlights.filter(s => !s.category || s.category.includes('FIRST')).length > 0 && (
+                        <div className="mb-12">
+                            <div className="flex items-center justify-center gap-4 mb-8">
+                                <div className="h-[2px] w-20 bg-black"></div>
+                                <h3 className="font-['Pacifico'] text-3xl text-black">First Generation</h3>
+                                <div className="h-[2px] w-20 bg-black"></div>
+                            </div>
+                            <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                                {spotlights.filter(s => !s.category || s.category.includes('FIRST')).map((person, idx) => (
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[200px] transition-transform hover:scale-105 active:scale-95">
+                                        <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
+                                            <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
+                                        </div>
+                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('/pages/${person.slug}.png')` }}></div>
+                                        <div className="bg-white text-[#C8006A] font-bold py-1 group-hover:bg-[#D9F060] transition-colors">&lt; &gt;</div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Second Generation Section */}
+                    {spotlights.filter(s => s.category?.includes('SECOND')).length > 0 && (
+                        <div>
+                            <div className="flex items-center justify-center gap-4 mb-8">
+                                <div className="h-[2px] w-20 bg-black"></div>
+                                <h3 className="font-['Pacifico'] text-3xl text-black">Second Generation</h3>
+                                <div className="h-[2px] w-20 bg-black"></div>
+                            </div>
+                            <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                                {spotlights.filter(s => s.category?.includes('SECOND')).map((person, idx) => (
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[200px] transition-transform hover:scale-105 active:scale-95">
+                                        <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
+                                            <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
+                                        </div>
+                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('/pages/${person.slug}.png')` }}></div>
+                                        <div className="bg-white text-[#C8006A] font-bold py-1 group-hover:bg-[#D9F060] transition-colors">&lt; &gt;</div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </section>
 
                 {/* 7. SCHOLARSHIPS / GRANTS */}
@@ -149,7 +171,7 @@ export default async function Home() {
                         </div>
                     </div>
                     <div className="right-col flex justify-center items-center h-full min-h-[400px]">
-                        <div className="attr-star w-[350px] h-[350px] bg-[#F4A7C3] flex flex-col justify-center items-center text-center p-5" 
+                        <div className="attr-star w-[350px] h-[350px] bg-[#F4A7C3] flex flex-col justify-center items-center text-center p-5 animate-[spin_20s_linear_infinite]" 
                              style={{ clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" }}>
                             <div className="font-['Pacifico'] text-[#C8006A] text-2xl">Atelier</div>
                             <div className="font-bold text-4xl text-black">Grants</div>
@@ -167,12 +189,12 @@ export default async function Home() {
                                 An exclusive, 'by invitation only' program focused on studying the lives and communication styles of remarkable women from history, science, fashion, and politics.
                             </p>
                             <Link href="/pages/spotlight/gaby" className="text-2xl font-bold underline inline-flex items-center gap-2 text-black">
-                                click here. <span className="hand-cursor">👈</span>
+                                click here. <span className="hand-cursor animate-bounce">👈</span>
                             </Link>
                         </div>
                     </div>
                     <div className="right-col staggered-card">
-                        <div className="w-full h-full min-h-[400px] rounded-[24px] bg-cover bg-center" style={{ backgroundImage: "url('/pages/gaby.png')" }}></div>
+                        <div className="w-full h-full min-h-[400px] rounded-[24px] bg-cover bg-center border-4 border-[#C8006A]" style={{ backgroundImage: "url('/pages/atelier spotlights.png')" }}></div>
                     </div>
                 </section>
 
@@ -183,7 +205,7 @@ export default async function Home() {
                         <div className="font-bold opacity-80 mb-2 uppercase text-sm">Phone</div>
                         <p className="text-xl mb-6">WhatsApp: (+52) 552 113 1676</p>
                         <div className="font-bold opacity-80 mb-2 uppercase text-sm">Email</div>
-                        <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic">theenglishateliere@gmail.com</a>
+                        <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic text-white">theenglishateliere@gmail.com</a>
                     </div>
                     <div className="mockup-phone w-[260px] h-[500px] border-8 border-white rounded-[40px] mx-auto relative bg-[#FAF7F0] overflow-hidden">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[25px] bg-white rounded-b-2xl"></div>
@@ -191,14 +213,16 @@ export default async function Home() {
                             <div className="w-20 h-20 bg-[#C8006A] rounded-full mx-auto mb-4"></div>
                             <div className="font-bold">theatelier.lab</div>
                             <div className="grid grid-cols-3 gap-1 mt-6 px-1">
-                                {[1,2,3,4,5,6,7,8,9].map(i => <div key={i} className="aspect-square bg-[#F4A7C3]"></div>)}
+                                {Array.from({ length: 9 }).map((_, i) => <div key={i} className="aspect-square bg-[#F4A7C3]"></div>)}
                             </div>
                         </div>
                     </div>
                     <div className="flex flex-col gap-5 items-start h-full justify-center">
-                        <Link href="/pages/book-session" className="btn-pill bg-white text-[#C8006A] font-extrabold no-underline shadow-lg">CONTACT FORM</Link>
-                        <Link href="/" className="btn-pill bg-[#F4A7C3] text-white no-underline">LINKEDIN</Link>
+                        <Link href="/pages/book-session" className="btn-pill bg-white text-[#C8006A] font-extrabold no-underline shadow-lg hover:scale-105 transition-transform">CONTACT FORM</Link>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-[#F4A7C3] text-white no-underline hover:scale-105 transition-transform">LINKEDIN</a>
                     </div>
+                </section>
+/div>
                 </section>
 
             </div>
