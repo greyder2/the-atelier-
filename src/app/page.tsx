@@ -3,6 +3,7 @@ import { client } from '../../sanity/lib/client';
 import InteractiveClient from './InteractiveClient';
 import FloatingEmailPopup from '../components/FloatingEmailPopup';
 import Link from 'next/link';
+import { firstGeneration, secondGeneration } from '@/data/spotlights';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,12 +13,36 @@ interface Spotlight {
     category?: string;
 }
 
+const slugToImageFile: Record<string, string> = {
+  'sefika-buse': 'sefika buse',
+  'maria-fernanda': 'maria fernanda',
+}
+function getImagePath(slug: string): string {
+  const file = slugToImageFile[slug] ?? slug
+  return `/pages/${file}.png`
+}
+
 export default async function Home() {
-    const spotlights: Spotlight[] = await client.fetch(`*[_type == "spotlight"]{
-        name,
-        "slug": slug.current,
-        category
-    }`);
+    let sanitySpotlights: Spotlight[] = [];
+    try {
+        sanitySpotlights = await client.fetch(`*[_type == "spotlight"]{
+            name,
+            "slug": slug.current,
+            category
+        }`);
+    } catch {
+        // Sanity unavailable — hardcoded data will be used
+    }
+
+    const useHardcoded = !sanitySpotlights || sanitySpotlights.length === 0;
+    const firstGenSpotlights: Spotlight[] = useHardcoded
+        ? firstGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'FIRST' }))
+        : sanitySpotlights.filter(s => !s.category || s.category.includes('FIRST'));
+    const secondGenSpotlights: Spotlight[] = useHardcoded
+        ? secondGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'SECOND' }))
+        : sanitySpotlights.filter(s => s.category?.includes('SECOND'));
+
+
 
     return (
         <main>
@@ -51,8 +76,8 @@ export default async function Home() {
                         </div>
                         <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
                             <a href="#scholarships" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Scholarships / Grants</a>
-                            <a href="#spotlights" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Atelier Spotlights</a>
-                            <a href="#insights" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Insights / Journal</a>
+                            <Link href="/pages/spotlights" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Atelier Spotlights</Link>
+                            <Link href="/pages/insights" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Insights / Journal</Link>
                             <a href="#contact" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Contact</a>
                             <a href="#careers" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Work with us</a>
                         </div>
@@ -103,7 +128,7 @@ export default async function Home() {
                     <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON, LIBYA), AND EUROPE (POLAND).</p>
                     
                     {/* First Generation Section */}
-                    {spotlights.filter(s => !s.category || s.category.includes('FIRST')).length > 0 && (
+                    {firstGenSpotlights.length > 0 && (
                         <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
@@ -111,12 +136,12 @@ export default async function Home() {
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
-                                {spotlights.filter(s => !s.category || s.category.includes('FIRST')).map((person, idx) => (
+                                {firstGenSpotlights.map((person, idx) => (
                                     <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[220px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
                                         <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('/pages/${person.slug}.png')` }}></div>
+                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')` }}></div>
                                         <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic">
                                             &lt; view profile &gt;
                                         </div>
@@ -127,7 +152,7 @@ export default async function Home() {
                     )}
 
                     {/* Second Generation Section */}
-                    {spotlights.filter(s => s.category?.includes('SECOND')).length > 0 && (
+                    {secondGenSpotlights.length > 0 && (
                         <div>
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
@@ -135,12 +160,12 @@ export default async function Home() {
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
-                                {spotlights.filter(s => s.category?.includes('SECOND')).map((person, idx) => (
+                                {secondGenSpotlights.map((person, idx) => (
                                     <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[220px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
                                         <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('/pages/${person.slug}.png')` }}></div>
+                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')` }}></div>
                                         <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic">
                                             &lt; view profile &gt;
                                         </div>
