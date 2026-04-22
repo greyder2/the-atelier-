@@ -49,7 +49,7 @@ export default async function Home() {
                     <a href="#programs">Programs / Services</a> &middot; 
                     <a href="#corporate">Corporate Training</a> &middot; 
                     <a href="#social-proof">Social Proof</a> &middot; 
-                    <a href="/dashboard" style="color: var(--hot-pink); font-weight: bold; border-bottom: 2px solid var(--hot-pink);">STUDENT PORTAL</a>
+                    <a href="/dashboard" style="color: var(--hot-pink); font-weight: bold; border-bottom: 2px solid var(--hot-pink);">CLIENT PORTAL</a>
                 </div>
                 <div class="row">
                     <a href="#scholarships">Scholarships / Grants</a> &middot; 
