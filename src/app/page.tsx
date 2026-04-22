@@ -6,8 +6,14 @@ import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
+interface Spotlight {
+    name: string;
+    slug: string;
+    category?: string;
+}
+
 export default async function Home() {
-    const spotlights = await client.fetch(`*[_type == "spotlight"]{
+    const spotlights: Spotlight[] = await client.fetch(`*[_type == "spotlight"]{
         name,
         "slug": slug.current,
         category
@@ -83,9 +89,11 @@ export default async function Home() {
                         </div>
                     </div>
                     <div className="right-col staggered-card">
-                        <div className="bg-[#F4A7C3] p-10 rounded-[24px]">
-                            <h3 className="text-3xl mb-4 font-['Pacifico']">Our Programs</h3>
-                            <p className="text-xl italic leading-relaxed">The Atelier offers a range of programs designed to support different learning goals and lifestyles, from one-on-one sessions to cultural community subscriptions.</p>
+                        <div className="retro-browser shadow-2xl" style={{ border: '4px solid #C8006A', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white' }}>
+                             <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
+                                 <span style={{ color: '#C8006A' }}>x</span> <span>□</span> <span>—</span>
+                             </div>
+                             <img src="/pages/programs and services.png" alt="Programs" className="w-full" />
                         </div>
                     </div>
                 </section>
@@ -95,10 +103,10 @@ export default async function Home() {
                     <div className="left-col staggered-left flex-1 min-w-[300px]">
                         <div className="italic text-gray-600 mb-2">Programs / Services</div>
                         <h2 className="text-6xl mb-8 leading-[1.1] font-['Pacifico']">Corporate<br/>Language<br/>Training</h2>
-                        <Link href="/pages/corporate-quotation" className="btn-pill bg-[#C8006A] text-white no-underline inline-block">GET A CUSTOMIZED QUOTATION</Link>
+                        <Link href="/pages/corporate-quotation" className="btn-pill bg-[#C8006A] text-white no-underline inline-block shadow-lg hover:scale-105 transition-all">GET A CUSTOMIZED QUOTATION</Link>
                     </div>
                     <div className="right-col staggered-card flex-1 min-w-[300px] relative">
-                        <div className="bg-[#A8DDD8] p-10 rounded-[24px] text-black">
+                        <div className="bg-[#A8DDD8] p-10 rounded-[24px] text-black shadow-xl">
                             <p className="text-xl mb-6 font-bold">We design customized language training programs for international companies seeking to strengthen communication across global teams.</p>
                             <p className="font-bold mb-4">Programs can include:</p>
                             <ul className="list-none space-y-2 mb-12 font-bold">
@@ -108,8 +116,8 @@ export default async function Home() {
                                 <li>★ Leadership communication skills</li>
                             </ul>
                             <div className="absolute bottom-[-25px] left-1/2 -translate-x-1/2 whitespace-nowrap">
-                                <Link href="/pages/book-session" className="btn-pill bg-[#C8006A] text-white pulse no-underline shadow-xl">
-                                    JOIN THE ATELIER! / BOOK A FREE SESSION HERE <span className="hand-cursor">👆</span>
+                                <Link href="/pages/book-session" className="btn-pill bg-[#C8006A] text-white pulse no-underline shadow-2xl">
+                                    JOIN THE ATELIER! / BOOK A FREE SESSION HERE <span className="hand-cursor animate-bounce inline-block">👆</span>
                                 </Link>
                             </div>
                         </div>
@@ -118,11 +126,13 @@ export default async function Home() {
 
                 {/* 6. SOCIAL PROOF (GRID) */}
                 <section id="social-proof" className="section-padding bg-[#C8006A] text-white text-center">
-                    <h2 className="section-title text-black text-6xl mb-4 font-['Pacifico']">Social Proof</h2>
-                    <p className="mb-10 text-lg max-w-[600px] mx-auto italic uppercase">TESTIMONIALS FROM ELITE PROFESSIONALS ACROSS THE AMERICAS, ASIA, AND EUROPE.</p>
-                    
-                    {/* First Generation Section */}
-                    {spotlights.filter(s => !s.category || s.category.includes('FIRST')).length > 0 && (
+                    <div className="mb-8 flex flex-col items-center">
+                         <div className="retro-browser max-w-[600px] shadow-2xl mb-10" style={{ border: '4px solid white', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white' }}>
+                              <img src="/pages/social proof.png" alt="Social Proof" className="w-full" />
+                         </div>
+                         <h2 className="section-title text-black text-6xl mb-4 font-['Pacifico']">Social Proof</h2>
+                         <p className="mb-10 text-lg max-w-[600px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM ELITE PROFESSIONALS ACROSS THE AMERICAS, ASIA, AND EUROPE.</p>
+                    </div>
                         <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <img src="/pages/spotlights first gen.png" alt="First Generation" style={{ height: '60px' }} />

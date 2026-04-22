@@ -16,9 +16,15 @@ async function getSpotlight(slug: string) {
   return data;
 }
 
+interface Spotlight {
+    name: string;
+    heading?: string;
+    body?: string;
+}
+
 export default async function SpotlightProfilePage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  let spotlight;
+  let spotlight: Spotlight | null = null;
   
   try {
     spotlight = await getSpotlight(resolvedParams.slug);

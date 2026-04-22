@@ -45,7 +45,7 @@ export default function CorporateTrainingPage() {
                     </div>
                     
                     <div className="right-col staggered-card">
-                        <div className="card" style={{ backgroundColor: '#A8DDD8', color: '#111111', borderRadius: '24px', padding: '40px', marginBottom: '20px' }}>
+                        <div className="card" style={{ backgroundColor: '#A8DDD8', color: '#111111', borderRadius: '24px', padding: '40px', marginBottom: '20px', shadow: 'xl' }}>
                             <p style={{ fontWeight: 'bold', fontSize: '1.2rem', marginBottom: '15px' }}>
                                 We design customized language training programs for international companies seeking to strengthen communication across global teams.
                             </p>
@@ -56,6 +56,10 @@ export default function CorporateTrainingPage() {
                                 ★ Presentation and communication training<br/>
                                 ★ Leadership communication skills
                             </p>
+                        </div>
+
+                        <div className="retro-browser" style={{ border: '4px solid #C8006A', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white', marginBottom: '20px' }}>
+                             <img src="/pages/corporate language training continue.png" alt="Corporate training details" style={{ width: '100%', display: 'block' }} />
                         </div>
                         
                         <div style={{ textAlign: 'center' }}>
