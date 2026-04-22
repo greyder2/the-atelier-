@@ -45,7 +45,7 @@ export default function CorporateTrainingPage() {
                     </div>
                     
                     <div className="right-col staggered-card">
-                        <div className="card" style={{ backgroundColor: '#A8DDD8', color: '#111111', borderRadius: '24px', padding: '40px', marginBottom: '20px', shadow: 'xl' }}>
+                        <div className="card" style={{ backgroundColor: '#A8DDD8', color: '#111111', borderRadius: '24px', padding: '40px', marginBottom: '20px', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)' }}>
                             <p style={{ fontWeight: 'bold', fontSize: '1.2rem', marginBottom: '15px' }}>
                                 We design customized language training programs for international companies seeking to strengthen communication across global teams.
                             </p>
