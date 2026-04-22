@@ -1,26 +1,467 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+        :root {
+            --hot-pink: #D4006A;
+            --light-pink: #F4A7C3;
+            --pale-cream: #FAF7F0;
+            --mint: #A8DDD8;
+            --lime: #D9F060;
+            --black: #111111;
+            --white: #FFFFFF;
+            
+            --radius-btn: 50px;
+            --radius-card: 24px;
+        }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--black);
+            background-color: var(--pale-cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .cursive {
+            font-family: 'Pacifico', cursive;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .italic-upper {
+            font-style: italic;
+            text-transform: uppercase;
+        }
+
+        /* 1. TOP PINK BAR */
+        .top-bar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            height: 12px;
+            background-color: var(--hot-pink);
+            z-index: 1000;
+        }
+
+        /* Reusable UI Components */
+        .btn-pill {
+            display: inline-block;
+            border-radius: var(--radius-btn);
+            padding: 14px 36px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            text-transform: uppercase;
+            border: none;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .btn-pill:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        .btn-pink { background-color: var(--hot-pink); color: var(--white); }
+        .btn-light-pink { background-color: var(--light-pink); color: var(--hot-pink); }
+        .btn-lime { background-color: var(--lime); color: var(--black); }
+
+        .pulse {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { box-shadow: 0 0 0 0 rgba(212, 0, 106, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 0, 106, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 0, 106, 0); }
+        }
+
+        .card {
+            background-color: var(--light-pink);
+            border-radius: var(--radius-card);
+            padding: 40px;
+        }
+        .card-white { background-color: var(--white); }
+        .card-mint { background-color: var(--mint); color: var(--black); }
+
+        .retro-browser {
+            border: 4px solid var(--hot-pink);
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: var(--white);
+            display: flex;
+            flex-direction: column;
+        }
+        .retro-header {
+            background-color: var(--white);
+            border-bottom: 4px solid var(--hot-pink);
+            padding: 6px 12px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            font-family: monospace;
+            font-weight: bold;
+            color: var(--hot-pink);
+        }
+        .retro-header span { cursor: pointer; }
+
+        .hand-cursor {
+            font-size: 2rem;
+            display: inline-block;
+            margin-top: -10px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .section-title {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-padding {
+            padding: 80px 5%;
+        }
+
+        /* 2. HERO / INDEX */
+        #hero {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: url('/atelier background.png') center/cover;
+            background-size: 40px 40px, 40px 40px;
+            overflow: hidden;
+            padding-top: 12px;
+        }
+        .hero-title {
+            color: var(--white);
+            font-family: 'Sarina', cursive;
+            font-size: clamp(80px, 12vw, 160px);
+            line-height: 1.1;
+            text-align: center;
+            text-shadow: 4px 4px 0px var(--hot-pink);
+            z-index: 2;
+        }
+        .hero-title div { overflow: hidden; }
+        .hero-title span.char { display: inline-block; }
+        .hero-banner {
+            width: 100%;
+            background-color: var(--hot-pink);
+            color: var(--white);
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 2rem;
+            font-size: clamp(14px, 2vw, 20px);
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+        .hero-nav {
+            margin-top: 2rem;
+            text-align: center;
+            z-index: 2;
+            padding: 0 20px;
+        }
+        .hero-nav a {
+            color: var(--white);
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: color 0.3s ease;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px var(--hot-pink);
+        }
+        .hero-nav a:hover { color: var(--lime); }
+        .hero-nav .row { margin-bottom: 15px; }
+
+        /* 3. HOME / ABOUT */
+        #about {
+            background-color: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .about-left .title { color: var(--black); font-size: 4rem; line-height: 1; margin-bottom: 1rem; font-family: 'Pacifico', cursive; }
+        .about-left .subtitle { color: var(--hot-pink); font-size: 1.5rem; margin-bottom: 2rem; font-style: italic; }
+        .about-left ul { list-style: none; }
+        .about-left li { margin-bottom: 1.5rem; font-weight: bold; font-size: 1.1rem; }
+        .about-left li span { color: var(--hot-pink); margin-right: 10px; }
+        .about-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start; }
+        .speech-bubble {
+            background-color: var(--lime);
+            border-radius: var(--radius-card);
+            border-bottom-right-radius: 0;
+            padding: 30px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 300px;
+            color: var(--black);
+            margin-bottom: 10px;
+            box-shadow: 4px 4px 0px var(--hot-pink);
+        }
+        .about-bottom-nav { grid-column: span 2; margin-top: 40px; text-align: center; color: var(--hot-pink); font-style: italic; font-weight: bold; }
+        .about-bottom-nav a { margin: 0 10px; text-decoration: underline; text-transform: uppercase; }
+
+        /* 4. PROGRAMS / SERVICES */
+        #programs {
+            background-color: var(--pale-cream);
+            border-top: 4px solid var(--hot-pink);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        #programs .left-col { font-size: 1.8rem; line-height: 2; font-family: 'DM Sans', sans-serif; font-weight: 700; }
+        #programs .left-col a { text-decoration: underline; display: block; transition: color 0.3s; }
+        #programs .left-col a:hover { color: var(--hot-pink); }
+        #programs .right-col h3 { font-size: 3rem; margin-bottom: 1rem; font-family: 'Pacifico', cursive; }
+        #programs .right-col p { font-style: italic; font-size: 1.2rem; line-height: 1.6; }
+
+        /* 5. CORPORATE LANGUAGE TRAINING */
+        #corporate {
+            background-color: var(--pale-cream);
+            border-top: 4px solid var(--hot-pink);
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;
+        }
+        .breadcrumb { font-style: italic; color: #555; margin-bottom: 10px; }
+        #corporate .left-col { flex: 1; min-width: 300px; }
+        #corporate .left-col h2 { font-size: 4rem; margin-bottom: 2rem; line-height: 1.1; font-family: 'Pacifico', cursive; }
+        #corporate .right-col { flex: 1; min-width: 300px; position: relative; }
+        #corporate .right-col .card-mint p { font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: bold; }
+        #corporate .right-col .card-mint ul { list-style: none; margin-bottom: 50px; }
+        #corporate .right-col .card-mint li { margin-bottom: 10px; font-weight: 700; }
+        .overlapping-btn { position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+
+        /* 6. SOCIAL PROOF */
+        #social-proof {
+            background-color: var(--hot-pink);
+            color: var(--white);
+            text-align: center;
+        }
+        #social-proof h2 { color: var(--black); font-family: 'Pacifico', cursive; }
+        .sp-subtitle { margin-bottom: 40px; font-size: 1.1rem; max-width: 600px; margin-inline: auto; font-style: italic; text-transform: uppercase; }
+        .sp-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+        .sp-card { height: 200px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+        .sp-card:hover { transform: scale(1.05) translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .sp-content { flex: 1; }
+        .sp-nav { background: var(--white); text-align: center; color: var(--hot-pink); font-weight: bold; padding: 4px; }
+        
+        .grad1 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        .grad2 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); }
+        .grad3 { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); }
+        .grad4 { background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%); }
+        .grad5 { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); }
+        .grad6 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+
+        /* 7. SCHOLARSHIPS / GRANTS */
+        #scholarships {
+            background-color: var(--hot-pink);
+            color: var(--black);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        #scholarships h2 { color: var(--black); margin-bottom: 20px; font-family: 'Pacifico', cursive; }
+        .grants-card h3 { font-size: 2.5rem; margin-bottom: 15px; font-family: 'Pacifico', cursive;}
+        .grants-card p { font-size: 1.1rem; line-height: 1.5; margin-bottom: 20px; }
+        .grants-card a { text-decoration: underline; font-weight: bold; color: var(--black); }
+        
+        .star-container { display: flex; justify-content: center; align-items: center; height: 100%; min-height: 400px; position: relative; }
+        .star-shape {
+            width: 350px;
+            height: 350px;
+            background-color: var(--light-pink);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 20px;
+        }
+        .star-text-1 { font-family: 'Pacifico', cursive; color: var(--hot-pink); font-size: 1.5rem; }
+        .star-text-2 { font-weight: bold; font-size: 2.5rem; line-height: 1; margin: 5px 0; color: var(--black); }
+        .star-text-3 { font-size: 0.7rem; font-style: italic; max-width: 120px; text-align: center; color: var(--black); text-transform: uppercase; }
+
+        /* 8. ATELIER SPOTLIGHTS */
+        #spotlights {
+            background-color: var(--pale-cream);
+            border-top: 4px solid var(--hot-pink);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .spotlight-img {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border-radius: var(--radius-card);
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 9. INSIGHTS / JOURNAL */
+        #insights {
+            background-color: var(--pale-cream);
+            border-top: 4px solid var(--hot-pink);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .insights-left p { font-size: 1.2rem; line-height: 1.6; margin: 20px 0; }
+        .insights-right { padding: 20px; }
+        .insights-browser { border-radius: 12px; border: 6px solid var(--hot-pink); overflow: hidden; background: #fff; }
+        .insights-browser-head { background: var(--light-pink); padding: 5px 10px; border-bottom: 6px solid var(--hot-pink); display: flex; gap: 5px; color: var(--hot-pink); font-family: monospace; font-weight: bold; }
+        .insights-img { height: 350px; background: url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover; }
+
+        /* 10. CONTACT */
+        #contact {
+            background-color: var(--hot-pink);
+            color: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+        #contact h2 { color: var(--white); grid-column: span 3; font-family: 'Pacifico', cursive; }
+        .contact-info p { margin-bottom: 20px; font-size: 1.2rem; }
+        .contact-info .label { font-weight: bold; display: block; margin-bottom: 5px; opacity: 0.8; }
+        .contact-info a { text-decoration: underline; font-style: italic; color: var(--white); }
+        
+        .mockup-phone {
+            width: 260px; height: 500px;
+            border: 8px solid var(--white);
+            border-radius: 40px;
+            margin: 0 auto;
+            position: relative;
+            background: var(--pale-cream);
+            overflow: hidden;
+        }
+        .mockup-notch {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 120px; height: 25px; background: var(--white);
+            border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;
+        }
+        .mockup-ig {
+            padding-top: 40px; color: var(--black); text-align: center;
+        }
+        .ig-avatar { width: 80px; height: 80px; background: var(--hot-pink); border-radius: 50%; margin: 0 auto 10px; }
+        .ig-name { font-weight: bold; }
+        .ig-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-top: 20px; }
+        .ig-grid div { aspect-ratio: 1; background: var(--light-pink); }
+        
+        .contact-btns { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+
+        /* 11. CAREERS */
+        #careers {
+            background-color: var(--pale-cream);
+            text-align: center;
+            border-top: 4px solid var(--hot-pink);
+        }
+        #careers h2 { margin-bottom: 20px; font-family: 'Pacifico', cursive; }
+        #careers p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 20px; line-height: 1.6; }
+        #careers a { color: var(--hot-pink); font-weight: bold; font-size: 1.5rem; text-decoration: underline; }
+
+        /* Responsive */
+        @media(max-width: 900px) {
+            #about, #programs, #corporate, #scholarships, #spotlights, #insights, #contact {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .sp-grid { grid-template-columns: repeat(3, 1fr); }
+            #contact h2 { grid-column: span 1; }
+            .hero-nav a { font-size: 1.2rem; }
+        }
+        @media(max-width: 600px) {
+            .sp-grid { grid-template-columns: repeat(2, 1fr); }
+            .section-padding { padding: 50px 20px; }
+            .about-left .title { font-size: 3.5rem; }
+            #corporate .left-col h2 { font-size: 3rem; }
+        }
+
+        /* Go back link */
+        .go-back {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: underline;
+            font-style: italic;
+            font-weight: bold;
+        }
+    
+        /* Added rules for Sub-pages */
+        .page { display: none; min-height: 100vh; padding-top: 12px; }
+        .page.active { display: block; }
+        .bg-hot-pink { background-color: var(--hot-pink); }
+        .bg-cream { background-color: var(--pale-cream); }
+        .bg-white { background-color: var(--white); }
+        
+        .subpage-container { padding: 60px 8%; max-width: 1400px; margin: 0 auto; position: relative; min-height: calc(100vh - 12px); display: flex; flex-direction: column; }
+        .subpage-title { font-size: 5rem; margin-bottom: 30px; line-height: 1.1; margin-top:20px; }
+        .title-black { color: var(--black); }
+        .title-pink { color: var(--hot-pink); }
+        
+        .responsive-grid { display: grid; gap: 40px; flex: 1; margin-bottom: 40px; }
+        .split-layout { grid-template-columns: 1fr 1fr; }
+        
+        .text-pink-page-body { 
+            color: var(--white); 
+            text-transform: uppercase; 
+            font-size: 0.85rem; 
+            letter-spacing: 0.5px; 
+            line-height: 1.6; 
+            font-weight: bold;
+        }
+        
+        .white-italic-heading { font-style: italic; color: var(--white); font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase;}
+        
+        .bottom-nav { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: auto; padding-top: 30px;}
+        .bottom-nav a { text-decoration: underline; font-style: italic; font-weight: bold; color: var(--black)!important;}
+        .bg-cream .bottom-nav a { color: var(--hot-pink)!important; }
+        .bg-white .bottom-nav a { color: var(--hot-pink)!important; }
+        
+        .profile-browser .retro-nav { background: var(--white); padding: 10px; display: flex; justify-content: center; }
+        .btn-sm { padding: 6px 16px; font-size: 12px; border-radius: 20px; }
+        
+        .form-card { border: 4px solid var(--mint); padding: 40px; border-radius: var(--radius-card); background: var(--white); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; filter: opacity(0.7); margin-bottom: 5px; font-style: italic; font-size: 0.9rem; }
+        .form-input { width: 100%; padding: 12px 20px; border-radius: 30px; border: 2px solid #ddd; font-family: 'DM Sans', sans-serif; }
+        .form-input:focus { border-color: var(--hot-pink); outline: none; }
+        .btn-full { width: 100%; }
+
+        .session-card { background: var(--light-pink); border: 4px solid var(--lime); padding: 50px; border-radius: var(--radius-card); max-width: 600px; margin: 0 auto; text-align: center; }
+        .session-card h3 { color: var(--hot-pink); font-size: 2.5rem; font-family: 'DM Sans', sans-serif; font-weight: 800; margin-bottom: 20px; }
+        .input-group { display: flex; gap: 10px; align-items: center; }
+        @media(max-width: 900px) { .split-layout { grid-template-columns: 1fr; } }
+
+    
