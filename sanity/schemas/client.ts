@@ -1,6 +1,6 @@
 export default {
   name: 'client',
-  title: 'Clients & Students',
+  title: 'Portal: Clients & Students',
   type: 'document',
   fields: [
     {

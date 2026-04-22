@@ -127,7 +127,15 @@ export default function Dashboard() {
     days.push(d);
   }
 
-  const timeSlots = ["09:00", "10:30", "12:00", "14:00", "15:30", "17:00", "18:30"];
+  // Generate 30-min slots from 08:00 to 20:00
+  const timeSlots: string[] = [];
+  for (let hour = 8; hour <= 20; hour++) {
+    ['00', '30'].forEach(minute => {
+      if (!(hour === 20 && minute === '30')) {
+        timeSlots.push(`${hour.toString().padStart(2, '0')}:${minute}`);
+      }
+    });
+  }
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F0', color: '#111', paddingTop: '2.5rem' }}>
