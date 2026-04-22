@@ -240,7 +240,7 @@ export default async function Home() {
                         </div>
                         <div>
                             <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">CONTACT FORM</div>
-                            <Link href="/pages/contact" className="inline-block bg-white text-[#C8006A] font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest hover:bg-[#D9F060] transition-colors no-underline shadow-lg">
+                            <Link href="/pages/contact" className="inline-block bg-white text-[#C8006A] font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest hover:bg-[#D9F060] hover:text-black transition-colors no-underline shadow-lg border-2 border-white">
                                 SEND A MESSAGE →
                             </Link>
                         </div>
@@ -265,7 +265,7 @@ export default async function Home() {
 
                     <div className="flex flex-col gap-6 items-start h-full justify-center">
                          <div className="bg-white/10 p-6 rounded-[24px] backdrop-blur-sm border-2 border-white/20 w-full">
-                             <p className="font-bold italic text-white uppercase text-base leading-relaxed">
+                             <p className="font-bold italic text-white uppercase text-sm leading-relaxed break-words">
                                 Ready to join our international community of ambitious professionals?
                              </p>
                          </div>

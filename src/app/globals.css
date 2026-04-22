@@ -275,7 +275,7 @@
             grid-template-columns: repeat(6, 1fr);
             gap: 20px;
         }
-        .sp-card { height: 200px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+        .sp-card { height: 260px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
         .sp-card:hover { transform: scale(1.05) translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
         .sp-content { flex: 1; }
         .sp-nav { background: var(--white); text-align: center; color: var(--hot-pink); font-weight: bold; padding: 4px; }
@@ -359,12 +359,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 20px;
-            align-items: center;
+            align-items: start;
         }
         #contact h2 { color: var(--white); grid-column: span 3; font-family: 'Pacifico', cursive; }
         .contact-info p { margin-bottom: 20px; font-size: 1.2rem; }
         .contact-info .label { font-weight: bold; display: block; margin-bottom: 5px; opacity: 0.8; }
-        .contact-info a { text-decoration: underline; font-style: italic; color: var(--white); }
+        .contact-info a { text-decoration: underline; font-style: italic; color: var(--white); word-break: break-all; }
         
         .mockup-phone {
             width: 260px; height: 500px;
@@ -471,5 +471,3 @@
         .session-card h3 { color: var(--hot-pink); font-size: 2.5rem; font-family: 'DM Sans', sans-serif; font-weight: 800; margin-bottom: 20px; }
         .input-group { display: flex; gap: 10px; align-items: center; }
         @media(max-width: 900px) { .split-layout { grid-template-columns: 1fr; } }
-
-    
