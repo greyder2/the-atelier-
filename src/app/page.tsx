@@ -34,17 +34,8 @@ export default async function Home() {
         // Sanity unavailable — hardcoded data will be used
     }
 
-    const hardcodedBySlug = new Map([...firstGeneration, ...secondGeneration].map(s => [s.slug, s]))
-
-    const useHardcoded = !sanitySpotlights || sanitySpotlights.length === 0;
-    const firstGenSpotlights: Spotlight[] = useHardcoded
-        ? firstGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'FIRST' }))
-        : sanitySpotlights.filter(s => !s.category || s.category.includes('FIRST'))
-            .map(s => ({ ...s, name: s.name || hardcodedBySlug.get(s.slug)?.name || s.slug }));
-    const secondGenSpotlights: Spotlight[] = useHardcoded
-        ? secondGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'SECOND' }))
-        : sanitySpotlights.filter(s => s.category?.includes('SECOND'))
-            .map(s => ({ ...s, name: s.name || hardcodedBySlug.get(s.slug)?.name || s.slug }));
+    const firstGenSpotlights: Spotlight[] = firstGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'FIRST' }));
+    const secondGenSpotlights: Spotlight[] = secondGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'SECOND' }));
 
 
 
@@ -129,7 +120,7 @@ export default async function Home() {
                 {/* 6. SOCIAL PROOF (GRID) */}
                 <section id="social-proof" className="section-padding bg-[#C8006A] text-white text-center">
                     <h2 className="section-title text-black text-6xl mb-4 font-['Pacifico']">Social Proof</h2>
-                    <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON, LIBYA), AND EUROPE (POLAND).</p>
+                    <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON), AFRICA (LIBYA), AND EUROPE (POLAND).</p>
                     
                     {/* First Generation Section */}
                     {firstGenSpotlights.length > 0 && (
@@ -213,7 +204,7 @@ export default async function Home() {
                     <div className="left-col staggered-left">
                         <h2 className="section-title text-[#C8006A] text-6xl mb-8 font-['Pacifico']">Atelier Spotlight</h2>
                         <div className="bg-white p-12 rounded-[24px] space-y-8 shadow-2xl border-4 border-[#C8006A] relative">
-                             <div className="absolute -top-6 -right-6 bg-[#D9F060] text-black font-black px-6 py-2 rounded-full shadow-lg transform rotate-3">
+                             <div className="absolute -top-4 -right-4 bg-[#D9F060] text-black font-black px-4 py-1 text-sm rounded-full shadow-lg transform rotate-3 z-10">
                                 FEATURED
                             </div>
                             <p className="text-2xl font-black italic text-black uppercase leading-relaxed">
@@ -254,34 +245,14 @@ export default async function Home() {
                         </div>
                     </div>
 
-                    {/* REDESIGNED PHONE MOCKUP - FUNCTIONAL HUB */}
-                    <div className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative bg-[#FAF7F0] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1">
+                    {/* PHONE MOCKUP - INSTAGRAM SCREENSHOT */}
+                    <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
-                        <div className="pt-16 text-black px-6">
-                            <div className="w-24 h-24 bg-[#C8006A] rounded-full mx-auto mb-4 overflow-hidden border-4 border-white shadow-xl">
-                                <img src="/pages/gaby.png" alt="Profile" className="w-full h-full object-cover" />
-                            </div>
-                            <div className="text-center mb-8">
-                                <div className="font-black text-xl tracking-tighter">theatelier.lab</div>
-                                <div className="text-[10px] opacity-40 font-black uppercase tracking-widest italic">Join the global voice</div>
-                            </div>
-                            
-                            <div className="space-y-3 font-black text-[13px]">
-                                <a href="https://www.instagram.com/theatelier.lab/" className="block bg-[#C8006A] text-white py-4 rounded-2xl text-center shadow-md hover:bg-black transition-all no-underline tracking-widest">
-                                    ★ INSTAGRAM
-                                </a>
-                                <Link href="/pages/contact" className="block bg-white border-2 border-black py-4 rounded-2xl text-center shadow-md hover:bg-[#D9F060] transition-all no-underline tracking-widest">
-                                    ★ CONTACT FORM
-                                </Link>
-                                <Link href="/pages/careers" className="block bg-white border-2 border-black py-4 rounded-2xl text-center shadow-md hover:bg-[#D9F060] transition-all no-underline tracking-widest">
-                                    ★ WORK WITH US
-                                </Link>
-                                <Link href="/pages/cohorts" className="block bg-[#D9F060] border-2 border-black py-4 rounded-2xl text-center shadow-md hover:scale-105 transition-all no-underline tracking-widest">
-                                    ★ JOIN COHORT
-                                </Link>
-                            </div>
+                        <img src="/pages/instagram-screenshot.png" alt="@theatelier.lab on Instagram" className="w-full h-full object-cover object-top" />
+                        <div className="absolute bottom-0 left-0 right-0 bg-[#C8006A]/90 text-white text-center font-black text-xs py-3 tracking-widest uppercase">
+                            ★ follow @theatelier.lab
                         </div>
-                    </div>
+                    </a>
 
                     <div className="flex flex-col gap-8 items-start h-full justify-center">
                          <div className="bg-white/10 p-8 rounded-[30px] backdrop-blur-sm border-2 border-white/20 w-full mb-4">
