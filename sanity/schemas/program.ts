@@ -33,4 +33,10 @@ export default {
       of: [{ type: 'string' }],
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'price',
+    },
+  },
 };

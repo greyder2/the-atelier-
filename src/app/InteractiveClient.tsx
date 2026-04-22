@@ -67,9 +67,69 @@ export default function InteractiveClient() {
             }
         };
         
+        // Handle Homepage Booking Form
+        const handleBookingSubmit = async (e: any) => {
+            if (e.target && e.target.id === 'btn-submit-booking') {
+                const nameInput = document.getElementById('booking-name') as HTMLInputElement;
+                const emailInput = document.getElementById('booking-email') as HTMLInputElement;
+                const timeInput = document.getElementById('booking-time') as HTMLInputElement;
+                const messageDiv = document.getElementById('booking-message');
+
+                if (!nameInput.value || !emailInput.value || !timeInput.value) {
+                    if (messageDiv) {
+                        messageDiv.textContent = "Please fill in all fields.";
+                        messageDiv.style.color = "red";
+                        messageDiv.style.display = "block";
+                    }
+                    return;
+                }
+
+                e.target.disabled = true;
+                e.target.textContent = "Processing...";
+
+                try {
+                    const res = await fetch("/api/schedule", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            name: nameInput.value,
+                            email: emailInput.value,
+                            time: timeInput.value,
+                            programType: "Free Demo Request"
+                        })
+                    });
+
+                    if (res.ok) {
+                        if (messageDiv) {
+                            messageDiv.textContent = "Success! We'll contact you shortly.";
+                            messageDiv.style.color = "green";
+                            messageDiv.style.display = "block";
+                        }
+                        nameInput.value = "";
+                        emailInput.value = "";
+                        timeInput.value = "";
+                        e.target.textContent = "Booked!";
+                    } else {
+                        throw new Error("Failed");
+                    }
+                } catch (err) {
+                    if (messageDiv) {
+                        messageDiv.textContent = "Error. Please try again.";
+                        messageDiv.style.color = "red";
+                        messageDiv.style.display = "block";
+                    }
+                    e.target.disabled = false;
+                    e.target.textContent = "Request Session";
+                }
+            }
+        };
+
         document.addEventListener('click', handleNativeClicks, true);
+        document.addEventListener('click', handleBookingSubmit);
+        
         return () => {
             document.removeEventListener('click', handleNativeClicks, true);
+            document.removeEventListener('click', handleBookingSubmit);
             delete (window as any).showPage;
         }
     }, []);

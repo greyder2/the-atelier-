@@ -48,7 +48,8 @@ export default async function Home() {
                     <a href="#" onclick="showPage('page-about-us'); return false;" onclick="showPage('page-about-us'); return false;">About Us</a> &middot; 
                     <a href="#programs">Programs / Services</a> &middot; 
                     <a href="#corporate">Corporate Training</a> &middot; 
-                    <a href="#social-proof">Social Proof</a>
+                    <a href="#social-proof">Social Proof</a> &middot; 
+                    <a href="/dashboard" style="color: var(--hot-pink); font-weight: bold; border-bottom: 2px solid var(--hot-pink);">STUDENT PORTAL</a>
                 </div>
                 <div class="row">
                     <a href="#scholarships">Scholarships / Grants</a> &middot; 
@@ -425,14 +426,24 @@ export default async function Home() {
             <div class="session-card staggered-card" style="width:100%;">
                 <h3>Register to get a free demo!</h3>
                 <div style="text-align: left; margin-bottom: 20px;">
-                    <label style="font-style: italic; color: #666; font-size: 0.9rem; margin-left: 10px; margin-bottom:10px; display:block;">Enter your email</label>
-                    <div class="input-group" style="flex-wrap: wrap;">
-                        <input type="email" class="form-input" style="flex:1; min-width: 200px;">
-                        <button class="btn-pill btn-lime" style="padding: 12px 30px;">Submit</button>
-                        <span class="hand-cursor" style="margin-top:0">👈</span>
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-style: italic; color: #666; font-size: 0.9rem; margin-left: 10px; margin-bottom:5px; display:block;">Your Name</label>
+                        <input type="text" id="booking-name" class="form-input" style="width: 100%;" placeholder="Enter your name">
                     </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-style: italic; color: #666; font-size: 0.9rem; margin-left: 10px; margin-bottom:5px; display:block;">Your Email</label>
+                        <input type="email" id="booking-email" class="form-input" style="width: 100%;" placeholder="Enter your email">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-style: italic; color: #666; font-size: 0.9rem; margin-left: 10px; margin-bottom:5px; display:block;">Preferred Date & Time</label>
+                        <input type="datetime-local" id="booking-time" class="form-input" style="width: 100%;">
+                    </div>
+                    <div class="input-group" style="justify-content: center; margin-top: 20px;">
+                        <button id="btn-submit-booking" class="btn-pill btn-lime" style="padding: 12px 60px; font-size: 1.1rem; cursor: pointer;">Request Session</button>
+                    </div>
+                    <div id="booking-message" style="text-align: center; margin-top: 10px; font-weight: bold; display: none;"></div>
                 </div>
-                <p style="font-size: 0.8rem; color: #888; font-style:italic;">We respect your privacy. Unsubscribe at any time.</p>
+                <p style="font-size: 0.8rem; color: #888; font-style:italic; text-align: center;">We respect your privacy. Unsubscribe at any time.</p>
             </div>
 
             <div class="bottom-nav">

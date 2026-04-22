@@ -1,7 +1,8 @@
-import { type SchemaTypeDefinition } from 'sanity';
-import spotlight from './schemas/spotlight';
-import program from './schemas/program';
+import { type SchemaTypeDefinition } from 'sanity'
+import spotlight from './schemas/spotlight'
+import program from './schemas/program'
+import booking from './schemas/booking'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [spotlight, program],
-};
+  types: [spotlight, program, booking],
+}

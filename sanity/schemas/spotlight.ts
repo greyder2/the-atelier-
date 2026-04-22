@@ -35,4 +35,10 @@ export default {
       of: [{ type: 'block' }],
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      media: 'image',
+    },
+  },
 };
