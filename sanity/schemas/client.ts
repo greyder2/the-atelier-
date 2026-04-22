@@ -59,6 +59,24 @@ export default {
       title: 'Internal Admin Notes',
       type: 'text',
     },
+    {
+      name: 'image',
+      title: 'Profile Picture',
+      type: 'image',
+      options: { hotspot: true },
+    },
+    {
+      name: 'assignedProfessor',
+      title: 'Assigned Professor',
+      type: 'reference',
+      to: [{ type: 'professor' }],
+    },
+    {
+      name: 'learningGoals',
+      title: 'Learning Goals',
+      type: 'text',
+      description: 'The students primary objectives for their training',
+    },
   ],
   preview: {
     select: {
