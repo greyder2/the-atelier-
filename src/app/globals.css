@@ -275,7 +275,7 @@
             grid-template-columns: repeat(6, 1fr);
             gap: 20px;
         }
-        .sp-card { height: 260px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+        .sp-card { display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
         .sp-card:hover { transform: scale(1.05) translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
         .sp-content { flex: 1; }
         .sp-nav { background: var(--white); text-align: center; color: var(--hot-pink); font-weight: bold; padding: 4px; }
@@ -471,3 +471,33 @@
         .session-card h3 { color: var(--hot-pink); font-size: 2.5rem; font-family: 'DM Sans', sans-serif; font-weight: 800; margin-bottom: 20px; }
         .input-group { display: flex; gap: 10px; align-items: center; }
         @media(max-width: 900px) { .split-layout { grid-template-columns: 1fr; } }
+
+        /* MOBILE NAV FIX */
+        @media(max-width: 768px) {
+            .hero-nav { padding: 0 10px; max-width: 100%; }
+            .hero-nav a, .hero-nav a[href] { font-size: 1rem !important; margin: 0 6px; }
+            .hero-title { font-size: clamp(60px, 15vw, 120px) !important; }
+        }
+
+        /* MOBILE CONTACT FIX */
+        @media(max-width: 900px) {
+            #contact { grid-template-columns: 1fr; }
+            #contact h2 { grid-column: span 1; font-size: 3.5rem; }
+            .mockup-phone { width: 220px; height: 440px; }
+        }
+
+        /* SP-CARD name always visible */
+        .sp-card .sp-name {
+            background: white;
+            color: #111;
+            font-weight: 900;
+            font-size: 10px;
+            padding: 4px 4px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-shrink: 0;
+        }

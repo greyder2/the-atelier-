@@ -60,9 +60,9 @@ export default async function Home() {
                     <div className="w-full bg-[#C8006A] text-white text-center py-4 mt-8 text-[clamp(14px,2vw,20px)] tracking-[2px] z-10 uppercase italic font-bold">
                         Where ambitious minds learn to speak the world
                     </div>
-                    <nav className="hero-nav mt-8 text-center z-10 px-5 max-w-[800px]">
-                        <div className="mb-4 flex flex-wrap justify-center gap-x-4 gap-y-2">
-                            <Link href="/" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4 decoration-[#D9F060]">Home</Link>
+                    <nav className="hero-nav mt-8 text-center z-10 px-5 max-w-[900px] w-full">
+                        <div className="mb-4 flex flex-wrap justify-center gap-x-3 gap-y-2">
+                            <Link href="/" className="hero-link text-white font-['Pacifico'] text-xl md:text-2xl px-2 underline underline-offset-4 decoration-[#D9F060]">Home</Link>
                             <Link href="/pages/about-us" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">About Us</Link>
                             <a href="#programs" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Programs / Services</a>
                             <a href="#corporate" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Corporate Training</a>
@@ -122,6 +122,22 @@ export default async function Home() {
                     <h2 className="section-title text-black text-6xl mb-4 font-['Pacifico']">Social Proof</h2>
                     <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON), AFRICA (LIBYA), AND EUROPE (POLAND).</p>
                     
+                    {/* Testimonial quotes */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 max-w-5xl mx-auto text-left">
+                        <div className="bg-white/10 border-2 border-white/30 rounded-[20px] p-6">
+                            <p className="text-white italic text-base leading-relaxed mb-4">"The classes were not only about learning a language, but about learning that, and so many other things."</p>
+                            <span className="text-[#D9F060] font-black uppercase text-sm">— Arletthe, Mexico</span>
+                        </div>
+                        <div className="bg-white/10 border-2 border-white/30 rounded-[20px] p-6">
+                            <p className="text-white italic text-base leading-relaxed mb-4">"I truly like the way you work — you focus on who the person is and what is happening in their life."</p>
+                            <span className="text-[#D9F060] font-black uppercase text-sm">— Arletthe, Mexico</span>
+                        </div>
+                        <div className="bg-white/10 border-2 border-white/30 rounded-[20px] p-6">
+                            <p className="text-white italic text-base leading-relaxed mb-4">"Her journey reflects what the Atelier is about: ambitious professionals using English as a tool for global conversations."</p>
+                            <span className="text-[#D9F060] font-black uppercase text-sm">— Gaby, Aviation, Mexico</span>
+                        </div>
+                    </div>
+                    
                     {/* First Generation Section */}
                     {firstGenSpotlights.length > 0 && (
                         <div className="mb-12">
@@ -132,15 +148,15 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {firstGenSpotlights.map((person, idx) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[260px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
-                                        <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#C8006A] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
+                                        <div className="bg-white border-b-4 border-[#C8006A] p-2 flex gap-2 font-mono font-bold">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')` }}></div>
-                                        <div className="bg-white text-black font-black text-[10px] py-1 border-t border-gray-200 text-center uppercase tracking-wide truncate px-1">
+                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
+                                        <div className="bg-white text-black font-black text-[10px] py-1 border-t border-gray-200 text-center uppercase tracking-wide truncate px-1 shrink-0">
                                             {person.name}
                                         </div>
-                                        <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic">
+                                        <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
                                     </Link>
@@ -159,15 +175,15 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {secondGenSpotlights.map((person, idx) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[260px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
-                                        <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#C8006A] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
+                                        <div className="bg-white border-b-4 border-[#C8006A] p-2 flex gap-2 font-mono font-bold">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')` }}></div>
-                                        <div className="bg-white text-black font-black text-[10px] py-1 border-t border-gray-200 text-center uppercase tracking-wide truncate px-1">
+                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
+                                        <div className="bg-white text-black font-black text-[10px] py-1 border-t border-gray-200 text-center uppercase tracking-wide truncate px-1 shrink-0">
                                             {person.name}
                                         </div>
-                                        <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic">
+                                        <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
                                     </Link>
@@ -175,6 +191,12 @@ export default async function Home() {
                             </div>
                         </div>
                     )}
+                    {/* Book Session CTA */}
+                    <div className="mt-14 text-center">
+                        <Link href="/pages/book-session" className="inline-block bg-[#D9F060] text-black font-black px-12 py-5 rounded-full text-xl uppercase tracking-widest hover:scale-105 transition-transform no-underline shadow-2xl border-4 border-black">
+                            Book a Free Session ★
+                        </Link>
+                    </div>
                 </section>
 
                 {/* 7. SCHOLARSHIPS / GRANTS */}
