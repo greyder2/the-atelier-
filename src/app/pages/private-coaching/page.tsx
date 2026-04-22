@@ -5,69 +5,50 @@ import Link from 'next/link';
 
 export default function PrivateCoachingPage() {
     return (
-        <main className="page active bg-cream" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
-            {/* Top Bar inherited or simulated */}
-            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }}></div>
-            
-            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
-                <div className="breadcrumb" style={{ fontStyle: 'italic', color: '#555', marginBottom: '10px', marginTop: '20px' }}>
-                    Programs / Services
-                </div>
+        <main className="page active bg-[#FAF7F0]" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+                <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
                 
-                <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '40px' }}>
-                    <div className="left-col staggered-left">
-                        <div className="retro-browser" style={{ border: '4px solid #C8006A', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white', marginBottom: '20px' }}>
-                            <div className="retro-header" style={{ borderBottom: '4px solid #C8006A', padding: '6px 12px', display: 'flex', gap: '8px' }}>
-                                <span style={{ color: '#C8006A' }}>x</span> <span>□</span> <span>—</span>
-                            </div>
-                            <img src="/pages/programs private coaching.png" alt="Private Coaching" style={{ width: '100%', display: 'block' }} />
-                        </div>
-                        <h2 className="subpage-title cursive title-black" style={{ fontFamily: "'Pacifico', cursive", fontSize: '4rem', color: '#111111', lineHeight: '1.1', marginTop: '0' }}>
-                            Private<br/>Coaching
-                        </h2>
+                <h2 className="subpage-title cursive text-[#111] text-7xl mb-12 font-['Pacifico']">Private<br/>Coaching</h2>
+
+                <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
+                    {/* Left: Detailed Program Card */}
+                    <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-[#C8006A]">
+                        <h3 className="font-['Pacifico'] text-3xl mb-6 text-[#C8006A]">Personalized Mentoring</h3>
+                        <p className="text-lg font-bold mb-8 leading-relaxed text-black italic uppercase">
+                            IDEAL FOR PROFESSIONALS, STUDENTS AND INDIVIDUALS SEEKING FOCUSED GUIDANCE AND RAPID PROGRESS.
+                        </p>
+                        <ul className="list-none space-y-4 font-black text-black">
+                            <li>★ PROFESSIONAL ENGLISH</li>
+                            <li>★ CONVERSATION & FLUENCY</li>
+                            <li>★ PRONUNCIATION</li>
+                            <li>★ INTERVIEW PREPARATION</li>
+                            <li>★ LEADERSHIP COMMUNICATION SKILLS</li>
+                        </ul>
                     </div>
-                    
-                    <div className="right-col staggered-card">
-                        <div className="card" style={{ backgroundColor: '#D9F060', borderRadius: '24px', padding: '40px', marginBottom: '20px', color: '#111111' }}>
-                            <p style={{ fontWeight: 'bold', fontSize: '1.2rem', marginBottom: '15px' }}>
-                                Personalized one-on-one language mentoring.
-                            </p>
-                            <p style={{ marginBottom: '15px' }}>
-                                Ideal for professionals, students and individuals seeking focused guidance and rapid progress.
-                            </p>
-                            <p style={{ fontWeight: 700 }}>
-                                Programs include:<br/>
-                                ★ Professional English<br/>
-                                ★ Conversation & Fluency<br/>
-                                ★ Pronunciation<br/>
-                                ★ Interview preparation<br/>
-                                ★ Communication skills
-                            </p>
+
+                    {/* Right: Interaction Area */}
+                    <div className="flex flex-col items-center justify-center space-y-10">
+                        <div className="retro-browser w-full max-w-[500px] border-4 border-black rounded-xl overflow-hidden shadow-2xl">
+                             <div className="bg-black p-2 flex gap-2">
+                                <div className="w-3 h-3 rounded-full bg-[#C8006A]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#D9F060]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#A8DDD8]"></div>
+                             </div>
+                             <div className="p-8 bg-[#A8DDD8] text-black font-bold italic text-center">
+                                "The Atelier is where language becomes an art form."
+                             </div>
                         </div>
-                        
-                        <div style={{ textAlign: 'center' }}>
-                            <Link href="/pages/book-session" 
-                                className="speech-bubble" 
-                                style={{ 
-                                    backgroundColor: '#C8006A', 
-                                    color: 'white', 
-                                    display: 'inline-block', 
-                                    fontSize: '1rem', 
-                                    padding: '20px 30px', 
-                                    borderRadius: '24px', 
-                                    borderBottomRightRadius: '0',
-                                    fontWeight: 'bold',
-                                    textDecoration: 'none',
-                                    boxShadow: '4px 4px 0px #111'
-                                }}>
-                                JOIN THE ATELIER! / BOOK A FREE SESSION HERE 
-                                <span className="hand-cursor" style={{ fontSize: '1.5rem', marginLeft: '10px' }}>👆</span>
-                            </Link>
-                        </div>
+
+                        <Link href="/pages/book-session" className="speech-bubble bg-[#C8006A] text-white p-10 rounded-[28px] rounded-br-0 font-black text-center text-xl shadow-[6px_6px_0px_#000] hover:scale-105 transition-transform no-underline pulse">
+                            JOIN THE ATELIER!<br/>
+                            BOOK A FREE SESSION HERE
+                        </Link>
+                        <div className="hand-cursor text-5xl animate-bounce">👆</div>
                     </div>
                 </div>
-                
-                <div className="bottom-nav" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: 'auto', paddingTop: '30px' }}>
+
+                <div className="bottom-nav flex justify-between mt-20">
                     <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>← return</Link>
                     <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
                 </div>

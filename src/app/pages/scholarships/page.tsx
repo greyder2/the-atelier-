@@ -5,43 +5,38 @@ import Link from 'next/link';
 
 export default function ScholarshipsPage() {
     return (
-        <main className="page active bg-[#FAF7F0]" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
-            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }}></div>
-            
-            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
-                <div className="breadcrumb" style={{ fontStyle: 'italic', color: '#555', marginBottom: '10px' }}>
-                    The Atelier / Scholarships
-                </div>
+        <main className="page active bg-[#C8006A]" style={{ backgroundColor: '#C8006A', minHeight: '100vh' }}>
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+                <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
                 
-                <h2 className="subpage-title cursive title-black" style={{ fontFamily: "'Pacifico', cursive", fontSize: '4rem', color: '#111111', marginBottom: '30px' }}>
-                    Scholarships & Grants
-                </h2>
-                
-                <div style={{ marginBottom: '40px', display: 'flex', justifyContent: 'center' }}>
-                    <div className="retro-browser" style={{ width: '100%', maxWidth: '1000px', border: '4px solid #C8006A', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white' }}>
-                        <div className="retro-header" style={{ borderBottom: '4px solid #C8006A', padding: '6px 12px', display: 'flex', gap: '8px' }}>
-                            <span style={{ color: '#C8006A' }}>x</span> <span>□</span> <span>—</span>
-                        </div>
-                        <img src="/pages/scholarships - grants.png" alt="Scholarships and Grants" style={{ width: '100%', display: 'block' }} />
-                    </div>
-                </div>
+                <h2 className="subpage-title cursive text-white text-7xl mb-12 font-['Pacifico']">Scholarships / Grants</h2>
 
-                <div className="card" style={{ backgroundColor: '#D9F060', borderRadius: '24px', padding: '40px', color: '#111111', maxWidth: '800px', margin: '0 auto' }}>
-                    <h3 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '20px' }}>THE ATELIER GRANTS</h3>
-                    <p style={{ fontSize: '1.2rem', lineHeight: '1.6' }}>
-                        We believe in supporting highly motivated students. Our grants cover a significant percentage of programs for language learners who demonstrate commitment and passion.<br/><br/>
-                        If you are eligible for one of our scholarship programs, you will receive a personalized code after your demo session.
-                    </p>
-                    <div style={{ marginTop: '30px', textAlign: 'center' }}>
-                        <Link href="/pages/book-session" className="btn-pill" style={{ backgroundColor: '#C8006A', color: 'white', padding: '14px 36px', borderRadius: '50px', fontWeight: 'bold', display: 'inline-block', textTransform: 'uppercase', textDecoration: 'none' }}>
+                <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'center' }}>
+                    {/* Left: Info Card */}
+                    <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-black">
+                        <h3 className="font-['Pacifico'] text-4xl mb-6 text-[#C8006A]">The Atelier Grants</h3>
+                        <p className="text-xl font-bold italic mb-8 leading-relaxed text-black uppercase">
+                            WE BELIEVE IN SUPPORTING HIGHLY MOTIVATED STUDENTS. OUR GRANTS COVER A SIGNIFICANT PERCENTAGE OF PROGRAMS FOR LANGUAGE LEARNERS WHO DEMONSTRATE COMMITMENT AND PASSION.
+                        </p>
+                        <Link href="/pages/book-session" className="btn-pill bg-[#C8006A] text-white py-4 px-10 rounded-full font-black no-underline inline-block shadow-lg hover:scale-105 transition-transform uppercase">
                             Apply for a grant now
                         </Link>
                     </div>
+
+                    {/* Right: CSS Star */}
+                    <div className="star-container flex justify-center items-center relative py-20">
+                         <div className="star-shape w-[400px] h-[400px] bg-[#F4A7C3] flex flex-col justify-center items-center text-center p-5 shadow-2xl animate-[spin_20s_linear_infinite]" 
+                                 style={{ clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" }}>
+                                <div className="font-['Pacifico'] text-[#C8006A] text-3xl">Atelier</div>
+                                <div className="font-black text-5xl text-black">Grants</div>
+                                <div className="text-[12px] italic text-black uppercase max-w-[150px] font-black mt-2">Scholarships with purpose</div>
+                        </div>
+                    </div>
                 </div>
 
-                <div className="bottom-nav" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '60px' }}>
-                    <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>← return</Link>
-                    <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
+                <div className="bottom-nav flex justify-between mt-20">
+                    <Link href="/" style={{ color: 'white', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>← return</Link>
+                    <Link href="/" style={{ color: 'white', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
                 </div>
             </div>
         </main>
