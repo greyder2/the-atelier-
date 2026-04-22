@@ -253,8 +253,7 @@ export default async function Home() {
                     {/* PHONE MOCKUP - INSTAGRAM */}
                     <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline bg-gradient-to-b from-[#833ab4] via-[#fd1d1d] to-[#fcb045]">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
-                        <img src="/pages/instagram-screenshot.png" alt="@theatelier.lab on Instagram" className="w-full h-full object-cover object-top" onError={(e) => { (e.target as HTMLImageElement).style.display='none' }} />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6 pointer-events-none">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
                             <div className="text-6xl mb-4">📸</div>
                             <div className="font-black text-2xl tracking-tight mb-2">@theatelier.lab</div>
                             <div className="text-sm opacity-80 uppercase tracking-widest">Follow us on Instagram</div>
