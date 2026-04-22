@@ -88,6 +88,14 @@
             100% { box-shadow: 0 0 0 0 rgba(212, 0, 106, 0); }
         }
 
+        .spin-slow {
+            animation: spin-slow 20s linear infinite;
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .card {
             background-color: var(--light-pink);
             border-radius: var(--radius-card);

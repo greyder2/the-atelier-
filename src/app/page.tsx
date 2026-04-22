@@ -86,7 +86,7 @@ export default async function Home() {
                             <Link href="/pages/private-coaching" className="underline hover:text-[#C8006A] transition-colors">Private Coaching</Link>
                             <Link href="/pages/subscriptions" className="underline hover:text-[#C8006A] transition-colors">Atelier Subscriptions</Link>
                             <Link href="/pages/corporate-training" className="underline hover:text-[#C8006A] transition-colors">Corporate Language Training</Link>
-                            <a href="#" className="underline hover:text-[#C8006A] transition-colors">Cohorts & Special Programs</a>
+                            <Link href="/pages/cohorts" className="underline hover:text-[#C8006A] transition-colors">Cohorts & Special Programs</Link>
                         </div>
                     </div>
                     <div className="right-col staggered-card">
@@ -112,12 +112,14 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {spotlights.filter(s => !s.category || s.category.includes('FIRST')).map((person, idx) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[220px] transition-transform hover:scale-105 active:scale-95 border-b-8 border-r-8 shadow-2xl">
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[220px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
                                         <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('/pages/${person.slug}.png')` }}></div>
-                                        <div className="bg-white text-[#C8006A] font-bold py-1 group-hover:bg-[#D9F060] transition-colors">&lt; &gt;</div>
+                                        <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic">
+                                            &lt; view profile &gt;
+                                        </div>
                                     </Link>
                                 ))}
                             </div>
@@ -134,12 +136,14 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {spotlights.filter(s => s.category?.includes('SECOND')).map((person, idx) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[220px] transition-transform hover:scale-105 active:scale-95 border-b-8 border-r-8 shadow-2xl">
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="retro-browser sp-card group no-underline flex flex-col h-[220px] transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl relative">
                                         <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('/pages/${person.slug}.png')` }}></div>
-                                        <div className="bg-white text-[#C8006A] font-bold py-1 group-hover:bg-[#D9F060] transition-colors">&lt; &gt;</div>
+                                        <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic">
+                                            &lt; view profile &gt;
+                                        </div>
                                     </Link>
                                 ))}
                             </div>
@@ -150,91 +154,108 @@ export default async function Home() {
                 {/* 7. SCHOLARSHIPS / GRANTS */}
                 <section id="scholarships" className="section-padding bg-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10 items-center border-t-4 border-black">
                     <div className="left-col staggered-left">
-                        <h2 className="section-title text-black text-6xl mb-8 font-['Pacifico']">Scholarships / Grants</h2>
-                        <div className="bg-white p-10 rounded-[24px] shadow-2xl border-4 border-black">
-                            <h3 className="text-3xl font-['Pacifico'] mb-4">The Atelier Grants</h3>
-                            <p className="text-lg leading-relaxed mb-6 font-bold">We believe in supporting highly motivated students. Our grants cover a significant percentage of programs for language learners who demonstrate commitment and passion.</p>
-                            <Link href="/pages/scholarships" className="font-bold underline text-[#C8006A] uppercase tracking-widest hover:text-black transition-colors text-xl">learn more here.</Link>
+                        <h2 className="section-title text-white text-6xl mb-8 font-['Pacifico']">Scholarships / Grants</h2>
+                        <div className="bg-white p-10 rounded-[24px] shadow-2xl border-4 border-black relative">
+                            <h3 className="text-3xl font-['Pacifico'] mb-4 text-[#C8006A]">The Atelier Grants</h3>
+                            <p className="text-lg leading-relaxed mb-6 font-bold text-black uppercase italic">We believe in supporting highly motivated students. Our grants cover a significant percentage of programs for language learners who demonstrate commitment and passion.</p>
+                            <Link href="/pages/scholarships" className="font-black underline text-[#C8006A] uppercase tracking-widest hover:text-black transition-colors text-xl">learn more here.</Link>
                         </div>
                     </div>
                     <div className="right-col flex justify-center items-center h-full min-h-[400px]">
-                         <div className="star-container flex justify-center items-center relative animate-[spin_20s_linear_infinite]">
-                            <div className="star-shape w-[350px] h-[350px] bg-[#F4A7C3] flex flex-col justify-center items-center text-center p-5 shadow-2xl" 
+                         <div className="star-container flex justify-center items-center relative spin-slow">
+                            <div className="star-shape w-[400px] h-[400px] bg-[#F4A7C3] flex flex-col justify-center items-center text-center p-8 shadow-2xl border-2 border-black/5" 
                                  style={{ clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" }}>
-                                <div className="font-['Pacifico'] text-[#C8006A] text-2xl">Atelier</div>
-                                <div className="font-bold text-4xl text-black">Grants</div>
-                                <div className="text-[10px] italic text-black uppercase max-w-[120px] font-black">Scholarships with purpose</div>
+                                <div className="font-['Pacifico'] text-[#C8006A] text-2xl mb-1">Atelier</div>
+                                <div className="font-black text-5xl text-black leading-none mb-2">Grants</div>
+                                <div className="text-[12px] italic text-black uppercase max-w-[140px] font-black leading-tight">Scholarships with purpose</div>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* 8. ATELIER SPOTLIGHTS */}
-                <section id="spotlights" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10">
+                <section id="spotlights" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-20">
                     <div className="left-col staggered-left">
-                        <h2 className="section-title text-black text-6xl mb-8 font-['Pacifico']">Atelier Spotlight</h2>
-                        <div className="bg-[#F4A7C3] p-10 rounded-[24px] space-y-6 shadow-xl border-4 border-[#C8006A]">
-                            <p className="text-xl italic font-bold">
-                                An exclusive, 'by invitation only' program focused on studying the lives and communication styles of remarkable women from history, science, fashion, and politics.
+                        <h2 className="section-title text-[#C8006A] text-6xl mb-8 font-['Pacifico']">Atelier Spotlight</h2>
+                        <div className="bg-white p-12 rounded-[24px] space-y-8 shadow-2xl border-4 border-[#C8006A] relative">
+                             <div className="absolute -top-6 -right-6 bg-[#D9F060] text-black font-black px-6 py-2 rounded-full shadow-lg transform rotate-3">
+                                FEATURED
+                            </div>
+                            <p className="text-2xl font-black italic text-black uppercase leading-relaxed">
+                                AN EXCLUSIVE, 'BY INVITATION ONLY' PROGRAM FOCUSED ON STUDYING THE LIVES AND COMMUNICATION STYLES OF REMARKABLE WOMEN FROM HISTORY, SCIENCE, AND ART.
                             </p>
-                            <Link href="/pages/spotlight/gaby" className="text-2xl font-bold underline inline-flex items-center gap-2 text-black hover:text-[#C8006A] transition-all font-['Pacifico']">
+                            <Link href="/pages/spotlight/gaby" className="text-2xl font-black underline inline-flex items-center gap-2 text-[#C8006A] hover:text-black transition-all">
                                 view full profile. 
                             </Link>
-                            <div className="hand-cursor text-4xl animate-bounce ml-5 inline-block">👈</div>
+                            <div className="hand-cursor text-5xl animate-bounce ml-5 inline-block">👈</div>
                         </div>
                     </div>
                     <div className="right-col staggered-card h-full">
-                        <div className="retro-browser h-full shadow-2xl" style={{ border: '8px solid #C8006A', borderRadius: '24px', overflow: 'hidden' }}>
-                             <div className="bg-cover bg-center w-full h-[400px]" style={{ backgroundImage: "url('/pages/atelier spotlights.png')" }}></div>
+                        <div className="retro-browser h-full shadow-[20px_20px_0px_rgba(200,0,106,0.2)]" style={{ border: '8px solid #C8006A', borderRadius: '30px', overflow: 'hidden' }}>
+                             <div className="retro-header bg-white border-b-4 border-[#C8006A] p-3 flex gap-2">
+                                 <span className="text-[#C8006A] font-bold">x</span> <span className="text-[#C8006A] font-bold">□</span> <span className="text-[#C8006A] font-bold">—</span>
+                             </div>
+                             <div className="bg-cover bg-center w-full h-[450px]" style={{ backgroundImage: "url('/pages/atelier spotlights.png')" }}></div>
+                             <div className="bg-white p-4 font-black text-center text-[#C8006A] border-t-4 border-[#C8006A]">
+                                 &lt; [COMMUNITY ARCHIVE] &gt;
+                             </div>
                         </div>
-                    </div>
-                </section>
-
-                {/* 9. INSIGHTS / JOURNAL */}
-                <section id="insights" className="section-padding bg-[#D9F060] border-t-4 border-[#C8006A] flex flex-col items-center gap-10">
-                    <h2 className="section-title text-black text-6xl font-['Pacifico']">Insights / Journal</h2>
-                    <div className="card bg-white p-10 rounded-[24px] border-4 border-[#C8006A] shadow-2xl max-w-[800px] text-center">
-                        <h3 className="font-['Pacifico'] text-3xl mb-4">Atelier Insights</h3>
-                        <p className="text-xl font-bold italic mb-8">Our official journal covering advanced topics on language learning, global communication, cultural intelligence, women in history, and professional development.</p>
-                        <Link href="/pages/insights" className="btn-pill bg-[#C8006A] text-white no-underline shadow-xl hover:scale-105 transition-transform inline-block py-4 px-10 rounded-full font-black">ACCESS JOURNAL HERE</Link>
                     </div>
                 </section>
 
                 {/* 10. CONTACT */}
-                <section id="contact" className="section-padding bg-[#C8006A] text-white grid grid-cols-1 md:grid-cols-3 gap-10 items-center border-t-4 border-black">
-                    <h2 className="text-6xl md:col-span-3 font-['Pacifico']">Reach out</h2>
-                    <div className="contact-info">
-                        <div className="font-black opacity-80 mb-2 uppercase text-sm tracking-widest">PHONE</div>
-                        <p className="text-xl mb-4 font-bold italic">Worldwide Contact - WhatsApp:<br/>(+52) 552 113 1676</p>
-                        <p className="text-xl mb-8 font-bold italic">Mexico Call Center:<br/>(+52) 561 759 2347</p>
-                        <div className="font-black opacity-80 mb-2 uppercase text-sm tracking-widest">EMAIL</div>
-                        <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic text-white hover:text-[#D9F060] font-bold">theenglishateliere@gmail.com</a>
+                <section id="contact" className="section-padding bg-[#C8006A] text-white grid grid-cols-1 md:grid-cols-3 gap-16 items-center border-t-4 border-black">
+                    <h2 className="text-7xl md:col-span-3 font-['Pacifico'] mb-10">Reach out</h2>
+                    
+                    <div className="contact-info space-y-12">
+                        <div>
+                            <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">WHATSAPP / PHONE</div>
+                            <p className="text-2xl font-black italic mb-4 leading-tight">(+52) 552 113 1676</p>
+                            <p className="text-2xl font-black italic leading-tight">(+52) 561 759 2347</p>
+                        </div>
+                        <div>
+                             <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">EMAIL</div>
+                             <a href="mailto:theenglishateliere@gmail.com" className="text-2xl underline italic font-black hover:text-[#D9F060] transition-colors">theenglishateliere@gmail.com</a>
+                        </div>
                     </div>
-                    <div className="mockup-phone w-[260px] h-[500px] border-8 border-white rounded-[40px] mx-auto relative bg-[#FAF7F0] overflow-hidden shadow-2xl">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[25px] bg-white rounded-b-2xl"></div>
-                        <div className="pt-10 text-black text-center px-4">
-                            <div className="w-20 h-20 bg-[#C8006A] rounded-full mx-auto mb-4 overflow-hidden border-2 border-white shadow-lg">
+
+                    {/* REDESIGNED PHONE MOCKUP - FUNCTIONAL HUB */}
+                    <div className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative bg-[#FAF7F0] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
+                        <div className="pt-16 text-black px-6">
+                            <div className="w-24 h-24 bg-[#C8006A] rounded-full mx-auto mb-4 overflow-hidden border-4 border-white shadow-xl">
                                 <img src="/pages/gaby.png" alt="Profile" className="w-full h-full object-cover" />
                             </div>
-                            <div className="font-bold text-lg">theatelier.lab</div>
-                            <div className="flex justify-around mt-4 text-xs font-bold">
-                                <div><strong>124</strong><br/>posts</div>
-                                <div><strong>24K</strong><br/>followers</div>
-                                <div><strong>0</strong><br/>following</div>
+                            <div className="text-center mb-8">
+                                <div className="font-black text-xl tracking-tighter">theatelier.lab</div>
+                                <div className="text-[10px] opacity-40 font-black uppercase tracking-widest italic">Join the global voice</div>
                             </div>
-                            <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" 
-                               className="mt-4 block bg-[#C8006A] text-white py-2 rounded-lg font-bold text-sm shadow-md hover:bg-black transition-colors">
-                                Follow on Instagram
-                            </a>
-                            <div className="grid grid-cols-3 gap-1 mt-6">
-                                {Array.from({ length: 9 }).map((_, i) => <div key={i} className="aspect-square bg-[#F4A7C3] opacity-50"></div>)}
+                            
+                            <div className="space-y-3 font-black text-[13px]">
+                                <a href="https://www.instagram.com/theatelier.lab/" className="block bg-[#C8006A] text-white py-4 rounded-2xl text-center shadow-md hover:bg-black transition-all no-underline tracking-widest">
+                                    ★ INSTAGRAM
+                                </a>
+                                <Link href="/pages/contact" className="block bg-white border-2 border-black py-4 rounded-2xl text-center shadow-md hover:bg-[#D9F060] transition-all no-underline tracking-widest">
+                                    ★ CONTACT FORM
+                                </Link>
+                                <Link href="/pages/careers" className="block bg-white border-2 border-black py-4 rounded-2xl text-center shadow-md hover:bg-[#D9F060] transition-all no-underline tracking-widest">
+                                    ★ WORK WITH US
+                                </Link>
+                                <Link href="/pages/cohorts" className="block bg-[#D9F060] border-2 border-black py-4 rounded-2xl text-center shadow-md hover:scale-105 transition-all no-underline tracking-widest">
+                                    ★ JOIN COHORT
+                                </Link>
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-6 items-start h-full justify-center">
-                        <Link href="/pages/contact" className="btn-pill bg-white text-[#C8006A] font-black no-underline shadow-lg hover:scale-105 transition-transform py-4 px-8 rounded-full">CONTACT FORM</Link>
-                        <Link href="/pages/careers" className="btn-pill bg-[#F4A7C3] text-white no-underline shadow-lg hover:scale-105 transition-transform py-4 px-8 rounded-full font-black">WORK WITH US / CAREERS</Link>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-[#111] text-white no-underline hover:scale-105 transition-transform py-4 px-8 rounded-full font-black">LINKEDIN</a>
+
+                    <div className="flex flex-col gap-8 items-start h-full justify-center">
+                         <div className="bg-white/10 p-8 rounded-[30px] backdrop-blur-sm border-2 border-white/20 w-full mb-4">
+                             <p className="font-bold italic text-white uppercase text-xl leading-relaxed">
+                                Ready to join our international community of ambitious professionals?
+                             </p>
+                         </div>
+                        <Link href="/pages/contact" className="btn-pill bg-white text-[#C8006A] font-black no-underline shadow-xl hover:scale-105 transition-transform py-5 px-10 rounded-full text-xl uppercase">SAY HELLO</Link>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-black text-white no-underline shadow-xl hover:scale-105 transition-transform py-5 px-10 rounded-full font-black text-xl uppercase">LINKEDIN Profile</a>
                     </div>
                 </section>
             </div>
