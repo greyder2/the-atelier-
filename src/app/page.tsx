@@ -119,9 +119,7 @@ export default async function Home() {
                     {spotlights.filter(s => !s.category || s.category.includes('FIRST')).length > 0 && (
                         <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
-                                <div className="h-[2px] w-20 bg-black"></div>
-                                <h3 className="font-['Pacifico'] text-3xl text-black">First Generation</h3>
-                                <div className="h-[2px] w-20 bg-black"></div>
+                                <img src="/pages/spotlights first gen.png" alt="First Generation" style={{ height: '60px' }} />
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
                                 {spotlights.filter(s => !s.category || s.category.includes('FIRST')).map((person, idx) => (
@@ -141,9 +139,7 @@ export default async function Home() {
                     {spotlights.filter(s => s.category?.includes('SECOND')).length > 0 && (
                         <div>
                             <div className="flex items-center justify-center gap-4 mb-8">
-                                <div className="h-[2px] w-20 bg-black"></div>
-                                <h3 className="font-['Pacifico'] text-3xl text-black">Second Generation</h3>
-                                <div className="h-[2px] w-20 bg-black"></div>
+                                <img src="/pages/spotlights second gen.png" alt="Second Generation" style={{ height: '60px' }} />
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
                                 {spotlights.filter(s => s.category?.includes('SECOND')).map((person, idx) => (
@@ -164,18 +160,18 @@ export default async function Home() {
                 <section id="scholarships" className="section-padding bg-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                     <div className="left-col staggered-left">
                         <h2 className="section-title text-black text-6xl mb-8 font-['Pacifico']">Scholarships / Grants</h2>
-                        <div className="bg-white p-10 rounded-[24px]">
+                        <div className="bg-white p-10 rounded-[24px] shadow-2xl">
                             <h3 className="text-3xl font-['Pacifico'] mb-4">The Atelier Grants</h3>
                             <p className="text-lg leading-relaxed mb-6">We believe in supporting highly motivated students. Our grants cover a significant percentage of programs for language learners who demonstrate commitment and passion.</p>
-                            <Link href="/pages/book-session" className="font-bold underline text-black">click here.</Link>
+                            <Link href="/pages/scholarships" className="font-bold underline text-black uppercase tracking-widest hover:text-[#C8006A] transition-colors">learn more here.</Link>
                         </div>
                     </div>
                     <div className="right-col flex justify-center items-center h-full min-h-[400px]">
-                        <div className="attr-star w-[350px] h-[350px] bg-[#F4A7C3] flex flex-col justify-center items-center text-center p-5 animate-[spin_20s_linear_infinite]" 
-                             style={{ clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" }}>
-                            <div className="font-['Pacifico'] text-[#C8006A] text-2xl">Atelier</div>
-                            <div className="font-bold text-4xl text-black">Grants</div>
-                            <div className="text-[10px] italic text-black uppercase max-w-[120px]">Scholarships with purpose</div>
+                        <div className="retro-browser shadow-2xl" style={{ border: '4px solid white', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white' }}>
+                            <div className="retro-header bg-[#C8006A] p-2 flex gap-2">
+                                <span className="text-white">x</span> <span className="text-white">□</span> <span className="text-white">—</span>
+                            </div>
+                            <img src="/pages/scholarships - grants.png" alt="Grants" style={{ maxWidth: '100%', display: 'block' }} />
                         </div>
                     </div>
                 </section>
@@ -184,18 +180,32 @@ export default async function Home() {
                 <section id="spotlights" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="left-col staggered-left">
                         <h2 className="section-title text-black text-6xl mb-8 font-['Pacifico']">Atelier Spotlight</h2>
-                        <div className="bg-[#F4A7C3] p-10 rounded-[24px] space-y-6">
+                        <div className="bg-[#F4A7C3] p-10 rounded-[24px] space-y-6 shadow-xl">
                             <p className="text-xl italic">
                                 An exclusive, 'by invitation only' program focused on studying the lives and communication styles of remarkable women from history, science, fashion, and politics.
                             </p>
-                            <Link href="/pages/spotlight/gaby" className="text-2xl font-bold underline inline-flex items-center gap-2 text-black">
-                                click here. <span className="hand-cursor animate-bounce">👈</span>
+                            <Link href="/pages/spotlight/gaby" className="text-2xl font-bold underline inline-flex items-center gap-2 text-black hover:text-[#C8006A] transition-all">
+                                view full profile. <span className="hand-cursor animate-bounce">👈</span>
                             </Link>
                         </div>
                     </div>
                     <div className="right-col staggered-card">
-                        <div className="w-full h-full min-h-[400px] rounded-[24px] bg-cover bg-center border-4 border-[#C8006A]" style={{ backgroundImage: "url('/pages/atelier spotlights.png')" }}></div>
+                        <div className="retro-browser shadow-2xl" style={{ border: '4px solid #C8006A', borderRadius: '24px', overflow: 'hidden' }}>
+                           <img src="/pages/atelier spotlights.png" alt="Atelier Spotlights" className="w-full h-full object-cover" />
+                        </div>
                     </div>
+                </section>
+
+                {/* 9. INSIGHTS / JOURNAL */}
+                <section id="insights" className="section-padding bg-[#D9F060] border-t-4 border-[#C8006A] flex flex-col items-center gap-10">
+                    <h2 className="section-title text-black text-6xl font-['Pacifico']">Insights / Journal</h2>
+                    <div className="retro-browser max-w-[900px] shadow-2xl" style={{ border: '4px solid #C8006A', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white' }}>
+                         <div className="retro-header bg-white border-b-4 border-[#C8006A] p-2 flex gap-2">
+                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">□</span> <span className="text-[#C8006A]">—</span>
+                         </div>
+                        <img src="/pages/insights  - journal.png" alt="Journal" className="w-full" />
+                    </div>
+                    <Link href="/pages/insights" className="btn-pill bg-[#C8006A] text-white no-underline shadow-xl hover:scale-105 transition-transform">READ THE ATELIER JOURNAL</Link>
                 </section>
 
                 {/* 10. CONTACT */}
@@ -205,12 +215,14 @@ export default async function Home() {
                         <div className="font-bold opacity-80 mb-2 uppercase text-sm">Phone</div>
                         <p className="text-xl mb-6">WhatsApp: (+52) 552 113 1676</p>
                         <div className="font-bold opacity-80 mb-2 uppercase text-sm">Email</div>
-                        <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic text-white">theenglishateliere@gmail.com</a>
+                        <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic text-white hover:text-[#D9F060]">theenglishateliere@gmail.com</a>
                     </div>
-                    <div className="mockup-phone w-[260px] h-[500px] border-8 border-white rounded-[40px] mx-auto relative bg-[#FAF7F0] overflow-hidden">
+                    <div className="mockup-phone w-[260px] h-[500px] border-8 border-white rounded-[40px] mx-auto relative bg-[#FAF7F0] overflow-hidden shadow-2xl">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[25px] bg-white rounded-b-2xl"></div>
                         <div className="pt-10 text-black text-center">
-                            <div className="w-20 h-20 bg-[#C8006A] rounded-full mx-auto mb-4"></div>
+                            <div className="w-20 h-20 bg-[#C8006A] rounded-full mx-auto mb-4 overflow-hidden border-2 border-[#C8006A]">
+                                <img src="/pages/gaby.png" alt="Profile" className="w-full h-full object-cover" />
+                            </div>
                             <div className="font-bold">theatelier.lab</div>
                             <div className="grid grid-cols-3 gap-1 mt-6 px-1">
                                 {Array.from({ length: 9 }).map((_, i) => <div key={i} className="aspect-square bg-[#F4A7C3]"></div>)}
@@ -218,13 +230,11 @@ export default async function Home() {
                         </div>
                     </div>
                     <div className="flex flex-col gap-5 items-start h-full justify-center">
-                        <Link href="/pages/book-session" className="btn-pill bg-white text-[#C8006A] font-extrabold no-underline shadow-lg hover:scale-105 transition-transform">CONTACT FORM</Link>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-[#F4A7C3] text-white no-underline hover:scale-105 transition-transform">LINKEDIN</a>
+                        <Link href="/pages/contact" className="btn-pill bg-white text-[#C8006A] font-extrabold no-underline shadow-lg hover:scale-105 transition-transform">GO TO CONTACT PAGE</Link>
+                        <Link href="/pages/careers" className="btn-pill bg-[#F4A7C3] text-white no-underline shadow-lg hover:scale-105 transition-transform">WORK WITH US / CAREERS</Link>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-[#111] text-white no-underline hover:scale-105 transition-transform">LINKEDIN</a>
                     </div>
                 </section>
-/div>
-                </section>
-
             </div>
 
             <FloatingEmailPopup />

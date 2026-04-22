@@ -15,6 +15,12 @@ export default function CorporateTrainingPage() {
                 
                 <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '40px' }}>
                     <div className="left-col staggered-left">
+                        <div className="retro-browser" style={{ border: '4px solid #C8006A', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white', marginBottom: '20px' }}>
+                            <div className="retro-header" style={{ borderBottom: '4px solid #C8006A', padding: '6px 12px', display: 'flex', gap: '8px' }}>
+                                <span style={{ color: '#C8006A' }}>x</span> <span>□</span> <span>—</span>
+                            </div>
+                            <img src="/pages/programs corporate language training.png" alt="Corporate training" style={{ width: '100%', display: 'block' }} />
+                        </div>
                         <h2 className="subpage-title cursive title-black" style={{ fontFamily: "'Pacifico', cursive", fontSize: '4rem', color: '#111111', lineHeight: '1.1', marginTop: '0' }}>
                             Corporate<br/>Language<br/>Training
                         </h2>

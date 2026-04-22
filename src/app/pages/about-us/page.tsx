@@ -5,9 +5,18 @@ import Link from 'next/link';
 
 export default function AboutUsPage() {
     return (
-        <main className="page active bg-hot-pink" style={{ backgroundColor: '#C8006A' }}>
+        <main className="page active bg-hot-pink" style={{ backgroundColor: '#C8006A', minHeight: '100vh' }}>
             <div className="subpage-container">
-                <div className="responsive-grid split-layout" style={{ marginTop: '40px' }}>
+                <div style={{ marginBottom: '40px', display: 'flex', justifyContent: 'center' }}>
+                    <div className="retro-browser" style={{ maxWidth: '800px', border: '4px solid #F4A7C3', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white' }}>
+                        <div className="retro-header" style={{ borderBottom: '4px solid #F4A7C3', padding: '6px 12px', display: 'flex', gap: '8px' }}>
+                            <span style={{ color: '#F4A7C3' }}>x</span> <span style={{ color: '#F4A7C3' }}>□</span> <span style={{ color: '#F4A7C3' }}>—</span>
+                        </div>
+                        <img src="/pages/about us.png" alt="About Us" style={{ width: '100%', display: 'block' }} />
+                    </div>
+                </div>
+                
+                <div className="responsive-grid split-layout" style={{ marginTop: '0px' }}>
                     {/* Left Card: OUR STORY */}
                     <div className="card card-white staggered-left text-pink-page-body" 
                          style={{ backgroundColor: '#F4A7C3', borderRadius: '24px', textAlign: 'center', color: '#111111', padding: '40px' }}>

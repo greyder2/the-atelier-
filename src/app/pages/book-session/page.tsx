@@ -10,6 +10,12 @@ export default function BookSessionPage() {
             <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0 }}></div>
             
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+                <div className="retro-browser" style={{ maxWidth: '600px', border: '4px solid #C8006A', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white', marginBottom: '30px' }}>
+                    <div className="retro-header" style={{ borderBottom: '4px solid #C8006A', padding: '6px 12px', display: 'flex', gap: '8px' }}>
+                        <span style={{ color: '#C8006A' }}>x</span> <span>□</span> <span>—</span>
+                    </div>
+                    <img src="/pages/book a free session.png" alt="Book Session" style={{ width: '100%', display: 'block' }} />
+                </div>
                 <h2 className="subpage-title cursive title-pink" style={{ fontFamily: "'Pacifico', cursive", fontSize: '4rem', color: '#C8006A', marginBottom: '30px' }}>
                     Book a Free Session
                 </h2>
