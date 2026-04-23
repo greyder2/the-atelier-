@@ -11,57 +11,88 @@ export default function AboutUs() {
     <main>
       <div className="fixed top-0 left-0 w-full h-[12px] bg-[#C8006A] z-[1000]"></div>
 
-      <div className="subpage-container bg-[#FAF7F0] pt-16">
+      <div className="bg-[#FAF7F0] pt-3">
 
-        {/* Header */}
-        <h1 className="subpage-title title-pink font-['Pacifico']">About Us</h1>
+        {/* ── HERO BAND ── */}
+        <div className="bg-[#C8006A] text-center px-8 py-14">
+          <h1 className="font-['Pacifico'] text-[clamp(40px,8vw,64px)] text-white leading-tight">
+            About Us
+          </h1>
+          <p className="mt-3 text-[11px] tracking-[4px] uppercase font-bold text-[#F4A7C3]">
+            Language · Culture · Confidence
+          </p>
+        </div>
 
-        {/* Our Story */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+        {/* ── OUR STORY + PHILOSOPHY ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 md:px-16 py-16">
+
+          {/* Story */}
           <div>
-            <h2 className="text-3xl font-['Pacifico'] text-[#C8006A] mb-6">Our Story</h2>
-            <div className="space-y-5 text-base leading-relaxed font-bold uppercase text-black">
+            <h2 className="font-['Pacifico'] text-[32px] text-[#C8006A] mb-6 leading-tight">
+              Our Story
+            </h2>
+            <div className="space-y-5 text-[15px] leading-[1.85] text-[#333]">
               <p>
                 The Atelier is a boutique language and career development studio dedicated to teaching through culture, conversation, and intellectual curiosity.
               </p>
               <p>
-                Founded with the belief that language learning should be inspiring and meaningful, The Atelier combines traditional language education with global culture, history, and contemporary topics.
+                Founded with the belief that language learning should be inspiring and meaningful, The Atelier combines traditional education with global culture, history, and contemporary ideas.
               </p>
               <p>
-                Our mission is to help students and professionals develop not only linguistic fluency, but also confidence, cultural awareness, and the ability to communicate thoughtfully in an international environment.
+                Our mission is to help students and professionals develop linguistic fluency, cultural awareness, and the ability to communicate thoughtfully in any international environment.
               </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-[24px] p-10 border-4 border-[#C8006A] shadow-xl">
-            <h2 className="text-3xl font-['Pacifico'] text-[#C8006A] mb-6">Our Philosophy</h2>
-            <p className="font-black text-lg italic mb-6 uppercase">We believe language learning should be:</p>
-            <div className="space-y-3">
-              {['★ Curious', '★ Cultural', '★ Intellectual', '★ Practical', '★ Human'].map((item) => (
-                <div key={item} className="font-black text-lg text-[#C8006A]">{item}</div>
+          {/* Philosophy */}
+          <div className="bg-white border-[3px] border-[#C8006A] rounded-[20px] p-8">
+            <h2 className="font-['Pacifico'] text-[26px] text-[#C8006A] mb-4 leading-tight">
+              Our Philosophy
+            </h2>
+            <p className="text-[11px] tracking-[2px] uppercase font-bold text-gray-400 mb-5">
+              We believe language learning should be
+            </p>
+            <div className="space-y-3 mb-6">
+              {['Curious', 'Cultural', 'Intellectual', 'Practical', 'Human'].map((item) => (
+                <div key={item} className="flex items-center gap-3 text-[15px] font-bold text-[#C8006A]">
+                  <span className="w-2 h-2 rounded-full bg-[#D9F060] flex-shrink-0 inline-block"></span>
+                  {item}
+                </div>
               ))}
             </div>
-            <p className="mt-6 font-bold text-sm uppercase leading-relaxed text-gray-700">
-              Instead of memorizing endless grammar rules, students learn through conversations, ideas, global perspectives and meaningful discussions. Language becomes a bridge to understanding the world.
+            <p className="text-[13px] leading-[1.75] text-gray-500 border-t border-gray-100 pt-4">
+              Instead of memorizing grammar rules, students learn through conversations and real ideas. Language becomes a bridge to understanding the world.
             </p>
           </div>
         </div>
 
-        {/* Founder Section */}
-        <div className="border-t-4 border-[#C8006A] pt-16 mb-16">
-          <h2 className="text-5xl font-['Pacifico'] text-[#C8006A] mb-12 text-center">Meet the Founder</h2>
+        {/* ── DIVIDER ── */}
+        <div className="border-t-[3px] border-[#C8006A] mx-8 md:mx-16"></div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        {/* ── MEET THE FOUNDER ── */}
+        <div className="px-8 md:px-16 py-16">
+          <p className="text-center text-[11px] tracking-[3px] uppercase font-bold text-[#C8006A] mb-2">
+            The Atelier
+          </p>
+          <h2 className="font-['Pacifico'] text-[40px] text-black text-center mb-14 leading-tight">
+            Meet the Founder
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+
             {/* Photo */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="w-[320px] h-[400px] rounded-[24px] overflow-hidden border-8 border-[#C8006A] shadow-[12px_12px_0px_#D9F060]">
+                <div className="w-[280px] h-[360px] rounded-[20px] overflow-hidden border-[6px] border-[#C8006A]">
                   <div
-                    className="w-full h-full bg-cover bg-center bg-[#F4A7C3]"
-                    style={{ backgroundImage: "url('/pages/mayan.png')" }}
+                    className="w-full h-full bg-[#F4A7C3] bg-cover bg-center"
+                    style={{ backgroundImage: "url('/pages/Mayan.png')" }}
                   />
                 </div>
-                <div className="absolute -bottom-4 -right-4 bg-[#D9F060] text-black font-black px-4 py-2 rounded-full text-sm uppercase tracking-widest shadow-lg transform rotate-3">
+                <div
+                  className="absolute -bottom-3 -right-3 bg-[#D9F060] text-black text-[11px] font-black uppercase tracking-[2px] px-4 py-2 rounded-full"
+                  style={{ transform: 'rotate(3deg)' }}
+                >
                   Founder ★
                 </div>
               </div>
@@ -69,15 +100,17 @@ export default function AboutUs() {
 
             {/* Bio */}
             <div>
-              <h3 className="text-4xl font-['Pacifico'] text-black mb-2">Mayan</h3>
-              <p className="text-[#C8006A] font-black uppercase tracking-widest text-sm mb-8">Founder & Lead Educator · The Atelier</p>
+              <h3 className="font-['Pacifico'] text-[36px] text-black mb-1 leading-tight">Mayan</h3>
+              <p className="text-[11px] tracking-[3px] uppercase font-bold text-[#C8006A] border-b-2 border-[#D9F060] pb-4 mb-7 inline-block">
+                Founder &amp; Lead Educator · The Atelier
+              </p>
 
-              <div className="space-y-4 text-sm font-bold uppercase leading-relaxed text-black">
+              <div className="space-y-4 text-[15px] leading-[1.85] text-[#444]">
                 <p>
                   Mayan founded The Atelier with a clear vision: to create a language learning experience that goes beyond grammar — one that builds confidence, cultural intelligence, and a genuine global voice.
                 </p>
                 <p>
-                  With years of experience teaching English to professionals, academics, and global learners, Mayan developed a methodology where language becomes the vehicle for exploring ideas, history, and the world.
+                  With years of experience teaching English to professionals, academics, and global learners, she developed a methodology where language becomes the vehicle for exploring ideas, history, and the world.
                 </p>
                 <p>
                   Every program at The Atelier reflects her belief that the best learning happens when students feel challenged, curious, and deeply understood.
@@ -86,27 +119,38 @@ export default function AboutUs() {
 
               <Link
                 href="/pages/mayan"
-                className="inline-flex items-center gap-2 mt-8 bg-[#C8006A] text-white font-black px-8 py-4 rounded-full uppercase tracking-widest hover:bg-black transition-colors no-underline shadow-lg"
+                className="inline-block mt-8 bg-[#C8006A] text-white text-[12px] font-black tracking-[2px] uppercase px-7 py-4 rounded-full no-underline hover:bg-black transition-colors"
               >
-                View Full Profile 👈
+                View Full Profile →
               </Link>
             </div>
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-[#C8006A] rounded-[24px] p-12 text-center mb-8">
-          <h3 className="text-4xl font-['Pacifico'] text-white mb-4">Ready to join The Atelier?</h3>
-          <p className="text-white font-bold uppercase text-sm mb-8 max-w-xl mx-auto">Book a free session and discover how language learning can transform your professional life.</p>
-          <Link href="/pages/book-session" className="inline-block bg-[#D9F060] text-black font-black px-10 py-4 rounded-full uppercase tracking-widest hover:scale-105 transition-transform no-underline text-lg shadow-xl">
+        {/* ── CTA BAND ── */}
+        <div className="bg-[#C8006A] px-8 py-16 text-center">
+          <h3 className="font-['Pacifico'] text-[36px] text-white mb-3 leading-tight">
+            Ready to join The Atelier?
+          </h3>
+          <p className="text-[13px] font-bold uppercase tracking-[1px] text-[#F4A7C3] max-w-md mx-auto mb-9 leading-[1.75]">
+            Book a free session and discover how language learning can transform your professional life.
+          </p>
+          <Link
+            href="/pages/book-session"
+            className="inline-block bg-[#D9F060] text-black text-[13px] font-black tracking-[2px] uppercase px-10 py-4 rounded-full no-underline hover:scale-105 transition-transform"
+          >
             Book a Free Session
           </Link>
         </div>
 
-        {/* Bottom nav */}
-        <div className="bottom-nav">
-          <Link href="/" className="text-[#C8006A] font-black underline">← Back to Home</Link>
-          <Link href="/pages/book-session" className="text-[#C8006A] font-black underline">Book a Session →</Link>
+        {/* ── BOTTOM NAV ── */}
+        <div className="flex justify-between px-8 md:px-16 py-7 border-t-2 border-gray-200 bg-white">
+          <Link href="/" className="text-[13px] font-bold text-[#C8006A] underline">
+            ← Back to Home
+          </Link>
+          <Link href="/pages/book-session" className="text-[13px] font-bold text-[#C8006A] underline">
+            Book a Session →
+          </Link>
         </div>
       </div>
     </main>
