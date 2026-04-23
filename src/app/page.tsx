@@ -153,7 +153,7 @@ export default async function Home() {
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
-                                        <div className="bg-white text-black font-black text-[10px] py-1 border-t border-gray-200 text-center uppercase tracking-wide truncate px-1 shrink-0">
+                                        <div className="sp-name">
                                             {person.name}
                                         </div>
                                         <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
@@ -180,7 +180,7 @@ export default async function Home() {
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
-                                        <div className="bg-white text-black font-black text-[10px] py-1 border-t border-gray-200 text-center uppercase tracking-wide truncate px-1 shrink-0">
+                                        <div className="sp-name">
                                             {person.name}
                                         </div>
                                         <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
