@@ -257,30 +257,26 @@ export default async function Home() {
                     
                     <div className="contact-info space-y-12">
                         <div>
-                            <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">EMAIL</div>
+                            <div className="font-black text-[#D9F060] uppercase text-xs tracking-widest mb-4">EMAIL</div>
                             <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic font-black hover:text-[#D9F060] transition-colors break-all">theenglishateliere@gmail.com</a>
                         </div>
                         <div>
-                            <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">CONTACT FORM</div>
+                            <div className="font-black text-[#D9F060] uppercase text-xs tracking-widest mb-4">CONTACT FORM</div>
                             <Link href="/pages/contact" className="inline-block bg-white text-[#C8006A] font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest hover:bg-[#D9F060] hover:text-black transition-colors no-underline shadow-lg border-2 border-white">
                                 SEND A MESSAGE →
                             </Link>
                         </div>
                         <div>
-                            <div className="font-black opacity-60 uppercase text-xs tracking-widest mb-4">INSTAGRAM</div>
+                            <div className="font-black text-[#D9F060] uppercase text-xs tracking-widest mb-4">INSTAGRAM</div>
                             <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="text-xl underline italic font-black hover:text-[#D9F060] transition-colors">@theatelier.lab</a>
                         </div>
                     </div>
 
                     {/* PHONE MOCKUP - INSTAGRAM */}
-                    <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline bg-gradient-to-b from-[#833ab4] via-[#fd1d1d] to-[#fcb045]">
+                    <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
-                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
-                            <div className="text-6xl mb-4">📸</div>
-                            <div className="font-black text-2xl tracking-tight mb-2">@theatelier.lab</div>
-                            <div className="text-sm opacity-80 uppercase tracking-widest">Follow us on Instagram</div>
-                        </div>
-                        <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-center font-black text-xs py-3 tracking-widest uppercase z-10">
+                        <div className="absolute inset-0 bg-cover bg-top" style={{ backgroundImage: "url('/pages/instagram-screenshot.png')" }} />
+                        <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-center font-black text-xs py-3 tracking-widest uppercase z-10">
                             ★ follow @theatelier.lab
                         </div>
                     </a>
