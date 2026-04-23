@@ -4,18 +4,23 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'clerkUserId',
+      title: 'Clerk User ID',
+      type: 'string',
+      description: 'Auto-populated on first login. Do not edit manually.',
+      readOnly: true,
+    },
+    {
       name: 'name',
       title: 'Full Name',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
-      description: 'The name displayed in their Client Portal',
     },
     {
       name: 'email',
       title: 'Email Address',
       type: 'string',
       validation: (Rule: any) => Rule.required().email(),
-      description: 'Used to link their login to this profile',
     },
     {
       name: 'clientType',
@@ -33,13 +38,11 @@ export default {
       name: 'program',
       title: 'Enrolled Program',
       type: 'string',
-      description: 'e.g., Language Mastery, Business English, etc.',
     },
     {
       name: 'level',
       title: 'Current Level / Progress',
       type: 'string',
-      description: 'e.g., Level 1, Advanced, etc.',
     },
     {
       name: 'status',
@@ -60,6 +63,28 @@ export default {
       type: 'text',
     },
     {
+      name: 'teacherMessage',
+      title: 'Message from Your Professor',
+      type: 'text',
+      description: 'Visible to the client on their personal page.',
+    },
+    {
+      name: 'resources',
+      title: 'Resources & Materials',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', title: 'Title', type: 'string' },
+            { name: 'url', title: 'URL', type: 'url' },
+            { name: 'description', title: 'Description', type: 'string' },
+          ],
+          preview: { select: { title: 'title', subtitle: 'description' } },
+        },
+      ],
+    },
+    {
       name: 'image',
       title: 'Profile Picture',
       type: 'image',
@@ -75,13 +100,21 @@ export default {
       name: 'learningGoals',
       title: 'Learning Goals',
       type: 'text',
-      description: 'The students primary objectives for their training',
+    },
+    {
+      name: 'companyName',
+      title: 'Company Name',
+      type: 'string',
+      description: 'For corporate clients only.',
+    },
+    {
+      name: 'teamSize',
+      title: 'Team Size',
+      type: 'number',
+      description: 'Number of employees in program.',
     },
   ],
   preview: {
-    select: {
-      title: 'name',
-      subtitle: 'clientType',
-    },
+    select: { title: 'name', subtitle: 'clientType' },
   },
 };
