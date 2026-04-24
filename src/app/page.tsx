@@ -153,9 +153,6 @@ export default async function Home() {
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
-                                        <div className="sp-name">
-                                            {person.name}
-                                        </div>
                                         <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
@@ -180,9 +177,6 @@ export default async function Home() {
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
-                                        <div className="sp-name">
-                                            {person.name}
-                                        </div>
                                         <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
@@ -243,7 +237,16 @@ export default async function Home() {
                              <div className="retro-header bg-white border-b-4 border-[#C8006A] p-3 flex gap-2">
                                  <span className="text-[#C8006A] font-bold">x</span> <span className="text-[#C8006A] font-bold">□</span> <span className="text-[#C8006A] font-bold">—</span>
                              </div>
-                             <div className="bg-cover bg-center w-full h-[450px]" style={{ backgroundImage: "url('/pages/atelier spotlights.png')" }}></div>
+                             <div className="bg-cover bg-center w-full h-[450px] relative flex items-center justify-center" 
+                                  style={{ backgroundImage: "url('/pages/atelier spotlights.png')", backgroundColor: '#1a0010' }}>
+                                  <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8d7e8 0%, #e8a0c0 25%, #C8006A 60%, #8a0047 100%)' }}></div>
+                                  <div className="relative z-10 text-center px-8">
+                                      <div className="font-black text-white text-xs uppercase tracking-widest mb-4 opacity-70">BY INVITATION ONLY</div>
+                                      <div className="font-black text-white text-4xl leading-tight mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>Atelier<br/>Spotlights</div>
+                                      <div className="w-16 h-1 bg-white/50 mx-auto mb-6"></div>
+                                      <div className="text-white/80 text-sm uppercase tracking-widest font-bold">First & Second Generation</div>
+                                  </div>
+                             </div>
                              <div className="bg-white p-4 font-black text-center text-[#C8006A] border-t-4 border-[#C8006A]">
                                  &lt; [COMMUNITY ARCHIVE] &gt;
                              </div>
