@@ -161,43 +161,76 @@ export default function GlobalNav() {
           }}></span>
         </button>
 
-        {/* Mobile Overlay Menu */}
+        {/* Mobile Backdrop Overlay */}
+        <div 
+          onClick={() => setIsOpen(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0,0,0,0.3)',
+            backdropFilter: 'blur(4px)',
+            zIndex: 15001,
+            display: isOpen ? 'block' : 'none',
+            opacity: isOpen ? 1 : 0,
+            transition: 'opacity 0.3s ease'
+          }}
+        ></div>
+
+        {/* Mobile Slide-in Drawer */}
         <div 
           style={{
             position: 'fixed',
             top: 0,
-            left: 0,
-            width: '100%',
+            right: 0,
+            width: '85%',
+            maxWidth: '400px',
             height: '100%',
             backgroundColor: '#FAF7F0',
-            zIndex: 15001,
-            display: isOpen ? 'flex' : 'none',
+            zIndex: 15002,
+            display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             gap: '30px',
-            transition: 'opacity 0.3s ease',
-            opacity: isOpen ? 1 : 0
+            boxShadow: '-10px 0 30px rgba(0,0,0,0.1)',
+            transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
+            transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
         >
-          <Link href="/" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '24px', textTransform: 'uppercase', letterSpacing: '4px' }}>Home</Link>
-          <Link href="/#about" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '24px', textTransform: 'uppercase', letterSpacing: '4px' }}>About</Link>
-          <Link href="/#programs" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '24px', textTransform: 'uppercase', letterSpacing: '4px' }}>Programs</Link>
-          <Link href="/pages/spotlights" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '24px', textTransform: 'uppercase', letterSpacing: '4px' }}>Spotlights</Link>
+          {/* Internal Close Button for Mobile Drawer */}
+          <button 
+            onClick={() => setIsOpen(false)}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              background: 'none',
+              border: 'none',
+              fontSize: '32px',
+              cursor: 'pointer'
+            }}
+          >
+            ×
+          </button>
+
+          <Link href="/" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>Home</Link>
+          <Link href="/#about" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>About</Link>
+          <Link href="/#programs" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>Programs</Link>
+          <Link href="/pages/spotlights" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>Spotlights</Link>
           
           <div style={{ width: '40px', height: '2px', backgroundColor: '#9D174D', margin: '20px 0' }}></div>
           
           <Link 
             href="/pages/book-session" 
             onClick={() => setIsOpen(false)}
-            style={{ color: '#9D174D', textDecoration: 'underline', fontWeight: 900, fontSize: '18px', textTransform: 'uppercase' }}
+            style={{ color: '#9D174D', textDecoration: 'underline', fontWeight: 900, fontSize: '16px', textTransform: 'uppercase' }}
           >
             Book Free Session
           </Link>
           <Link 
             href="/dashboard" 
             onClick={() => setIsOpen(false)}
-            style={{ padding: '12px 32px', backgroundColor: '#111', color: '#fff', borderRadius: '50px', textDecoration: 'none', fontWeight: 900, fontSize: '14px', textTransform: 'uppercase' }}
+            style={{ padding: '12px 32px', backgroundColor: '#111', color: '#fff', borderRadius: '50px', textDecoration: 'none', fontWeight: 900, fontSize: '12px', textTransform: 'uppercase' }}
           >
             Client Portal
           </Link>

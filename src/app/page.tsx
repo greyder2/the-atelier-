@@ -333,32 +333,45 @@ export default async function Home() {
                     </div>
 
                     {/* PHONE MOCKUP - INSTAGRAM */}
-                    <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline bg-white">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
-                        <img 
-                          src="/pages/instagram-screenshot.webp" 
-                          alt="Instagram Feed"
-                          className="absolute inset-0 w-full h-full object-cover object-top"
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-center font-black text-xs py-3 tracking-widest uppercase z-10">
-                            ★ follow @theatelier.lab
+                    <div className="flex flex-col items-center gap-4">
+                        <div className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block bg-white">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-20"></div>
+                            <img 
+                              src="/pages/instagram-screenshot.webp" 
+                              alt="Instagram Feed"
+                              className="absolute inset-0 w-full h-full object-cover object-top z-0"
+                            />
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/80 text-white text-center font-black text-[10px] py-4 tracking-widest uppercase z-10">
+                                ★ follow @theatelier.lab
+                            </div>
                         </div>
-                    </a>
+                    </div>
 
-                    <div className="flex flex-col gap-6 items-start h-full justify-center">
-                         <div className="bg-white/10 p-6 rounded-[24px] backdrop-blur-sm border-2 border-white/20 w-full">
-                             <p className="font-bold italic text-white uppercase text-sm leading-relaxed break-words">
+                    <div className="flex flex-col gap-10 items-start justify-center">
+                         <div className="bg-white/10 p-8 rounded-[32px] backdrop-blur-md border-2 border-white/30 max-w-[400px]">
+                             <p className="font-black italic text-white uppercase text-lg leading-tight tracking-tight">
                                 Ready to join our international community of ambitious professionals?
                              </p>
                          </div>
-                        <Link 
-                            href="/pages/contact" 
-                            style={{ backgroundColor: 'white', color: '#9D174D', textDecoration: 'none' }}
-                            className="btn-pill font-black shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full text-lg uppercase"
-                        >
-                            SAY HELLO
-                        </Link>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-black text-white no-underline shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full font-black text-lg uppercase">LINKEDIN</a>
+                         
+                         <div className="flex flex-col gap-4 w-full">
+                            <Link 
+                                href="/pages/contact" 
+                                style={{ backgroundColor: 'white', color: '#9D174D', textDecoration: 'none', textAlign: 'center' }}
+                                className="btn-pill font-black shadow-xl hover:scale-105 transition-transform py-5 px-10 rounded-full text-xl uppercase tracking-tighter"
+                            >
+                                SAY HELLO
+                            </Link>
+                            <a 
+                                href="https://linkedin.com" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                style={{ textAlign: 'center' }}
+                                className="btn-pill bg-black text-white no-underline shadow-xl hover:scale-105 transition-transform py-5 px-10 rounded-full font-black text-xl uppercase tracking-tighter"
+                            >
+                                LINKEDIN
+                            </a>
+                         </div>
                     </div>
                 </section>
             </div>
