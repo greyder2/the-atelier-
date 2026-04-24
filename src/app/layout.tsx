@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Pacifico, Sarina } from "next/font/google";
+import { DM_Sans, Playfair_Display, Sarina } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import "./globals.css";
 
@@ -8,9 +8,8 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
 });
 
-const pacifico = Pacifico({
-  variable: "--font-pacifico",
-  weight: "400",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
@@ -21,7 +20,6 @@ const sarina = Sarina({
 });
 
 export const metadata: Metadata = {
-  // ── Core ──────────────────────────────────────────────────────────────────
   title: {
     default: "The Atelier | Where Ambitious Minds Learn to Speak the World",
     template: "%s | The Atelier",
@@ -42,8 +40,6 @@ export const metadata: Metadata = {
   authors: [{ name: "The Atelier" }],
   creator: "The Atelier",
   publisher: "The Atelier",
-
-  // ── Canonical & Robots ────────────────────────────────────────────────────
   metadataBase: new URL("https://theenglishatelier.vercel.app"),
   alternates: {
     canonical: "/",
@@ -59,8 +55,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
-  // ── Open Graph ────────────────────────────────────────────────────────────
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -71,25 +65,21 @@ export const metadata: Metadata = {
       "A boutique language and career development studio dedicated to teaching through culture, conversation, and intellectual curiosity.",
     images: [
       {
-        url: "/og-image.png", // ← /public klasörüne koy, 1200×630 önerilir
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "The Atelier – Boutique Language & Career Studio",
       },
     ],
   },
-
-  // ── Twitter / X ───────────────────────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
     title: "The Atelier | Where Ambitious Minds Learn to Speak the World",
     description:
       "A boutique language and career development studio dedicated to teaching through culture, conversation, and intellectual curiosity.",
     images: ["/og-image.png"],
-    creator: "@theatelier.lab", // Instagram: @theatelier.lab
+    creator: "@theatelier.lab",
   },
-
-  // ── Icons ─────────────────────────────────────────────────────────────────
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -99,14 +89,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
     shortcut: "/favicon.ico",
   },
-
-  // ── Manifest (PWA) ────────────────────────────────────────────────────────
   manifest: "/site.webmanifest",
-
-  // ── Verification ──────────────────────────────────────────────────────────
-  // verification: {
-  //   google: "GOOGLE_SEARCH_CONSOLE_TOKEN",
-  // },
 };
 
 export default function RootLayout({
@@ -126,7 +109,7 @@ export default function RootLayout({
     >
       <html
         lang="en"
-        className={`${dmSans.variable} ${pacifico.variable} ${sarina.variable} h-full antialiased`}
+        className={`${dmSans.variable} ${playfairDisplay.variable} ${sarina.variable} h-full antialiased`}
       >
         <body className="min-h-full flex flex-col pt-3 bg-pale-cream text-black font-dm-sans">
           <div className="top-bar"></div>
