@@ -44,7 +44,7 @@ function SessionProgressCard({ sanityData }: { sanityData: any }) {
           <p style={{ fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '2px', color: '#888', fontWeight: 'bold', marginBottom: '4px' }}>
             Sessions This Cycle
           </p>
-          <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.4rem', color: '#111' }}>
+          <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.4rem', color: '#111' }}>
             {isOut ? 'All sessions used!' : `${remaining} session${remaining !== 1 ? 's' : ''} left`}
           </h3>
         </div>
@@ -117,7 +117,7 @@ function ReferralCard({ sanityData }: { sanityData: any }) {
       <p style={{ fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '2px', color: '#888', fontWeight: 'bold', marginBottom: '4px' }}>
         Refer a Friend
       </p>
-      <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.4rem', marginBottom: '0.5rem' }}>
+      <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.4rem', marginBottom: '0.5rem' }}>
         Earn a free session
       </h3>
       <p style={{ fontSize: '0.85rem', color: '#555', marginBottom: '1.25rem', lineHeight: 1.5 }}>
@@ -202,7 +202,7 @@ function CorporateDashboard({ sanityData, user }: { sanityData: any; user: any }
               : <div style={{ height: '56px', minWidth: '120px', backgroundColor: '#111', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '0.85rem', padding: '0 1rem' }}>{company?.name || 'Your Company'}</div>
             }
             <div style={{ width: '2px', height: '48px', backgroundColor: '#C8006A', borderRadius: '2px' }} />
-            <span style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.8rem', color: '#C8006A' }}>The Atelier</span>
+            <span style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.8rem', color: '#C8006A' }}>The Atelier</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <Link href="/" style={{ fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase', fontSize: '0.875rem', color: '#111' }}>← Main Site</Link>
@@ -213,7 +213,7 @@ function CorporateDashboard({ sanityData, user }: { sanityData: any; user: any }
         <div style={{ background: 'linear-gradient(135deg, #C8006A 0%, #9B0050 100%)', ...card('#C8006A', '#111'), color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
           <div>
             <p style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '2px', opacity: 0.75, marginBottom: '4px' }}>Corporate Training Dashboard</p>
-            <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', marginBottom: '4px' }}>{company?.name || 'Your Organization'}</h2>
+            <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2rem', marginBottom: '4px' }}>{company?.name || 'Your Organization'}</h2>
             <p style={{ fontSize: '0.9rem', opacity: 0.85 }}>{company?.industry || 'Corporate Partner'} · Welcome, {sanityData?.name || user.fullName}</p>
           </div>
           <span style={{ ...badge('#D9F060'), fontSize: '0.8rem', padding: '6px 16px', border: '2px solid #D9F060' }}>Corporate Account</span>
@@ -244,7 +244,7 @@ function CorporateDashboard({ sanityData, user }: { sanityData: any; user: any }
         </div>
 
         <div style={card('#111', '#C8006A')}>
-          <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.8rem', marginBottom: '1.5rem', color: '#C8006A' }}>Team Progress</h2>
+          <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.8rem', marginBottom: '1.5rem', color: '#C8006A' }}>Team Progress</h2>
           {loadingEmployees ? (
             <p style={{ textAlign: 'center', padding: '3rem', opacity: 0.5, fontStyle: 'italic' }}>Loading team data...</p>
           ) : filtered.length === 0 ? (
@@ -310,7 +310,7 @@ function IndividualDashboard({ sanityData, lessons, user }: { sanityData: any; l
 
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', paddingBottom: '1rem', borderBottom: '4px solid #D4006A' }}>
           <div>
-            <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2.5rem', color: '#D4006A' }}>Client Portal</h1>
+            <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2.5rem', color: '#D4006A' }}>Client Portal</h1>
             <p style={{ fontStyle: 'italic', color: '#666', marginTop: '0.5rem' }}>Welcome back, {displayName}!</p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -333,7 +333,7 @@ function IndividualDashboard({ sanityData, lessons, user }: { sanityData: any; l
                   : <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', border: '2px solid #111' }}>👤</div>
                 }
                 <div>
-                  <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.3rem' }}>{displayName}</h2>
+                  <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.3rem' }}>{displayName}</h2>
                   <span style={badge('#CCFF00')}>individual</span>
                 </div>
               </div>
@@ -358,7 +358,7 @@ function IndividualDashboard({ sanityData, lessons, user }: { sanityData: any; l
 
             {/* Mentor card */}
             <div style={card('#D4006A', '#D4006A', '#111')}>
-              <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', marginBottom: '1.5rem', color: '#D4006A' }}>Your Mentor</h2>
+              <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.5rem', marginBottom: '1.5rem', color: '#D4006A' }}>Your Mentor</h2>
               {sanityData?.assignedProfessor ? (
                 <div style={{ textAlign: 'center', color: 'white' }}>
                   {sanityData.assignedProfessor.image && (
@@ -392,7 +392,7 @@ function IndividualDashboard({ sanityData, lessons, user }: { sanityData: any; l
             {/* Calendly Scheduler */}
             <div style={card('#111111', '#111111')}>
               <div style={{ marginBottom: '1.5rem' }}>
-                <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', color: '#D4006A' }}>Schedule a Session</h2>
+                <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2rem', color: '#D4006A' }}>Schedule a Session</h2>
                 <p style={{ fontStyle: 'italic', color: '#666' }}>
                   {creditsOut
                     ? 'You\'ve used all your sessions this cycle. Contact us to top up!'
@@ -404,7 +404,7 @@ function IndividualDashboard({ sanityData, lessons, user }: { sanityData: any; l
                 /* Blocked state */
                 <div style={{ backgroundColor: '#FFF0F5', border: '3px solid #C8006A', borderRadius: '16px', padding: '3rem', textAlign: 'center' }}>
                   <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔒</div>
-                  <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', color: '#C8006A', marginBottom: '0.75rem' }}>No sessions remaining</h3>
+                  <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.5rem', color: '#C8006A', marginBottom: '0.75rem' }}>No sessions remaining</h3>
                   <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
                     You've completed all sessions in your current cycle. Reach out and we'll get you set up for the next one.
                   </p>
@@ -423,7 +423,7 @@ function IndividualDashboard({ sanityData, lessons, user }: { sanityData: any; l
 
             {/* Lessons timeline */}
             <div style={card('#111111', '#98FFD9')}>
-              <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', marginBottom: '1.5rem' }}>Learning Timeline</h2>
+              <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2rem', marginBottom: '1.5rem' }}>Learning Timeline</h2>
               {lessons.length > 0 ? (
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                   <thead>
@@ -554,7 +554,7 @@ export default function Dashboard() {
   if (loading) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FAF7F0' }}>
-        <p style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', color: '#C8006A' }}>Loading your portal...</p>
+        <p style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.5rem', color: '#C8006A' }}>Loading your portal...</p>
       </div>
     );
   }

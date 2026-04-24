@@ -1,7 +1,11 @@
-"use client";
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Careers',
+  description: 'Join The Atelier team. We are looking for talented professionals passionate about language education, cultural intelligence, and empowering global voices.',
+};
 
 export default function CareersPage() {
     return (
@@ -9,7 +13,7 @@ export default function CareersPage() {
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
                 <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
                 
-                <h2 className="subpage-title cursive text-[#111] text-[5rem] mb-12 font-['Pacifico'] leading-tight">Careers at the Atelier</h2>
+                <h2 className="subpage-title cursive text-[#111] text-[5rem] mb-12 font-[family-name:var(--font-cormorant)] leading-tight">Careers at the Atelier</h2>
 
                 <div className="responsive-grid grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="left-col staggered-left">
@@ -17,7 +21,7 @@ export default function CareersPage() {
                             <div className="absolute -top-6 -left-6 bg-[#D9F060] text-black font-black px-6 py-2 rounded-full shadow-lg transform -rotate-3 uppercase tracking-tighter">
                                 Now Hiring
                             </div>
-                            <h3 className="font-['Pacifico'] text-4xl mb-6 text-[#C8006A]">Join our team</h3>
+                            <h3 className="font-[family-name:var(--font-cormorant)] text-4xl mb-6 text-[#C8006A]">Join our team</h3>
                             <p className="text-xl font-bold italic mb-8 leading-relaxed text-black uppercase tracking-tight">
                                 WE ARE ALWAYS LOOKING TO CONNECT WITH TALENTED PROFESSIONALS. IF YOU SHARE OUR PASSION FOR LANGUAGE EDUCATION, CULTURAL INTELLIGENCE, AND EMPOWERING GLOBAL VOICES, WE WOULD LOVE TO HEAR FROM YOU.
                             </p>

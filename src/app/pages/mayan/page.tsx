@@ -1,7 +1,11 @@
-"use client";
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Meet the Founder — Mayan',
+  description: 'Meet Mayan, founder of The Atelier. A UNAM graduate and former PepsiCo professional who created a boutique language and career development studio for ambitious global professionals.',
+};
 
 export default function MayanPage() {
     return (
@@ -9,7 +13,7 @@ export default function MayanPage() {
             <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
             
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
-                <h2 className="subpage-title cursive" style={{ fontFamily: "'Pacifico', cursive", fontSize: '5rem', color: '#111111', marginBottom: '40px', lineHeight: '1' }}>Mayan</h2>
+                <h2 className="subpage-title cursive" style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '5rem', color: '#111111', marginBottom: '40px', lineHeight: '1' }}>Mayan</h2>
                 
                 <div className="responsive-grid grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-16 items-start">
                     {/* Left: High-Fidelity Retro Browser with Mayan Photo */}
@@ -20,7 +24,7 @@ export default function MayanPage() {
                                 <div className="w-4 h-4 rounded-full border-2 border-[#C8006A]"></div>
                                 <div className="w-4 h-4 rounded-full border-2 border-[#C8006A]"></div>
                             </div>
-                            <div className="aspect-[4/5] bg-cover bg-center" style={{ backgroundImage: "url('/pages/Mayan.png')" }}></div>
+                            <div className="aspect-[4/5] bg-cover bg-center" style={{ backgroundImage: "url('/pages/Mayan.webp')" }}></div>
                             <div className="bg-white p-4 font-black text-center text-[#C8006A] border-t-8 border-[#C8006A] uppercase tracking-widest text-sm italic">
                                 &lt; Founder _ The Atelier &gt;
                             </div>

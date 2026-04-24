@@ -10,6 +10,8 @@ export interface SpotlightProfile {
   bio: string[]
   bulletPoints?: string[]
   closingQuote?: string
+  levelBefore?: string
+  levelAfter?: string
 }
 
 export const spotlights: SpotlightProfile[] = [
@@ -18,7 +20,9 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Sofia',
     title: 'VISUAL ARTIST, EDUCATOR, AND SOUND EXPLORER',
     generation: 'first',
-    imagePath: '/pages/sofia.png',
+    imagePath: '/pages/sofia.webp',
+    levelBefore: 'B1',
+    levelAfter: 'B2',
     returnPath: '/pages/spotlights/first-generation',
     bio: [
       'SOFÍA MANZANO LÓPEZ JOINED ATELIER SPOTLIGHTS AS A DEEPLY CURIOUS AND CRITICAL VISUAL ARTIST, COMMITTED TO HER COMMUNITY. WITH A BACKGROUND IN VISUAL ARTS AND EXPERIENCE AS A UNIVERSITY LECTURER, SOFI HAS DEVELOPED AN ARTISTIC PRACTICE THAT INTERSECTS PHOTOGRAPHY, POPULAR CULTURE, AND POLITICAL THOUGHT—EXPLORING HOW IMAGES AND SOUNDS NARRATE STORIES OF POWER, TERRITORY, AND IDENTITY.',
@@ -39,7 +43,7 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Gaby',
     title: 'LEADING THE AVIATION OPERATIONS IN MEXICO',
     generation: 'first',
-    imagePath: '/pages/gaby.png',
+    imagePath: '/pages/gaby.webp',
     returnPath: '/pages/spotlights/first-generation',
     bio: [
       'GABY WORKS IN AVIATION OPERATIONS AT AEROMEXICO, A FIELD WHERE PRECISION, SAFETY, AND LEADERSHIP ARE PART OF EVERYDAY DECISION-MAKING. WITH EXPERIENCE IN CABIN OPERATIONS AND TRAINING ENVIRONMENTS, HER ROLE REQUIRES CONSTANT COLLABORATION, CLEAR COMMUNICATION, AND THE ABILITY TO NAVIGATE HIGH-PRESSURE SITUATIONS WITH CONFIDENCE.',
@@ -53,7 +57,7 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Arletthe',
     title: 'FOOD ENGINEER & SALES PROFESSIONAL',
     generation: 'first',
-    imagePath: '/pages/arletthe.png',
+    imagePath: '/pages/arletthe.webp',
     returnPath: '/pages/spotlights/first-generation',
     bio: [
       'ARLETTHE JOINED THE PROGRAM TO STRENGTHEN HER ENGLISH AND EXPAND HER PROFESSIONAL OPPORTUNITIES. THROUGHOUT OUR WORK TOGETHER, OUR SESSIONS FOCUSED NOT ONLY ON LANGUAGE DEVELOPMENT BUT ALSO ON PRACTICAL COMMUNICATION, CAREER GROWTH, AND PERSONAL CLARITY. EACH CLASS WAS TAILORED TO HER GOALS, COMBINING ENGLISH PRACTICE WITH REAL-LIFE PROFESSIONAL AND PERSONAL TOPICS.',
@@ -68,7 +72,9 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Valeria',
     title: 'HER A2 TO B2 ENGLISH JOURNEY',
     generation: 'first',
-    imagePath: '/pages/valeria.png',
+    imagePath: '/pages/valeria.webp',
+    levelBefore: 'A2',
+    levelAfter: 'B2',
     returnPath: '/pages/spotlights/first-generation',
     bio: [
       'VALERIA JOINED THE ATELIER WITH A GENERAL ENGLISH FOUNDATION AND A CLEAR GOAL: TO STRENGTHEN HER ENGLISH AND GAIN THE CONFIDENCE NEEDED TO COMMUNICATE IN MORE COMPLEX AND PROFESSIONAL CONTEXTS.',
@@ -83,7 +89,9 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Carolina',
     title: 'FOOD ENGINEER & INDUSTRIAL TECHNICAL SPECIALIST',
     generation: 'first',
-    imagePath: '/pages/carolina.png',
+    imagePath: '/pages/carolina.webp',
+    levelBefore: 'A2',
+    levelAfter: 'B1',
     returnPath: '/pages/spotlights/first-generation',
     bio: [
       'CAROLINA IS A FOOD ENGINEER SPECIALIZING IN BAKING SCIENCE AND FERMENTATION. SHE CURRENTLY WORKS AS AN INDUSTRIAL TECHNICAL SPECIALIST AT AN INTERNATIONAL LEADING BAKERY COMPANY, WHERE SHE COLLABORATES WITH BAKERIES TO OPTIMIZE FERMENTATION PROCESSES, IMPROVE PRODUCT QUALITY, AND IMPLEMENT TECHNICAL SOLUTIONS IN INDUSTRIAL BAKING.',
@@ -98,7 +106,7 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Iris',
     title: 'CORPORATE STRATEGY & ESG PROFESSIONAL',
     generation: 'first',
-    imagePath: '/pages/iris.png',
+    imagePath: '/pages/iris.webp',
     returnPath: '/pages/spotlights/first-generation',
     bio: [
       'IRIS IS A CORPORATE PROFESSIONAL WORKING AT KRAFT HEINZ MEXICO AND BUILDING HER PATH IN GOVERNANCE, POLICY DEVELOPMENT, AND SUSTAINABILITY STRATEGY. THROUGH HER WORK WITH THE ATELIER, IRIS HAS REFINED HER ABILITY TO DISCUSS COMPLEX TOPICS SUCH AS ESG FRAMEWORKS, CORPORATE POLICIES, AND ORGANIZATIONAL STRATEGY IN ENGLISH WITH CLARITY AND PRECISION.',
@@ -111,7 +119,7 @@ export const spotlights: SpotlightProfile[] = [
     name: 'María Fernanda',
     title: 'HISTORIAN - GOVERNMENT RESEARCHER',
     generation: 'first',
-    imagePath: '/pages/maria fernanda.png',
+    imagePath: '/pages/maria fernanda.webp',
     returnPath: '/pages/spotlights/first-generation',
     bio: [
       'MARÍA FERNANDA IS A HISTORIAN CURRENTLY STRENGTHENING HER ACADEMIC ENGLISH TO ENGAGE MORE CONFIDENTLY WITH INTERNATIONAL RESEARCH TO PURSUE A DOCTORAL DEGREE, FOCUSING ON CONFERENCES AND SCHOLARLY DISCUSSIONS. THROUGH THE ATELIER\'S PERSONALIZED PROGRAM, SHE HAS FOCUSED ON DEVELOPING THE LANGUAGE TOOLS NEEDED TO ANALYZE HISTORICAL PROCESSES, EXPLAIN COMPLEX IDEAS, AND EXPRESS ACADEMIC ARGUMENTS CLEARLY IN ENGLISH.',
@@ -124,7 +132,7 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Marwa',
     title: 'GLOBAL LEARNER | MULTICULTURAL PERSPECTIVE',
     generation: 'second',
-    imagePath: '/pages/marwa.png',
+    imagePath: '/pages/marwa.webp',
     returnPath: '/pages/spotlights/second-generation',
     bio: [
       'MARWA IS AN ENGLISH LANGUAGE TEACHING STUDENT AT MERSIN UNIVERSITY, WHO JOINED THE ATELIER WITH A STRONG CURIOSITY FOR LANGUAGES AND GLOBAL CULTURES. AS PART OF ATELIER SPOTLIGHTS — SECOND GENERATION, SHE HAS BEEN DEVELOPING HER ABILITY TO COMMUNICATE CONFIDENTLY IN SPANISH WHILE EXPLORING TOPICS CONNECTED TO CULTURE, TRAVEL, AND INTERNATIONAL PERSPECTIVES.',
@@ -138,7 +146,7 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Şefika Buse',
     title: 'INTERNATIONAL RELATIONS STUDENT | ERASMUS SCHOLAR',
     generation: 'second',
-    imagePath: '/pages/sefika buse.png',
+    imagePath: '/pages/sefika buse.webp',
     returnPath: '/pages/spotlights/second-generation',
     bio: [
       'ŞEFIKA BUSE IS AN INTERNATIONAL RELATIONS STUDENT AT MERSIN UNIVERSITY, CURRENTLY COMPLETING AN ACADEMIC EXCHANGE IN POLAND THROUGH THE ERASMUS PROGRAMME.',
@@ -159,7 +167,7 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Saja',
     title: 'NURSE | HEALTHCARE PROFESSIONAL',
     generation: 'second',
-    imagePath: '/pages/saja.png',
+    imagePath: '/pages/saja.webp',
     returnPath: '/pages/spotlights/second-generation',
     bio: [
       'SAJA IS A HEALTHCARE PROFESSIONAL GRADUATED FROM MERSIN UNIVERSITY, WORKING AS A NURSE WITH A STRONG INTEREST IN LANGUAGES, CULTURE, AND INTERNATIONAL COMMUNICATION.',
@@ -179,7 +187,7 @@ export const spotlights: SpotlightProfile[] = [
     name: 'Aya',
     title: 'CURIOUS MIND | FUTURE GLOBAL CITIZEN',
     generation: 'second',
-    imagePath: '/pages/aya.png',
+    imagePath: '/pages/aya.webp',
     returnPath: '/pages/spotlights/second-generation',
     bio: [
       'AYA IS AN INTERNATIONAL RELATIONS MAJOR AT MERSIN UNIVERSITY. PART OF ATELIER SPOTLIGHTS — SECOND GENERATION, A COMMUNITY THAT HIGHLIGHTS WOMEN DEVELOPING THEIR VOICE THROUGH LANGUAGE AND CULTURAL EXPLORATION.',

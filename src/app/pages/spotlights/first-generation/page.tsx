@@ -11,7 +11,7 @@ export default function FirstGenerationPage() {
       <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }} />
 
       <div style={{ padding: '52px 8%', maxWidth: '1400px', margin: '0 auto' }}>
-        <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: 'clamp(2rem, 4.5vw, 3.8rem)', color: '#111', marginBottom: '52px', lineHeight: 1.1 }}>
+        <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: 'clamp(2rem, 4.5vw, 3.8rem)', color: '#111', marginBottom: '52px', lineHeight: 1.1 }}>
           Atelier Spotlights — First Generation
         </h1>
 
@@ -32,7 +32,7 @@ export default function FirstGenerationPage() {
           </div>
 
           <div>
-            <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2.2rem', color: '#111', marginBottom: '6px' }}>{featured.name}</h2>
+            <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2.2rem', color: '#111', marginBottom: '6px' }}>{featured.name}</h2>
             <p style={{ fontStyle: 'italic', fontWeight: 700, fontSize: '0.82rem', letterSpacing: '0.06em', marginBottom: '20px', color: '#333', textTransform: 'uppercase' }}>{featured.title}</p>
             {featured.bio.map((p, i) => (
               <p key={i} style={{ fontSize: '0.74rem', lineHeight: 1.8, marginBottom: '12px', textAlign: 'justify', color: '#111', textTransform: 'uppercase', fontWeight: 600 }}>{p}</p>
@@ -51,7 +51,7 @@ export default function FirstGenerationPage() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '40px' }}>
           <div style={{ height: '3px', flex: 1, background: '#C8006A' }} />
-          <span style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.6rem', color: '#C8006A', whiteSpace: 'nowrap' }}>More First Generation</span>
+          <span style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.6rem', color: '#C8006A', whiteSpace: 'nowrap' }}>More First Generation</span>
           <div style={{ height: '3px', flex: 1, background: '#C8006A' }} />
         </div>
 
@@ -68,7 +68,7 @@ export default function FirstGenerationPage() {
                 <img src={profile.imagePath} alt={profile.name} style={{ width: '100%', display: 'block', aspectRatio: '4/3', objectFit: 'cover', borderBottom: '3px solid #F4A7C3' }} />
                 <div style={{ background: '#F4A7C3', padding: '7px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: '0.8rem', color: '#555' }}>&lt;</span>
-                  <span style={{ fontFamily: "'Pacifico', cursive", fontSize: '0.75rem', color: '#C8006A' }}>{profile.name}</span>
+                  <span style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '0.75rem', color: '#C8006A' }}>{profile.name}</span>
                   <span style={{ fontSize: '0.8rem', color: '#555' }}>&gt;</span>
                 </div>
               </div>

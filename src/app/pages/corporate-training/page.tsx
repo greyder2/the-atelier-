@@ -1,7 +1,11 @@
-"use client";
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Corporate Language Training',
+  description: 'Customized English language training programs for international companies. Professional English, industry-specific vocabulary, presentation training, and leadership communication.',
+};
 
 export default function CorporateTrainingPage() {
     return (
@@ -9,12 +13,12 @@ export default function CorporateTrainingPage() {
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
                 <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
                 
-                <h2 className="subpage-title cursive text-black text-7xl mb-12 font-['Pacifico']">Corporate<br/>Language Training</h2>
+                <h2 className="subpage-title cursive text-black text-7xl mb-12 font-[family-name:var(--font-cormorant)]">Corporate<br/>Language Training</h2>
 
                 <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
                     {/* Left: Detailed Program Card */}
                     <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-black">
-                        <h3 className="font-['Pacifico'] text-3xl mb-6 text-[#C8006A]">International Collaboration</h3>
+                        <h3 className="font-[family-name:var(--font-cormorant)] text-3xl mb-6 text-[#C8006A]">International Collaboration</h3>
                         <p className="text-xl font-bold mb-8 leading-relaxed text-black italic uppercase">
                             WE DESIGN CUSTOMIZED LANGUAGE TRAINING PROGRAMS FOR INTERNATIONAL COMPANIES SEEKING TO STRENGTHEN COMMUNICATION ACROSS GLOBAL TEAMS.
                         </p>

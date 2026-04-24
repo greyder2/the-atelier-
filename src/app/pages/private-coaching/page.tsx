@@ -1,7 +1,11 @@
-"use client";
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Private Coaching',
+  description: 'One-on-one English coaching sessions tailored to your professional goals. Professional English, conversation, pronunciation, interview prep, and leadership communication.',
+};
 
 export default function PrivateCoachingPage() {
     return (
@@ -9,12 +13,12 @@ export default function PrivateCoachingPage() {
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
                 <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
                 
-                <h2 className="subpage-title cursive text-[#111] text-7xl mb-12 font-['Pacifico']">Private<br/>Coaching</h2>
+                <h2 className="subpage-title cursive text-[#111] text-7xl mb-12 font-[family-name:var(--font-cormorant)]">Private<br/>Coaching</h2>
 
                 <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
                     {/* Left: Detailed Program Card */}
                     <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-[#C8006A]">
-                        <h3 className="font-['Pacifico'] text-3xl mb-6 text-[#C8006A]">Personalized Mentoring</h3>
+                        <h3 className="font-[family-name:var(--font-cormorant)] text-3xl mb-6 text-[#C8006A]">Personalized Mentoring</h3>
                         <p className="text-lg font-bold mb-8 leading-relaxed text-black italic uppercase">
                             IDEAL FOR PROFESSIONALS, STUDENTS AND INDIVIDUALS SEEKING FOCUSED GUIDANCE AND RAPID PROGRESS.
                         </p>

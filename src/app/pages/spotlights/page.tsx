@@ -1,6 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { firstGeneration, secondGeneration } from '@/data/spotlights';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Atelier Spotlights',
+  description: 'Meet the women of Atelier Spotlights — an exclusive, by-invitation program exploring leadership, language, and communication through the stories of remarkable women.',
+};
 
 export default function SpotlightsPage() {
   return (
@@ -9,7 +15,7 @@ export default function SpotlightsPage() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 'calc(100vh - 12px)' }}>
         <div style={{ padding: '60px 8%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 1.05, marginBottom: '40px', color: '#111' }}>
+          <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 1.05, marginBottom: '40px', color: '#111' }}>
             Atelier<br />Spotlights
           </h1>
 
@@ -36,7 +42,7 @@ export default function SpotlightsPage() {
         </div>
 
         <div style={{ background: 'linear-gradient(160deg, #f8d7e8 0%, #e8a0c0 25%, #c8006a 60%, #8a0047 100%)', position: 'relative', overflow: 'hidden', minHeight: '100%' }}>
-          <div style={{ position: 'absolute', top: '40%', left: '20%', fontFamily: "'Pacifico', cursive", fontSize: '5rem', color: 'rgba(255,255,255,0.12)', lineHeight: 1, userSelect: 'none' }}>
+          <div style={{ position: 'absolute', top: '40%', left: '20%', fontFamily: "var(--font-cormorant), serif", fontSize: '5rem', color: 'rgba(255,255,255,0.12)', lineHeight: 1, userSelect: 'none' }}>
             The<br />Atelier
           </div>
           <div style={{ position: 'absolute', bottom: '10%', right: '8%', width: '180px', height: '180px', background: 'rgba(249,196,220,0.3)', clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }} />

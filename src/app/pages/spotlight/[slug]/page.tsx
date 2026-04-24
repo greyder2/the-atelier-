@@ -3,6 +3,17 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { spotlights } from '@/data/spotlights';
 import { createClient } from 'next-sanity';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const profile = spotlights.find(s => s.slug === slug);
+  const name = profile?.name ?? slug;
+  return {
+    title: `${name} — Atelier Spotlight`,
+    description: `Read ${name}'s story — an Atelier Spotlights graduate. ${profile?.title || 'Discover their language learning and professional growth journey.'}`,
+  };
+}
 
 const client = createClient({
   projectId: '1pu795c0',
@@ -37,7 +48,7 @@ export default async function SpotlightProfilePage({
 
   const name = sanityData?.name ?? hardcoded?.name ?? '';
   const title = sanityData?.heading ?? hardcoded?.title ?? '';
-  const imagePath = hardcoded?.imagePath ?? `/pages/${slug}.png`;
+  const imagePath = hardcoded?.imagePath ?? `/pages/${slug}.webp`;
   const returnPath = hardcoded?.returnPath ?? '/';
 
   const bioParagraphs: string[] = sanityData?.body
@@ -52,7 +63,7 @@ export default async function SpotlightProfilePage({
       <div style={{ height: '12px', backgroundColor: '#A0004F', width: '100%' }} />
 
       <div style={{ padding: '52px 8%', maxWidth: '1400px', margin: '0 auto' }}>
-        <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: '#111', marginBottom: '40px', lineHeight: 1.1 }}>
+        <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: '#111', marginBottom: '40px', lineHeight: 1.1 }}>
           {name}
         </h1>
 

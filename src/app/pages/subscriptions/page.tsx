@@ -9,12 +9,12 @@ export default function SubscriptionsPage() {
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
                 <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
                 
-                <h2 className="subpage-title cursive text-white text-7xl mb-12 font-['Pacifico']">Atelier<br/>Subscriptions</h2>
+                <h2 className="subpage-title cursive text-white text-7xl mb-12 font-[family-name:var(--font-cormorant)]">Atelier<br/>Subscriptions</h2>
 
                 <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
                     {/* Left: Program Overview */}
                     <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-black">
-                        <h3 className="font-['Pacifico'] text-3xl mb-6 text-[#C8006A]">Structured Learning</h3>
+                        <h3 className="font-[family-name:var(--font-cormorant)] text-3xl mb-6 text-[#C8006A]">Structured Learning</h3>
                         <p className="text-xl font-bold mb-8 leading-relaxed text-black italic uppercase">
                             OUR SUBSCRIPTION PROGRAMS PROVIDE STRUCTURED, ONGOING LANGUAGE LEARNING THROUGH CATEGORICAL THEMES.
                         </p>

@@ -9,7 +9,7 @@ export default function ContactPage() {
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
                 <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
                 
-                <h2 className="subpage-title cursive text-white text-[5rem] mb-12 font-['Pacifico'] leading-tight">Reach out</h2>
+                <h2 className="subpage-title cursive text-white text-[5rem] mb-12 font-[family-name:var(--font-cormorant)] leading-tight">Reach out</h2>
 
                 <div className="responsive-grid grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
                     {/* Left: Contact Info */}
@@ -36,7 +36,7 @@ export default function ContactPage() {
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
                         <div className="pt-16 text-black text-center px-6">
                             <div className="w-28 h-28 bg-[#C8006A] rounded-full mx-auto mb-6 overflow-hidden border-4 border-white shadow-xl">
-                                <img src="/pages/gaby.png" alt="Profile" className="w-full h-full object-cover" />
+                                <img src="/pages/gaby.webp" alt="Profile" className="w-full h-full object-cover" />
                             </div>
                             <div className="font-black text-2xl mb-1 tracking-tighter">theatelier.lab</div>
                             <div className="text-[10px] opacity-40 font-black mb-6 uppercase tracking-widest">Boutique Language Studio</div>

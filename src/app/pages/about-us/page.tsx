@@ -15,7 +15,7 @@ export default function AboutUs() {
 
         {/* ── HERO BAND ── */}
         <div className="bg-[#C8006A] text-center px-8 py-14">
-          <h1 className="font-['Pacifico'] text-[clamp(40px,8vw,64px)] text-white leading-tight">
+          <h1 className="font-[family-name:var(--font-cormorant)] text-[clamp(40px,8vw,64px)] text-white leading-tight">
             About Us
           </h1>
           <p className="mt-3 text-[11px] tracking-[4px] uppercase font-bold text-[#F4A7C3]">
@@ -28,7 +28,7 @@ export default function AboutUs() {
 
           {/* Story */}
           <div>
-            <h2 className="font-['Pacifico'] text-[32px] text-[#C8006A] mb-6 leading-tight">
+            <h2 className="font-[family-name:var(--font-cormorant)] text-[32px] text-[#C8006A] mb-6 leading-tight">
               Our Story
             </h2>
             <div className="space-y-5 text-[15px] leading-[1.85] text-[#333]">
@@ -46,7 +46,7 @@ export default function AboutUs() {
 
           {/* Philosophy */}
           <div className="bg-white border-[3px] border-[#C8006A] rounded-[20px] p-8">
-            <h2 className="font-['Pacifico'] text-[26px] text-[#C8006A] mb-4 leading-tight">
+            <h2 className="font-[family-name:var(--font-cormorant)] text-[26px] text-[#C8006A] mb-4 leading-tight">
               Our Philosophy
             </h2>
             <p className="text-[11px] tracking-[2px] uppercase font-bold text-gray-400 mb-5">
@@ -74,7 +74,7 @@ export default function AboutUs() {
           <p className="text-center text-[11px] tracking-[3px] uppercase font-bold text-[#C8006A] mb-2">
             The Atelier
           </p>
-          <h2 className="font-['Pacifico'] text-[40px] text-black text-center mb-14 leading-tight">
+          <h2 className="font-[family-name:var(--font-cormorant)] text-[40px] text-black text-center mb-14 leading-tight">
             Meet the Founder
           </h2>
 
@@ -86,7 +86,7 @@ export default function AboutUs() {
                 <div className="w-[280px] h-[360px] rounded-[20px] overflow-hidden border-[6px] border-[#C8006A]">
                   <div
                     className="w-full h-full bg-[#F4A7C3] bg-cover bg-center"
-                    style={{ backgroundImage: "url('/pages/Mayan.png')" }}
+                    style={{ backgroundImage: "url('/pages/Mayan.webp')" }}
                   />
                 </div>
                 <div
@@ -100,7 +100,7 @@ export default function AboutUs() {
 
             {/* Bio */}
             <div>
-              <h3 className="font-['Pacifico'] text-[36px] text-black mb-1 leading-tight">Mayan</h3>
+              <h3 className="font-[family-name:var(--font-cormorant)] text-[36px] text-black mb-1 leading-tight">Mayan</h3>
               <p className="text-[11px] tracking-[3px] uppercase font-bold text-[#C8006A] border-b-2 border-[#D9F060] pb-4 mb-7 inline-block">
                 Founder &amp; Lead Educator · The Atelier
               </p>
@@ -117,9 +117,26 @@ export default function AboutUs() {
                 </p>
               </div>
 
+              {/* Credentials */}
+              <div className="grid grid-cols-2 gap-4 mt-8 mb-6">
+                {[
+                  { label: 'Education', value: 'UNAM — Food Engineering' },
+                  { label: 'Corporate Experience', value: 'PepsiCo (EHS & Procurement)' },
+                  { label: 'Languages', value: 'EN · ES · IT · PT · DE · FR · TR' },
+                  { label: 'Students Coached', value: '200+' },
+                  { label: 'Countries', value: '12+ nationalities' },
+                  { label: 'Methodology', value: 'Berlitz-Inspired Conversational' },
+                ].map(cred => (
+                  <div key={cred.label} className="bg-[#FAF7F0] border border-[#e8e4dc] rounded-[12px] p-3">
+                    <p className="text-[9px] tracking-[2px] uppercase font-bold text-gray-400 mb-1">{cred.label}</p>
+                    <p className="text-[13px] font-bold text-[#333]">{cred.value}</p>
+                  </div>
+                ))}
+              </div>
+
               <Link
                 href="/pages/mayan"
-                className="inline-block mt-8 bg-[#C8006A] text-white text-[12px] font-black tracking-[2px] uppercase px-7 py-4 rounded-full no-underline hover:bg-black transition-colors"
+                className="inline-block mt-2 bg-[#C8006A] text-white text-[12px] font-black tracking-[2px] uppercase px-7 py-4 rounded-full no-underline hover:bg-black transition-colors"
               >
                 View Full Profile →
               </Link>
@@ -129,7 +146,7 @@ export default function AboutUs() {
 
         {/* ── CTA BAND ── */}
         <div className="bg-[#C8006A] px-8 py-16 text-center">
-          <h3 className="font-['Pacifico'] text-[36px] text-white mb-3 leading-tight">
+          <h3 className="font-[family-name:var(--font-cormorant)] text-[36px] text-white mb-3 leading-tight">
             Ready to join The Atelier?
           </h3>
           <p className="text-[13px] font-bold uppercase tracking-[1px] text-[#F4A7C3] max-w-md mx-auto mb-9 leading-[1.75]">

@@ -8,7 +8,7 @@ export default function SecondGenerationPage() {
       <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }} />
 
       <div style={{ padding: '52px 8%', maxWidth: '1400px', margin: '0 auto' }}>
-        <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: 'clamp(1.8rem, 4vw, 3.5rem)', color: '#111', marginBottom: '52px', lineHeight: 1.1 }}>
+        <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: 'clamp(1.8rem, 4vw, 3.5rem)', color: '#111', marginBottom: '52px', lineHeight: 1.1 }}>
           Atelier Spotlights — Second Generation
         </h1>
 
@@ -24,7 +24,7 @@ export default function SecondGenerationPage() {
             </div>
             <div style={{ background: '#D9F060', minHeight: '340px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px', gap: '16px' }}>
               <div style={{ fontSize: '4rem', lineHeight: 1 }}>✦</div>
-              <p style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', color: '#C8006A', textAlign: 'center', lineHeight: 1.2 }}>
+              <p style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2rem', color: '#C8006A', textAlign: 'center', lineHeight: 1.2 }}>
                 Atelier<br />Spotlights<br />2nd Gen
               </p>
               <p style={{ fontSize: '0.7rem', color: '#666', fontWeight: 600, letterSpacing: '0.1em' }}>spring 2026</p>
@@ -37,7 +37,7 @@ export default function SecondGenerationPage() {
           </div>
 
           <div>
-            <p style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', color: '#C8006A', marginBottom: '20px' }}>Meet the members</p>
+            <p style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.5rem', color: '#C8006A', marginBottom: '20px' }}>Meet the members</p>
 
             <div style={{ display: 'flex', gap: '8px', marginBottom: '28px', flexWrap: 'wrap' }}>
               {secondGeneration.map(profile => (

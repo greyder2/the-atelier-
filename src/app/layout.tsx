@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans, Cormorant_Garamond, Sarina } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
+import FloatingCTA from '../components/FloatingCTA';
+import DarkModeToggle from '../components/DarkModeToggle';
+import FloatingEmailPopup from '../components/FloatingEmailPopup';
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -65,7 +68,7 @@ export const metadata: Metadata = {
       "A boutique language and career development studio dedicated to teaching through culture, conversation, and intellectual curiosity.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.webp",
         width: 1200,
         height: 630,
         alt: "The Atelier – Boutique Language & Career Studio",
@@ -77,16 +80,16 @@ export const metadata: Metadata = {
     title: "The Atelier | Where Ambitious Minds Learn to Speak the World",
     description:
       "A boutique language and career development studio dedicated to teaching through culture, conversation, and intellectual curiosity.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
     creator: "@theatelier.lab",
   },
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/icon-16.png", sizes: "16x16", type: "image/png" },
-      { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-16.webp", sizes: "16x16", type: "image/png" },
+      { url: "/icon-32.webp", sizes: "32x32", type: "image/png" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [{ url: "/apple-touch-icon.webp", sizes: "180x180" }],
     shortcut: "/favicon.ico",
   },
   manifest: "/site.webmanifest",
@@ -98,7 +101,7 @@ const jsonLd = {
   name: "The Atelier",
   alternateName: "The English Atelier",
   url: BASE_URL,
-  logo: `${BASE_URL}/og-image.png`,
+  logo: `${BASE_URL}/og-image.webp`,
   description:
     "A boutique language and career development studio dedicated to teaching through culture, conversation, and intellectual curiosity.",
   email: "theenglishateliere@gmail.com",
@@ -169,6 +172,9 @@ export default function RootLayout({
         <body className="min-h-full flex flex-col pt-3 bg-pale-cream text-black font-dm-sans">
           <div className="top-bar"></div>
           {children}
+          <FloatingCTA />
+          <DarkModeToggle />
+          <FloatingEmailPopup />
         </body>
       </html>
     </ClerkProvider>

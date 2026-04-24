@@ -19,7 +19,7 @@ export default function CohortsPage() {
                 <div className="flex flex-col lg:flex-row gap-12 items-start mt-4">
                     {/* Left Column: Title */}
                     <div className="lg:w-1/3">
-                        <h2 className="subpage-title cursive text-[#111] text-7xl font-['Pacifico'] leading-[1.1]">
+                        <h2 className="subpage-title cursive text-[#111] text-7xl font-[family-name:var(--font-cormorant)] leading-[1.1]">
                             Cohorts &<br/>Special<br/>Programs
                         </h2>
                     </div>
@@ -77,7 +77,7 @@ export default function CohortsPage() {
             </div>
             
             <style jsx>{`
-                .cursive { font-family: 'Pacifico', cursive; }
+                .cursive { font-family: var(--font-cormorant), serif; }
                 .hand-cursor { animation: bounce 1s infinite alternate; }
                 @keyframes bounce {
                     from { transform: translateY(0); }

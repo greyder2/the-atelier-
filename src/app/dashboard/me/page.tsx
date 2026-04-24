@@ -103,7 +103,7 @@ export default function MyProfile() {
 
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1rem', borderBottom: '4px solid #D4006A' }}>
-          <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', color: '#D4006A' }}>My Profile</h1>
+          <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2rem', color: '#D4006A' }}>My Profile</h1>
           <Link href="/dashboard" style={{ fontWeight: 'bold', textTransform: 'uppercase', fontSize: '0.8rem', backgroundColor: '#111', color: 'white', padding: '8px 16px', borderRadius: '50px', textDecoration: 'none' }}>
             ← Dashboard
           </Link>
@@ -117,7 +117,7 @@ export default function MyProfile() {
               : <div style={{ width: '100px', height: '100px', borderRadius: '50%', backgroundColor: '#FFD1DC', border: '4px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem' }}>✦</div>
             }
             <div style={{ flex: 1 }}>
-              <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', marginBottom: '0.5rem' }}>{displayName}</h2>
+              <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2rem', marginBottom: '0.5rem' }}>{displayName}</h2>
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
                 <span style={badge(data?.clientType === 'corporate' ? '#FFD1DC' : '#CCFF00')}>{data?.clientType || 'individual'}</span>
                 <span style={badge('#eee')}>{data?.level || 'Pending Evaluation'}</span>
@@ -130,7 +130,7 @@ export default function MyProfile() {
 
         {/* Progress tracking */}
         <div style={card('#CCFF00', '#111')}>
-          <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', marginBottom: '1.5rem' }}>My Progress</h3>
+          <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.5rem', marginBottom: '1.5rem' }}>My Progress</h3>
 
           {/* Stat boxes */}
           <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
@@ -167,7 +167,7 @@ export default function MyProfile() {
         {/* Learning goals */}
         <div style={card('#FFD1DC', '#111')}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-            <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem' }}>My Learning Goals</h3>
+            <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.5rem' }}>My Learning Goals</h3>
             {!editing
               ? <button onClick={() => setEditing(true)} style={{ backgroundColor: '#111', color: 'white', padding: '8px 18px', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.8rem' }}>Edit</button>
               : <div style={{ display: 'flex', gap: '0.5rem' }}>
@@ -198,7 +198,7 @@ export default function MyProfile() {
         {/* Resources */}
         {data?.resources?.length > 0 && (
           <div style={card('#111', '#98FFD9')}>
-            <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', marginBottom: '1.5rem' }}>Resources & Materials</h3>
+            <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.5rem', marginBottom: '1.5rem' }}>Resources & Materials</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {data.resources.map((r: any, i: number) => (
                 <a key={i} href={r.url} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 1.25rem', backgroundColor: '#FAF7F0', borderRadius: '12px', border: '2px solid #eee', textDecoration: 'none', color: '#111' }}>
@@ -216,7 +216,7 @@ export default function MyProfile() {
         {/* Upcoming sessions */}
         {data?.upcomingLessons?.length > 0 && (
           <div style={card('#98FFD9', '#111')}>
-            <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', marginBottom: '1.5rem' }}>Upcoming Sessions</h3>
+            <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.5rem', marginBottom: '1.5rem' }}>Upcoming Sessions</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {data.upcomingLessons.map((l: any, i: number) => (
                 <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem', backgroundColor: 'white', borderRadius: '12px', border: '2px solid #eee' }}>
@@ -236,7 +236,7 @@ export default function MyProfile() {
         {/* Recent completed */}
         {data?.recentCompleted?.length > 0 && (
           <div style={card('#111', '#111')}>
-            <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', marginBottom: '1.5rem' }}>Recent Sessions</h3>
+            <h3 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.5rem', marginBottom: '1.5rem' }}>Recent Sessions</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {data.recentCompleted.map((l: any, i: number) => (
                 <div key={i} style={{ backgroundColor: '#FAF7F0', borderRadius: '12px', padding: '1rem 1.25rem', border: '2px solid #eee' }}>

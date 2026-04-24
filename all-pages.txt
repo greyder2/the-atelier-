@@ -1,0 +1,1059 @@
+﻿import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About Us | The Atelier',
+  description: 'The Atelier is a boutique language studio founded on the belief that language learning should be inspiring, cultural, and deeply human.',
+}
+
+export default function AboutUs() {
+  return (
+    <main>
+      <div className="fixed top-0 left-0 w-full h-[12px] bg-[#C8006A] z-[1000]"></div>
+
+      <div className="bg-[#FAF7F0] pt-3">
+
+        {/* â”€â”€ HERO BAND â”€â”€ */}
+        <div className="bg-[#C8006A] text-center px-8 py-14">
+          <h1 className="font-['Pacifico'] text-[clamp(40px,8vw,64px)] text-white leading-tight">
+            About Us
+          </h1>
+          <p className="mt-3 text-[11px] tracking-[4px] uppercase font-bold text-[#F4A7C3]">
+            Language Â· Culture Â· Confidence
+          </p>
+        </div>
+
+        {/* â”€â”€ OUR STORY + PHILOSOPHY â”€â”€ */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-8 md:px-16 py-16">
+
+          {/* Story */}
+          <div>
+            <h2 className="font-['Pacifico'] text-[32px] text-[#C8006A] mb-6 leading-tight">
+              Our Story
+            </h2>
+            <div className="space-y-5 text-[15px] leading-[1.85] text-[#333]">
+              <p>
+                The Atelier is a boutique language and career development studio dedicated to teaching through culture, conversation, and intellectual curiosity.
+              </p>
+              <p>
+                Founded with the belief that language learning should be inspiring and meaningful, The Atelier combines traditional education with global culture, history, and contemporary ideas.
+              </p>
+              <p>
+                Our mission is to help students and professionals develop linguistic fluency, cultural awareness, and the ability to communicate thoughtfully in any international environment.
+              </p>
+            </div>
+          </div>
+
+          {/* Philosophy */}
+          <div className="bg-white border-[3px] border-[#C8006A] rounded-[20px] p-8">
+            <h2 className="font-['Pacifico'] text-[26px] text-[#C8006A] mb-4 leading-tight">
+              Our Philosophy
+            </h2>
+            <p className="text-[11px] tracking-[2px] uppercase font-bold text-gray-400 mb-5">
+              We believe language learning should be
+            </p>
+            <div className="space-y-3 mb-6">
+              {['Curious', 'Cultural', 'Intellectual', 'Practical', 'Human'].map((item) => (
+                <div key={item} className="flex items-center gap-3 text-[15px] font-bold text-[#C8006A]">
+                  <span className="w-2 h-2 rounded-full bg-[#D9F060] flex-shrink-0 inline-block"></span>
+                  {item}
+                </div>
+              ))}
+            </div>
+            <p className="text-[13px] leading-[1.75] text-gray-500 border-t border-gray-100 pt-4">
+              Instead of memorizing grammar rules, students learn through conversations and real ideas. Language becomes a bridge to understanding the world.
+            </p>
+          </div>
+        </div>
+
+        {/* â”€â”€ DIVIDER â”€â”€ */}
+        <div className="border-t-[3px] border-[#C8006A] mx-8 md:mx-16"></div>
+
+        {/* â”€â”€ MEET THE FOUNDER â”€â”€ */}
+        <div className="px-8 md:px-16 py-16">
+          <p className="text-center text-[11px] tracking-[3px] uppercase font-bold text-[#C8006A] mb-2">
+            The Atelier
+          </p>
+          <h2 className="font-['Pacifico'] text-[40px] text-black text-center mb-14 leading-tight">
+            Meet the Founder
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+
+            {/* Photo */}
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="w-[280px] h-[360px] rounded-[20px] overflow-hidden border-[6px] border-[#C8006A]">
+                  <div
+                    className="w-full h-full bg-[#F4A7C3] bg-cover bg-center"
+                    style={{ backgroundImage: "url('/pages/Mayan.png')" }}
+                  />
+                </div>
+                <div
+                  className="absolute -bottom-3 -right-3 bg-[#D9F060] text-black text-[11px] font-black uppercase tracking-[2px] px-4 py-2 rounded-full"
+                  style={{ transform: 'rotate(3deg)' }}
+                >
+                  Founder â˜…
+                </div>
+              </div>
+            </div>
+
+            {/* Bio */}
+            <div>
+              <h3 className="font-['Pacifico'] text-[36px] text-black mb-1 leading-tight">Mayan</h3>
+              <p className="text-[11px] tracking-[3px] uppercase font-bold text-[#C8006A] border-b-2 border-[#D9F060] pb-4 mb-7 inline-block">
+                Founder &amp; Lead Educator Â· The Atelier
+              </p>
+
+              <div className="space-y-4 text-[15px] leading-[1.85] text-[#444]">
+                <p>
+                  Mayan founded The Atelier with a clear vision: to create a language learning experience that goes beyond grammar â€” one that builds confidence, cultural intelligence, and a genuine global voice.
+                </p>
+                <p>
+                  With years of experience teaching English to professionals, academics, and global learners, she developed a methodology where language becomes the vehicle for exploring ideas, history, and the world.
+                </p>
+                <p>
+                  Every program at The Atelier reflects her belief that the best learning happens when students feel challenged, curious, and deeply understood.
+                </p>
+              </div>
+
+              <Link
+                href="/pages/mayan"
+                className="inline-block mt-8 bg-[#C8006A] text-white text-[12px] font-black tracking-[2px] uppercase px-7 py-4 rounded-full no-underline hover:bg-black transition-colors"
+              >
+                View Full Profile â†’
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* â”€â”€ CTA BAND â”€â”€ */}
+        <div className="bg-[#C8006A] px-8 py-16 text-center">
+          <h3 className="font-['Pacifico'] text-[36px] text-white mb-3 leading-tight">
+            Ready to join The Atelier?
+          </h3>
+          <p className="text-[13px] font-bold uppercase tracking-[1px] text-[#F4A7C3] max-w-md mx-auto mb-9 leading-[1.75]">
+            Book a free session and discover how language learning can transform your professional life.
+          </p>
+          <Link
+            href="/pages/book-session"
+            className="inline-block bg-[#D9F060] text-black text-[13px] font-black tracking-[2px] uppercase px-10 py-4 rounded-full no-underline hover:scale-105 transition-transform"
+          >
+            Book a Free Session
+          </Link>
+        </div>
+
+        {/* â”€â”€ BOTTOM NAV â”€â”€ */}
+        <div className="flex justify-between px-8 md:px-16 py-7 border-t-2 border-gray-200 bg-white">
+          <Link href="/" className="text-[13px] font-bold text-[#C8006A] underline">
+            â† Back to Home
+          </Link>
+          <Link href="/pages/book-session" className="text-[13px] font-bold text-[#C8006A] underline">
+            Book a Session â†’
+          </Link>
+        </div>
+      </div>
+    </main>
+  )
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function BookSessionPage() {
+    return (
+        <main className="page active bg-white" style={{ backgroundColor: 'white', minHeight: '100vh', display: 'flex' }}>
+            {/* Top Bar inherited or simulated */}
+            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0 }}></div>
+            
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+                <div className="retro-browser" style={{ maxWidth: '600px', border: '4px solid #C8006A', borderRadius: '12px', overflow: 'hidden', backgroundColor: 'white', marginBottom: '30px' }}>
+                    <div className="retro-header" style={{ borderBottom: '4px solid #C8006A', padding: '6px 12px', display: 'flex', gap: '8px' }}>
+                        <span style={{ color: '#C8006A' }}>x</span> <span>â–¡</span> <span>â€”</span>
+                    </div>
+                    <img src="/pages/book a free session.png" alt="Book Session" style={{ width: '100%', display: 'block' }} />
+                </div>
+                <h2 className="subpage-title cursive title-pink" style={{ fontFamily: "'Pacifico', cursive", fontSize: '4rem', color: '#C8006A', marginBottom: '30px' }}>
+                    Book a Free Session
+                </h2>
+                
+                <div className="session-card" style={{ backgroundColor: '#F4A7C3', border: '4px solid #D9F060', padding: '50px', borderRadius: '24px', width: '100%', maxWidth: '600px', position: 'relative' }}>
+                    <h3 style={{ color: '#C8006A', fontSize: '2rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 900, marginBottom: '20px' }}>
+                        Register to get a free demo!
+                    </h3>
+                    
+                    <div style={{ textAlign: 'left', marginBottom: '20px' }}>
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ fontStyle: 'italic', color: '#666', fontSize: '0.9rem', marginBottom: '5px', display: 'block' }}>Full Name</label>
+                            <input type="text" className="form-input" style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: '2px solid #ddd' }} placeholder="Your Name" />
+                        </div>
+                        
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ fontStyle: 'italic', color: '#666', fontSize: '0.9rem', marginBottom: '5px', display: 'block' }}>Email Address</label>
+                            <input type="email" className="form-input" style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: '2px solid #ddd' }} placeholder="name@example.com" />
+                        </div>
+
+                        <div className="form-group" style={{ marginBottom: '20px' }}>
+                            <label style={{ fontStyle: 'italic', color: '#666', fontSize: '0.9rem', marginBottom: '5px', display: 'block' }}>Message</label>
+                            <textarea className="form-input" rows={3} style={{ width: '100%', padding: '12px 20px', borderRadius: '20px', border: '2px solid #ddd' }} placeholder="How can we help you?"></textarea>
+                        </div>
+
+                        <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                            <button className="btn-pill" style={{ flex: 1, padding: '14px 30px', borderRadius: '50px', backgroundColor: '#D9F060', color: '#111', fontWeight: 'bold', border: 'none', cursor: 'pointer', textTransform: 'uppercase' }}>
+                                Submit / Book Now
+                            </button>
+                            <span className="hand-cursor" style={{ position: 'absolute', right: '-40px', top: '50%', transform: 'translateY(-50%)', fontSize: '2.5rem', pointerEvents: 'none' }}>ğŸ‘ˆ</span>
+                        </div>
+                    </div>
+                    
+                    <p style={{ fontSize: '0.8rem', color: '#888', fontStyle: 'italic', marginTop: '15px' }}>
+                        We respect your privacy. Unsubscribe at any time.
+                    </p>
+                </div>
+                
+                <div className="bottom-nav" style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', marginTop: '40px' }}>
+                    <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>
+                        Go back to the main page
+                    </Link>
+                </div>
+            </div>
+        </main>
+    );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function CareersPage() {
+    return (
+        <main className="page active bg-[#FAF7F0]" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
+                <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
+                
+                <h2 className="subpage-title cursive text-[#111] text-[5rem] mb-12 font-['Pacifico'] leading-tight">Careers at the Atelier</h2>
+
+                <div className="responsive-grid grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div className="left-col staggered-left">
+                         <div className="card bg-white p-12 rounded-[40px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border-4 border-[#C8006A] relative">
+                            <div className="absolute -top-6 -left-6 bg-[#D9F060] text-black font-black px-6 py-2 rounded-full shadow-lg transform -rotate-3 uppercase tracking-tighter">
+                                Now Hiring
+                            </div>
+                            <h3 className="font-['Pacifico'] text-4xl mb-6 text-[#C8006A]">Join our team</h3>
+                            <p className="text-xl font-bold italic mb-8 leading-relaxed text-black uppercase tracking-tight">
+                                WE ARE ALWAYS LOOKING TO CONNECT WITH TALENTED PROFESSIONALS. IF YOU SHARE OUR PASSION FOR LANGUAGE EDUCATION, CULTURAL INTELLIGENCE, AND EMPOWERING GLOBAL VOICES, WE WOULD LOVE TO HEAR FROM YOU.
+                            </p>
+                            <p className="text-lg opacity-70 font-bold mb-8 italic">
+                                We value diversity, creativity, and a results-driven mindset in an international environment.
+                            </p>
+                            <div className="border-t-2 border-black/5 pt-8">
+                                <span className="block text-xs font-black opacity-40 uppercase tracking-widest mb-4">Application Email</span>
+                                <a href="mailto:theenglishateliere@gmail.com" className="text-[#C8006A] font-black text-2xl underline hover:text-black transition-colors">
+                                    theenglishateliere@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="right-col staggered-card text-center space-y-10">
+                        <div className="bg-[#A8DDD8] p-10 rounded-[30px] shadow-xl transform rotate-2">
+                            <p className="text-black font-black text-2xl uppercase tracking-tighter">
+                                "Shaping the future of global communication, one voice at a time."
+                            </p>
+                        </div>
+                        <Link href="/pages/contact" className="btn-pill bg-[#C8006A] text-white py-6 px-12 rounded-full font-black no-underline inline-block shadow-[6px_6px_0px_#000] hover:translate-x-1 hover:translate-y-1 transition-all uppercase text-2xl pulse">
+                            Contact HR Dept
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="bottom-nav flex justify-between mt-32">
+                    <Link href="/" className="text-[#C8006A] font-black italic underline text-xl hover:text-black transition-colors uppercase">â† return</Link>
+                    <Link href="/" className="text-[#C8006A] font-black italic underline text-xl hover:text-black transition-colors uppercase">Go back to the main page</Link>
+                </div>
+            </div>
+        </main>
+    );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function CohortsPage() {
+    return (
+        <main className="page active bg-[#FAF7F0]" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
+            {/* Top Bar Wrapper */}
+            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'fixed', top: 0, left: 0, zIndex: 100 }}></div>
+            
+            <div className="subpage-container pt-16" style={{ padding: '80px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+                
+                {/* Breadcrumb */}
+                <div className="breadcrumb mb-4 text-[#111] italic font-bold text-lg">
+                    Programs / Services
+                </div>
+
+                <div className="flex flex-col lg:flex-row gap-12 items-start mt-4">
+                    {/* Left Column: Title */}
+                    <div className="lg:w-1/3">
+                        <h2 className="subpage-title cursive text-[#111] text-7xl font-['Pacifico'] leading-[1.1]">
+                            Cohorts &<br/>Special<br/>Programs
+                        </h2>
+                    </div>
+
+                    {/* Right Column: Content Card */}
+                    <div className="lg:w-2/3 relative pt-10">
+                        <div className="card bg-[#F4A7C3] p-12 rounded-[40px] shadow-2xl relative z-10">
+                            <p className="text-2xl font-bold italic mb-10 leading-relaxed text-black max-w-[500px]">
+                                Small group learning experiences designed around unique themes.
+                            </p>
+                            
+                            <div className="space-y-4">
+                                <p className="text-xl font-bold italic mb-4">Examples include:</p>
+                                <ul className="space-y-4 list-none">
+                                    <li className="flex items-center gap-4 text-2xl font-bold italic">
+                                        <span className="text-black text-3xl">â˜…</span> Cultural language immersion
+                                    </li>
+                                    <li className="flex items-center gap-4 text-2xl font-bold italic">
+                                        <span className="text-black text-3xl">â˜…</span> Women in history and leadership
+                                    </li>
+                                    <li className="flex items-center gap-4 text-2xl font-bold italic">
+                                        <span className="text-black text-3xl">â˜…</span> Global communication programs
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Speech Bubble CTA */}
+                        <div className="absolute -bottom-24 -right-10 z-20 flex flex-col items-center">
+                            <Link href="/pages/book-session" className="no-underline group">
+                                <div className="bg-[#A8DDD8] p-8 rounded-[40px] rounded-bl-0 shadow-xl border-4 border-white transform hover:scale-105 transition-all relative">
+                                    <p className="text-black font-black uppercase text-center text-sm leading-tight">
+                                        JOIN THE ATELIER!<br/>
+                                        <span className="underline italic">BOOK A FREE SESSION HERE</span>
+                                    </p>
+                                    {/* Bubble Tail */}
+                                    <div className="absolute -bottom-6 left-0 w-0 h-0 border-l-[30px] border-l-transparent border-t-[30px] border-t-[#A8DDD8]"></div>
+                                </div>
+                            </Link>
+                            {/* Animated Hand Cursor */}
+                            <div className="hand-cursor text-7xl mt-2 animate-bounce self-end">ğŸ‘ˆ</div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom Navigation */}
+                <div className="bottom-nav flex justify-between mt-40">
+                    <Link href="/" className="text-[#D4006A] font-black italic underline text-xl hover:text-black transition-colors uppercase">
+                        â† return
+                    </Link>
+                    <Link href="/" className="text-[#D4006A] font-black italic underline text-xl hover:text-black transition-colors uppercase">
+                        Go back to the main page
+                    </Link>
+                </div>
+            </div>
+            
+            <style jsx>{`
+                .cursive { font-family: 'Pacifico', cursive; }
+                .hand-cursor { animation: bounce 1s infinite alternate; }
+                @keyframes bounce {
+                    from { transform: translateY(0); }
+                    to { transform: translateY(-10px); }
+                }
+            `}</style>
+        </main>
+    );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function ContactPage() {
+    return (
+        <main className="page active bg-[#C8006A]" style={{ backgroundColor: '#C8006A', minHeight: '100vh' }}>
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+                <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
+                
+                <h2 className="subpage-title cursive text-white text-[5rem] mb-12 font-['Pacifico'] leading-tight">Reach out</h2>
+
+                <div className="responsive-grid grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+                    {/* Left: Contact Info */}
+                    <div className="contact-info text-white space-y-12">
+                        <div>
+                            <div className="font-black opacity-60 uppercase text-xs tracking-[0.2em] mb-4">PHONE & WHATSAPP</div>
+                            <p className="text-3xl font-black italic mb-2 tracking-tight">Worldwide:<br/><a href="tel:+525521131676" className="underline hover:text-[#D9F060] transition-colors">(+52) 552 113 1676</a></p>
+                            <p className="text-3xl font-black italic tracking-tight mt-6">Mexico Center:<br/><a href="tel:+525617592347" className="underline hover:text-[#D9F060] transition-colors">(+52) 561 759 2347</a></p>
+                        </div>
+                        
+                        <div>
+                            <div className="font-black opacity-60 uppercase text-xs tracking-[0.2em] mb-4">OFFICIAL EMAIL</div>
+                            <p><a href="mailto:theenglishateliere@gmail.com" className="text-3xl underline italic font-black hover:text-[#D9F060] transition-colors tracking-tight">theenglishateliere@gmail.com</a></p>
+                        </div>
+
+                        <div className="pt-8">
+                             <div className="font-black opacity-60 uppercase text-xs tracking-[0.2em] mb-4">LOCATION</div>
+                             <p className="text-xl font-bold italic">MEXICO CITY / GLOBAL ONLINE</p>
+                        </div>
+                    </div>
+
+                    {/* Middle: Mockup Phone - Instagram Style */}
+                    <div className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative bg-[#FAF7F0] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
+                        <div className="pt-16 text-black text-center px-6">
+                            <div className="w-28 h-28 bg-[#C8006A] rounded-full mx-auto mb-6 overflow-hidden border-4 border-white shadow-xl">
+                                <img src="/pages/gaby.png" alt="Profile" className="w-full h-full object-cover" />
+                            </div>
+                            <div className="font-black text-2xl mb-1 tracking-tighter">theatelier.lab</div>
+                            <div className="text-[10px] opacity-40 font-black mb-6 uppercase tracking-widest">Boutique Language Studio</div>
+                            
+                            <div className="flex justify-around mb-8 text-[11px] font-black border-y border-black/5 py-4">
+                                <div className="leading-tight"><strong>124</strong><br/><span className="opacity-40">posts</span></div>
+                                <div className="leading-tight"><strong>24K</strong><br/><span className="opacity-40">followers</span></div>
+                                <div className="leading-tight"><strong>0</strong><br/><span className="opacity-40">following</span></div>
+                            </div>
+                            
+                            <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" 
+                               className="block bg-[#C8006A] text-white py-4 rounded-2xl font-black text-xs shadow-lg hover:bg-black transition-all mb-8 no-underline tracking-widest">
+                                FOLLOW US
+                            </a>
+                            
+                            <div className="grid grid-cols-3 gap-1">
+                                {Array.from({ length: 9 }).map((_, i) => (
+                                    <div key={i} className="aspect-square bg-[#F4A7C3] opacity-30 hover:opacity-100 transition-opacity cursor-pointer"></div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right: Action Buttons */}
+                    <div className="flex flex-col gap-10 items-start h-full justify-center">
+                        <Link href="/pages/book-session" className="btn-pill bg-[#D9F060] text-black font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl pulse uppercase tracking-tighter">
+                            Book Free Session
+                        </Link>
+                        <Link href="/pages/careers" className="btn-pill bg-white text-[#C8006A] font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter">
+                            Work With Us
+                        </Link>
+                        <Link href="/pages/cohorts" className="btn-pill bg-[#F4A7C3] text-black font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter">
+                            Cohorts 2026
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="bottom-nav flex justify-between mt-20">
+                    <Link href="/" style={{ color: 'white', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>â† return</Link>
+                    <Link href="/" style={{ color: 'white', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
+                </div>
+            </div>
+        </main>
+    );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function CorporateQuotationPage() {
+    return (
+        <main className="page active bg-cream" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
+            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }}></div>
+            
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
+                <div className="breadcrumb" style={{ fontStyle: 'italic', color: '#555', marginBottom: '10px', marginTop: '20px' }}>
+                    Programs / Services
+                </div>
+                
+                <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '40px' }}>
+                    <div className="left-col staggered-left">
+                        <h2 className="subpage-title cursive title-black" style={{ fontFamily: "'Pacifico', cursive", fontSize: '4rem', color: '#111111', lineHeight: '1.1', marginTop: '0' }}>
+                            Corporate<br/>Language<br/>Training
+                        </h2>
+                    </div>
+                    
+                    <div className="right-col staggered-card">
+                        <div className="form-card" style={{ border: '4px solid #A8DDD8', padding: '40px', borderRadius: '24px', backgroundColor: 'white' }}>
+                            <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: '1.8rem', marginBottom: '20px', color: '#111' }}>
+                                ARE YOU PART OF AN ORGANIZATION?
+                            </h3>
+                            <div className="form-group" style={{ marginBottom: '20px' }}>
+                                <label style={{ display: 'block', opacity: 0.7, marginBottom: '5px', fontStyle: 'italic', fontSize: '0.9rem' }}>Your name</label>
+                                <input type="text" className="form-input" style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: '2px solid #ddd' }} />
+                            </div>
+                            <div className="form-group" style={{ marginBottom: '20px' }}>
+                                <label style={{ display: 'block', opacity: 0.7, marginBottom: '5px', fontStyle: 'italic', fontSize: '0.9rem' }}>Company name</label>
+                                <input type="text" className="form-input" style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: '2px solid #ddd' }} />
+                            </div>
+                            <div className="form-group" style={{ marginBottom: '20px' }}>
+                                <label style={{ display: 'block', opacity: 0.7, marginBottom: '5px', fontStyle: 'italic', fontSize: '0.9rem' }}>How many people are in your party?</label>
+                                <input type="number" className="form-input" style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: '2px solid #ddd' }} />
+                            </div>
+                            <div className="form-group" style={{ marginBottom: '20px' }}>
+                                <label style={{ display: 'block', opacity: 0.7, marginBottom: '5px', fontStyle: 'italic', fontSize: '0.9rem' }}>Additional Notes</label>
+                                <textarea className="form-input" rows={3} style={{ width: '100%', padding: '12px 20px', borderRadius: '20px', border: '2px solid #ddd' }}></textarea>
+                            </div>
+                            <button className="btn-pill" style={{ width: '100%', padding: '14px', borderRadius: '50px', backgroundColor: '#C8006A', color: 'white', fontWeight: 'bold', border: 'none', cursor: 'pointer', textTransform: 'uppercase', transition: 'transform 0.3s' }}>
+                                Get a quotation
+                            </button>
+                            <p style={{ marginTop: '15px', fontSize: '0.8rem', color: '#888', textAlign: 'center', fontStyle: 'italic' }}>
+                                By submitting this form, you agree to our terms and conditions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="bottom-nav" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: 'auto', paddingTop: '30px' }}>
+                    <Link href="/pages/corporate-training" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>â† return</Link>
+                    <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
+                </div>
+            </div>
+        </main>
+    );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function CorporateTrainingPage() {
+    return (
+        <main className="page active bg-[#A8DDD8]" style={{ backgroundColor: '#A8DDD8', minHeight: '100vh' }}>
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+                <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
+                
+                <h2 className="subpage-title cursive text-black text-7xl mb-12 font-['Pacifico']">Corporate<br/>Language Training</h2>
+
+                <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
+                    {/* Left: Detailed Program Card */}
+                    <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-black">
+                        <h3 className="font-['Pacifico'] text-3xl mb-6 text-[#C8006A]">International Collaboration</h3>
+                        <p className="text-xl font-bold mb-8 leading-relaxed text-black italic uppercase">
+                            WE DESIGN CUSTOMIZED LANGUAGE TRAINING PROGRAMS FOR INTERNATIONAL COMPANIES SEEKING TO STRENGTHEN COMMUNICATION ACROSS GLOBAL TEAMS.
+                        </p>
+                        <div className="space-y-4 font-black">
+                            <div className="flex items-center gap-3"><span className="text-[#C8006A]">â˜…</span> PROFESSIONAL ENGLISH</div>
+                            <div className="flex items-center gap-3"><span className="text-[#C8006A]">â˜…</span> INDUSTRY-SPECIFIC VOCABULARY</div>
+                            <div className="flex items-center gap-3"><span className="text-[#C8006A]">â˜…</span> PRESENTATION TRAINING</div>
+                            <div className="flex items-center gap-3"><span className="text-[#C8006A]">â˜…</span> LEADERSHIP COMMUNICATION</div>
+                        </div>
+                    </div>
+
+                    {/* Right: Interaction Area */}
+                    <div className="flex flex-col items-center justify-center space-y-10">
+                        <div className="bg-[#FAF7F0] p-12 rounded-[30px] border-4 border-black shadow-2xl">
+                             <h3 className="text-2xl font-black mb-6 text-center">Ready to scale?</h3>
+                             <Link href="/pages/corporate-quotation" className="btn-pill bg-[#C8006A] text-white py-5 px-10 rounded-full font-black no-underline block text-center shadow-lg hover:bg-black transition-all uppercase">
+                                Get a Customized Quotation
+                             </Link>
+                        </div>
+
+                        <Link href="/pages/book-session" className="btn-pill bg-[#D9F060] text-black p-10 rounded-full font-black text-center text-2xl shadow-[8px_8px_0px_#000] hover:scale-105 transition-transform no-underline pulse uppercase">
+                           Book Demo Session
+                        </Link>
+                        <div className="hand-cursor text-6xl animate-bounce">ğŸ‘†</div>
+                    </div>
+                </div>
+
+                <div className="bottom-nav flex justify-between mt-20">
+                    <Link href="/" style={{ color: 'black', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>â† return</Link>
+                    <Link href="/" style={{ color: 'black', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
+                </div>
+            </div>
+        </main>
+    );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function InsightsPage() {
+  return (
+    <main style={{ backgroundColor: '#FAF7F0', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif" }}>
+      <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }} />
+
+      <div style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
+          <div>
+            <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 1.05, marginBottom: '40px', color: '#111' }}>
+              Insights/ Journal
+            </h1>
+            <p style={{ fontSize: '1.1rem', marginBottom: '24px', color: '#333', fontWeight: 500 }}>Atelier Insights</p>
+            <a href="https://medium.com/@theenglishatelier" target="_blank" rel="noopener noreferrer"
+              style={{ display: 'inline-block', background: '#F472B6', color: '#111', borderRadius: '50px', padding: '14px 0', width: '340px', maxWidth: '100%', textAlign: 'center', textDecoration: 'underline', fontWeight: 700, fontSize: '1rem', marginBottom: '40px', letterSpacing: '0.05em', boxShadow: '0 4px 0 #C8006A' }}>
+              ACCESS HERE
+            </a>
+            <div style={{ fontSize: '1rem', lineHeight: 1.85, color: '#333' }}>
+              <p style={{ marginBottom: '16px' }}>A journal exploring language, culture, and global ideas.</p>
+              <p style={{ marginBottom: '8px' }}>Articles cover topics such as:</p>
+              <p style={{ margin: '4px 0' }}>â˜… Language learning strategies</p>
+              <p style={{ margin: '4px 0' }}>â˜… Global communication</p>
+              <p style={{ margin: '4px 0' }}>â˜… Cultural intelligence</p>
+              <p style={{ margin: '4px 0' }}>â˜… Women in history and leadership</p>
+              <p style={{ margin: '4px 0 24px' }}>â˜… Professional development</p>
+              <p>The Atelier Journal reflects our belief that language learning is inseparable from cultural curiosity.</p>
+            </div>
+          </div>
+
+          <div>
+            <div style={{ border: '5px solid #C8006A', borderRadius: '4px', overflow: 'hidden', maxWidth: '560px' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ background: '#C8006A', padding: '7px 12px', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ background: '#fff', color: '#C8006A', borderRadius: '3px', padding: '1px 7px', fontWeight: 900, fontSize: '0.8rem', lineHeight: 1.4 }}>âœ•</span>
+                </div>
+                <div style={{ flex: 1, background: '#A8DDD8', height: '34px' }} />
+              </div>
+              <div style={{ background: 'linear-gradient(135deg, #6b5a4e 0%, #8b7355 40%, #a89070 70%, #6b5a4e 100%)', minHeight: '440px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ textAlign: 'center', color: 'rgba(250,247,240,0.6)', padding: '40px' }}>
+                  <div style={{ fontSize: '4rem', marginBottom: '16px' }}>ğŸ“š</div>
+                  <p style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.4rem', marginBottom: '8px' }}>Atelier Journal</p>
+                  <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', opacity: 0.7 }}>Language Â· Culture Â· Ideas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ padding: '20px 8% 40px' }}>
+        <Link href="/" style={{ color: '#C8006A', fontFamily: "'Pacifico', cursive", fontSize: '1.1rem', textDecoration: 'underline', fontWeight: 600 }}>
+          Go back to the main page
+        </Link>
+      </div>
+    </main>
+  );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function MayanPage() {
+    return (
+        <main className="page active" style={{ backgroundColor: '#C8006A', minHeight: '100vh', padding: '12px 0', position: 'relative' }}>
+            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
+            
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
+                <h2 className="subpage-title cursive" style={{ fontFamily: "'Pacifico', cursive", fontSize: '5rem', color: '#111111', marginBottom: '40px', lineHeight: '1' }}>Mayan</h2>
+                
+                <div className="responsive-grid grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-16 items-start">
+                    {/* Left: High-Fidelity Retro Browser with Mayan Photo */}
+                    <div className="left-col sticky top-10">
+                         <div className="retro-browser shadow-[20px_20px_0px_#000] border-8 border-white rounded-[40px] overflow-hidden bg-white transform -rotate-1">
+                            <div className="retro-header bg-white border-b-8 border-[#C8006A] p-4 flex gap-3">
+                                <div className="w-4 h-4 rounded-full border-2 border-[#C8006A]"></div>
+                                <div className="w-4 h-4 rounded-full border-2 border-[#C8006A]"></div>
+                                <div className="w-4 h-4 rounded-full border-2 border-[#C8006A]"></div>
+                            </div>
+                            <div className="aspect-[4/5] bg-cover bg-center" style={{ backgroundImage: "url('/pages/Mayan.png')" }}></div>
+                            <div className="bg-white p-4 font-black text-center text-[#C8006A] border-t-8 border-[#C8006A] uppercase tracking-widest text-sm italic">
+                                &lt; Founder _ The Atelier &gt;
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right: Text Block */}
+                    <div className="right-col space-y-10">
+                        <div className="category-tag inline-block bg-[#D9F060] text-black px-6 py-2 rounded-full font-black text-sm uppercase tracking-tighter transform rotate-2">
+                            BEHIND THE ATELIER
+                        </div>
+                        
+                        <div className="text-pink-page-body space-y-8" style={{ color: 'white', textTransform: 'uppercase', fontSize: '1rem', fontWeight: '900', lineHeight: '1.8', letterSpacing: '0.05em' }}>
+                            <p>
+                                MAYAN IS THE FOUNDER OF THE ATELIER, A LANGUAGE & CAREER DEVELOPMENT STUDIO CREATED FOR CURIOUS, AMBITIOUS PEOPLE WHO WANT TO DEVELOP THEIR VOICE IN AN INTERNATIONAL WORLD.
+                            </p>
+                            <p>
+                                SHE STUDIED FOOD ENGINEERING AT THE NATIONAL AUTONOMOUS UNIVERSITY OF MEXICO (UNAM) AND BEGAN HER PROFESSIONAL CAREER AS A NEXT GEN TRAINEE AT PEPSICO, WHERE SHE WORKED IN GLOBAL CORPORATE ROLES INCLUDING ENVIRONMENTAL, HEALTH & SAFETY AND LATER PROCUREMENT GOVERNANCE AT THE COMPANY'S MEXICO HEADQUARTERS. HER WORK FOCUSED ON CORPORATE STANDARDS, COMPLIANCE STRUCTURES, AND GLOBAL OPERATIONAL ALIGNMENTâ€”EXPERIENCES THAT SHAPED HER ANALYTICAL THINKING AND STRATEGIC COMMUNICATION SKILLS.
+                            </p>
+                            <p>
+                                ALONGSIDE HER CORPORATE CAREER, MAYAN HAS ALWAYS BEEN PASSIONATE ABOUT LANGUAGES AND CULTURAL EXCHANGE. SHE SPEAKS SPANISH AND ENGLISH FLUENTLY, STUDIED ITALIAN, PORTUGUESE AND GERMAN DURING UNIVERSITY, AND IS ALSO EXPLORING FRENCH AND TURKISH AS PART OF HER BROADER INTEREST IN INTERNATIONAL CULTURES AND COMMUNICATION.
+                            </p>
+                            <p>
+                                HER TEACHING APPROACH IS INSPIRED BY THE BERLITZ METHOD, FOCUSING ON CONVERSATION, CRITICAL THINKING, AND REAL-WORLD TOPICS RATHER THAN TRADITIONAL MEMORIZATION. THROUGH THE ATELIER, SHE DESIGNS PERSONALIZED PROGRAMS WHERE LANGUAGE BECOMES A TOOL TO DISCUSS IDEAS, CAREERS, CULTURE, TRAVEL, AND GLOBAL PERSPECTIVES.
+                            </p>
+                            <p>
+                                AFTER LEAVING THE CORPORATE WORLD TO LIVE ABROAD AND PURSUE A MORE INTERNATIONAL LIFESTYLE, SHE FOUNDED THE ATELIER WITH A SIMPLE IDEA: LANGUAGE LEARNING SHOULD FEEL INTELLECTUALLY STIMULATING, CULTURALLY RICH, AND DEEPLY HUMAN.
+                            </p>
+                            <p>
+                                TODAY, THE ATELIER BRINGS TOGETHER WOMEN FROM DIFFERENT COUNTRIES AND PROFESSIONAL PATHS WHO SHARE CURIOSITY ABOUT THE WORLD AND THE AMBITION TO GROW BEYOND BORDERS.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bottom-nav flex justify-between mt-32 border-t-4 border-black/10 pt-10">
+                    <Link href="/pages/about-us" className="text-black font-black italic underline text-xl hover:text-white transition-colors uppercase tracking-tighter">â† return</Link>
+                    <Link href="/" className="text-black font-black italic underline text-xl hover:text-white transition-colors uppercase tracking-tighter">Go back to the main page</Link>
+                </div>
+            </div>
+        </main>
+    );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function PrivateCoachingPage() {
+    return (
+        <main className="page active bg-[#FAF7F0]" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+                <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
+                
+                <h2 className="subpage-title cursive text-[#111] text-7xl mb-12 font-['Pacifico']">Private<br/>Coaching</h2>
+
+                <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
+                    {/* Left: Detailed Program Card */}
+                    <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-[#C8006A]">
+                        <h3 className="font-['Pacifico'] text-3xl mb-6 text-[#C8006A]">Personalized Mentoring</h3>
+                        <p className="text-lg font-bold mb-8 leading-relaxed text-black italic uppercase">
+                            IDEAL FOR PROFESSIONALS, STUDENTS AND INDIVIDUALS SEEKING FOCUSED GUIDANCE AND RAPID PROGRESS.
+                        </p>
+                        <ul className="list-none space-y-4 font-black text-black">
+                            <li>â˜… PROFESSIONAL ENGLISH</li>
+                            <li>â˜… CONVERSATION & FLUENCY</li>
+                            <li>â˜… PRONUNCIATION</li>
+                            <li>â˜… INTERVIEW PREPARATION</li>
+                            <li>â˜… LEADERSHIP COMMUNICATION SKILLS</li>
+                        </ul>
+                    </div>
+
+                    {/* Right: Interaction Area */}
+                    <div className="flex flex-col items-center justify-center space-y-10">
+                        <div className="retro-browser w-full max-w-[500px] border-4 border-black rounded-xl overflow-hidden shadow-2xl">
+                             <div className="bg-black p-2 flex gap-2">
+                                <div className="w-3 h-3 rounded-full bg-[#C8006A]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#D9F060]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#A8DDD8]"></div>
+                             </div>
+                             <div className="p-8 bg-[#A8DDD8] text-black font-bold italic text-center">
+                                "The Atelier is where language becomes an art form."
+                             </div>
+                        </div>
+
+                        <Link href="/pages/book-session" className="speech-bubble bg-[#C8006A] text-white p-10 rounded-[28px] rounded-br-0 font-black text-center text-xl shadow-[6px_6px_0px_#000] hover:scale-105 transition-transform no-underline pulse">
+                            JOIN THE ATELIER!<br/>
+                            BOOK A FREE SESSION HERE
+                        </Link>
+                        <div className="hand-cursor text-5xl animate-bounce">ğŸ‘†</div>
+                    </div>
+                </div>
+
+                <div className="bottom-nav flex justify-between mt-20">
+                    <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>â† return</Link>
+                    <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
+                </div>
+            </div>
+        </main>
+    );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function ScholarshipsPage() {
+    return (
+        <main className="page active bg-[#C8006A]" style={{ backgroundColor: '#C8006A', minHeight: '100vh' }}>
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+                <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
+                
+                <h2 className="subpage-title cursive text-white text-7xl mb-12 font-['Pacifico']">Scholarships / Grants</h2>
+
+                <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', alignItems: 'center' }}>
+                    {/* Left: Info Card */}
+                    <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-black">
+                        <h3 className="font-['Pacifico'] text-4xl mb-6 text-[#C8006A]">The Atelier Grants</h3>
+                        <p className="text-xl font-bold italic mb-8 leading-relaxed text-black uppercase">
+                            WE BELIEVE IN SUPPORTING HIGHLY MOTIVATED STUDENTS. OUR GRANTS COVER A SIGNIFICANT PERCENTAGE OF PROGRAMS FOR LANGUAGE LEARNERS WHO DEMONSTRATE COMMITMENT AND PASSION.
+                        </p>
+                        <Link href="/pages/book-session" className="btn-pill bg-[#C8006A] text-white py-4 px-10 rounded-full font-black no-underline inline-block shadow-lg hover:scale-105 transition-transform uppercase">
+                            Apply for a grant now
+                        </Link>
+                    </div>
+
+                    {/* Right: CSS Star */}
+                    <div className="star-container flex justify-center items-center relative py-20">
+                         <div className="star-shape w-[400px] h-[400px] bg-[#F4A7C3] flex flex-col justify-center items-center text-center p-5 shadow-2xl animate-[spin_20s_linear_infinite]" 
+                                 style={{ clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" }}>
+                                <div className="font-['Pacifico'] text-[#C8006A] text-3xl">Atelier</div>
+                                <div className="font-black text-5xl text-black">Grants</div>
+                                <div className="text-[12px] italic text-black uppercase max-w-[150px] font-black mt-2">Scholarships with purpose</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bottom-nav flex justify-between mt-20">
+                    <Link href="/" style={{ color: 'white', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>â† return</Link>
+                    <Link href="/" style={{ color: 'white', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
+                </div>
+            </div>
+        </main>
+    );
+}
+import React from 'react';
+import Link from 'next/link';
+import { firstGeneration, secondGeneration } from '@/data/spotlights';
+
+export default function SpotlightsPage() {
+  return (
+    <main style={{ backgroundColor: '#FAF7F0', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif" }}>
+      <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }} />
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 'calc(100vh - 12px)' }}>
+        <div style={{ padding: '60px 8%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 1.05, marginBottom: '40px', color: '#111' }}>
+            Atelier<br />Spotlights
+          </h1>
+
+          <div style={{ background: '#F4A7C3', borderRadius: '24px', padding: '36px 40px', maxWidth: '500px', fontSize: '1rem', lineHeight: 1.8, color: '#111' }}>
+            <p style={{ marginBottom: '16px' }}>Atelier Spotlights is a signature "by invitation only" program of The Atelier.</p>
+            <p style={{ marginBottom: '16px' }}>Each edition focuses on remarkable women from history, science, fashion, politics, literature, and global culture.</p>
+            <p style={{ marginBottom: '16px' }}>Through their stories, the Spotlights explore language while reflecting on leadership, ambition, and creativity.</p>
+            <p style={{ marginBottom: '16px' }}>These conversations create a learning experience that is both intellectually enriching and deeply inspiring.</p>
+            <p>To see more of the Atelier Spotlights graduates,{' '}
+              <Link href="/pages/spotlights/first-generation" style={{ fontWeight: 800, textDecoration: 'underline', color: '#C8006A' }}>click here.</Link>
+            </p>
+          </div>
+
+          <div style={{ marginTop: '12px', fontSize: '2.5rem', marginLeft: '60%' }}>ğŸ‘ˆ</div>
+
+          <div style={{ display: 'flex', gap: '16px', marginTop: '40px', flexWrap: 'wrap' }}>
+            <Link href="/pages/spotlights/first-generation" style={{ background: '#C8006A', color: '#fff', borderRadius: '50px', padding: '12px 28px', textDecoration: 'none', fontWeight: 700, fontSize: '0.85rem', boxShadow: '0 4px 0 #8a0047' }}>
+              First Generation ({firstGeneration.length})
+            </Link>
+            <Link href="/pages/spotlights/second-generation" style={{ background: '#D9F060', color: '#111', borderRadius: '50px', padding: '12px 28px', textDecoration: 'none', fontWeight: 700, fontSize: '0.85rem', boxShadow: '0 4px 0 #a8b800' }}>
+              Second Generation ({secondGeneration.length})
+            </Link>
+          </div>
+        </div>
+
+        <div style={{ background: 'linear-gradient(160deg, #f8d7e8 0%, #e8a0c0 25%, #c8006a 60%, #8a0047 100%)', position: 'relative', overflow: 'hidden', minHeight: '100%' }}>
+          <div style={{ position: 'absolute', top: '40%', left: '20%', fontFamily: "'Pacifico', cursive", fontSize: '5rem', color: 'rgba(255,255,255,0.12)', lineHeight: 1, userSelect: 'none' }}>
+            The<br />Atelier
+          </div>
+          <div style={{ position: 'absolute', bottom: '10%', right: '8%', width: '180px', height: '180px', background: 'rgba(249,196,220,0.3)', clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }} />
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '24px 8%', borderTop: '1px solid #eee' }}>
+        <Link href="/" style={{ color: '#C8006A', fontWeight: 700, fontStyle: 'italic', textDecoration: 'underline', fontSize: '0.95rem' }}>â† return</Link>
+        <Link href="/" style={{ color: '#C8006A', fontFamily: 'serif', fontSize: '1.2rem', fontWeight: 700, textDecoration: 'underline' }}>Go back to the main page</Link>
+      </div>
+    </main>
+  );
+}
+import React from 'react';
+import Link from 'next/link';
+import { firstGeneration } from '@/data/spotlights';
+
+export default function FirstGenerationPage() {
+  const featured = firstGeneration.find(s => s.slug === 'sofia') ?? firstGeneration[0];
+  const rest = firstGeneration.filter(s => s.slug !== featured.slug);
+
+  return (
+    <main style={{ backgroundColor: '#FAF7F0', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif" }}>
+      <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }} />
+
+      <div style={{ padding: '52px 8%', maxWidth: '1400px', margin: '0 auto' }}>
+        <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: 'clamp(2rem, 4.5vw, 3.8rem)', color: '#111', marginBottom: '52px', lineHeight: 1.1 }}>
+          Atelier Spotlights â€” First Generation
+        </h1>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 420px) 1fr', gap: '52px', alignItems: 'start', marginBottom: '80px' }}>
+          <div style={{ border: '4px solid #F4A7C3', borderRadius: '14px', overflow: 'hidden', backgroundColor: '#1a0010' }}>
+            <div style={{ background: '#F4A7C3', padding: '7px 14px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <span style={{ color: '#C8006A', fontWeight: 900, fontSize: '0.8rem' }}>X</span>
+              <span style={{ color: '#888', fontSize: '0.8rem' }}>â–¡</span>
+              <span style={{ color: '#888', fontSize: '0.8rem' }}>â€”</span>
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={featured.imagePath} alt={featured.name} style={{ width: '100%', display: 'block', aspectRatio: '4/3', objectFit: 'cover', borderBottom: '4px solid #F4A7C3' }} />
+            <div style={{ background: '#F4A7C3', padding: '8px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.9rem', color: '#555' }}>&lt;</span>
+              <div style={{ background: '#F9C4DC', borderRadius: '20px', padding: '4px 0', width: '55%' }} />
+              <span style={{ fontSize: '0.9rem', color: '#555' }}>&gt;</span>
+            </div>
+          </div>
+
+          <div>
+            <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2.2rem', color: '#111', marginBottom: '6px' }}>{featured.name}</h2>
+            <p style={{ fontStyle: 'italic', fontWeight: 700, fontSize: '0.82rem', letterSpacing: '0.06em', marginBottom: '20px', color: '#333', textTransform: 'uppercase' }}>{featured.title}</p>
+            {featured.bio.map((p, i) => (
+              <p key={i} style={{ fontSize: '0.74rem', lineHeight: 1.8, marginBottom: '12px', textAlign: 'justify', color: '#111', textTransform: 'uppercase', fontWeight: 600 }}>{p}</p>
+            ))}
+            {featured.bulletPoints?.map((b, i) => (
+              <p key={i} style={{ fontSize: '0.74rem', lineHeight: 1.8, color: '#C8006A', textTransform: 'uppercase', fontWeight: 700 }}>{b}</p>
+            ))}
+            {featured.closingQuote && (
+              <p style={{ fontSize: '0.74rem', lineHeight: 1.8, marginTop: '14px', textAlign: 'justify', color: '#333', textTransform: 'uppercase', fontWeight: 600, fontStyle: 'italic' }}>{featured.closingQuote}</p>
+            )}
+            <Link href={`/pages/spotlight/${featured.slug}`} style={{ display: 'inline-block', marginTop: '24px', color: '#C8006A', fontWeight: 700, textDecoration: 'underline', fontSize: '0.9rem' }}>
+              View full profile â†’
+            </Link>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '40px' }}>
+          <div style={{ height: '3px', flex: 1, background: '#C8006A' }} />
+          <span style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.6rem', color: '#C8006A', whiteSpace: 'nowrap' }}>More First Generation</span>
+          <div style={{ height: '3px', flex: 1, background: '#C8006A' }} />
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '24px' }}>
+          {rest.map(profile => (
+            <Link key={profile.slug} href={`/pages/spotlight/${profile.slug}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+              <div style={{ border: '4px solid #F4A7C3', borderRadius: '14px', overflow: 'hidden', backgroundColor: '#1a0010', cursor: 'pointer' }}>
+                <div style={{ background: '#F4A7C3', padding: '6px 12px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <span style={{ color: '#C8006A', fontWeight: 900, fontSize: '0.75rem' }}>X</span>
+                  <span style={{ color: '#888', fontSize: '0.75rem' }}>â–¡</span>
+                  <span style={{ color: '#888', fontSize: '0.75rem' }}>â€”</span>
+                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={profile.imagePath} alt={profile.name} style={{ width: '100%', display: 'block', aspectRatio: '4/3', objectFit: 'cover', borderBottom: '3px solid #F4A7C3' }} />
+                <div style={{ background: '#F4A7C3', padding: '7px 12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontSize: '0.8rem', color: '#555' }}>&lt;</span>
+                  <span style={{ fontFamily: "'Pacifico', cursive", fontSize: '0.75rem', color: '#C8006A' }}>{profile.name}</span>
+                  <span style={{ fontSize: '0.8rem', color: '#555' }}>&gt;</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '40px 8%' }}>
+        <Link href="/pages/spotlights" style={{ color: '#C8006A', fontWeight: 700, fontStyle: 'italic', textDecoration: 'underline', fontSize: '0.95rem' }}>â† return</Link>
+        <Link href="/" style={{ color: '#C8006A', fontFamily: 'serif', fontSize: '1.2rem', fontWeight: 700, textDecoration: 'underline' }}>Go back to the main page</Link>
+      </div>
+    </main>
+  );
+}
+import React from 'react';
+import Link from 'next/link';
+import { secondGeneration } from '@/data/spotlights';
+
+export default function SecondGenerationPage() {
+  return (
+    <main style={{ backgroundColor: '#FAF7F0', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif" }}>
+      <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }} />
+
+      <div style={{ padding: '52px 8%', maxWidth: '1400px', margin: '0 auto' }}>
+        <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: 'clamp(1.8rem, 4vw, 3.5rem)', color: '#111', marginBottom: '52px', lineHeight: 1.1 }}>
+          Atelier Spotlights â€” Second Generation
+        </h1>
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start' }}>
+          <div style={{ border: '4px solid #F4A7C3', borderRadius: '14px', overflow: 'hidden', backgroundColor: '#fff' }}>
+            <div style={{ background: '#F4A7C3', padding: '7px 14px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <span style={{ color: '#C8006A', fontWeight: 900, fontSize: '0.8rem' }}>X</span>
+              <span style={{ color: '#888', fontSize: '0.8rem' }}>â–¡</span>
+              <span style={{ color: '#888', fontSize: '0.8rem' }}>â€”</span>
+              <span style={{ marginLeft: '8px', fontSize: '0.6rem', color: '#999', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                new_spring_collection_Atelier Spotlights_by The Atelier
+              </span>
+            </div>
+            <div style={{ background: '#D9F060', minHeight: '340px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px', gap: '16px' }}>
+              <div style={{ fontSize: '4rem', lineHeight: 1 }}>âœ¦</div>
+              <p style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', color: '#C8006A', textAlign: 'center', lineHeight: 1.2 }}>
+                Atelier<br />Spotlights<br />2nd Gen
+              </p>
+              <p style={{ fontSize: '0.7rem', color: '#666', fontWeight: 600, letterSpacing: '0.1em' }}>spring 2026</p>
+            </div>
+            <div style={{ background: '#F4A7C3', padding: '8px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.9rem', color: '#555' }}>&lt;</span>
+              <div style={{ background: '#F9C4DC', borderRadius: '20px', padding: '4px 0', width: '55%' }} />
+              <span style={{ fontSize: '0.9rem', color: '#555' }}>&gt;</span>
+            </div>
+          </div>
+
+          <div>
+            <p style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', color: '#C8006A', marginBottom: '20px' }}>Meet the members</p>
+
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '28px', flexWrap: 'wrap' }}>
+              {secondGeneration.map(profile => (
+                <Link key={profile.slug} href={`/pages/spotlight/${profile.slug}`} style={{ display: 'block', textDecoration: 'none' }}>
+                  <div style={{ border: '3px solid #F4A7C3', borderRadius: '8px', overflow: 'hidden', width: '72px', height: '72px' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={profile.imagePath} alt={profile.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <p style={{ fontWeight: 800, fontSize: '0.8rem', letterSpacing: '0.05em', marginBottom: '16px', textTransform: 'uppercase' }}>ATELIER SPOTLIGHTS - TÃœRKIYE EDITION</p>
+
+            {[
+              'ATELIER SPOTLIGHTS IS A SERIES THAT HIGHLIGHTS WOMEN FROM THE ATELIER COMMUNITY WHO ARE DEVELOPING THEIR VOICE THROUGH LANGUAGE, CULTURE, AND GLOBAL CURIOSITY. EACH MEMBER BRINGS A UNIQUE BACKGROUNDâ€”FROM SCIENCE AND HEALTHCARE TO INTERNATIONAL RELATIONS AND CREATIVE INDUSTRIESâ€”REFLECTING THE DIVERSE AND INTERNATIONAL SPIRIT OF THE ATELIER.',
+              'WHAT MAKES THIS GROUP PARTICULARLY SPECIAL IS THAT MANY OF THESE WOMEN FIRST CONNECTED WHILE LIVING IN TÃœRKIYEâ€”A PLACE WHERE CULTURES, LANGUAGES, AND PERSPECTIVES CONSTANTLY MEET.',
+              'FROM THAT SHARED ENVIRONMENT, A SMALL BUT REMARKABLE INTERNATIONAL COMMUNITY BEGAN TO FORM. PEOPLE FROM DIFFERENT COUNTRIES, PROFESSIONS, AND ACADEMIC PATHS FOUND THEMSELVES LEARNING TOGETHER, EXCHANGING IDEAS, AND SUPPORTING EACH OTHER\'S GROWTH THROUGH LANGUAGE.',
+              'TODAY, THE ATELIER SPOTLIGHTS COMMUNITY CONTINUES TO GROW BEYOND BORDERS. SOME MEMBERS ARE PURSUING INTERNATIONAL CAREERS, OTHERS ARE STUDYING ABROAD, WHILE OTHERS ARE BUILDING THEIR PROFESSIONAL PATHS IN FIELDS SUCH AS GOVERNANCE & SUSTAINABILITY, HEALTHCARE, SCIENCE, AND INTERNATIONAL AFFAIRS.',
+              'WHAT CONNECTS THEM ALL IS A SHARED MINDSET: CURIOSITY ABOUT THE WORLD, RESPECT FOR DIFFERENT CULTURES, AND THE BELIEF THAT LANGUAGE CAN OPEN DOORS TO NEW OPPORTUNITIES, FRIENDSHIPS, AND IDEAS.',
+            ].map((text, i) => (
+              <p key={i} style={{ fontSize: '0.72rem', lineHeight: 1.8, color: '#333', textAlign: 'justify', marginBottom: '10px', fontWeight: 600, textTransform: 'uppercase' }}>{text}</p>
+            ))}
+
+            <Link href="/pages/spotlights/first-generation" style={{ display: 'inline-block', marginTop: '24px', background: '#C8006A', color: '#fff', borderRadius: '50px', padding: '13px 36px', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 700, boxShadow: '0 4px 0 #8a0047' }}>
+              Discover more here
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'space-between', padding: '40px 8%' }}>
+        <Link href="/pages/spotlights" style={{ color: '#C8006A', fontWeight: 700, fontStyle: 'italic', textDecoration: 'underline', fontSize: '0.95rem' }}>â† return</Link>
+        <Link href="/" style={{ color: '#C8006A', fontFamily: 'serif', fontSize: '1.2rem', fontWeight: 700, textDecoration: 'underline' }}>Go back to the main page</Link>
+      </div>
+    </main>
+  );
+}
+"use client";
+
+import React from 'react';
+import Link from 'next/link';
+
+export default function SubscriptionsPage() {
+    return (
+        <main className="page active bg-[#C8006A]" style={{ backgroundColor: '#C8006A', minHeight: '100vh' }}>
+            <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+                <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
+                
+                <h2 className="subpage-title cursive text-white text-7xl mb-12 font-['Pacifico']">Atelier<br/>Subscriptions</h2>
+
+                <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
+                    {/* Left: Program Overview */}
+                    <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-black">
+                        <h3 className="font-['Pacifico'] text-3xl mb-6 text-[#C8006A]">Structured Learning</h3>
+                        <p className="text-xl font-bold mb-8 leading-relaxed text-black italic uppercase">
+                            OUR SUBSCRIPTION PROGRAMS PROVIDE STRUCTURED, ONGOING LANGUAGE LEARNING THROUGH CATEGORICAL THEMES.
+                        </p>
+                        <div className="space-y-4">
+                            <div className="p-4 bg-[#F4A7C3] rounded-xl font-black text-black">â˜… HISTORY & GLOBAL CULTURE</div>
+                            <div className="p-4 bg-[#D9F060] rounded-xl font-black text-black">â˜… PROFESSIONAL COMMUNICATION</div>
+                            <div className="p-4 bg-[#A8DDD8] rounded-xl font-black text-black">â˜… LEADERSHIP & TRAVEL</div>
+                        </div>
+                    </div>
+
+                    {/* Right: Interaction Area */}
+                    <div className="flex flex-col items-center justify-center space-y-10">
+                        <div className="bg-white p-10 rounded-[30px] border-4 border-black shadow-2xl rotate-2">
+                            <p className="text-black font-bold text-lg italic text-center max-w-[400px]">
+                                "Students participate in weekly sessions designed to strengthen vocabulary, conversation skills and cultural understanding."
+                            </p>
+                        </div>
+
+                        <Link href="/pages/book-session" className="btn-pill bg-[#D9F060] text-black p-10 rounded-full font-black text-center text-2xl shadow-[8px_8px_0px_#000] hover:scale-105 transition-transform no-underline pulse uppercase">
+                           Enroll in Subscription
+                        </Link>
+                        <div className="hand-cursor text-6xl animate-bounce">ğŸ‘†</div>
+                    </div>
+                </div>
+
+                <div className="bottom-nav flex justify-between mt-20">
+                    <Link href="/" style={{ color: 'white', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>â† return</Link>
+                    <Link href="/" style={{ color: 'white', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
+                </div>
+            </div>
+        </main>
+    );
+}

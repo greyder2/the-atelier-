@@ -1,7 +1,11 @@
-"use client";
-
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Insights & Journal',
+  description: 'The Atelier Journal — articles on language learning, global communication, cultural intelligence, women in history, and professional development.',
+};
 
 export default function InsightsPage() {
   return (
@@ -11,7 +15,7 @@ export default function InsightsPage() {
       <div style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
           <div>
-            <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 1.05, marginBottom: '40px', color: '#111' }}>
+            <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', lineHeight: 1.05, marginBottom: '40px', color: '#111' }}>
               Insights/ Journal
             </h1>
             <p style={{ fontSize: '1.1rem', marginBottom: '24px', color: '#333', fontWeight: 500 }}>Atelier Insights</p>
@@ -42,7 +46,7 @@ export default function InsightsPage() {
               <div style={{ background: 'linear-gradient(135deg, #6b5a4e 0%, #8b7355 40%, #a89070 70%, #6b5a4e 100%)', minHeight: '440px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ textAlign: 'center', color: 'rgba(250,247,240,0.6)', padding: '40px' }}>
                   <div style={{ fontSize: '4rem', marginBottom: '16px' }}>📚</div>
-                  <p style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.4rem', marginBottom: '8px' }}>Atelier Journal</p>
+                  <p style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '1.4rem', marginBottom: '8px' }}>Atelier Journal</p>
                   <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', opacity: 0.7 }}>Language · Culture · Ideas</p>
                 </div>
               </div>
@@ -52,7 +56,7 @@ export default function InsightsPage() {
       </div>
 
       <div style={{ padding: '20px 8% 40px' }}>
-        <Link href="/" style={{ color: '#C8006A', fontFamily: "'Pacifico', cursive", fontSize: '1.1rem', textDecoration: 'underline', fontWeight: 600 }}>
+        <Link href="/" style={{ color: '#C8006A', fontFamily: "var(--font-cormorant), serif", fontSize: '1.1rem', textDecoration: 'underline', fontWeight: 600 }}>
           Go back to the main page
         </Link>
       </div>

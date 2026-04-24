@@ -2,10 +2,11 @@ import React from 'react';
 import { client } from '../../sanity/lib/client';
 import InteractiveClient from './InteractiveClient';
 import FloatingEmailPopup from '../components/FloatingEmailPopup';
+import ScrollReveal from '../components/ScrollReveal';
 import Link from 'next/link';
-import { firstGeneration, secondGeneration } from '@/data/spotlights';
+import { firstGeneration, secondGeneration, spotlights } from '@/data/spotlights';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 interface Spotlight {
     name: string;
@@ -19,7 +20,7 @@ const slugToImageFile: Record<string, string> = {
 }
 function getImagePath(slug: string): string {
   const file = slugToImageFile[slug] ?? slug
-  return `/pages/${file}.png`
+  return `/pages/${file}.webp`
 }
 
 export default async function Home() {
@@ -51,7 +52,7 @@ export default async function Home() {
                 
                 {/* 2. HERO / INDEX */}
                 <section id="hero" className="h-screen w-full flex flex-col justify-center items-center relative overflow-hidden pt-3 border-t-[12px] border-[#C8006A]" 
-                         style={{ backgroundImage: "url('/pages/atelier background.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                         style={{ backgroundImage: "url('/pages/atelier background.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
                     <div className="absolute inset-0 bg-black/20 z-0"></div>
                     <h1 className="hero-title text-white font-['Sarina'] text-[clamp(80px,12vw,160px)] leading-[1.1] text-center z-10" style={{ textShadow: "4px 4px 6px #C8006A" }}>
                         <div className="line1">The</div>
@@ -67,6 +68,8 @@ export default async function Home() {
                             <Link href="/pages/about-us" className="hero-link text-white">About Us</Link>
                             <span className="hero-nav-sep">·</span>
                             <a href="#programs" className="hero-link text-white">Programs</a>
+                            <span className="hero-nav-sep">·</span>
+                            <Link href="/pages/career-coaching" className="hero-link text-white">Career Coaching</Link>
                             <span className="hero-nav-sep">·</span>
                             <a href="#corporate" className="hero-link text-white">Corporate</a>
                             <span className="hero-nav-sep">·</span>
@@ -95,6 +98,7 @@ export default async function Home() {
                 </section>
 
                 {/* 3. HOME / ABOUT */}
+                <ScrollReveal>
                 <section id="about" className="section-padding bg-white grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="about-left staggered-left">
                         <h2 className="title text-[4rem] leading-none mb-4 font-['Cormorant_Garamond']">The Atelier</h2>
@@ -113,9 +117,23 @@ export default async function Home() {
                         <p className="text-xs text-gray-400 italic">No commitment — first session is complimentary.</p>
                     </div>
                 </section>
+                </ScrollReveal>
+
+                {/* COMPANY LOGOS BAR — Social Proof */}
+                <ScrollReveal delay={150}>
+                    <section className="py-12 px-[7%] bg-[#FAF7F0] border-t border-[#e8e4dc]">
+                        <p className="text-center text-[10px] tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
+                    <div className="flex flex-wrap justify-center items-center gap-x-14 gap-y-6 max-w-4xl mx-auto">
+                        {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'GLOBAL TEAMS'].map(company => (
+                            <span key={company} className="text-[13px] font-black tracking-[3px] text-gray-300 uppercase hover:text-[#C8006A] transition-colors">{company}</span>
+                        ))}
+                        </div>
+                    </section>
+                </ScrollReveal>
 
                 {/* 4. PROGRAMS / SERVICES */}
-                <section id="programs" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10">
+                <ScrollReveal>
+                    <section id="programs" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="left-col staggered-left">
                         <h2 className="section-title text-6xl mb-10 font-['Cormorant_Garamond']">Programs / Services</h2>
                         <div className="flex flex-col">
@@ -147,6 +165,13 @@ export default async function Home() {
                                     <span className="program-tagline">Curated group learning experiences</span>
                                 </div>
                             </Link>
+                            <Link href="/pages/career-coaching" className="program-item no-underline text-black group">
+                                <div className="program-icon">◆</div>
+                                <div>
+                                    <span className="program-title group-hover:text-[#C8006A]">Career Coaching</span>
+                                    <span className="program-tagline">CV building, interview prep & professional branding</span>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                     <div className="right-col staggered-card">
@@ -156,8 +181,10 @@ export default async function Home() {
                         </div>
                     </div>
                 </section>
+                </ScrollReveal>
 
                 {/* 6. SOCIAL PROOF (GRID) */}
+                <ScrollReveal>
                 <section id="social-proof" className="section-padding bg-[#C8006A] text-white text-center">
                     <h2 className="section-title text-black text-6xl mb-4 font-['Cormorant_Garamond']">Social Proof</h2>
                     <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON), AFRICA (LIBYA), AND EUROPE (POLAND).</p>
@@ -237,6 +264,7 @@ export default async function Home() {
                         </Link>
                     </div>
                 </section>
+                </ScrollReveal>
 
                 {/* 7. SCHOLARSHIPS / GRANTS */}
                 <section id="scholarships" className="section-padding bg-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10 items-center border-t-4 border-black">
@@ -283,7 +311,7 @@ export default async function Home() {
                                  <span className="text-[#C8006A] font-bold">x</span> <span className="text-[#C8006A] font-bold">□</span> <span className="text-[#C8006A] font-bold">—</span>
                              </div>
                              <div className="bg-cover bg-center w-full h-[450px] relative flex items-center justify-center" 
-                                  style={{ backgroundImage: "url('/pages/atelier spotlights.png')", backgroundColor: '#1a0010' }}>
+                                  style={{ backgroundImage: "url('/pages/atelier spotlights.webp')", backgroundColor: '#1a0010' }}>
                                   <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8d7e8 0%, #e8a0c0 25%, #C8006A 60%, #8a0047 100%)' }}></div>
                                   <div className="relative z-10 text-center px-8">
                                       <div className="font-black text-white text-xs uppercase tracking-widest mb-4 opacity-70">BY INVITATION ONLY</div>
@@ -323,7 +351,7 @@ export default async function Home() {
                     {/* PHONE MOCKUP - INSTAGRAM */}
                     <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
-                        <div className="absolute inset-0 bg-cover bg-top" style={{ backgroundImage: "url('/pages/instagram-screenshot.png')" }} />
+                        <div className="absolute inset-0 bg-cover bg-top" style={{ backgroundImage: "url('/pages/instagram-screenshot.webp')" }} />
                         <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-center font-black text-xs py-3 tracking-widest uppercase z-10">
                             ★ follow @theatelier.lab
                         </div>
@@ -353,6 +381,7 @@ export default async function Home() {
                         <Link href="/pages/private-coaching">Private Coaching</Link>
                         <Link href="/pages/subscriptions">Atelier Subscriptions</Link>
                         <Link href="/pages/corporate-training">Corporate Training</Link>
+                        <Link href="/pages/career-coaching">Career Coaching</Link>
                         <Link href="/pages/cohorts">Cohorts & Special Programs</Link>
                         <Link href="/pages/scholarships">Scholarships / Grants</Link>
                     </div>
