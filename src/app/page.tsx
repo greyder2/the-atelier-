@@ -85,6 +85,13 @@ export default async function Home() {
                             <a href="#careers" className="hero-link text-white">Work with us</a>
                         </div>
                     </nav>
+                    {/* Scroll indicator */}
+                    <div className="scroll-indicator">
+                        <span>Scroll</span>
+                        <div className="scroll-mouse">
+                            <div className="scroll-wheel"></div>
+                        </div>
+                    </div>
                 </section>
 
                 {/* 3. HOME / ABOUT */}
@@ -98,23 +105,48 @@ export default async function Home() {
                             <li className="font-bold text-lg"><span className="text-[#C8006A] mr-2">★</span> <i>CONFIDENCE & COMMUNICATION</i> — SPEAK WITH CLARITY, ELEGANCE AND PRESENCE.</li>
                         </ul>
                     </div>
-                    <div className="about-right flex flex-col items-end justify-start staggered-card">
-                        <Link href="/pages/book-session" className="speech-bubble bg-[#D9F060] rounded-[24px] rounded-br-0 p-8 font-bold text-center text-xl max-w-[300px] text-black mb-4 shadow-[4px_4px_0px_#C8006A] hover:scale-105 transition-transform no-underline">
-                            JOIN THE ATELIER! <br/>BOOK A FREE SESSION HERE
+                    <div className="about-right flex flex-col items-center justify-center staggered-card gap-6">
+                        <p className="text-sm uppercase tracking-widest text-[#C8006A] font-bold italic">Ready to begin?</p>
+                        <Link href="/pages/book-session" className="speech-bubble no-underline">
+                            Book a Free Session
                         </Link>
-                        <span className="animated-arrow">←</span>
+                        <p className="text-xs text-gray-400 italic">No commitment — first session is complimentary.</p>
                     </div>
                 </section>
 
                 {/* 4. PROGRAMS / SERVICES */}
                 <section id="programs" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="left-col staggered-left">
-                        <h2 className="section-title text-6xl mb-8 font-['Cormorant_Garamond']">Programs / Services</h2>
-                        <div className="flex flex-col space-y-4 text-3xl font-bold">
-                            <Link href="/pages/private-coaching" className="underline hover:text-[#C8006A] transition-colors">Private Coaching</Link>
-                            <Link href="/pages/subscriptions" className="underline hover:text-[#C8006A] transition-colors">Atelier Subscriptions</Link>
-                            <Link href="/pages/corporate-training" className="underline hover:text-[#C8006A] transition-colors">Corporate Language Training</Link>
-                            <Link href="/pages/cohorts" className="underline hover:text-[#C8006A] transition-colors">Cohorts & Special Programs</Link>
+                        <h2 className="section-title text-6xl mb-10 font-['Cormorant_Garamond']">Programs / Services</h2>
+                        <div className="flex flex-col">
+                            <Link href="/pages/private-coaching" className="program-item no-underline text-black group">
+                                <div className="program-icon">✦</div>
+                                <div>
+                                    <span className="program-title group-hover:text-[#C8006A]">Private Coaching</span>
+                                    <span className="program-tagline">One-on-one sessions tailored to your goals</span>
+                                </div>
+                            </Link>
+                            <Link href="/pages/subscriptions" className="program-item no-underline text-black group">
+                                <div className="program-icon">◈</div>
+                                <div>
+                                    <span className="program-title group-hover:text-[#C8006A]">Atelier Subscriptions</span>
+                                    <span className="program-tagline">Ongoing cultural & language membership</span>
+                                </div>
+                            </Link>
+                            <Link href="/pages/corporate-training" className="program-item no-underline text-black group">
+                                <div className="program-icon">⬡</div>
+                                <div>
+                                    <span className="program-title group-hover:text-[#C8006A]">Corporate Language Training</span>
+                                    <span className="program-tagline">English for global teams & executives</span>
+                                </div>
+                            </Link>
+                            <Link href="/pages/cohorts" className="program-item no-underline text-black group">
+                                <div className="program-icon">★</div>
+                                <div>
+                                    <span className="program-title group-hover:text-[#C8006A]">Cohorts & Special Programs</span>
+                                    <span className="program-tagline">Curated group learning experiences</span>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                     <div className="right-col staggered-card">
@@ -131,6 +163,7 @@ export default async function Home() {
                     <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON), AFRICA (LIBYA), AND EUROPE (POLAND).</p>
                     
                     {/* Testimonial quotes — scrollable carousel */}
+                    <div className="carousel-hint max-w-5xl mx-auto">swipe to explore</div>
                     <div className="testimonial-track mb-14 max-w-5xl mx-auto">
                         <div className="testimonial-card">
                             <p className="text-white italic text-base leading-relaxed mb-4">"The classes were not only about learning a language, but about learning that, and so many other things."</p>
@@ -254,7 +287,7 @@ export default async function Home() {
                                   <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8d7e8 0%, #e8a0c0 25%, #C8006A 60%, #8a0047 100%)' }}></div>
                                   <div className="relative z-10 text-center px-8">
                                       <div className="font-black text-white text-xs uppercase tracking-widest mb-4 opacity-70">BY INVITATION ONLY</div>
-                                      <div className="font-black text-white text-4xl leading-tight mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>Atelier<br/>Spotlights</div>
+                                      <div className="font-black text-white text-4xl leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Atelier<br/>Spotlights</div>
                                       <div className="w-16 h-1 bg-white/50 mx-auto mb-6"></div>
                                       <div className="text-white/80 text-sm uppercase tracking-widest font-bold">First & Second Generation</div>
                                   </div>
@@ -329,7 +362,10 @@ export default async function Home() {
                         <Link href="/pages/spotlights">Atelier Spotlights</Link>
                         <Link href="/pages/insights">Insights / Journal</Link>
                         <Link href="/pages/contact">Contact</Link>
-                        <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+                        <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            @theatelier.lab
+                        </a>
                     </div>
                 </div>
                 <div className="footer-bottom">
