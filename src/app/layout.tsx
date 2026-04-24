@@ -43,9 +43,7 @@ export const metadata: Metadata = {
   creator: "The Atelier",
   publisher: "The Atelier",
   metadataBase: new URL(BASE_URL),
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
@@ -94,7 +92,6 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-// JSON-LD structured data
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
@@ -105,9 +102,7 @@ const jsonLd = {
   description:
     "A boutique language and career development studio dedicated to teaching through culture, conversation, and intellectual curiosity.",
   email: "theenglishateliere@gmail.com",
-  sameAs: [
-    "https://www.instagram.com/theatelier.lab/",
-  ],
+  sameAs: ["https://www.instagram.com/theatelier.lab/"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Language & Career Programs",
@@ -160,25 +155,14 @@ export default function RootLayout({
         className={`${dmSans.variable} ${cormorantGaramond.variable} ${sarina.variable} h-full antialiased`}
       >
         <head>
-          {/* JSON-LD Structured Data */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
-          {/* Dark mode: read persisted preference before first paint to avoid flash */}
+          {/* Dark mode: respect saved preference without flash */}
           <script
             dangerouslySetInnerHTML={{
-              __html: `
-(function(){
-  try {
-    var saved = localStorage.getItem('atelier-theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (saved === 'dark' || (!saved && prefersDark)) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  } catch(e){}
-})();
-              `.trim(),
+              __html: `(function(){try{var t=localStorage.getItem('atelier-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`,
             }}
           />
         </head>
