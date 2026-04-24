@@ -62,13 +62,25 @@ export default function ContactPage() {
 
                     {/* Right: Action Buttons */}
                     <div className="flex flex-col gap-10 items-start h-full justify-center">
-                        <Link href="/pages/book-session" className="btn-pill bg-white text-[#9D174D] font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl pulse uppercase tracking-tighter">
+                        <Link 
+                            href="/pages/book-session" 
+                            style={{ backgroundColor: 'white', color: '#9D174D', textDecoration: 'none' }}
+                            className="btn-pill font-black shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl pulse uppercase tracking-tighter"
+                        >
                             Book Free Session
                         </Link>
-                        <Link href="/pages/careers" className="btn-pill bg-white text-[#9D174D] font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter">
+                        <Link 
+                            href="/pages/careers" 
+                            style={{ backgroundColor: 'white', color: '#9D174D', textDecoration: 'none' }}
+                            className="btn-pill font-black shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter"
+                        >
                             Work With Us
                         </Link>
-                        <Link href="/pages/cohorts" className="btn-pill bg-[#FDF2F8] text-black font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter">
+                        <Link 
+                            href="/pages/cohorts" 
+                            style={{ backgroundColor: '#FDF2F8', color: '#9D174D', textDecoration: 'none' }}
+                            className="btn-pill font-black shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter"
+                        >
                             Cohorts 2026
                         </Link>
                     </div>

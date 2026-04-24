@@ -25,7 +25,7 @@ export default function GlobalNav() {
   return (
     <>
       {/* 12px Top Bar - Always fixed at the very top */}
-      <div className="fixed top-0 left-0 w-full h-[12px] bg-[#9D174D] z-[10000]"></div>
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '12px', backgroundColor: '#9D174D', zIndex: 15001 }}></div>
       
       <header 
         style={{
@@ -33,7 +33,7 @@ export default function GlobalNav() {
           top: '12px',
           left: 0,
           right: 0,
-          zIndex: 9900,
+          zIndex: 15000,
           transition: 'all 0.3s ease',
           padding: scrolled ? '15px 0' : '25px 0',
           backgroundImage: "url('/pages/atelier background.webp')", 
@@ -119,44 +119,91 @@ export default function GlobalNav() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden flex flex-col justify-center items-center w-[30px] h-[30px] z-[9902]"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
+          style={{
+            display: scrolled || (typeof window !== 'undefined' && window.innerWidth < 768) ? 'flex' : 'none',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '40px',
+            height: '40px',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            zIndex: 15002,
+            position: 'relative'
+          }}
+          className="md:hidden"
         >
-          <span className={`bg-black h-[2px] w-full rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[6px]' : '-translate-y-1'}`}></span>
-          <span className={`bg-black h-[2px] w-full rounded-full transition-all duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-          <span className={`bg-black h-[2px] w-full rounded-full transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[6px]' : 'translate-y-1'}`}></span>
+          <span style={{ 
+            width: '24px', 
+            height: '2px', 
+            backgroundColor: '#000', 
+            marginBottom: '6px',
+            transition: 'all 0.3s ease',
+            transform: isOpen ? 'rotate(45deg) translate(6px, 6px)' : 'none'
+          }}></span>
+          <span style={{ 
+            width: '24px', 
+            height: '2px', 
+            backgroundColor: '#000', 
+            marginBottom: '6px',
+            transition: 'all 0.3s ease',
+            opacity: isOpen ? 0 : 1
+          }}></span>
+          <span style={{ 
+            width: '24px', 
+            height: '2px', 
+            backgroundColor: '#000', 
+            transition: 'all 0.3s ease',
+            transform: isOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none'
+          }}></span>
         </button>
 
-        {/* Mobile Drawer */}
+        {/* Mobile Overlay Menu */}
         <div 
-          className={`fixed inset-0 bg-[#FAF7F0] z-[9901] flex flex-col justify-center items-center transition-all duration-500 ease-in-out md:hidden ${
-            isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-          }`}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: '#FAF7F0',
+            zIndex: 15001,
+            display: isOpen ? 'flex' : 'none',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '30px',
+            transition: 'opacity 0.3s ease',
+            opacity: isOpen ? 1 : 0
+          }}
         >
-          <nav className="flex flex-col items-center gap-8 font-dm-sans font-bold text-lg tracking-widest uppercase">
-            <Link href="/" className="text-black hover:text-[#9D174D]">Home</Link>
-            <Link href="/#about" className="text-black hover:text-[#9D174D]">About Us</Link>
-            <Link href="/#programs" className="text-black hover:text-[#9D174D]">Programs</Link>
-            <Link href="/pages/spotlights" className="text-black hover:text-[#9D174D]">Spotlights</Link>
-            
-            <div className="w-[40px] h-[2px] bg-[#9D174D] my-4"></div>
-            
-            <Link 
-              href="/pages/book-session" 
-              className="text-[#9D174D] px-8 py-3 border-2 border-[#9D174D] rounded-full"
-            >
-              Book Session
-            </Link>
-            <Link 
-              href="/dashboard" 
-              className="text-white bg-[#111] px-8 py-3 rounded-full"
-            >
-              Client Portal
-            </Link>
-          </nav>
+          <Link href="/" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '24px', textTransform: 'uppercase', letterSpacing: '4px' }}>Home</Link>
+          <Link href="/#about" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '24px', textTransform: 'uppercase', letterSpacing: '4px' }}>About</Link>
+          <Link href="/#programs" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '24px', textTransform: 'uppercase', letterSpacing: '4px' }}>Programs</Link>
+          <Link href="/pages/spotlights" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '24px', textTransform: 'uppercase', letterSpacing: '4px' }}>Spotlights</Link>
+          
+          <div style={{ width: '40px', height: '2px', backgroundColor: '#9D174D', margin: '20px 0' }}></div>
+          
+          <Link 
+            href="/pages/book-session" 
+            onClick={() => setIsOpen(false)}
+            style={{ color: '#9D174D', textDecoration: 'underline', fontWeight: 900, fontSize: '18px', textTransform: 'uppercase' }}
+          >
+            Book Free Session
+          </Link>
+          <Link 
+            href="/dashboard" 
+            onClick={() => setIsOpen(false)}
+            style={{ padding: '12px 32px', backgroundColor: '#111', color: '#fff', borderRadius: '50px', textDecoration: 'none', fontWeight: 900, fontSize: '14px', textTransform: 'uppercase' }}
+          >
+            Client Portal
+          </Link>
         </div>
       </div>
     </header>
-    </>
-  );
+  </>
+);
 }

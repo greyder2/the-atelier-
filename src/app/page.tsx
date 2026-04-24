@@ -318,7 +318,11 @@ export default async function Home() {
                         </div>
                         <div>
                             <div className="font-black text-[#FDF2F8] uppercase text-xs tracking-widest mb-4">CONTACT FORM</div>
-                            <Link href="/pages/contact" className="inline-block bg-white text-[#9D174D] font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest hover:bg-[#FDF2F8] hover:text-[#9D174D] transition-colors no-underline shadow-lg border-2 border-white">
+                            <Link 
+                                href="/pages/contact" 
+                                style={{ backgroundColor: 'white', color: '#9D174D', textDecoration: 'none' }}
+                                className="inline-block font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest transition-colors shadow-lg border-2 border-white"
+                            >
                                 SEND A MESSAGE →
                             </Link>
                         </div>
@@ -347,7 +351,13 @@ export default async function Home() {
                                 Ready to join our international community of ambitious professionals?
                              </p>
                          </div>
-                        <Link href="/pages/contact" className="btn-pill bg-white text-[#9D174D] font-black no-underline shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full text-lg uppercase">SAY HELLO</Link>
+                        <Link 
+                            href="/pages/contact" 
+                            style={{ backgroundColor: 'white', color: '#9D174D', textDecoration: 'none' }}
+                            className="btn-pill font-black shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full text-lg uppercase"
+                        >
+                            SAY HELLO
+                        </Link>
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-black text-white no-underline shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full font-black text-lg uppercase">LINKEDIN</a>
                     </div>
                 </section>
