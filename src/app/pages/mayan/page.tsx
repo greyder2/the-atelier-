@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function MayanPage() {
     return (
-        <main className="page active" style={{ backgroundColor: '#C8006A', minHeight: '100vh', padding: '12px 0', position: 'relative' }}>
-            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
+        <main className="page active" style={{ backgroundColor: '#9D174D', minHeight: '100vh', padding: '12px 0', position: 'relative' }}>
+            <div style={{ height: '12px', backgroundColor: '#9D174D', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
             
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
                 <h2 className="subpage-title cursive" style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '5rem', color: '#111111', marginBottom: '40px', lineHeight: '1' }}>Mayan</h2>
@@ -19,13 +19,13 @@ export default function MayanPage() {
                     {/* Left: High-Fidelity Retro Browser with Mayan Photo */}
                     <div className="left-col sticky top-10">
                          <div className="retro-browser shadow-[20px_20px_0px_#000] border-8 border-white rounded-[40px] overflow-hidden bg-white transform -rotate-1">
-                            <div className="retro-header bg-white border-b-8 border-[#C8006A] p-4 flex gap-3">
-                                <div className="w-4 h-4 rounded-full border-2 border-[#C8006A]"></div>
-                                <div className="w-4 h-4 rounded-full border-2 border-[#C8006A]"></div>
-                                <div className="w-4 h-4 rounded-full border-2 border-[#C8006A]"></div>
+                            <div className="retro-header bg-white border-b-8 border-[#9D174D] p-4 flex gap-3">
+                                <div className="w-4 h-4 rounded-full border-2 border-[#9D174D]"></div>
+                                <div className="w-4 h-4 rounded-full border-2 border-[#9D174D]"></div>
+                                <div className="w-4 h-4 rounded-full border-2 border-[#9D174D]"></div>
                             </div>
                             <div className="aspect-[4/5] bg-cover bg-center" style={{ backgroundImage: "url('/pages/Mayan.webp')" }}></div>
-                            <div className="bg-white p-4 font-black text-center text-[#C8006A] border-t-8 border-[#C8006A] uppercase tracking-widest text-sm italic">
+                            <div className="bg-white p-4 font-black text-center text-[#9D174D] border-t-8 border-[#9D174D] uppercase tracking-widest text-sm italic">
                                 &lt; Founder _ The Atelier &gt;
                             </div>
                         </div>

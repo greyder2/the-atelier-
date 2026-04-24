@@ -9,16 +9,16 @@ export const metadata: Metadata = {
 export default function AboutUs() {
   return (
     <main>
-      <div className="fixed top-0 left-0 w-full h-[12px] bg-[#C8006A] z-[1000]"></div>
+      <div className="fixed top-0 left-0 w-full h-[12px] bg-[#9D174D] z-[1000]"></div>
 
       <div className="bg-[#FAF7F0] pt-3">
 
         {/* ── HERO BAND ── */}
-        <div className="bg-[#C8006A] text-center px-8 py-14">
+        <div className="bg-[#9D174D] text-center px-8 py-14">
           <h1 className="font-[family-name:var(--font-cormorant)] text-[clamp(40px,8vw,64px)] text-white leading-tight">
             About Us
           </h1>
-          <p className="mt-3 text-[11px] tracking-[4px] uppercase font-bold text-[#F4A7C3]">
+          <p className="mt-3 text-[11px] tracking-[4px] uppercase font-bold text-[#FDF2F8]">
             Language · Culture · Confidence
           </p>
         </div>
@@ -28,7 +28,7 @@ export default function AboutUs() {
 
           {/* Story */}
           <div>
-            <h2 className="font-[family-name:var(--font-cormorant)] text-[32px] text-[#C8006A] mb-6 leading-tight">
+            <h2 className="font-[family-name:var(--font-cormorant)] text-[32px] text-[#9D174D] mb-6 leading-tight">
               Our Story
             </h2>
             <div className="space-y-5 text-[15px] leading-[1.85] text-[#333]">
@@ -45,8 +45,8 @@ export default function AboutUs() {
           </div>
 
           {/* Philosophy */}
-          <div className="bg-white border-[3px] border-[#C8006A] rounded-[20px] p-8">
-            <h2 className="font-[family-name:var(--font-cormorant)] text-[26px] text-[#C8006A] mb-4 leading-tight">
+          <div className="bg-white border-[3px] border-[#9D174D] rounded-[20px] p-8">
+            <h2 className="font-[family-name:var(--font-cormorant)] text-[26px] text-[#9D174D] mb-4 leading-tight">
               Our Philosophy
             </h2>
             <p className="text-[11px] tracking-[2px] uppercase font-bold text-gray-400 mb-5">
@@ -54,7 +54,7 @@ export default function AboutUs() {
             </p>
             <div className="space-y-3 mb-6">
               {['Curious', 'Cultural', 'Intellectual', 'Practical', 'Human'].map((item) => (
-                <div key={item} className="flex items-center gap-3 text-[15px] font-bold text-[#C8006A]">
+                <div key={item} className="flex items-center gap-3 text-[15px] font-bold text-[#9D174D]">
                   <span className="w-2 h-2 rounded-full bg-[#D9F060] flex-shrink-0 inline-block"></span>
                   {item}
                 </div>
@@ -67,11 +67,11 @@ export default function AboutUs() {
         </div>
 
         {/* ── DIVIDER ── */}
-        <div className="border-t-[3px] border-[#C8006A] mx-8 md:mx-16"></div>
+        <div className="border-t-[3px] border-[#9D174D] mx-8 md:mx-16"></div>
 
         {/* ── MEET THE FOUNDER ── */}
         <div className="px-8 md:px-16 py-16">
-          <p className="text-center text-[11px] tracking-[3px] uppercase font-bold text-[#C8006A] mb-2">
+          <p className="text-center text-[11px] tracking-[3px] uppercase font-bold text-[#9D174D] mb-2">
             The Atelier
           </p>
           <h2 className="font-[family-name:var(--font-cormorant)] text-[40px] text-black text-center mb-14 leading-tight">
@@ -83,9 +83,9 @@ export default function AboutUs() {
             {/* Photo */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="w-[280px] h-[360px] rounded-[20px] overflow-hidden border-[6px] border-[#C8006A]">
+                <div className="w-[280px] h-[360px] rounded-[20px] overflow-hidden border-[6px] border-[#9D174D]">
                   <div
-                    className="w-full h-full bg-[#F4A7C3] bg-cover bg-center"
+                    className="w-full h-full bg-[#FDF2F8] bg-cover bg-center"
                     style={{ backgroundImage: "url('/pages/Mayan.webp')" }}
                   />
                 </div>
@@ -101,7 +101,7 @@ export default function AboutUs() {
             {/* Bio */}
             <div>
               <h3 className="font-[family-name:var(--font-cormorant)] text-[36px] text-black mb-1 leading-tight">Mayan</h3>
-              <p className="text-[11px] tracking-[3px] uppercase font-bold text-[#C8006A] border-b-2 border-[#D9F060] pb-4 mb-7 inline-block">
+              <p className="text-[11px] tracking-[3px] uppercase font-bold text-[#9D174D] border-b-2 border-[#D9F060] pb-4 mb-7 inline-block">
                 Founder &amp; Lead Educator · The Atelier
               </p>
 
@@ -136,7 +136,7 @@ export default function AboutUs() {
 
               <Link
                 href="/pages/mayan"
-                className="inline-block mt-2 bg-[#C8006A] text-white text-[12px] font-black tracking-[2px] uppercase px-7 py-4 rounded-full no-underline hover:bg-black transition-colors"
+                className="inline-block mt-2 bg-[#9D174D] text-white text-[12px] font-black tracking-[2px] uppercase px-7 py-4 rounded-full no-underline hover:bg-black transition-colors"
               >
                 View Full Profile →
               </Link>
@@ -145,11 +145,11 @@ export default function AboutUs() {
         </div>
 
         {/* ── CTA BAND ── */}
-        <div className="bg-[#C8006A] px-8 py-16 text-center">
+        <div className="bg-[#9D174D] px-8 py-16 text-center">
           <h3 className="font-[family-name:var(--font-cormorant)] text-[36px] text-white mb-3 leading-tight">
             Ready to join The Atelier?
           </h3>
-          <p className="text-[13px] font-bold uppercase tracking-[1px] text-[#F4A7C3] max-w-md mx-auto mb-9 leading-[1.75]">
+          <p className="text-[13px] font-bold uppercase tracking-[1px] text-[#FDF2F8] max-w-md mx-auto mb-9 leading-[1.75]">
             Book a free session and discover how language learning can transform your professional life.
           </p>
           <Link
@@ -162,10 +162,10 @@ export default function AboutUs() {
 
         {/* ── BOTTOM NAV ── */}
         <div className="flex justify-between px-8 md:px-16 py-7 border-t-2 border-gray-200 bg-white">
-          <Link href="/" className="text-[13px] font-bold text-[#C8006A] underline">
+          <Link href="/" className="text-[13px] font-bold text-[#9D174D] underline">
             ← Back to Home
           </Link>
-          <Link href="/pages/book-session" className="text-[13px] font-bold text-[#C8006A] underline">
+          <Link href="/pages/book-session" className="text-[13px] font-bold text-[#9D174D] underline">
             Book a Session →
           </Link>
         </div>

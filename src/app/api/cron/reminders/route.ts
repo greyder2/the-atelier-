@@ -57,15 +57,15 @@ export async function GET(req: Request) {
           to: clientEmail,
           subject: `Reminder: Your session is tomorrow`,
           html: `
-            <div style="font-family:sans-serif;padding:24px;border:4px solid #D4006A;border-radius:16px;background:#FAF7F0;max-width:480px">
-              <h2 style="color:#D4006A;font-size:1.5rem;margin-bottom:8px">Session Reminder 📅</h2>
+            <div style="font-family:sans-serif;padding:24px;border:4px solid #9D174D;border-radius:16px;background:#FAF7F0;max-width:480px">
+              <h2 style="color:#9D174D;font-size:1.5rem;margin-bottom:8px">Session Reminder 📅</h2>
               <p style="color:#333;margin-bottom:16px">Hi ${clientName}, just a friendly reminder that your session is coming up!</p>
               <div style="background:white;border:2px solid #eee;border-radius:12px;padding:16px;margin-bottom:20px">
                 <p style="margin:0 0 8px"><strong>Session:</strong> ${lesson.title}</p>
                 <p style="margin:0 0 8px"><strong>Professor:</strong> ${professorName}</p>
                 <p style="margin:0"><strong>Time:</strong> ${sessionDate}</p>
               </div>
-              <a href="${process.env.NEXT_PUBLIC_BASE_URL}/dashboard" style="display:inline-block;background:#D4006A;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:bold">
+              <a href="${process.env.NEXT_PUBLIC_BASE_URL}/dashboard" style="display:inline-block;background:#9D174D;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:bold">
                 View in Portal →
               </a>
               <p style="color:#888;font-size:0.75rem;margin-top:20px">The Atelier — Where Ambitious Minds Learn to Speak the World</p>

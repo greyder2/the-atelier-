@@ -74,7 +74,7 @@ export default function FloatingEmailPopup() {
           zIndex: 9999,
           width: 'min(90vw, 480px)',
           background: '#FAF7F0',
-          border: '4px solid #C8006A',
+          border: '4px solid #9D174D',
           borderRadius: '24px',
           padding: '40px 36px',
           boxShadow: '12px 12px 0px rgba(200,0,106,0.25)',
@@ -86,14 +86,14 @@ export default function FloatingEmailPopup() {
           style={{
             position: 'absolute', top: 14, right: 18,
             background: 'none', border: 'none', cursor: 'pointer',
-            fontSize: '1.4rem', color: '#C8006A', fontWeight: 900, lineHeight: 1,
+            fontSize: '1.4rem', color: '#9D174D', fontWeight: 900, lineHeight: 1,
           }}
         >x</button>
 
         {submitted ? (
           <div style={{ textAlign: 'center', padding: '16px 0' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: 12 }}>✨</div>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.6rem', color: '#C8006A', fontWeight: 700 }}>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.6rem', color: '#9D174D', fontWeight: 700 }}>
               Welcome to the Atelier!
             </p>
             <p style={{ fontSize: '0.9rem', opacity: 0.7, marginTop: 8, color: '#111' }}>
@@ -102,7 +102,7 @@ export default function FloatingEmailPopup() {
           </div>
         ) : (
           <>
-            <div style={{ fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#C8006A', fontWeight: 900, marginBottom: 10 }}>
+            <div style={{ fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9D174D', fontWeight: 900, marginBottom: 10 }}>
               EXCLUSIVE OFFER
             </div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(1.6rem, 4vw, 2rem)', lineHeight: 1.15, marginBottom: 10, color: '#111' }}>
@@ -124,7 +124,7 @@ export default function FloatingEmailPopup() {
                   fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem',
                   outline: 'none', background: '#fff', color: '#111',
                 }}
-                onFocus={e => (e.target.style.borderColor = '#C8006A')}
+                onFocus={e => (e.target.style.borderColor = '#9D174D')}
                 onBlur={e => (e.target.style.borderColor = '#ddd')}
               />
               <button
@@ -132,7 +132,7 @@ export default function FloatingEmailPopup() {
                 style={{
                   width: '100%', padding: '14px 20px',
                   borderRadius: '50px', border: 'none', cursor: 'pointer',
-                  background: '#C8006A', color: '#fff',
+                  background: '#9D174D', color: '#fff',
                   fontFamily: "'DM Sans', sans-serif", fontWeight: 900,
                   fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase',
                 }}

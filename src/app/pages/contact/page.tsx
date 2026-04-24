@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function ContactPage() {
     return (
-        <main className="page active bg-[#C8006A]" style={{ backgroundColor: '#C8006A', minHeight: '100vh' }}>
+        <main className="page active bg-[#9D174D]" style={{ backgroundColor: '#9D174D', minHeight: '100vh' }}>
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
                 <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
                 
@@ -35,7 +35,7 @@ export default function ContactPage() {
                     <div className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative bg-[#FAF7F0] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
                         <div className="pt-16 text-black text-center px-6">
-                            <div className="w-28 h-28 bg-[#C8006A] rounded-full mx-auto mb-6 overflow-hidden border-4 border-white shadow-xl">
+                            <div className="w-28 h-28 bg-[#9D174D] rounded-full mx-auto mb-6 overflow-hidden border-4 border-white shadow-xl">
                                 <img src="/pages/gaby.webp" alt="Profile" className="w-full h-full object-cover" />
                             </div>
                             <div className="font-black text-2xl mb-1 tracking-tighter">theatelier.lab</div>
@@ -48,13 +48,13 @@ export default function ContactPage() {
                             </div>
                             
                             <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" 
-                               className="block bg-[#C8006A] text-white py-4 rounded-2xl font-black text-xs shadow-lg hover:bg-black transition-all mb-8 no-underline tracking-widest">
+                               className="block bg-[#9D174D] text-white py-4 rounded-2xl font-black text-xs shadow-lg hover:bg-black transition-all mb-8 no-underline tracking-widest">
                                 FOLLOW US
                             </a>
                             
                             <div className="grid grid-cols-3 gap-1">
                                 {Array.from({ length: 9 }).map((_, i) => (
-                                    <div key={i} className="aspect-square bg-[#F4A7C3] opacity-30 hover:opacity-100 transition-opacity cursor-pointer"></div>
+                                    <div key={i} className="aspect-square bg-[#FDF2F8] opacity-30 hover:opacity-100 transition-opacity cursor-pointer"></div>
                                 ))}
                             </div>
                         </div>
@@ -65,10 +65,10 @@ export default function ContactPage() {
                         <Link href="/pages/book-session" className="btn-pill bg-[#D9F060] text-black font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl pulse uppercase tracking-tighter">
                             Book Free Session
                         </Link>
-                        <Link href="/pages/careers" className="btn-pill bg-white text-[#C8006A] font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter">
+                        <Link href="/pages/careers" className="btn-pill bg-white text-[#9D174D] font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter">
                             Work With Us
                         </Link>
-                        <Link href="/pages/cohorts" className="btn-pill bg-[#F4A7C3] text-black font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter">
+                        <Link href="/pages/cohorts" className="btn-pill bg-[#FDF2F8] text-black font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter">
                             Cohorts 2026
                         </Link>
                     </div>

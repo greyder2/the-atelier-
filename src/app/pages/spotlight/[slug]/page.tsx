@@ -61,7 +61,7 @@ export default async function SpotlightProfilePage({
   const levelAfter = sanityData?.levelAfter || hardcoded?.levelAfter;
 
   return (
-    <main style={{ backgroundColor: '#C8006A', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif", paddingBottom: '60px' }}>
+    <main style={{ backgroundColor: '#9D174D', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif", paddingBottom: '60px' }}>
       <div style={{ height: '12px', backgroundColor: '#A0004F', width: '100%' }} />
 
       <div style={{ padding: '52px 8%', maxWidth: '1400px', margin: '0 auto' }}>
@@ -70,15 +70,15 @@ export default async function SpotlightProfilePage({
         </h1>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 420px) 1fr', gap: '52px', alignItems: 'start' }}>
-          <div style={{ border: '4px solid #F4A7C3', borderRadius: '14px', overflow: 'hidden', backgroundColor: '#1a0010', flexShrink: 0 }}>
-            <div style={{ background: '#F4A7C3', padding: '7px 14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ color: '#C8006A', fontWeight: 900, fontSize: '0.8rem' }}>X</span>
+          <div style={{ border: '4px solid #FDF2F8', borderRadius: '14px', overflow: 'hidden', backgroundColor: '#1a0010', flexShrink: 0 }}>
+            <div style={{ background: '#FDF2F8', padding: '7px 14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ color: '#9D174D', fontWeight: 900, fontSize: '0.8rem' }}>X</span>
               <span style={{ color: '#888', fontSize: '0.8rem' }}>□</span>
               <span style={{ color: '#888', fontSize: '0.8rem' }}>—</span>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={imagePath} alt={name} style={{ width: '100%', display: 'block', aspectRatio: '4/3', objectFit: 'cover', borderBottom: '4px solid #F4A7C3' }} />
-            <div style={{ background: '#F4A7C3', padding: '8px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <img src={imagePath} alt={name} style={{ width: '100%', display: 'block', aspectRatio: '4/3', objectFit: 'cover', borderBottom: '4px solid #FDF2F8' }} />
+            <div style={{ background: '#FDF2F8', padding: '8px 14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontSize: '0.9rem', color: '#555' }}>&lt;</span>
               <div style={{ background: '#F9C4DC', borderRadius: '20px', padding: '4px 0', width: '55%' }} />
               <span style={{ fontSize: '0.9rem', color: '#555' }}>&gt;</span>

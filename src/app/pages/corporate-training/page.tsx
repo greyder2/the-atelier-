@@ -18,15 +18,15 @@ export default function CorporateTrainingPage() {
                 <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
                     {/* Left: Detailed Program Card */}
                     <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-black">
-                        <h3 className="font-[family-name:var(--font-cormorant)] text-3xl mb-6 text-[#C8006A]">International Collaboration</h3>
+                        <h3 className="font-[family-name:var(--font-cormorant)] text-3xl mb-6 text-[#9D174D]">International Collaboration</h3>
                         <p className="text-xl font-bold mb-8 leading-relaxed text-black italic uppercase">
                             WE DESIGN CUSTOMIZED LANGUAGE TRAINING PROGRAMS FOR INTERNATIONAL COMPANIES SEEKING TO STRENGTHEN COMMUNICATION ACROSS GLOBAL TEAMS.
                         </p>
                         <div className="space-y-4 font-black">
-                            <div className="flex items-center gap-3"><span className="text-[#C8006A]">★</span> PROFESSIONAL ENGLISH</div>
-                            <div className="flex items-center gap-3"><span className="text-[#C8006A]">★</span> INDUSTRY-SPECIFIC VOCABULARY</div>
-                            <div className="flex items-center gap-3"><span className="text-[#C8006A]">★</span> PRESENTATION TRAINING</div>
-                            <div className="flex items-center gap-3"><span className="text-[#C8006A]">★</span> LEADERSHIP COMMUNICATION</div>
+                            <div className="flex items-center gap-3"><span className="text-[#9D174D]">★</span> PROFESSIONAL ENGLISH</div>
+                            <div className="flex items-center gap-3"><span className="text-[#9D174D]">★</span> INDUSTRY-SPECIFIC VOCABULARY</div>
+                            <div className="flex items-center gap-3"><span className="text-[#9D174D]">★</span> PRESENTATION TRAINING</div>
+                            <div className="flex items-center gap-3"><span className="text-[#9D174D]">★</span> LEADERSHIP COMMUNICATION</div>
                         </div>
                     </div>
 
@@ -34,7 +34,7 @@ export default function CorporateTrainingPage() {
                     <div className="flex flex-col items-center justify-center space-y-10">
                         <div className="bg-[#FAF7F0] p-12 rounded-[30px] border-4 border-black shadow-2xl">
                              <h3 className="text-2xl font-black mb-6 text-center">Ready to scale?</h3>
-                             <Link href="/pages/corporate-quotation" className="btn-pill bg-[#C8006A] text-white py-5 px-10 rounded-full font-black no-underline block text-center shadow-lg hover:bg-black transition-all uppercase">
+                             <Link href="/pages/corporate-quotation" className="btn-pill bg-[#9D174D] text-white py-5 px-10 rounded-full font-black no-underline block text-center shadow-lg hover:bg-black transition-all uppercase">
                                 Get a Customized Quotation
                              </Link>
                         </div>

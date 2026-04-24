@@ -9,15 +9,15 @@ export const metadata: Metadata = {
 export default function CareerCoachingPage() {
   return (
     <main>
-      <div className="fixed top-0 left-0 w-full h-[12px] bg-[#C8006A] z-[1000]"></div>
+      <div className="fixed top-0 left-0 w-full h-[12px] bg-[#9D174D] z-[1000]"></div>
 
       <div className="bg-[#FAF7F0] pt-3">
         {/* Hero Band */}
-        <div className="bg-[#C8006A] text-center px-8 py-14">
+        <div className="bg-[#9D174D] text-center px-8 py-14">
           <h1 className="font-[family-name:var(--font-cormorant)] text-[clamp(40px,8vw,64px)] text-white leading-tight">
             Career Coaching
           </h1>
-          <p className="mt-3 text-[11px] tracking-[4px] uppercase font-bold text-[#F4A7C3]">
+          <p className="mt-3 text-[11px] tracking-[4px] uppercase font-bold text-[#FDF2F8]">
             CV · Interview Prep · Professional Branding
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function CareerCoachingPage() {
 
           {/* Left: What We Offer */}
           <div>
-            <h2 className="font-[family-name:var(--font-cormorant)] text-[32px] text-[#C8006A] mb-6 leading-tight">
+            <h2 className="font-[family-name:var(--font-cormorant)] text-[32px] text-[#9D174D] mb-6 leading-tight">
               Build Your Global Career
             </h2>
             <p className="text-[15px] leading-[1.85] text-[#333] mb-8">
@@ -43,7 +43,7 @@ export default function CareerCoachingPage() {
                 { icon: '★', title: 'PRESENTATION COACHING', desc: 'Master the art of presenting complex ideas with clarity and authority.' },
               ].map(service => (
                 <div key={service.title} className="flex gap-4 items-start">
-                  <span className="text-[#C8006A] text-xl mt-0.5 flex-shrink-0">{service.icon}</span>
+                  <span className="text-[#9D174D] text-xl mt-0.5 flex-shrink-0">{service.icon}</span>
                   <div>
                     <h3 className="font-bold text-[14px] text-black mb-1">{service.title}</h3>
                     <p className="text-[13px] text-gray-500 leading-[1.6]">{service.desc}</p>
@@ -55,8 +55,8 @@ export default function CareerCoachingPage() {
 
           {/* Right: CTA Card */}
           <div className="flex flex-col gap-8">
-            <div className="bg-white border-[3px] border-[#C8006A] rounded-[20px] p-8">
-              <h2 className="font-[family-name:var(--font-cormorant)] text-[26px] text-[#C8006A] mb-4 leading-tight">
+            <div className="bg-white border-[3px] border-[#9D174D] rounded-[20px] p-8">
+              <h2 className="font-[family-name:var(--font-cormorant)] text-[26px] text-[#9D174D] mb-4 leading-tight">
                 Who Is This For?
               </h2>
               <div className="space-y-3 mb-6">
@@ -83,27 +83,27 @@ export default function CareerCoachingPage() {
               </p>
               <Link
                 href="/pages/book-session"
-                className="inline-block bg-[#C8006A] text-white text-[12px] font-black tracking-[2px] uppercase px-8 py-4 rounded-full no-underline hover:bg-black transition-colors"
+                className="inline-block bg-[#9D174D] text-white text-[12px] font-black tracking-[2px] uppercase px-8 py-4 rounded-full no-underline hover:bg-black transition-colors"
               >
                 Book Your Free Session →
               </Link>
             </div>
 
-            <div className="bg-[#F4A7C3] rounded-[20px] p-6 text-center">
+            <div className="bg-[#FDF2F8] rounded-[20px] p-6 text-center">
               <p className="text-[12px] font-bold text-black/70 italic">
                 &quot;After working with The Atelier, I landed my first international role. The interview coaching was a game changer.&quot;
               </p>
-              <p className="text-[11px] font-black text-[#C8006A] mt-3 uppercase tracking-[1px]">— Atelier Graduate</p>
+              <p className="text-[11px] font-black text-[#9D174D] mt-3 uppercase tracking-[1px]">— Atelier Graduate</p>
             </div>
           </div>
         </div>
 
         {/* Bottom Nav */}
         <div className="flex justify-between px-8 md:px-16 py-7 border-t-2 border-gray-200 bg-white">
-          <Link href="/" className="text-[13px] font-bold text-[#C8006A] underline">
+          <Link href="/" className="text-[13px] font-bold text-[#9D174D] underline">
             ← Back to Home
           </Link>
-          <Link href="/pages/book-session" className="text-[13px] font-bold text-[#C8006A] underline">
+          <Link href="/pages/book-session" className="text-[13px] font-bold text-[#9D174D] underline">
             Book a Session →
           </Link>
         </div>

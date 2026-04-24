@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function SubscriptionsPage() {
     return (
-        <main className="page active bg-[#C8006A]" style={{ backgroundColor: '#C8006A', minHeight: '100vh' }}>
+        <main className="page active bg-[#9D174D]" style={{ backgroundColor: '#9D174D', minHeight: '100vh' }}>
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
                 <div style={{ height: '12px', backgroundColor: 'white', width: '100%', position: 'absolute', top: 0, left: 0 }}></div>
                 
@@ -14,12 +14,12 @@ export default function SubscriptionsPage() {
                 <div className="responsive-grid split-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center' }}>
                     {/* Left: Program Overview */}
                     <div className="card bg-white p-12 rounded-[24px] shadow-2xl border-4 border-black">
-                        <h3 className="font-[family-name:var(--font-cormorant)] text-3xl mb-6 text-[#C8006A]">Structured Learning</h3>
+                        <h3 className="font-[family-name:var(--font-cormorant)] text-3xl mb-6 text-[#9D174D]">Structured Learning</h3>
                         <p className="text-xl font-bold mb-8 leading-relaxed text-black italic uppercase">
                             OUR SUBSCRIPTION PROGRAMS PROVIDE STRUCTURED, ONGOING LANGUAGE LEARNING THROUGH CATEGORICAL THEMES.
                         </p>
                         <div className="space-y-4">
-                            <div className="p-4 bg-[#F4A7C3] rounded-xl font-black text-black">★ HISTORY & GLOBAL CULTURE</div>
+                            <div className="p-4 bg-[#FDF2F8] rounded-xl font-black text-black">★ HISTORY & GLOBAL CULTURE</div>
                             <div className="p-4 bg-[#D9F060] rounded-xl font-black text-black">★ PROFESSIONAL COMMUNICATION</div>
                             <div className="p-4 bg-[#A8DDD8] rounded-xl font-black text-black">★ LEADERSHIP & TRAVEL</div>
                         </div>

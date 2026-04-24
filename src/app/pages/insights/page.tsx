@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function InsightsPage() {
   return (
     <main style={{ backgroundColor: '#FAF7F0', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif" }}>
-      <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }} />
+      <div style={{ height: '12px', backgroundColor: '#9D174D', width: '100%' }} />
 
       <div style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}>
@@ -20,7 +20,7 @@ export default function InsightsPage() {
             </h1>
             <p style={{ fontSize: '1.1rem', marginBottom: '24px', color: '#333', fontWeight: 500 }}>Atelier Insights</p>
             <a href="https://medium.com/@theenglishatelier" target="_blank" rel="noopener noreferrer"
-              style={{ display: 'inline-block', background: '#F472B6', color: '#111', borderRadius: '50px', padding: '14px 0', width: '340px', maxWidth: '100%', textAlign: 'center', textDecoration: 'underline', fontWeight: 700, fontSize: '1rem', marginBottom: '40px', letterSpacing: '0.05em', boxShadow: '0 4px 0 #C8006A' }}>
+              style={{ display: 'inline-block', background: '#F472B6', color: '#111', borderRadius: '50px', padding: '14px 0', width: '340px', maxWidth: '100%', textAlign: 'center', textDecoration: 'underline', fontWeight: 700, fontSize: '1rem', marginBottom: '40px', letterSpacing: '0.05em', boxShadow: '0 4px 0 #9D174D' }}>
               ACCESS HERE
             </a>
             <div style={{ fontSize: '1rem', lineHeight: 1.85, color: '#333' }}>
@@ -36,10 +36,10 @@ export default function InsightsPage() {
           </div>
 
           <div>
-            <div style={{ border: '5px solid #C8006A', borderRadius: '4px', overflow: 'hidden', maxWidth: '560px' }}>
+            <div style={{ border: '5px solid #9D174D', borderRadius: '4px', overflow: 'hidden', maxWidth: '560px' }}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div style={{ background: '#C8006A', padding: '7px 12px', display: 'flex', alignItems: 'center' }}>
-                  <span style={{ background: '#fff', color: '#C8006A', borderRadius: '3px', padding: '1px 7px', fontWeight: 900, fontSize: '0.8rem', lineHeight: 1.4 }}>✕</span>
+                <div style={{ background: '#9D174D', padding: '7px 12px', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ background: '#fff', color: '#9D174D', borderRadius: '3px', padding: '1px 7px', fontWeight: 900, fontSize: '0.8rem', lineHeight: 1.4 }}>✕</span>
                 </div>
                 <div style={{ flex: 1, background: '#A8DDD8', height: '34px' }} />
               </div>
@@ -56,7 +56,7 @@ export default function InsightsPage() {
       </div>
 
       <div style={{ padding: '20px 8% 40px' }}>
-        <Link href="/" style={{ color: '#C8006A', fontFamily: "var(--font-cormorant), serif", fontSize: '1.1rem', textDecoration: 'underline', fontWeight: 600 }}>
+        <Link href="/" style={{ color: '#9D174D', fontFamily: "var(--font-cormorant), serif", fontSize: '1.1rem', textDecoration: 'underline', fontWeight: 600 }}>
           Go back to the main page
         </Link>
       </div>

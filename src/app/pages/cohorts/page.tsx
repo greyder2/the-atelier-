@@ -7,7 +7,7 @@ export default function CohortsPage() {
     return (
         <main className="page active bg-[#FAF7F0]" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
             {/* Top Bar Wrapper */}
-            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'fixed', top: 0, left: 0, zIndex: 100 }}></div>
+            <div style={{ height: '12px', backgroundColor: '#9D174D', width: '100%', position: 'fixed', top: 0, left: 0, zIndex: 100 }}></div>
             
             <div className="subpage-container pt-16" style={{ padding: '80px 8%', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
                 
@@ -26,7 +26,7 @@ export default function CohortsPage() {
 
                     {/* Right Column: Content Card */}
                     <div className="lg:w-2/3 relative pt-10">
-                        <div className="card bg-[#F4A7C3] p-12 rounded-[40px] shadow-2xl relative z-10">
+                        <div className="card bg-[#FDF2F8] p-12 rounded-[40px] shadow-2xl relative z-10">
                             <p className="text-2xl font-bold italic mb-10 leading-relaxed text-black max-w-[500px]">
                                 Small group learning experiences designed around unique themes.
                             </p>
@@ -67,10 +67,10 @@ export default function CohortsPage() {
 
                 {/* Bottom Navigation */}
                 <div className="bottom-nav flex justify-between mt-40">
-                    <Link href="/" className="text-[#D4006A] font-black italic underline text-xl hover:text-black transition-colors uppercase">
+                    <Link href="/" className="text-[#9D174D] font-black italic underline text-xl hover:text-black transition-colors uppercase">
                         ← return
                     </Link>
-                    <Link href="/" className="text-[#D4006A] font-black italic underline text-xl hover:text-black transition-colors uppercase">
+                    <Link href="/" className="text-[#9D174D] font-black italic underline text-xl hover:text-black transition-colors uppercase">
                         Go back to the main page
                     </Link>
                 </div>

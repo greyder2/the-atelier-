@@ -50,15 +50,15 @@ export async function POST(req: Request) {
       to: process.env.ADMIN_EMAIL || 'theenglishateliere@gmail.com',
       subject: `New Booking Request: ${name}`,
       html: `
-        <div style="font-family:sans-serif;padding:20px;border:4px solid #D4006A;border-radius:12px;background:#FAF7F0">
-          <h2 style="color:#D4006A">New Lesson Request</h2>
+        <div style="font-family:sans-serif;padding:20px;border:4px solid #9D174D;border-radius:12px;background:#FAF7F0">
+          <h2 style="color:#9D174D">New Lesson Request</h2>
           <p><strong>Student:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Professor:</strong> ${professorName || 'Not selected'}</p>
           <p><strong>Time:</strong> ${new Date(time).toLocaleString()}</p>
           <p><strong>Program:</strong> ${programType || 'Not specified'}</p>
           <p><strong>Notes:</strong> ${notes || 'None'}</p>
-          <a href="${calLink}" style="background:#D4006A;color:white;padding:12px 24px;border-radius:50px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:16px">Add to Google Calendar</a>
+          <a href="${calLink}" style="background:#9D174D;color:white;padding:12px 24px;border-radius:50px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:16px">Add to Google Calendar</a>
         </div>
       `,
     });
@@ -70,7 +70,7 @@ export async function POST(req: Request) {
       subject: 'Your session request has been received',
       html: `
         <div style="font-family:sans-serif;padding:20px;border:4px solid #98FFD9;border-radius:12px;background:#FAF7F0">
-          <h2 style="color:#D4006A">We received your request!</h2>
+          <h2 style="color:#9D174D">We received your request!</h2>
           <p>Hi ${name}, your session request for <strong>${new Date(time).toLocaleString()}</strong> with <strong>${professorName || 'your professor'}</strong> is being reviewed.</p>
           <p>You'll receive a confirmation once it's approved.</p>
           <a href="${calLink}" style="background:#111;color:white;padding:12px 24px;border-radius:50px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:16px">Save to Google Calendar</a>

@@ -24,7 +24,7 @@ export default async function SpotlightsPage() {
 
   return (
     <main style={{ backgroundColor: '#FAF7F0', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif" }}>
-      <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }} />
+      <div style={{ height: '12px', backgroundColor: '#9D174D', width: '100%' }} />
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 'calc(100vh - 12px)' }}>
         <div style={{ padding: '60px 8%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -32,20 +32,20 @@ export default async function SpotlightsPage() {
             Atelier<br />Spotlights
           </h1>
 
-          <div style={{ background: '#F4A7C3', borderRadius: '24px', padding: '36px 40px', maxWidth: '500px', fontSize: '1rem', lineHeight: 1.8, color: '#111' }}>
+          <div style={{ background: '#FDF2F8', borderRadius: '24px', padding: '36px 40px', maxWidth: '500px', fontSize: '1rem', lineHeight: 1.8, color: '#111' }}>
             <p style={{ marginBottom: '16px' }}>Atelier Spotlights is a signature "by invitation only" program of The Atelier.</p>
             <p style={{ marginBottom: '16px' }}>Each edition focuses on remarkable women from history, science, fashion, politics, literature, and global culture.</p>
             <p style={{ marginBottom: '16px' }}>Through their stories, the Spotlights explore language while reflecting on leadership, ambition, and creativity.</p>
             <p style={{ marginBottom: '16px' }}>These conversations create a learning experience that is both intellectually enriching and deeply inspiring.</p>
             <p>To see more of the Atelier Spotlights graduates,{' '}
-              <Link href="/pages/spotlights/first-generation" style={{ fontWeight: 800, textDecoration: 'underline', color: '#C8006A' }}>click here.</Link>
+              <Link href="/pages/spotlights/first-generation" style={{ fontWeight: 800, textDecoration: 'underline', color: '#9D174D' }}>click here.</Link>
             </p>
           </div>
 
           <div style={{ marginTop: '12px', fontSize: '2.5rem', marginLeft: '60%' }}>👈</div>
 
           <div style={{ display: 'flex', gap: '16px', marginTop: '40px', flexWrap: 'wrap' }}>
-            <Link href="/pages/spotlights/first-generation" style={{ background: '#C8006A', color: '#fff', borderRadius: '50px', padding: '12px 28px', textDecoration: 'none', fontWeight: 700, fontSize: '0.85rem', boxShadow: '0 4px 0 #8a0047' }}>
+            <Link href="/pages/spotlights/first-generation" style={{ background: '#9D174D', color: '#fff', borderRadius: '50px', padding: '12px 28px', textDecoration: 'none', fontWeight: 700, fontSize: '0.85rem', boxShadow: '0 4px 0 #8a0047' }}>
               First Generation ({firstGeneration.length})
             </Link>
             <Link href="/pages/spotlights/second-generation" style={{ background: '#D9F060', color: '#111', borderRadius: '50px', padding: '12px 28px', textDecoration: 'none', fontWeight: 700, fontSize: '0.85rem', boxShadow: '0 4px 0 #a8b800' }}>
@@ -54,7 +54,7 @@ export default async function SpotlightsPage() {
           </div>
         </div>
 
-        <div style={{ background: 'linear-gradient(160deg, #f8d7e8 0%, #e8a0c0 25%, #c8006a 60%, #8a0047 100%)', position: 'relative', overflow: 'hidden', minHeight: '100%' }}>
+        <div style={{ background: 'linear-gradient(160deg, #f8d7e8 0%, #e8a0c0 25%, #9D174D 60%, #8a0047 100%)', position: 'relative', overflow: 'hidden', minHeight: '100%' }}>
           <div style={{ position: 'absolute', top: '40%', left: '20%', fontFamily: "var(--font-cormorant), serif", fontSize: '5rem', color: 'rgba(255,255,255,0.12)', lineHeight: 1, userSelect: 'none' }}>
             The<br />Atelier
           </div>
@@ -63,8 +63,8 @@ export default async function SpotlightsPage() {
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', padding: '24px 8%', borderTop: '1px solid #eee' }}>
-        <Link href="/" style={{ color: '#C8006A', fontWeight: 700, fontStyle: 'italic', textDecoration: 'underline', fontSize: '0.95rem' }}>← return</Link>
-        <Link href="/" style={{ color: '#C8006A', fontFamily: 'serif', fontSize: '1.2rem', fontWeight: 700, textDecoration: 'underline' }}>Go back to the main page</Link>
+        <Link href="/" style={{ color: '#9D174D', fontWeight: 700, fontStyle: 'italic', textDecoration: 'underline', fontSize: '0.95rem' }}>← return</Link>
+        <Link href="/" style={{ color: '#9D174D', fontFamily: 'serif', fontSize: '1.2rem', fontWeight: 700, textDecoration: 'underline' }}>Go back to the main page</Link>
       </div>
     </main>
   );

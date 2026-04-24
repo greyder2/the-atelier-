@@ -35,7 +35,7 @@ export default function FAQAccordion() {
 
   return (
     <div className="w-full max-w-3xl mx-auto my-16">
-      <h3 style={{ fontFamily: "var(--font-cormorant), serif" }} className="text-3xl text-center text-[#C8006A] font-bold mb-8">
+      <h3 style={{ fontFamily: "var(--font-cormorant), serif" }} className="text-3xl text-center text-[#9D174D] font-bold mb-8">
         Frequently Asked Questions
       </h3>
       <div className="flex flex-col gap-4">
@@ -47,7 +47,7 @@ export default function FAQAccordion() {
               className="border-2 border-[#e8e4dc] bg-white rounded-[16px] overflow-hidden transition-all duration-300"
               style={{ 
                 boxShadow: isOpen ? '0 8px 16px rgba(200,0,106,0.1)' : 'none',
-                borderColor: isOpen ? '#C8006A' : '#e8e4dc'
+                borderColor: isOpen ? '#9D174D' : '#e8e4dc'
               }}
             >
               <button
@@ -58,7 +58,7 @@ export default function FAQAccordion() {
                   {faq.question}
                 </span>
                 <span 
-                  className="text-[#C8006A] font-black text-xl transition-transform duration-300"
+                  className="text-[#9D174D] font-black text-xl transition-transform duration-300"
                   style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
                 >
                   +

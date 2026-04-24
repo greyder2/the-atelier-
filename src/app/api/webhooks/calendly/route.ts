@@ -104,8 +104,8 @@ export async function POST(req: NextRequest) {
       to: process.env.ADMIN_EMAIL || 'theenglishateliere@gmail.com',
       subject: `New Booking: ${clientName}`,
       html: `
-        <div style="font-family:sans-serif;padding:20px;border:4px solid #D4006A;border-radius:12px;background:#FAF7F0">
-          <h2 style="color:#D4006A">New Calendly Booking</h2>
+        <div style="font-family:sans-serif;padding:20px;border:4px solid #9D174D;border-radius:12px;background:#FAF7F0">
+          <h2 style="color:#9D174D">New Calendly Booking</h2>
           <p><strong>Student:</strong> ${clientName}</p>
           <p><strong>Email:</strong> ${clientEmail}</p>
           <p><strong>Time:</strong> ${new Date(scheduledAt).toLocaleString()}</p>
@@ -124,9 +124,9 @@ export async function POST(req: NextRequest) {
         subject: 'Your session is confirmed!',
         html: `
           <div style="font-family:sans-serif;padding:20px;border:4px solid #98FFD9;border-radius:12px;background:#FAF7F0">
-            <h2 style="color:#D4006A">Session Confirmed ✓</h2>
+            <h2 style="color:#9D174D">Session Confirmed ✓</h2>
             <p>Hi ${clientName}, your session on <strong>${new Date(scheduledAt).toLocaleString()}</strong> is confirmed.</p>
-            <p>You can view it in your <a href="${process.env.NEXT_PUBLIC_BASE_URL}/dashboard" style="color:#D4006A;font-weight:bold">Client Portal</a>.</p>
+            <p>You can view it in your <a href="${process.env.NEXT_PUBLIC_BASE_URL}/dashboard" style="color:#9D174D;font-weight:bold">Client Portal</a>.</p>
           </div>
         `,
       });

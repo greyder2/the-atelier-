@@ -48,21 +48,18 @@ export default async function Home() {
         <main>
             <InteractiveClient />
             
-            {/* 1. TOP PINK BAR */}
-            <div className="fixed top-0 left-0 w-full h-[12px] bg-[#C8006A] z-[1000]"></div>
-
             {/* main-page Wrapper */}
             <div id="page-main" className="page active">
                 
                 {/* 2. HERO / INDEX */}
-                <section id="hero" className="h-screen w-full flex flex-col justify-center items-center relative overflow-hidden pt-3 border-t-[12px] border-[#C8006A]" 
+                <section id="hero" className="h-screen w-full flex flex-col justify-center items-center relative overflow-hidden pt-3" 
                          style={{ backgroundImage: "url('/pages/atelier background.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
                     <div className="absolute inset-0 bg-black/20 z-0"></div>
-                    <h1 className="hero-title text-white font-['Sarina'] text-[clamp(80px,12vw,160px)] leading-[1.1] text-center z-10" style={{ textShadow: "4px 4px 6px #C8006A" }}>
+                    <h1 className="hero-title text-white font-['Sarina'] text-[clamp(80px,12vw,160px)] leading-[1.1] text-center z-10" style={{ textShadow: "4px 4px 6px #9D174D" }}>
                         <div className="line1">The</div>
                         <div className="line2">Atelier</div>
                     </h1>
-                    <div className="w-full bg-[#C8006A] text-white text-center py-4 mt-8 text-[clamp(14px,2vw,20px)] tracking-[2px] z-10 uppercase italic font-bold">
+                    <div className="w-full bg-[#9D174D] text-white text-center py-4 mt-8 text-[clamp(14px,2vw,20px)] tracking-[2px] z-10 uppercase italic font-bold">
                         Where ambitious minds learn to speak the world
                     </div>
                     <nav className="hero-nav mt-8 text-center z-10">
@@ -106,15 +103,15 @@ export default async function Home() {
                 <section id="about" className="section-padding bg-white grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="about-left staggered-left">
                         <h2 className="title text-[4rem] leading-none mb-4 font-['Cormorant_Garamond']">The Atelier</h2>
-                        <div className="subtitle text-[#C8006A] text-2xl mb-8 italic font-bold">Language, Culture & Confidence for the Global Voices.</div>
+                        <div className="subtitle text-[#9D174D] text-2xl mb-8 italic font-bold">Language, Culture & Confidence for the Global Voices.</div>
                         <ul className="list-none space-y-6">
-                            <li className="font-bold text-lg"><span className="text-[#C8006A] mr-2">★</span> <i>LANGUAGE EDUCATION</i> — ENGLISH PROGRAMS DESIGNED FOR AMBITIOUS PROFESSIONALS.</li>
-                            <li className="font-bold text-lg"><span className="text-[#C8006A] mr-2">★</span> <i>CULTURAL INTELLIGENCE</i> — LEARN LANGUAGE THROUGH HISTORY, ART, AND GLOBAL CULTURE.</li>
-                            <li className="font-bold text-lg"><span className="text-[#C8006A] mr-2">★</span> <i>CONFIDENCE & COMMUNICATION</i> — SPEAK WITH CLARITY, ELEGANCE AND PRESENCE.</li>
+                            <li className="font-bold text-lg"><span className="text-[#9D174D] mr-2">★</span> <i>LANGUAGE EDUCATION</i> — ENGLISH PROGRAMS DESIGNED FOR AMBITIOUS PROFESSIONALS.</li>
+                            <li className="font-bold text-lg"><span className="text-[#9D174D] mr-2">★</span> <i>CULTURAL INTELLIGENCE</i> — LEARN LANGUAGE THROUGH HISTORY, ART, AND GLOBAL CULTURE.</li>
+                            <li className="font-bold text-lg"><span className="text-[#9D174D] mr-2">★</span> <i>CONFIDENCE & COMMUNICATION</i> — SPEAK WITH CLARITY, ELEGANCE AND PRESENCE.</li>
                         </ul>
                     </div>
                     <div className="about-right flex flex-col items-center justify-center staggered-card gap-6">
-                        <p className="text-sm uppercase tracking-widest text-[#C8006A] font-bold italic">Ready to begin?</p>
+                        <p className="text-sm uppercase tracking-widest text-[#9D174D] font-bold italic">Ready to begin?</p>
                         <Link href="/pages/book-session" className="speech-bubble no-underline">
                             Book a Free Session
                         </Link>
@@ -129,7 +126,7 @@ export default async function Home() {
                         <p className="text-center text-[10px] tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
                     <div className="flex flex-wrap justify-center items-center gap-x-14 gap-y-6 max-w-4xl mx-auto">
                         {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'GLOBAL TEAMS'].map(company => (
-                            <span key={company} className="text-[13px] font-black tracking-[3px] text-gray-300 uppercase hover:text-[#C8006A] transition-colors">{company}</span>
+                            <span key={company} className="text-[13px] font-black tracking-[3px] text-gray-300 uppercase hover:text-[#9D174D] transition-colors">{company}</span>
                         ))}
                         </div>
                     </section>
@@ -137,49 +134,49 @@ export default async function Home() {
 
                 {/* 4. PROGRAMS / SERVICES */}
                 <ScrollReveal>
-                    <section id="programs" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <section id="programs" className="section-padding bg-[#FAF7F0] border-t-4 border-[#9D174D] grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="left-col staggered-left">
                         <h2 className="section-title text-6xl mb-10 font-['Cormorant_Garamond']">Programs / Services</h2>
                         <div className="flex flex-col">
                             <Link href="/pages/private-coaching" className="program-item no-underline text-black group">
                                 <div className="program-icon">✦</div>
                                 <div>
-                                    <span className="program-title group-hover:text-[#C8006A]">Private Coaching</span>
+                                    <span className="program-title group-hover:text-[#9D174D]">Private Coaching</span>
                                     <span className="program-tagline">One-on-one sessions tailored to your goals</span>
                                 </div>
                             </Link>
                             <Link href="/pages/subscriptions" className="program-item no-underline text-black group">
                                 <div className="program-icon">◈</div>
                                 <div>
-                                    <span className="program-title group-hover:text-[#C8006A]">Atelier Subscriptions</span>
+                                    <span className="program-title group-hover:text-[#9D174D]">Atelier Subscriptions</span>
                                     <span className="program-tagline">Ongoing cultural & language membership</span>
                                 </div>
                             </Link>
                             <Link href="/pages/corporate-training" className="program-item no-underline text-black group">
                                 <div className="program-icon">⬡</div>
                                 <div>
-                                    <span className="program-title group-hover:text-[#C8006A]">Corporate Language Training</span>
+                                    <span className="program-title group-hover:text-[#9D174D]">Corporate Language Training</span>
                                     <span className="program-tagline">English for global teams & executives</span>
                                 </div>
                             </Link>
                             <Link href="/pages/cohorts" className="program-item no-underline text-black group">
                                 <div className="program-icon">★</div>
                                 <div>
-                                    <span className="program-title group-hover:text-[#C8006A]">Cohorts & Special Programs</span>
+                                    <span className="program-title group-hover:text-[#9D174D]">Cohorts & Special Programs</span>
                                     <span className="program-tagline">Curated group learning experiences</span>
                                 </div>
                             </Link>
                             <Link href="/pages/career-coaching" className="program-item no-underline text-black group">
                                 <div className="program-icon">◆</div>
                                 <div>
-                                    <span className="program-title group-hover:text-[#C8006A]">Career Coaching</span>
+                                    <span className="program-title group-hover:text-[#9D174D]">Career Coaching</span>
                                     <span className="program-tagline">CV building, interview prep & professional branding</span>
                                 </div>
                             </Link>
                         </div>
                     </div>
                     <div className="right-col staggered-card">
-                        <div className="bg-[#A8DDD8] p-10 rounded-[24px] border-4 border-[#C8006A] shadow-xl">
+                        <div className="bg-[#A8DDD8] p-10 rounded-[24px] border-4 border-[#9D174D] shadow-xl">
                             <h3 className="text-3xl mb-4 font-['Cormorant_Garamond']">Our Programs</h3>
                             <p className="text-xl italic font-bold leading-relaxed">The Atelier offers a range of programs designed to support different learning goals and lifestyles, from one-on-one sessions to cultural community subscriptions.</p>
                         </div>
@@ -189,7 +186,7 @@ export default async function Home() {
 
                 {/* 6. SOCIAL PROOF (GRID) */}
                 <ScrollReveal>
-                <section id="social-proof" className="section-padding bg-[#C8006A] text-white text-center">
+                <section id="social-proof" className="section-padding bg-[#9D174D] text-white text-center">
                     <h2 className="section-title text-black text-6xl mb-4 font-['Cormorant_Garamond']">Social Proof</h2>
                     <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON), AFRICA (LIBYA), AND EUROPE (POLAND).</p>
                     
@@ -224,12 +221,12 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {firstGenSpotlights.map((person: any, idx: number) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#C8006A] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
-                                        <div className="bg-white border-b-4 border-[#C8006A] p-2 flex gap-2 font-mono font-bold">
-                                            <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
+                                        <div className="bg-white border-b-4 border-[#9D174D] p-2 flex gap-2 font-mono font-bold">
+                                            <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
-                                        <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
+                                        <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
                                     </Link>
@@ -248,12 +245,12 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {secondGenSpotlights.map((person: any, idx: number) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#C8006A] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
-                                        <div className="bg-white border-b-4 border-[#C8006A] p-2 flex gap-2 font-mono font-bold">
-                                            <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
+                                        <div className="bg-white border-b-4 border-[#9D174D] p-2 flex gap-2 font-mono font-bold">
+                                            <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
-                                        <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
+                                        <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
                                     </Link>
@@ -271,20 +268,20 @@ export default async function Home() {
                 </ScrollReveal>
 
                 {/* 7. SCHOLARSHIPS / GRANTS */}
-                <section id="scholarships" className="section-padding bg-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10 items-center border-t-4 border-black">
+                <section id="scholarships" className="section-padding bg-[#9D174D] grid grid-cols-1 md:grid-cols-2 gap-10 items-center border-t-4 border-black">
                     <div className="left-col staggered-left">
                         <h2 className="section-title text-white text-6xl mb-8 font-['Cormorant_Garamond']">Scholarships / Grants</h2>
                         <div className="bg-white p-10 rounded-[24px] shadow-2xl border-4 border-black relative">
-                            <h3 className="text-3xl font-['Cormorant_Garamond'] mb-4 text-[#C8006A]">The Atelier Grants</h3>
+                            <h3 className="text-3xl font-['Cormorant_Garamond'] mb-4 text-[#9D174D]">The Atelier Grants</h3>
                             <p className="text-lg leading-relaxed mb-6 font-bold text-black uppercase italic">We believe in supporting highly motivated students. Our grants cover a significant percentage of programs for language learners who demonstrate commitment and passion.</p>
-                            <Link href="/pages/scholarships" className="font-black underline text-[#C8006A] uppercase tracking-widest hover:text-black transition-colors text-xl">learn more here.</Link>
+                            <Link href="/pages/scholarships" className="font-black underline text-[#9D174D] uppercase tracking-widest hover:text-black transition-colors text-xl">learn more here.</Link>
                         </div>
                     </div>
                     <div className="right-col flex justify-center items-center h-full min-h-[400px]">
                          <div className="star-container flex justify-center items-center relative spin-slow">
-                            <div className="star-shape w-[400px] h-[400px] bg-[#F4A7C3] flex flex-col justify-center items-center text-center p-8 shadow-2xl border-2 border-black/5" 
+                            <div className="star-shape w-[400px] h-[400px] bg-[#FDF2F8] flex flex-col justify-center items-center text-center p-8 shadow-2xl border-2 border-black/5" 
                                  style={{ clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" }}>
-                                <div className="font-['Cormorant_Garamond'] text-[#C8006A] text-2xl mb-1">Atelier</div>
+                                <div className="font-['Cormorant_Garamond'] text-[#9D174D] text-2xl mb-1">Atelier</div>
                                 <div className="font-black text-5xl text-black leading-none mb-2">Grants</div>
                                 <div className="text-[12px] italic text-black uppercase max-w-[140px] font-black leading-tight">Scholarships with purpose</div>
                             </div>
@@ -293,30 +290,30 @@ export default async function Home() {
                 </section>
 
                 {/* 8. ATELIER SPOTLIGHTS */}
-                <section id="spotlights" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-20">
+                <section id="spotlights" className="section-padding bg-[#FAF7F0] border-t-4 border-[#9D174D] grid grid-cols-1 md:grid-cols-2 gap-20">
                     <div className="left-col staggered-left">
-                        <h2 className="section-title text-[#C8006A] text-6xl mb-8 font-['Cormorant_Garamond']">Atelier Spotlight</h2>
-                        <div className="bg-white p-12 rounded-[24px] space-y-8 shadow-2xl border-4 border-[#C8006A] relative overflow-visible">
+                        <h2 className="section-title text-[#9D174D] text-6xl mb-8 font-['Cormorant_Garamond']">Atelier Spotlight</h2>
+                        <div className="bg-white p-12 rounded-[24px] space-y-8 shadow-2xl border-4 border-[#9D174D] relative overflow-visible">
                              <div className="inline-block bg-[#D9F060] text-black font-black px-4 py-1 text-sm rounded-full shadow-lg transform rotate-3 mb-2">
                                 FEATURED
                             </div>
                             <p className="text-2xl font-black italic text-black uppercase leading-relaxed">
                                 AN EXCLUSIVE, 'BY INVITATION ONLY' PROGRAM FOCUSED ON STUDYING THE LIVES AND COMMUNICATION STYLES OF REMARKABLE WOMEN FROM HISTORY, SCIENCE, AND ART.
                             </p>
-                            <Link href="/pages/spotlight/gaby" className="text-2xl font-black underline inline-flex items-center gap-2 text-[#C8006A] hover:text-black transition-all">
+                            <Link href="/pages/spotlight/gaby" className="text-2xl font-black underline inline-flex items-center gap-2 text-[#9D174D] hover:text-black transition-all">
                                 view full profile. 
                             </Link>
                             <span className="animated-arrow">←</span>
                         </div>
                     </div>
                     <div className="right-col staggered-card h-full">
-                        <div className="retro-browser h-full shadow-[20px_20px_0px_rgba(200,0,106,0.2)]" style={{ border: '8px solid #C8006A', borderRadius: '30px', overflow: 'hidden' }}>
-                             <div className="retro-header bg-white border-b-4 border-[#C8006A] p-3 flex gap-2">
-                                 <span className="text-[#C8006A] font-bold">x</span> <span className="text-[#C8006A] font-bold">□</span> <span className="text-[#C8006A] font-bold">—</span>
+                        <div className="retro-browser h-full shadow-[20px_20px_0px_rgba(200,0,106,0.2)]" style={{ border: '8px solid #9D174D', borderRadius: '30px', overflow: 'hidden' }}>
+                             <div className="retro-header bg-white border-b-4 border-[#9D174D] p-3 flex gap-2">
+                                 <span className="text-[#9D174D] font-bold">x</span> <span className="text-[#9D174D] font-bold">□</span> <span className="text-[#9D174D] font-bold">—</span>
                              </div>
                              <div className="bg-cover bg-center w-full h-[450px] relative flex items-center justify-center" 
                                   style={{ backgroundImage: "url('/pages/atelier spotlights.webp')", backgroundColor: '#1a0010' }}>
-                                  <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8d7e8 0%, #e8a0c0 25%, #C8006A 60%, #8a0047 100%)' }}></div>
+                                  <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #f8d7e8 0%, #e8a0c0 25%, #9D174D 60%, #8a0047 100%)' }}></div>
                                   <div className="relative z-10 text-center px-8">
                                       <div className="font-black text-white text-xs uppercase tracking-widest mb-4 opacity-70">BY INVITATION ONLY</div>
                                       <div className="font-black text-white text-4xl leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Atelier<br/>Spotlights</div>
@@ -324,7 +321,7 @@ export default async function Home() {
                                       <div className="text-white/80 text-sm uppercase tracking-widest font-bold">First & Second Generation</div>
                                   </div>
                              </div>
-                             <div className="bg-white p-4 font-black text-center text-[#C8006A] border-t-4 border-[#C8006A]">
+                             <div className="bg-white p-4 font-black text-center text-[#9D174D] border-t-4 border-[#9D174D]">
                                  &lt; [COMMUNITY ARCHIVE] &gt;
                              </div>
                         </div>
@@ -332,7 +329,7 @@ export default async function Home() {
                 </section>
 
                 {/* 10. CONTACT */}
-                <section id="contact" className="section-padding bg-[#C8006A] text-white grid grid-cols-1 md:grid-cols-3 gap-16 items-center border-t-4 border-black">
+                <section id="contact" className="section-padding bg-[#9D174D] text-white grid grid-cols-1 md:grid-cols-3 gap-16 items-center border-t-4 border-black">
                     <h2 className="text-7xl md:col-span-3 font-['Cormorant_Garamond'] mb-10">Reach out</h2>
                     
                     <div className="contact-info space-y-12">
@@ -342,7 +339,7 @@ export default async function Home() {
                         </div>
                         <div>
                             <div className="font-black text-[#D9F060] uppercase text-xs tracking-widest mb-4">CONTACT FORM</div>
-                            <Link href="/pages/contact" className="inline-block bg-white text-[#C8006A] font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest hover:bg-[#D9F060] hover:text-black transition-colors no-underline shadow-lg border-2 border-white">
+                            <Link href="/pages/contact" className="inline-block bg-white text-[#9D174D] font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest hover:bg-[#D9F060] hover:text-black transition-colors no-underline shadow-lg border-2 border-white">
                                 SEND A MESSAGE →
                             </Link>
                         </div>
@@ -367,7 +364,7 @@ export default async function Home() {
                                 Ready to join our international community of ambitious professionals?
                              </p>
                          </div>
-                        <Link href="/pages/contact" className="btn-pill bg-white text-[#C8006A] font-black no-underline shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full text-lg uppercase">SAY HELLO</Link>
+                        <Link href="/pages/contact" className="btn-pill bg-white text-[#9D174D] font-black no-underline shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full text-lg uppercase">SAY HELLO</Link>
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="btn-pill bg-black text-white no-underline shadow-xl hover:scale-105 transition-transform py-4 px-8 rounded-full font-black text-lg uppercase">LINKEDIN</a>
                     </div>
                 </section>

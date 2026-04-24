@@ -24,10 +24,10 @@ export default function BookSessionPage() {
 
     return (
         <main className="page active bg-white" style={{ backgroundColor: 'white', minHeight: '100vh', display: 'flex' }}>
-            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%', position: 'absolute', top: 0 }}></div>
+            <div style={{ height: '12px', backgroundColor: '#9D174D', width: '100%', position: 'absolute', top: 0 }}></div>
             
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <h2 className="subpage-title" style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '4rem', color: '#C8006A', marginBottom: '10px', textAlign: 'center' }}>
+                <h2 className="subpage-title" style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '4rem', color: '#9D174D', marginBottom: '10px', textAlign: 'center' }}>
                     Book a Free Session
                 </h2>
                 <p style={{ textAlign: 'center', fontSize: '0.9rem', color: '#666', fontStyle: 'italic', marginBottom: '30px', maxWidth: '500px', marginLeft: 'auto', marginRight: 'auto' }}>
@@ -36,7 +36,7 @@ export default function BookSessionPage() {
 
                 {/* Calendly Embed */}
                 <div style={{ 
-                    border: '4px solid #C8006A', 
+                    border: '4px solid #9D174D', 
                     borderRadius: '24px', 
                     overflow: 'hidden', 
                     maxWidth: '700px', 
@@ -44,7 +44,7 @@ export default function BookSessionPage() {
                     margin: '0 auto',
                     boxShadow: '12px 12px 0px rgba(200,0,106,0.15)'
                 }}>
-                    <div style={{ backgroundColor: 'white', borderBottom: '4px solid #C8006A', padding: '8px 14px', display: 'flex', gap: '8px', alignItems: 'center', fontFamily: 'monospace', fontWeight: 'bold', color: '#C8006A' }}>
+                    <div style={{ backgroundColor: 'white', borderBottom: '4px solid #9D174D', padding: '8px 14px', display: 'flex', gap: '8px', alignItems: 'center', fontFamily: 'monospace', fontWeight: 'bold', color: '#9D174D' }}>
                         <span>x</span> <span>□</span> <span>—</span>
                         <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#999', fontWeight: 'normal' }}>calendly.com</span>
                     </div>
@@ -62,7 +62,7 @@ export default function BookSessionPage() {
                 </p>
                 
                 <div className="bottom-nav" style={{ width: '100%', display: 'flex', justifyContent: 'flex-end', marginTop: '40px' }}>
-                    <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>
+                    <Link href="/" style={{ color: '#9D174D', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>
                         Go back to the main page
                     </Link>
                 </div>

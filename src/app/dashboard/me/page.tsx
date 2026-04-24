@@ -19,7 +19,7 @@ const badge = (bg: string): React.CSSProperties => ({
   fontSize: '0.75rem', fontWeight: 'bold', border: '1px solid #111', display: 'inline-block'
 });
 
-function ProgressBar({ value, color = '#D4006A' }: { value: number; color?: string }) {
+function ProgressBar({ value, color = '#9D174D' }: { value: number; color?: string }) {
   return (
     <div style={{ backgroundColor: '#eee', borderRadius: '50px', height: '12px', overflow: 'hidden', border: '2px solid #111' }}>
       <div style={{ width: `${value}%`, backgroundColor: color, height: '100%', borderRadius: '50px', transition: 'width 0.6s ease' }} />
@@ -30,7 +30,7 @@ function ProgressBar({ value, color = '#D4006A' }: { value: number; color?: stri
 function StatBox({ label, value, sub, color = '#FAF7F0' }: { label: string; value: string | number; sub?: string; color?: string }) {
   return (
     <div style={{ backgroundColor: color, borderRadius: '16px', padding: '1.25rem 1.5rem', border: '2px solid #eee', textAlign: 'center', flex: 1 }}>
-      <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#D4006A', lineHeight: 1 }}>{value}</p>
+      <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#9D174D', lineHeight: 1 }}>{value}</p>
       <p style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#888', marginTop: '4px', fontWeight: 'bold' }}>{label}</p>
       {sub && <p style={{ fontSize: '0.75rem', color: '#555', marginTop: '4px' }}>{sub}</p>}
     </div>
@@ -102,8 +102,8 @@ export default function MyProfile() {
       <div style={{ maxWidth: '64rem', margin: '0 auto' }}>
 
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1rem', borderBottom: '4px solid #D4006A' }}>
-          <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2rem', color: '#D4006A' }}>My Profile</h1>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1rem', borderBottom: '4px solid #9D174D' }}>
+          <h1 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2rem', color: '#9D174D' }}>My Profile</h1>
           <Link href="/dashboard" style={{ fontWeight: 'bold', textTransform: 'uppercase', fontSize: '0.8rem', backgroundColor: '#111', color: 'white', padding: '8px 16px', borderRadius: '50px', textDecoration: 'none' }}>
             ← Dashboard
           </Link>
@@ -144,9 +144,9 @@ export default function MyProfile() {
           <div style={{ marginBottom: '1.25rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
               <p style={{ fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', color: '#555' }}>Overall Journey</p>
-              <p style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#D4006A' }}>{progress}%</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#9D174D' }}>{progress}%</p>
             </div>
-            <ProgressBar value={progress} color="#D4006A" />
+            <ProgressBar value={progress} color="#9D174D" />
           </div>
 
           {/* Level progress bar */}
@@ -172,7 +172,7 @@ export default function MyProfile() {
               ? <button onClick={() => setEditing(true)} style={{ backgroundColor: '#111', color: 'white', padding: '8px 18px', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.8rem' }}>Edit</button>
               : <div style={{ display: 'flex', gap: '0.5rem' }}>
                   <button onClick={() => setEditing(false)} style={{ backgroundColor: '#eee', color: '#111', padding: '8px 16px', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.8rem' }}>Cancel</button>
-                  <button onClick={saveGoals} disabled={saving} style={{ backgroundColor: '#D4006A', color: 'white', padding: '8px 18px', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.8rem' }}>
+                  <button onClick={saveGoals} disabled={saving} style={{ backgroundColor: '#9D174D', color: 'white', padding: '8px 18px', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.8rem' }}>
                     {saving ? "Saving..." : "Save"}
                   </button>
                 </div>
@@ -187,7 +187,7 @@ export default function MyProfile() {
 
         {/* Professor message */}
         {data?.teacherMessage && (
-          <div style={card('#D4006A', '#D4006A', '#111')}>
+          <div style={card('#9D174D', '#9D174D', '#111')}>
             <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: '#98FFD9', marginBottom: '0.75rem', fontWeight: 'bold' }}>
               Message from {data?.assignedProfessor?.name || 'Your Professor'}
             </p>
@@ -264,7 +264,7 @@ export default function MyProfile() {
         )}
 
         <div style={{ textAlign: 'center', marginTop: '2rem', paddingBottom: '4rem' }}>
-          <Link href="/dashboard" style={{ display: 'inline-block', backgroundColor: '#D4006A', color: 'white', padding: '14px 40px', borderRadius: '50px', fontWeight: 'bold', textDecoration: 'none', boxShadow: '4px 4px 0px #111' }}>
+          <Link href="/dashboard" style={{ display: 'inline-block', backgroundColor: '#9D174D', color: 'white', padding: '14px 40px', borderRadius: '50px', fontWeight: 'bold', textDecoration: 'none', boxShadow: '4px 4px 0px #111' }}>
             Back to Dashboard
           </Link>
         </div>

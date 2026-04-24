@@ -46,14 +46,14 @@ export default function CorporateQuotationPage() {
     if (status === 'success') {
         return (
             <main className="page active bg-cream" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
-                <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }}></div>
+                <div style={{ height: '12px', backgroundColor: '#9D174D', width: '100%' }}></div>
                 <div style={{ padding: '120px 8%', maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
                     <div style={{ fontSize: '4rem', marginBottom: '20px' }}>✓</div>
-                    <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2.5rem', color: '#C8006A', marginBottom: '16px' }}>Request Received!</h2>
+                    <h2 style={{ fontFamily: "var(--font-cormorant), serif", fontSize: '2.5rem', color: '#9D174D', marginBottom: '16px' }}>Request Received!</h2>
                     <p style={{ fontSize: '1rem', color: '#555', lineHeight: 1.7, marginBottom: '30px' }}>
                         Thank you, {formData.name}. We&apos;ll prepare a customized quotation for <strong>{formData.company}</strong> and reach out to you shortly.
                     </p>
-                    <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', textDecoration: 'underline', fontSize: '1rem' }}>
+                    <Link href="/" style={{ color: '#9D174D', fontWeight: 'bold', textDecoration: 'underline', fontSize: '1rem' }}>
                         ← Back to Home
                     </Link>
                 </div>
@@ -63,7 +63,7 @@ export default function CorporateQuotationPage() {
 
     return (
         <main className="page active bg-cream" style={{ backgroundColor: '#FAF7F0', minHeight: '100vh' }}>
-            <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }}></div>
+            <div style={{ height: '12px', backgroundColor: '#9D174D', width: '100%' }}></div>
             
             <div className="subpage-container" style={{ padding: '60px 8%', maxWidth: '1400px', margin: '0 auto' }}>
                 <div className="breadcrumb" style={{ fontStyle: 'italic', color: '#555', marginBottom: '10px', marginTop: '20px' }}>
@@ -86,29 +86,29 @@ export default function CorporateQuotationPage() {
                             <div style={{ marginBottom: '20px' }}>
                                 <label htmlFor="corp-name" style={{ display: 'block', opacity: 0.7, marginBottom: '5px', fontStyle: 'italic', fontSize: '0.9rem' }}>Your name *</label>
                                 <input id="corp-name" type="text" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })}
-                                    style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: errors.name ? '2px solid #C8006A' : '2px solid #ddd', outline: 'none' }} />
-                                {errors.name && <p style={{ color: '#C8006A', fontSize: '0.75rem', marginTop: '4px', fontStyle: 'italic' }}>{errors.name}</p>}
+                                    style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: errors.name ? '2px solid #9D174D' : '2px solid #ddd', outline: 'none' }} />
+                                {errors.name && <p style={{ color: '#9D174D', fontSize: '0.75rem', marginTop: '4px', fontStyle: 'italic' }}>{errors.name}</p>}
                             </div>
                             
                             <div style={{ marginBottom: '20px' }}>
                                 <label htmlFor="corp-email" style={{ display: 'block', opacity: 0.7, marginBottom: '5px', fontStyle: 'italic', fontSize: '0.9rem' }}>Your email *</label>
                                 <input id="corp-email" type="email" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                    style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: errors.email ? '2px solid #C8006A' : '2px solid #ddd', outline: 'none' }} />
-                                {errors.email && <p style={{ color: '#C8006A', fontSize: '0.75rem', marginTop: '4px', fontStyle: 'italic' }}>{errors.email}</p>}
+                                    style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: errors.email ? '2px solid #9D174D' : '2px solid #ddd', outline: 'none' }} />
+                                {errors.email && <p style={{ color: '#9D174D', fontSize: '0.75rem', marginTop: '4px', fontStyle: 'italic' }}>{errors.email}</p>}
                             </div>
                             
                             <div style={{ marginBottom: '20px' }}>
                                 <label htmlFor="corp-company" style={{ display: 'block', opacity: 0.7, marginBottom: '5px', fontStyle: 'italic', fontSize: '0.9rem' }}>Company name *</label>
                                 <input id="corp-company" type="text" value={formData.company} onChange={e => setFormData({ ...formData, company: e.target.value })}
-                                    style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: errors.company ? '2px solid #C8006A' : '2px solid #ddd', outline: 'none' }} />
-                                {errors.company && <p style={{ color: '#C8006A', fontSize: '0.75rem', marginTop: '4px', fontStyle: 'italic' }}>{errors.company}</p>}
+                                    style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: errors.company ? '2px solid #9D174D' : '2px solid #ddd', outline: 'none' }} />
+                                {errors.company && <p style={{ color: '#9D174D', fontSize: '0.75rem', marginTop: '4px', fontStyle: 'italic' }}>{errors.company}</p>}
                             </div>
                             
                             <div style={{ marginBottom: '20px' }}>
                                 <label htmlFor="corp-people" style={{ display: 'block', opacity: 0.7, marginBottom: '5px', fontStyle: 'italic', fontSize: '0.9rem' }}>How many people in your party? *</label>
                                 <input id="corp-people" type="number" min="1" value={formData.people} onChange={e => setFormData({ ...formData, people: e.target.value })}
-                                    style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: errors.people ? '2px solid #C8006A' : '2px solid #ddd', outline: 'none' }} />
-                                {errors.people && <p style={{ color: '#C8006A', fontSize: '0.75rem', marginTop: '4px', fontStyle: 'italic' }}>{errors.people}</p>}
+                                    style={{ width: '100%', padding: '12px 20px', borderRadius: '30px', border: errors.people ? '2px solid #9D174D' : '2px solid #ddd', outline: 'none' }} />
+                                {errors.people && <p style={{ color: '#9D174D', fontSize: '0.75rem', marginTop: '4px', fontStyle: 'italic' }}>{errors.people}</p>}
                             </div>
                             
                             <div style={{ marginBottom: '20px' }}>
@@ -118,12 +118,12 @@ export default function CorporateQuotationPage() {
                             </div>
                             
                             <button type="submit" disabled={status === 'loading'}
-                                style={{ width: '100%', padding: '14px', borderRadius: '50px', backgroundColor: status === 'loading' ? '#999' : '#C8006A', color: 'white', fontWeight: 'bold', border: 'none', cursor: status === 'loading' ? 'wait' : 'pointer', textTransform: 'uppercase', transition: 'all 0.3s', fontSize: '0.9rem' }}>
+                                style={{ width: '100%', padding: '14px', borderRadius: '50px', backgroundColor: status === 'loading' ? '#999' : '#9D174D', color: 'white', fontWeight: 'bold', border: 'none', cursor: status === 'loading' ? 'wait' : 'pointer', textTransform: 'uppercase', transition: 'all 0.3s', fontSize: '0.9rem' }}>
                                 {status === 'loading' ? 'Sending...' : 'Get a Quotation →'}
                             </button>
                             
                             {status === 'error' && (
-                                <p style={{ marginTop: '12px', fontSize: '0.85rem', color: '#C8006A', textAlign: 'center', fontWeight: 'bold' }}>
+                                <p style={{ marginTop: '12px', fontSize: '0.85rem', color: '#9D174D', textAlign: 'center', fontWeight: 'bold' }}>
                                     Something went wrong. Please try again or email us directly.
                                 </p>
                             )}
@@ -136,8 +136,8 @@ export default function CorporateQuotationPage() {
                 </div>
                 
                 <div className="bottom-nav" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: 'auto', paddingTop: '30px' }}>
-                    <Link href="/pages/corporate-training" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>← return</Link>
-                    <Link href="/" style={{ color: '#C8006A', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
+                    <Link href="/pages/corporate-training" style={{ color: '#9D174D', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>← return</Link>
+                    <Link href="/" style={{ color: '#9D174D', fontWeight: 'bold', fontStyle: 'italic', textDecoration: 'underline' }}>Go back to the main page</Link>
                 </div>
             </div>
         </main>
