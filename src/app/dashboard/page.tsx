@@ -20,37 +20,152 @@ const card = (border: string, shadow: string, bg = 'white'): React.CSSProperties
   backgroundColor: bg, border: `4px solid ${border}`, borderRadius: '24px',
   padding: '2rem', boxShadow: `8px 8px 0px ${shadow}`
 });
-const badge = (bg: string): React.CSSProperties => ({
+const badge = (bg: string, color = '#111'): React.CSSProperties => ({
   backgroundColor: bg, padding: '4px 12px', borderRadius: '50px',
-  fontSize: '0.75rem', fontWeight: 'bold', border: '1px solid #111'
+  fontSize: '0.75rem', fontWeight: 'bold', border: '1px solid #111', color,
 });
 
-// ─── STATUS CONFIG ────────────────────────────────────────────────────────────
-const STATUS_BADGE: Record<string, string> = {
-  active: '#98FFD9',
-  paused: '#FFE999',
-  completed: '#FFD1DC',
-};
+// ── SESSION PROGRESS BAR ──────────────────────────────────────────────────────
 
-// ─── CORPORATE DASHBOARD ──────────────────────────────────────────────────────
+function SessionProgressCard({ sanityData }: { sanityData: any }) {
+  const total = sanityData?.totalSessions ?? 4;
+  const remaining = sanityData?.sessionCredits ?? 0;
+  const used = Math.max(0, total - remaining);
+  const pct = Math.min(100, Math.round((used / total) * 100));
+  const isOut = remaining === 0;
 
-function CorporateDashboard({
-  sanityData,
-  user,
-}: {
-  sanityData: any;
-  user: any;
-}) {
+  // colour shifts as credits run out
+  const barColor = remaining === 0 ? '#C8006A' : remaining === 1 ? '#FFB347' : '#98FFD9';
+
+  return (
+    <div style={card('#D9F060', '#111')}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.25rem' }}>
+        <div>
+          <p style={{ fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '2px', color: '#888', fontWeight: 'bold', marginBottom: '4px' }}>
+            Sessions This Cycle
+          </p>
+          <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.4rem', color: '#111' }}>
+            {isOut ? 'All sessions used!' : `${remaining} session${remaining !== 1 ? 's' : ''} left`}
+          </h3>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <span style={{ fontSize: '2.2rem', fontWeight: '900', color: isOut ? '#C8006A' : '#111', lineHeight: 1 }}>
+            {used}
+          </span>
+          <span style={{ fontSize: '1rem', color: '#888', fontWeight: 'bold' }}>/{total}</span>
+          <p style={{ fontSize: '0.65rem', color: '#888', textTransform: 'uppercase', letterSpacing: '1px' }}>used</p>
+        </div>
+      </div>
+
+      {/* Progress bar */}
+      <div style={{ backgroundColor: '#eee', borderRadius: '50px', height: '14px', border: '2px solid #111', overflow: 'hidden', marginBottom: '1rem' }}>
+        <div style={{
+          height: '100%',
+          width: `${pct}%`,
+          backgroundColor: barColor,
+          borderRadius: '50px',
+          transition: 'width 0.6s ease, background-color 0.4s ease',
+        }} />
+      </div>
+
+      {/* Dots */}
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '1rem' }}>
+        {Array.from({ length: total }).map((_, i) => (
+          <div key={i} style={{
+            width: '28px', height: '28px', borderRadius: '50%',
+            border: '2px solid #111',
+            backgroundColor: i < used ? barColor : '#f5f5f5',
+            transition: 'background-color 0.3s ease',
+            flexShrink: 0,
+          }} />
+        ))}
+      </div>
+
+      {isOut ? (
+        <div style={{ backgroundColor: '#FFD1DC', border: '2px solid #C8006A', borderRadius: '12px', padding: '0.75rem 1rem', fontSize: '0.85rem', color: '#C8006A', fontWeight: 'bold' }}>
+          You've used all your sessions for this cycle. Reach out to book more! →{' '}
+          <a href="mailto:theenglishateliere@gmail.com" style={{ color: '#C8006A', textDecoration: 'underline' }}>theenglishateliere@gmail.com</a>
+        </div>
+      ) : (
+        <p style={{ fontSize: '0.8rem', color: '#666', fontStyle: 'italic' }}>
+          Sessions renew each cycle. Book yours above before they run out!
+        </p>
+      )}
+    </div>
+  );
+}
+
+// ── REFERRAL CARD ─────────────────────────────────────────────────────────────
+
+function ReferralCard({ sanityData }: { sanityData: any }) {
+  const [copied, setCopied] = useState(false);
+  const code = sanityData?.referralCode;
+  const referralUrl = code ? `${typeof window !== 'undefined' ? window.location.origin : 'https://theenglishatelier.vercel.app'}/join?ref=${code}` : null;
+  const pendingCredits = sanityData?.referralCredits ?? 0;
+
+  const handleCopy = () => {
+    if (!referralUrl) return;
+    navigator.clipboard.writeText(referralUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  if (!code) return null;
+
+  return (
+    <div style={card('#111', '#D9F060')}>
+      <p style={{ fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '2px', color: '#888', fontWeight: 'bold', marginBottom: '4px' }}>
+        Refer a Friend
+      </p>
+      <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.4rem', marginBottom: '0.5rem' }}>
+        Earn a free session
+      </h3>
+      <p style={{ fontSize: '0.85rem', color: '#555', marginBottom: '1.25rem', lineHeight: 1.5 }}>
+        Share your link — when a friend joins The Atelier, you get <strong>1 free session</strong> on us.
+      </p>
+
+      {/* Link box */}
+      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '1rem' }}>
+        <div style={{
+          flex: 1, backgroundColor: '#f5f5f5', border: '2px solid #111',
+          borderRadius: '12px', padding: '10px 14px',
+          fontSize: '0.8rem', fontFamily: 'monospace', color: '#333',
+          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+        }}>
+          {referralUrl}
+        </div>
+        <button onClick={handleCopy} style={{
+          padding: '10px 18px', backgroundColor: copied ? '#98FFD9' : '#D9F060',
+          border: '2px solid #111', borderRadius: '12px',
+          fontWeight: 'bold', fontSize: '0.8rem', cursor: 'pointer',
+          transition: 'all 0.2s', whiteSpace: 'nowrap', flexShrink: 0,
+        }}>
+          {copied ? '✓ Copied!' : 'Copy link'}
+        </button>
+      </div>
+
+      {pendingCredits > 0 && (
+        <div style={{ backgroundColor: '#D9F060', border: '2px solid #111', borderRadius: '12px', padding: '0.75rem 1rem', fontSize: '0.85rem', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          🎉 You have <strong>{pendingCredits} referral credit{pendingCredits !== 1 ? 's' : ''}</strong> pending — we'll add them to your sessions shortly!
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── CORPORATE DASHBOARD ───────────────────────────────────────────────────────
+
+function CorporateDashboard({ sanityData, user }: { sanityData: any; user: any }) {
   const [employees, setEmployees] = useState<any[]>([]);
   const [loadingEmployees, setLoadingEmployees] = useState(true);
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [statusFilter, setStatusFilter] = useState('all');
 
   const company = sanityData?.company;
 
   useEffect(() => {
-    if (!company?._ref && !company?._id) return;
     const companyId = company?._id || company?._ref;
+    if (!companyId) { setLoadingEmployees(false); return; }
     sanityClient
       .fetch(
         `*[_type == "client" && references($companyId)] | order(name asc) {
@@ -64,213 +179,92 @@ function CorporateDashboard({
   }, [company]);
 
   const filtered = employees.filter((e) => {
-    const matchSearch =
-      e.name?.toLowerCase().includes(search.toLowerCase()) ||
-      e.email?.toLowerCase().includes(search.toLowerCase()) ||
-      e.program?.toLowerCase().includes(search.toLowerCase());
-    const matchStatus = statusFilter === 'all' || e.status === statusFilter;
-    return matchSearch && matchStatus;
+    const matchSearch = [e.name, e.email, e.program].some(f => f?.toLowerCase().includes(search.toLowerCase()));
+    return matchSearch && (statusFilter === 'all' || e.status === statusFilter);
   });
 
   const stats = {
     total: employees.length,
-    active: employees.filter((e) => e.status === 'active').length,
-    completed: employees.filter((e) => e.status === 'completed').length,
-    paused: employees.filter((e) => e.status === 'paused').length,
+    active: employees.filter(e => e.status === 'active').length,
+    completed: employees.filter(e => e.status === 'completed').length,
+    paused: employees.filter(e => e.status === 'paused').length,
   };
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F0', color: '#111', paddingTop: '2.5rem' }}>
-      {/* Top pink bar */}
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '12px', backgroundColor: '#C8006A', zIndex: 1000 }} />
-
       <div style={{ maxWidth: '90rem', margin: '0 auto', padding: '0 2rem' }}>
 
-        {/* ── HEADER: dual logo ── */}
-        <header style={{
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          marginBottom: '2.5rem', paddingBottom: '1.5rem',
-          borderBottom: '4px solid #C8006A'
-        }}>
-          {/* Left: company logo + divider + atelier logo */}
+        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', paddingBottom: '1.5rem', borderBottom: '4px solid #C8006A' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            {company?.logo ? (
-              <img
-                src={urlFor(company.logo).height(56).url()}
-                alt={company.name}
-                style={{ height: '56px', objectFit: 'contain' }}
-              />
-            ) : (
-              <div style={{
-                height: '56px', minWidth: '120px', backgroundColor: '#111', borderRadius: '12px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'white', fontWeight: 'bold', fontSize: '0.85rem', padding: '0 1rem'
-              }}>
-                {company?.name || 'Your Company'}
-              </div>
-            )}
-
-            {/* divider */}
+            {company?.logo
+              ? <img src={urlFor(company.logo).height(56).url()} alt={company.name} style={{ height: '56px', objectFit: 'contain' }} />
+              : <div style={{ height: '56px', minWidth: '120px', backgroundColor: '#111', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '0.85rem', padding: '0 1rem' }}>{company?.name || 'Your Company'}</div>
+            }
             <div style={{ width: '2px', height: '48px', backgroundColor: '#C8006A', borderRadius: '2px' }} />
-
-            <span style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.8rem', color: '#C8006A' }}>
-              The Atelier
-            </span>
+            <span style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.8rem', color: '#C8006A' }}>The Atelier</span>
           </div>
-
-          {/* Right: nav */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <Link href="/" style={{
-              fontWeight: 'bold', textDecoration: 'underline',
-              textTransform: 'uppercase', fontSize: '0.875rem', color: '#111'
-            }}>
-              ← Main Site
-            </Link>
-            <div style={{ backgroundColor: '#FFD1DC', padding: '4px', borderRadius: '50%', border: '2px solid #C8006A' }}>
-              <UserButton />
-            </div>
+            <Link href="/" style={{ fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase', fontSize: '0.875rem', color: '#111' }}>← Main Site</Link>
+            <div style={{ backgroundColor: '#FFD1DC', padding: '4px', borderRadius: '50%', border: '2px solid #C8006A' }}><UserButton /></div>
           </div>
         </header>
 
-        {/* ── CORPORATE BANNER ── */}
-        <div style={{
-          ...card('#C8006A', '#111'),
-          marginBottom: '2rem',
-          background: 'linear-gradient(135deg, #C8006A 0%, #9B0050 100%)',
-          color: 'white',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem',
-        }}>
+        <div style={{ background: 'linear-gradient(135deg, #C8006A 0%, #9B0050 100%)', ...card('#C8006A', '#111'), color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
           <div>
-            <p style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '2px', opacity: 0.75, marginBottom: '4px' }}>
-              Corporate Training Dashboard
-            </p>
-            <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', marginBottom: '4px' }}>
-              {company?.name || 'Your Organization'}
-            </h2>
-            <p style={{ fontSize: '0.9rem', opacity: 0.85 }}>
-              {company?.industry || 'Corporate Partner'} · Welcome, {sanityData?.name || user.fullName}
-            </p>
+            <p style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '2px', opacity: 0.75, marginBottom: '4px' }}>Corporate Training Dashboard</p>
+            <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', marginBottom: '4px' }}>{company?.name || 'Your Organization'}</h2>
+            <p style={{ fontSize: '0.9rem', opacity: 0.85 }}>{company?.industry || 'Corporate Partner'} · Welcome, {sanityData?.name || user.fullName}</p>
           </div>
-          <span style={{
-            ...badge('#D9F060'),
-            fontSize: '0.8rem',
-            padding: '6px 16px',
-            border: '2px solid #D9F060',
-          }}>
-            Corporate Account
-          </span>
+          <span style={{ ...badge('#D9F060'), fontSize: '0.8rem', padding: '6px 16px', border: '2px solid #D9F060' }}>Corporate Account</span>
         </div>
 
-        {/* ── STATS ROW ── */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem', marginBottom: '2rem' }}>
           {[
-            { label: 'Total Enrolled', value: stats.total, color: '#111', bg: '#D9F060' },
-            { label: 'Active', value: stats.active, color: '#111', bg: '#98FFD9' },
-            { label: 'Completed', value: stats.completed, color: '#111', bg: '#FFD1DC' },
-            { label: 'Paused', value: stats.paused, color: '#111', bg: '#FFE999' },
-          ].map((s) => (
-            <div key={s.label} style={{
-              backgroundColor: s.bg,
-              border: '3px solid #111',
-              borderRadius: '20px',
-              padding: '1.5rem',
-              textAlign: 'center',
-              boxShadow: '4px 4px 0px #111',
-            }}>
+            { label: 'Total Enrolled', value: stats.total, bg: '#D9F060' },
+            { label: 'Active', value: stats.active, bg: '#98FFD9' },
+            { label: 'Completed', value: stats.completed, bg: '#FFD1DC' },
+            { label: 'Paused', value: stats.paused, bg: '#FFE999' },
+          ].map(s => (
+            <div key={s.label} style={{ backgroundColor: s.bg, border: '3px solid #111', borderRadius: '20px', padding: '1.5rem', textAlign: 'center', boxShadow: '4px 4px 0px #111' }}>
               <div style={{ fontSize: '2.5rem', fontWeight: '900', lineHeight: 1 }}>{s.value}</div>
-              <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '6px', fontWeight: 'bold' }}>
-                {s.label}
-              </div>
+              <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '6px', fontWeight: 'bold' }}>{s.label}</div>
             </div>
           ))}
         </div>
 
-        {/* ── FILTERS ── */}
-        <div style={{
-          display: 'flex', gap: '1rem', marginBottom: '1.5rem',
-          flexWrap: 'wrap', alignItems: 'center'
-        }}>
-          <input
-            type="text"
-            placeholder="Search employees..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            style={{
-              flex: 1, minWidth: '200px', padding: '10px 16px',
-              border: '3px solid #111', borderRadius: '50px',
-              fontSize: '0.9rem', outline: 'none',
-              backgroundColor: 'white', fontFamily: 'inherit',
-            }}
-          />
-          {(['all', 'active', 'paused', 'completed'] as const).map((s) => (
-            <button
-              key={s}
-              onClick={() => setStatusFilter(s)}
-              style={{
-                padding: '8px 20px', borderRadius: '50px',
-                border: '2px solid #111', cursor: 'pointer',
-                fontWeight: 'bold', fontSize: '0.8rem',
-                textTransform: 'capitalize',
-                backgroundColor: statusFilter === s ? '#C8006A' : 'white',
-                color: statusFilter === s ? 'white' : '#111',
-                transition: 'all 0.15s',
-              }}
-            >
+        <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
+          <input type="text" placeholder="Search employees..." value={search} onChange={e => setSearch(e.target.value)}
+            style={{ flex: 1, minWidth: '200px', padding: '10px 16px', border: '3px solid #111', borderRadius: '50px', fontSize: '0.9rem', outline: 'none', backgroundColor: 'white', fontFamily: 'inherit' }} />
+          {(['all', 'active', 'paused', 'completed'] as const).map(s => (
+            <button key={s} onClick={() => setStatusFilter(s)} style={{ padding: '8px 20px', borderRadius: '50px', border: '2px solid #111', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.8rem', textTransform: 'capitalize', backgroundColor: statusFilter === s ? '#C8006A' : 'white', color: statusFilter === s ? 'white' : '#111' }}>
               {s}
             </button>
           ))}
         </div>
 
-        {/* ── EMPLOYEE TABLE ── */}
         <div style={card('#111', '#C8006A')}>
-          <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.8rem', marginBottom: '1.5rem', color: '#C8006A' }}>
-            Team Progress
-          </h2>
-
+          <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.8rem', marginBottom: '1.5rem', color: '#C8006A' }}>Team Progress</h2>
           {loadingEmployees ? (
-            <p style={{ textAlign: 'center', padding: '3rem', opacity: 0.5, fontStyle: 'italic' }}>
-              Loading team data...
-            </p>
+            <p style={{ textAlign: 'center', padding: '3rem', opacity: 0.5, fontStyle: 'italic' }}>Loading team data...</p>
           ) : filtered.length === 0 ? (
-            <p style={{ textAlign: 'center', padding: '3rem', opacity: 0.5, fontStyle: 'italic' }}>
-              No employees found. Employees need to sign up and be linked to your company by the admin.
-            </p>
+            <p style={{ textAlign: 'center', padding: '3rem', opacity: 0.5, fontStyle: 'italic' }}>No employees found.</p>
           ) : (
             <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
               <thead>
                 <tr style={{ borderBottom: '2px solid #111', fontSize: '0.7rem', textTransform: 'uppercase', color: '#888', letterSpacing: '1px' }}>
-                  <th style={{ padding: '0.75rem 0.5rem' }}>Employee</th>
-                  <th style={{ padding: '0.75rem 0.5rem' }}>Program</th>
-                  <th style={{ padding: '0.75rem 0.5rem' }}>Level</th>
-                  <th style={{ padding: '0.75rem 0.5rem' }}>Professor</th>
-                  <th style={{ padding: '0.75rem 0.5rem' }}>Status</th>
+                  {['Employee', 'Program', 'Level', 'Professor', 'Status'].map(h => <th key={h} style={{ padding: '0.75rem 0.5rem' }}>{h}</th>)}
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((emp) => (
+                {filtered.map(emp => (
                   <tr key={emp._id} style={{ borderBottom: '1px solid #eee', fontSize: '0.9rem' }}>
                     <td style={{ padding: '1rem 0.5rem' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        {emp.image ? (
-                          <img
-                            src={urlFor(emp.image).width(40).height(40).fit('crop').url()}
-                            alt={emp.name}
-                            style={{ width: '36px', height: '36px', borderRadius: '50%', border: '2px solid #111', flexShrink: 0 }}
-                          />
-                        ) : (
-                          <div style={{
-                            width: '36px', height: '36px', borderRadius: '50%',
-                            backgroundColor: '#D9F060', border: '2px solid #111',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontWeight: 'bold', fontSize: '0.85rem', flexShrink: 0,
-                          }}>
-                            {emp.name?.[0] ?? '?'}
-                          </div>
-                        )}
+                        {emp.image
+                          ? <img src={urlFor(emp.image).width(40).height(40).fit('crop').url()} alt={emp.name} style={{ width: '36px', height: '36px', borderRadius: '50%', border: '2px solid #111', flexShrink: 0 }} />
+                          : <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#D9F060', border: '2px solid #111', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '0.85rem', flexShrink: 0 }}>{emp.name?.[0] ?? '?'}</div>
+                        }
                         <div>
                           <div style={{ fontWeight: 'bold' }}>{emp.name}</div>
                           <div style={{ fontSize: '0.75rem', color: '#888' }}>{emp.email}</div>
@@ -278,18 +272,10 @@ function CorporateDashboard({
                       </div>
                     </td>
                     <td style={{ padding: '1rem 0.5rem', color: '#555' }}>{emp.program || '—'}</td>
+                    <td style={{ padding: '1rem 0.5rem' }}>{emp.level ? <span style={badge('#D9F060')}>{emp.level}</span> : <span style={{ color: '#bbb' }}>—</span>}</td>
+                    <td style={{ padding: '1rem 0.5rem', color: '#555' }}>{emp.assignedProfessor?.name || '—'}</td>
                     <td style={{ padding: '1rem 0.5rem' }}>
-                      {emp.level
-                        ? <span style={badge('#D9F060')}>{emp.level}</span>
-                        : <span style={{ color: '#bbb' }}>—</span>}
-                    </td>
-                    <td style={{ padding: '1rem 0.5rem', color: '#555' }}>
-                      {emp.assignedProfessor?.name || '—'}
-                    </td>
-                    <td style={{ padding: '1rem 0.5rem' }}>
-                      <span style={badge(STATUS_BADGE[emp.status] ?? '#eee')}>
-                        {emp.status ?? 'unknown'}
-                      </span>
+                      <span style={badge(emp.status === 'active' ? '#98FFD9' : emp.status === 'completed' ? '#FFD1DC' : '#FFE999')}>{emp.status}</span>
                     </td>
                   </tr>
                 ))}
@@ -306,21 +292,15 @@ function CorporateDashboard({
   );
 }
 
-// ─── INDIVIDUAL DASHBOARD (mevcut kod, temizlenmiş) ───────────────────────────
+// ── INDIVIDUAL DASHBOARD ──────────────────────────────────────────────────────
 
-function IndividualDashboard({
-  sanityData,
-  lessons,
-  user,
-}: {
-  sanityData: any;
-  lessons: any[];
-  user: any;
-}) {
+function IndividualDashboard({ sanityData, lessons, user }: { sanityData: any; lessons: any[]; user: any }) {
   const displayName = sanityData?.name || user.fullName || '';
   const currentProgram = sanityData?.program || 'Unassigned Program';
   const currentLevel = sanityData?.level || 'Pending Evaluation';
   const email = user.primaryEmailAddress?.emailAddress || '';
+  const trackingEnabled = sanityData?.sessionTrackingEnabled === true;
+  const creditsOut = trackingEnabled && (sanityData?.sessionCredits ?? 0) === 0;
 
   const calendlyUrl = `https://calendly.com/theenglishateliere/new-meeting?hide_gdpr_banner=1&primary_color=D4006A&name=${encodeURIComponent(displayName)}&email=${encodeURIComponent(email)}`;
 
@@ -328,22 +308,15 @@ function IndividualDashboard({
     <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F0', color: '#111', paddingTop: '2.5rem' }}>
       <div style={{ maxWidth: '85rem', margin: '0 auto', padding: '0 1.5rem' }}>
 
-        {/* Header */}
         <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem', paddingBottom: '1rem', borderBottom: '4px solid #D4006A' }}>
           <div>
             <h1 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2.5rem', color: '#D4006A' }}>Client Portal</h1>
             <p style={{ fontStyle: 'italic', color: '#666', marginTop: '0.5rem' }}>Welcome back, {displayName}!</p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <Link href="/dashboard/me" style={{ fontWeight: 'bold', textTransform: 'uppercase', fontSize: '0.8rem', backgroundColor: '#CCFF00', padding: '8px 16px', borderRadius: '50px', border: '2px solid #111', textDecoration: 'none', color: '#111' }}>
-              My Profile
-            </Link>
-            <Link href="/" style={{ fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase', fontSize: '0.875rem', color: '#111' }}>
-              ← Main Site
-            </Link>
-            <div style={{ backgroundColor: '#FFD1DC', padding: '4px', borderRadius: '50%', border: '2px solid #D4006A' }}>
-              <UserButton />
-            </div>
+            <Link href="/dashboard/me" style={{ fontWeight: 'bold', textTransform: 'uppercase', fontSize: '0.8rem', backgroundColor: '#CCFF00', padding: '8px 16px', borderRadius: '50px', border: '2px solid #111', textDecoration: 'none', color: '#111' }}>My Profile</Link>
+            <Link href="/" style={{ fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase', fontSize: '0.875rem', color: '#111' }}>← Main Site</Link>
+            <div style={{ backgroundColor: '#FFD1DC', padding: '4px', borderRadius: '50%', border: '2px solid #D4006A' }}><UserButton /></div>
           </div>
         </header>
 
@@ -404,22 +377,48 @@ function IndividualDashboard({
                 <p style={{ fontStyle: 'italic', fontSize: '0.9rem', opacity: 0.7, color: 'white' }}>A personal mentor will be assigned shortly.</p>
               )}
             </div>
+
+            {/* Referral card — always show for individual */}
+            <ReferralCard sanityData={sanityData} />
+
           </div>
 
           {/* Main content */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
+            {/* Session progress — only if tracking enabled */}
+            {trackingEnabled && <SessionProgressCard sanityData={sanityData} />}
+
             {/* Calendly Scheduler */}
             <div style={card('#111111', '#111111')}>
               <div style={{ marginBottom: '1.5rem' }}>
                 <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', color: '#D4006A' }}>Schedule a Session</h2>
-                <p style={{ fontStyle: 'italic', color: '#666' }}>Pick a time that works for you — your info is prefilled.</p>
+                <p style={{ fontStyle: 'italic', color: '#666' }}>
+                  {creditsOut
+                    ? 'You\'ve used all your sessions this cycle. Contact us to top up!'
+                    : 'Pick a time that works for you — your info is prefilled.'}
+                </p>
               </div>
-              <div
-                className="calendly-inline-widget"
-                data-url={calendlyUrl}
-                style={{ minWidth: '320px', height: '700px', borderRadius: '16px', overflow: 'hidden' }}
-              />
+
+              {creditsOut ? (
+                /* Blocked state */
+                <div style={{ backgroundColor: '#FFF0F5', border: '3px solid #C8006A', borderRadius: '16px', padding: '3rem', textAlign: 'center' }}>
+                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔒</div>
+                  <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', color: '#C8006A', marginBottom: '0.75rem' }}>No sessions remaining</h3>
+                  <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
+                    You've completed all sessions in your current cycle. Reach out and we'll get you set up for the next one.
+                  </p>
+                  <a href="mailto:theenglishateliere@gmail.com" style={{ display: 'inline-block', backgroundColor: '#C8006A', color: 'white', padding: '12px 28px', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.9rem', border: '2px solid #111' }}>
+                    Contact us →
+                  </a>
+                </div>
+              ) : (
+                <div
+                  className="calendly-inline-widget"
+                  data-url={calendlyUrl}
+                  style={{ minWidth: '320px', height: '700px', borderRadius: '16px', overflow: 'hidden' }}
+                />
+              )}
             </div>
 
             {/* Lessons timeline */}
@@ -477,7 +476,7 @@ function IndividualDashboard({
   );
 }
 
-// ─── ROOT COMPONENT ───────────────────────────────────────────────────────────
+// ── ROOT ──────────────────────────────────────────────────────────────────────
 
 export default function Dashboard() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -492,7 +491,6 @@ export default function Dashboard() {
     }
   }, [isLoaded, isSignedIn, user]);
 
-  // Calendly script
   useEffect(() => {
     if (calendlyLoaded.current) return;
     const link = document.createElement('link');
@@ -506,7 +504,6 @@ export default function Dashboard() {
     calendlyLoaded.current = true;
   }, []);
 
-  // Calendly booking → Sanity
   useEffect(() => {
     const handleCalendlyEvent = (e: MessageEvent) => {
       if (e.data?.event === 'calendly.event_scheduled') {
@@ -535,7 +532,7 @@ export default function Dashboard() {
         "clientData": *[_type == "client" && clerkUserId == $userId][0] {
           ...,
           assignedProfessor->{ _id, name, specialty, bio, image },
-          company->{ _id, name, logo, industry, contactPerson }
+          company->{ _id, name, logo, industry }
         },
         "lessons": *[_type == "lesson" && client->clerkUserId == $userId] | order(date desc) {
           ...,
@@ -562,9 +559,7 @@ export default function Dashboard() {
     );
   }
 
-  const clientType = sanityData?.clientType ?? 'individual';
-
-  if (clientType === 'corporate') {
+  if (sanityData?.clientType === 'corporate') {
     return <CorporateDashboard sanityData={sanityData} user={user} />;
   }
 

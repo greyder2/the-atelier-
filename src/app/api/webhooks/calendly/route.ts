@@ -1,10 +1,19 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { writeClient } from '@/../sanity/lib/write-client';
 import { Resend } from 'resend';
+import { createClient } from '@sanity/client';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req: Request) {
+const sanity = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
+  apiVersion: '2024-01-01',
+  token: process.env.SANITY_API_TOKEN,
+  useCdn: false,
+});
+
+export async function POST(req: NextRequest) {
   try {
     const { eventUri, inviteeUri, clientSanityId, clientName, clientEmail } = await req.json();
 
@@ -65,6 +74,29 @@ export async function POST(req: Request) {
       lessonDoc.professor = { _type: 'reference', _ref: assignedProfessorId };
     }
     await writeClient.create(lessonDoc);
+
+    // Session credit deduction
+    if (clientSanityId) {
+      const clientData = await sanity.fetch(
+        `*[_type == "client" && _id == $id][0]{
+          _id, sessionTrackingEnabled, sessionCredits
+        }`,
+        { id: clientSanityId }
+      );
+
+      if (!clientData) {
+        console.warn(`[Calendly] Client ${clientSanityId} not found for credit deduction.`);
+      } else if (
+        clientData.sessionTrackingEnabled &&
+        typeof clientData.sessionCredits === 'number' &&
+        clientData.sessionCredits > 0
+      ) {
+        await sanity.patch(clientSanityId).dec({ sessionCredits: 1 }).commit();
+        console.log(
+          `[Calendly] Deducted 1 credit from ${clientSanityId}. Remaining: ${clientData.sessionCredits - 1}`
+        );
+      }
+    }
 
     // Admin email
     await resend.emails.send({
