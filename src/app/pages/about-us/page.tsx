@@ -123,7 +123,7 @@ export default function AboutUs() {
                   { label: 'Education', value: 'UNAM — Food Engineering' },
                   { label: 'Corporate Experience', value: 'PepsiCo (EHS & Procurement)' },
                   { label: 'Languages', value: 'EN · ES · IT · PT · DE · FR · TR' },
-                  { label: 'Students Coached', value: '200+' },
+                  { label: 'Students Coached', value: '50+' },
                   { label: 'Countries', value: '12+ nationalities' },
                   { label: 'Methodology', value: 'Berlitz-Inspired Conversational' },
                 ].map(cred => (

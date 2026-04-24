@@ -41,8 +41,12 @@ export default async function Home() {
     const localData = require('@/data/spotlights');
     const spotlightsList = fetchedSpotlights.length > 0 ? fetchedSpotlights : localData.spotlights;
 
-    const firstGenSpotlights = spotlightsList.filter((s: any) => s.category === 'FIRST');
-    const secondGenSpotlights = spotlightsList.filter((s: any) => s.category === 'SECOND');
+    const firstGenSpotlights = spotlightsList.filter((s: any) => 
+        s.category === 'FIRST' || s.generation === 'first'
+    );
+    const secondGenSpotlights = spotlightsList.filter((s: any) => 
+        s.category === 'SECOND' || s.generation === 'second'
+    );
 
     return (
         <main>
@@ -59,6 +63,21 @@ export default async function Home() {
                         <div className="line1">The</div>
                         <div className="line2">Atelier</div>
                     </h1>
+                    {/* Original Hero Nav - Restored */}
+                    <nav className="hero-nav mt-6">
+                        <div className="hero-nav-inner">
+                            <Link href="#about" className="hero-link">About</Link>
+                            <span className="hero-nav-sep">/</span>
+                            <Link href="#programs" className="hero-link">Programs</Link>
+                            <span className="hero-nav-sep">/</span>
+                            <Link href="/pages/spotlights" className="hero-link">Spotlights</Link>
+                            <span className="hero-nav-sep">/</span>
+                            <Link href="#scholarships" className="hero-link">Scholarships</Link>
+                            <span className="hero-nav-sep">/</span>
+                            <Link href="#contact" className="hero-link">Contact</Link>
+                        </div>
+                    </nav>
+
                     <div className="w-full bg-[#9D174D] text-white text-center py-4 mt-8 text-[clamp(14px,2vw,20px)] tracking-[2px] z-10 uppercase italic font-bold">
                         Where ambitious minds learn to speak the world
                     </div>
@@ -98,15 +117,21 @@ export default async function Home() {
                 <ScrollReveal delay={150}>
                     <section className="py-12 px-[7%] bg-[#FAF7F0] border-t border-[#e8e4dc]">
                         <p className="text-center text-[10px] tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-                        {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO'].map((company, idx, arr) => (
-                            <React.Fragment key={company}>
-                                <span style={{ fontSize: '14px', fontWeight: 900, letterSpacing: '4px', color: '#666', textTransform: 'uppercase', padding: '16px 0' }}>
-                                    {company}
+                    <div className="marquee-container">
+                        <div className="marquee-content">
+                            {[...Array(2)].map((_, i) => (
+                                <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                                    {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO'].map((company, idx) => (
+                                        <React.Fragment key={company}>
+                                            <span className="gold-shimmer" style={{ fontSize: '18px', letterSpacing: '6px', textTransform: 'uppercase', padding: '0 40px' }}>
+                                                {company}
+                                            </span>
+                                            <span style={{ color: '#ccc', fontSize: '20px', fontWeight: 300 }}>★</span>
+                                        </React.Fragment>
+                                    ))}
                                 </span>
-                                {idx < arr.length - 1 && <span style={{ margin: '0 40px', color: '#ccc' }}>|</span>}
-                            </React.Fragment>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                     </section>
                 </ScrollReveal>

@@ -103,6 +103,46 @@
             to { transform: rotate(360deg); }
         }
 
+        .gold-shimmer {
+            background: linear-gradient(
+                to right,
+                #bf953f,
+                #fcf6ba,
+                #b38728,
+                #fcf6ba,
+                #bf953f
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shimmer 4s linear infinite;
+            font-weight: 900;
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
         .card {
             background-color: var(--light-pink);
             border-radius: var(--radius-card);
@@ -206,19 +246,24 @@
             gap: 6px 4px;
             align-items: center;
         }
-        .hero-nav a {
+        .hero-nav a, .hero-link {
             color: var(--white);
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.3rem;
             padding: 4px 12px;
             text-decoration: underline;
             text-underline-offset: 4px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             display: inline-block;
             text-shadow: 1px 1px 0px var(--hot-pink);
             white-space: nowrap;
+            opacity: 0.9;
         }
-        .hero-nav a:hover { color: var(--lime); }
+        .hero-nav a:hover, .hero-link:hover { 
+            color: var(--lime); 
+            opacity: 1;
+            transform: translateY(-2px);
+        }
         .hero-nav-sep {
             color: rgba(255,255,255,0.3);
             font-size: 1rem;

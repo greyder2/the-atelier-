@@ -304,6 +304,25 @@ function IndividualDashboard({ sanityData, lessons, user }: { sanityData: any; l
 
   const calendlyUrl = `https://calendly.com/theenglishateliere/new-meeting?hide_gdpr_banner=1&primary_color=D4006A&name=${encodeURIComponent(displayName)}&email=${encodeURIComponent(email)}`;
 
+  useEffect(() => {
+    const initCalendly = () => {
+      if ((window as any).Calendly) {
+        (window as any).Calendly.initInlineWidget({
+          url: calendlyUrl,
+          parentElement: document.querySelector('.calendly-inline-widget'),
+          prefill: {
+            name: displayName,
+            email: email,
+          }
+        });
+      }
+    };
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(initCalendly, 500);
+    return () => clearTimeout(timer);
+  }, [calendlyUrl, displayName, email, creditsOut]);
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F0', color: '#111', paddingTop: '2.5rem' }}>
       <div style={{ maxWidth: '85rem', margin: '0 auto', padding: '0 1.5rem' }}>
