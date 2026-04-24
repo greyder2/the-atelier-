@@ -2,7 +2,7 @@
 
 import { UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from 'next-sanity';
 import imageUrlBuilder from '@sanity/image-url';
 
@@ -24,28 +24,55 @@ const badge = (bg: string): React.CSSProperties => ({
   backgroundColor: bg, padding: '4px 12px', borderRadius: '50px',
   fontSize: '0.75rem', fontWeight: 'bold', border: '1px solid #111'
 });
-const btn = (bg: string, color: string): React.CSSProperties => ({
-  backgroundColor: bg, color, padding: '14px 40px', borderRadius: '50px',
-  fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer', border: 'none', boxShadow: '4px 4px 0px #111'
-});
 
 export default function Dashboard() {
   const { isLoaded, isSignedIn, user } = useUser();
   const [sanityData, setSanityData] = useState<any>(null);
   const [lessons, setLessons] = useState<any[]>([]);
-  const [professors, setProfessors] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
-  const [selectedProfessor, setSelectedProfessor] = useState<any>(null);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [lastBookingLink, setLastBookingLink] = useState<string | null>(null);
+  const calendlyLoaded = useRef(false);
 
   useEffect(() => {
     if (isLoaded && isSignedIn && user) {
       fetch('/api/sync-clerk', { method: 'POST' }).then(() => fetchAllData());
     }
   }, [isLoaded, isSignedIn, user]);
+
+  // Calendly script yükle
+  useEffect(() => {
+    if (calendlyLoaded.current) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://assets.calendly.com/assets/external/widget.css';
+    document.head.appendChild(link);
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+    calendlyLoaded.current = true;
+  }, []);
+
+  // Calendly booking tamamlandığında Sanity'e yaz
+  useEffect(() => {
+    const handleCalendlyEvent = (e: MessageEvent) => {
+      if (e.data?.event === 'calendly.event_scheduled') {
+        const payload = e.data.payload;
+        fetch('/api/webhooks/calendly', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventUri: payload?.event?.uri,
+            inviteeUri: payload?.invitee?.uri,
+            clientSanityId: sanityData?._id,
+            clientName: sanityData?.name || user?.fullName,
+            clientEmail: user?.primaryEmailAddress?.emailAddress,
+          }),
+        }).then(() => fetchAllData());
+      }
+    };
+    window.addEventListener('message', handleCalendlyEvent);
+    return () => window.removeEventListener('message', handleCalendlyEvent);
+  }, [sanityData, user]);
 
   const fetchAllData = async () => {
     try {
@@ -55,18 +82,14 @@ export default function Dashboard() {
           ...,
           assignedProfessor->{ _id, name, specialty, bio, image }
         },
-        "professors": *[_type == "professor"],
         "lessons": *[_type == "lesson" && client->clerkUserId == $userId] | order(date desc) {
           ...,
           professor->{ name, specialty }
         }
       }`;
-      const { clientData, professors, lessons } = await sanityClient.fetch(query, { userId });
+      const { clientData, lessons } = await sanityClient.fetch(query, { userId });
       if (clientData) setSanityData(clientData);
-      setProfessors(professors || []);
       setLessons(lessons || []);
-      if (clientData?.assignedProfessor) setSelectedProfessor(clientData.assignedProfessor);
-      else if (professors?.length > 0) setSelectedProfessor(professors[0]);
     } catch (e) {
       console.error(e);
     } finally {
@@ -76,56 +99,13 @@ export default function Dashboard() {
 
   if (!isLoaded || !isSignedIn) return null;
 
-  const displayName = sanityData?.name || user.fullName;
+  const displayName = sanityData?.name || user.fullName || '';
   const currentProgram = sanityData?.program || "Unassigned Program";
   const currentLevel = sanityData?.level || "Pending Evaluation";
   const clientType = sanityData?.clientType || "individual";
+  const email = user.primaryEmailAddress?.emailAddress || '';
 
-  const handleSchedule = async () => {
-    if (!selectedDate || !selectedSlot || !selectedProfessor) return;
-    const [hours, minutes] = selectedSlot.split(':');
-    const finalDate = new Date(selectedDate);
-    finalDate.setHours(parseInt(hours), parseInt(minutes));
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/schedule", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: displayName,
-          email: user.primaryEmailAddress?.emailAddress,
-          time: finalDate.toISOString(),
-          programType: `${currentProgram} (${clientType === 'corporate' ? 'Corporate' : 'Individual'})`,
-          professorId: selectedProfessor._id,
-          professorName: selectedProfessor.name,
-          clientSanityId: sanityData?._id,
-        }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setLastBookingLink(data.calendarLink);
-        setStatus("success");
-        fetchAllData();
-      } else setStatus("error");
-    } catch (e) {
-      console.error(e);
-      setStatus("error");
-    }
-  };
-
-  const days: Date[] = [];
-  for (let i = 0; i < 7; i++) {
-    const d = new Date();
-    d.setDate(d.getDate() + i);
-    days.push(d);
-  }
-
-  const timeSlots: string[] = [];
-  for (let h = 7; h <= 22; h++) {
-    ['00', '30'].forEach(m => {
-      if (!(h === 22 && m === '30')) timeSlots.push(`${h.toString().padStart(2, '0')}:${m}`);
-    });
-  }
+  const calendlyUrl = `https://calendly.com/theenglishateliere/new-meeting?hide_gdpr_banner=1&primary_color=D4006A&name=${encodeURIComponent(displayName)}&email=${encodeURIComponent(email)}`;
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F0', color: '#111', paddingTop: '2.5rem' }}>
@@ -226,75 +206,17 @@ export default function Dashboard() {
           {/* Main content */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
-            {/* Scheduler */}
+            {/* Calendly Scheduler */}
             <div style={card('#111111', '#111111')}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                <div>
-                  <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', color: '#D4006A' }}>Schedule Session</h2>
-                  <p style={{ fontStyle: 'italic', color: '#666' }}>Plan your next leap in mastery.</p>
-                </div>
-                {professors.length > 0 && (
-                  <div style={{ textAlign: 'right' }}>
-                    <label style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: '#888', display: 'block', marginBottom: '5px' }}>Professor</label>
-                    <select
-                      value={selectedProfessor?._id}
-                      onChange={e => setSelectedProfessor(professors.find(p => p._id === e.target.value))}
-                      style={{ padding: '8px 12px', borderRadius: '8px', border: '2px solid #111', backgroundColor: '#FAF7F0', fontWeight: 'bold' }}
-                    >
-                      {professors.map(p => <option key={p._id} value={p._id}>{p.name}</option>)}
-                    </select>
-                  </div>
-                )}
+              <div style={{ marginBottom: '1.5rem' }}>
+                <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', color: '#D4006A' }}>Schedule a Session</h2>
+                <p style={{ fontStyle: 'italic', color: '#666' }}>Pick a time that works for you — your info is prefilled.</p>
               </div>
-
-              {status === "success" ? (
-                <div style={{ textAlign: 'center', padding: '3rem', border: '4px dashed #98FFD9', borderRadius: '20px' }}>
-                  <h3 style={{ fontSize: '2rem' }}>Request Sent! 🚀</h3>
-                  <p style={{ color: '#666', marginBottom: '1.5rem' }}>{selectedDate?.toLocaleDateString()} with {selectedProfessor?.name}</p>
-                  {lastBookingLink && (
-                    <a href={lastBookingLink} target="_blank" style={{ display: 'inline-block', backgroundColor: '#111', color: 'white', padding: '12px 24px', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold' }}>
-                      Add to Google Calendar
-                    </a>
-                  )}
-                  <br />
-                  <button onClick={() => { setStatus("idle"); setSelectedSlot(null); }} style={{ marginTop: '1.5rem', color: '#D4006A', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer' }}>
-                    Make Another Request
-                  </button>
-                </div>
-              ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                  <div style={{ display: 'flex', gap: '0.5rem', overflowX: 'auto', paddingBottom: '10px' }}>
-                    {days.map((day, i) => {
-                      const active = selectedDate?.toDateString() === day.toDateString();
-                      return (
-                        <button key={i} onClick={() => setSelectedDate(day)} style={{ border: active ? '3px solid #D4006A' : '3px solid #f0f0f0', backgroundColor: active ? '#FFD1DC' : 'white', padding: '10px', borderRadius: '16px', minWidth: '80px', display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: 'pointer' }}>
-                          <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#999' }}>{day.toLocaleDateString(undefined, { weekday: 'short' })}</span>
-                          <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{day.getDate()}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(90px, 1fr))', gap: '0.5rem' }}>
-                    {timeSlots.map((slot, i) => {
-                      const active = selectedSlot === slot;
-                      return (
-                        <button key={i} disabled={!selectedDate} onClick={() => setSelectedSlot(slot)} style={{ padding: '0.6rem', borderRadius: '10px', border: active ? '3px solid #111' : '1px solid #f0f0f0', backgroundColor: active ? '#CCFF00' : 'white', opacity: selectedDate ? 1 : 0.5, fontWeight: 'bold', cursor: selectedDate ? 'pointer' : 'not-allowed' }}>
-                          {slot}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <button
-                      onClick={handleSchedule}
-                      disabled={!selectedDate || !selectedSlot || status === "loading"}
-                      style={{ ...btn('#D4006A', 'white'), opacity: (selectedDate && selectedSlot) ? 1 : 0.5 }}
-                    >
-                      {status === "loading" ? "Processing..." : "Confirm Session"}
-                    </button>
-                  </div>
-                </div>
-              )}
+              <div
+                className="calendly-inline-widget"
+                data-url={calendlyUrl}
+                style={{ minWidth: '320px', height: '700px', borderRadius: '16px', overflow: 'hidden' }}
+              />
             </div>
 
             {/* Lessons timeline */}
