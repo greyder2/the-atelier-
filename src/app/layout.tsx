@@ -19,6 +19,8 @@ const sarina = Sarina({
   subsets: ["latin"],
 });
 
+const BASE_URL = "https://theenglishatelier.vercel.app";
+
 export const metadata: Metadata = {
   title: {
     default: "The Atelier | Where Ambitious Minds Learn to Speak the World",
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
   authors: [{ name: "The Atelier" }],
   creator: "The Atelier",
   publisher: "The Atelier",
-  metadataBase: new URL("https://theenglishatelier.vercel.app"),
+  metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: "/",
   },
@@ -58,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://theenglishatelier.vercel.app",
+    url: BASE_URL,
     siteName: "The Atelier",
     title: "The Atelier | Where Ambitious Minds Learn to Speak the World",
     description:
@@ -92,6 +94,52 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
+// JSON-LD structured data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: "The Atelier",
+  alternateName: "The English Atelier",
+  url: BASE_URL,
+  logo: `${BASE_URL}/og-image.png`,
+  description:
+    "A boutique language and career development studio dedicated to teaching through culture, conversation, and intellectual curiosity.",
+  email: "theenglishateliere@gmail.com",
+  sameAs: [
+    "https://www.instagram.com/theatelier.lab/",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Language & Career Programs",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Course",
+          name: "Private Coaching",
+          description: "1-on-1 English coaching for ambitious professionals.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Course",
+          name: "Atelier Subscriptions",
+          description: "Monthly membership for continuous language development.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Course",
+          name: "Corporate Language Training",
+          description: "Tailored English programs for corporate teams.",
+        },
+      },
+    ],
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -111,6 +159,29 @@ export default function RootLayout({
         lang="en"
         className={`${dmSans.variable} ${cormorantGaramond.variable} ${sarina.variable} h-full antialiased`}
       >
+        <head>
+          {/* JSON-LD Structured Data */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          />
+          {/* Dark mode: read persisted preference before first paint to avoid flash */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+(function(){
+  try {
+    var saved = localStorage.getItem('atelier-theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && prefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch(e){}
+})();
+              `.trim(),
+            }}
+          />
+        </head>
         <body className="min-h-full flex flex-col pt-3 bg-pale-cream text-black font-dm-sans">
           <div className="top-bar"></div>
           {children}
