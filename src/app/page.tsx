@@ -308,70 +308,154 @@ export default async function Home() {
                 </section>
 
                 {/* 10. CONTACT */}
-                <section id="contact" className="section-padding bg-[#9D174D] text-white grid grid-cols-1 md:grid-cols-3 gap-16 items-center border-t-4 border-black">
-                    <h2 className="text-7xl md:col-span-3 font-['Cormorant_Garamond'] mb-10">Reach out</h2>
+                <section id="contact" style={{ backgroundColor: '#9D174D', padding: '100px 7%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px', alignItems: 'center', borderTop: '4px solid black' }}>
                     
-                    <div className="contact-info space-y-12">
-                        <div>
-                            <div className="font-black text-[#FDF2F8] uppercase text-xs tracking-widest mb-4">EMAIL</div>
-                            <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic font-black hover:text-[#FDF2F8] transition-colors break-all">theenglishateliere@gmail.com</a>
-                        </div>
-                        <div>
-                            <div className="font-black text-[#FDF2F8] uppercase text-xs tracking-widest mb-4">CONTACT FORM</div>
-                            <Link 
-                                href="/pages/contact" 
-                                style={{ backgroundColor: 'white', color: '#9D174D', textDecoration: 'none' }}
-                                className="inline-block font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest transition-colors shadow-lg border-2 border-white"
-                            >
-                                SEND A MESSAGE →
-                            </Link>
-                        </div>
-                        <div>
-                            <div className="font-black text-[#FDF2F8] uppercase text-xs tracking-widest mb-4">INSTAGRAM</div>
-                            <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="text-xl underline italic font-black hover:text-[#FDF2F8] transition-colors">@theatelier.lab</a>
+                    {/* Left Side Info */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', color: 'white' }}>
+                        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(3rem, 6vw, 5rem)', marginBottom: '10px' }}>Reach out</h2>
+                        
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                            <div>
+                                <div style={{ fontSize: '12px', fontWeight: 900, letterSpacing: '2px', color: '#FDF2F8', marginBottom: '8px' }}>EMAIL</div>
+                                <a href="mailto:theenglishateliere@gmail.com" style={{ color: 'white', fontSize: '18px', fontWeight: 900, textDecoration: 'underline', wordBreak: 'break-all' }}>theenglishateliere@gmail.com</a>
+                            </div>
+
+                            <div>
+                                <div style={{ fontSize: '12px', fontWeight: 900, letterSpacing: '2px', color: '#FDF2F8', marginBottom: '15px' }}>CONTACT FORM</div>
+                                <Link 
+                                    href="/pages/contact" 
+                                    style={{ 
+                                        display: 'inline-block', 
+                                        backgroundColor: 'white', 
+                                        color: '#9D174D', 
+                                        padding: '16px 32px', 
+                                        borderRadius: '50px', 
+                                        fontWeight: 900, 
+                                        textTransform: 'uppercase', 
+                                        textDecoration: 'none',
+                                        fontSize: '14px',
+                                        letterSpacing: '1px',
+                                        boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
+                                    }}
+                                >
+                                    SEND A MESSAGE →
+                                </Link>
+                            </div>
+
+                            <div>
+                                <div style={{ fontSize: '12px', fontWeight: 900, letterSpacing: '2px', color: '#FDF2F8', marginBottom: '8px' }}>INSTAGRAM</div>
+                                <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontSize: '18px', fontWeight: 900, fontStyle: 'italic', textDecoration: 'underline' }}>@theatelier.lab</a>
+                            </div>
                         </div>
                     </div>
 
-                    {/* PHONE MOCKUP - INSTAGRAM */}
-                    <div className="flex flex-col items-center gap-4">
-                        <div className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block bg-white">
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-20"></div>
+                    {/* Middle: Instagram Mockup */}
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <div style={{ 
+                            width: '300px', 
+                            height: '600px', 
+                            border: '12px solid white', 
+                            borderRadius: '50px', 
+                            position: 'relative', 
+                            overflow: 'hidden', 
+                            backgroundColor: 'white',
+                            boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
+                            transform: 'rotate(-1deg)'
+                        }}>
+                            <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '140px', height: '30px', backgroundColor: 'white', borderRadius: '0 0 24px 24px', zIndex: 20 }}></div>
                             <img 
-                              src="/pages/instagram-screenshot.webp" 
-                              alt="Instagram Feed"
-                              className="absolute inset-0 w-full h-full object-cover object-top z-0"
+                                src="/pages/instagram-screenshot.webp" 
+                                alt="Instagram"
+                                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                             />
-                            <div className="absolute bottom-0 left-0 right-0 bg-black/80 text-white text-center font-black text-[10px] py-4 tracking-widest uppercase z-10">
+                            <div style={{ 
+                                position: 'absolute', 
+                                bottom: 0, 
+                                left: 0, 
+                                right: 0, 
+                                backgroundColor: 'rgba(0,0,0,0.85)', 
+                                color: 'white', 
+                                textAlign: 'center', 
+                                padding: '15px 0', 
+                                fontWeight: 900, 
+                                fontSize: '10px', 
+                                letterSpacing: '2px', 
+                                textTransform: 'uppercase',
+                                zIndex: 10
+                            }}>
                                 ★ follow @theatelier.lab
                             </div>
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-10 items-start justify-center">
-                         <div className="bg-white/10 p-8 rounded-[32px] backdrop-blur-md border-2 border-white/30 max-w-[400px]">
-                             <p className="font-black italic text-white uppercase text-lg leading-tight tracking-tight">
+                    {/* Right Side CTA */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', alignItems: 'flex-start' }}>
+                        <div style={{ 
+                            backgroundColor: 'rgba(255,255,255,0.15)', 
+                            padding: '30px', 
+                            borderRadius: '32px', 
+                            border: '2px solid rgba(255,255,255,0.3)',
+                            backdropFilter: 'blur(10px)',
+                            width: '100%',
+                            maxWidth: '400px'
+                        }}>
+                            <p style={{ 
+                                color: 'white', 
+                                fontWeight: 900, 
+                                textTransform: 'uppercase', 
+                                fontSize: '18px', 
+                                lineHeight: '1.4', 
+                                margin: 0,
+                                fontStyle: 'italic',
+                                whiteSpace: 'normal',
+                                wordBreak: 'break-word'
+                            }}>
                                 Ready to join our international community of ambitious professionals?
-                             </p>
-                         </div>
-                         
-                         <div className="flex flex-col gap-4 w-full">
-                            <Link 
-                                href="/pages/contact" 
-                                style={{ backgroundColor: 'white', color: '#9D174D', textDecoration: 'none', textAlign: 'center' }}
-                                className="btn-pill font-black shadow-xl hover:scale-105 transition-transform py-5 px-10 rounded-full text-xl uppercase tracking-tighter"
-                            >
-                                SAY HELLO
-                            </Link>
-                            <a 
-                                href="https://linkedin.com" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                style={{ textAlign: 'center' }}
-                                className="btn-pill bg-black text-white no-underline shadow-xl hover:scale-105 transition-transform py-5 px-10 rounded-full font-black text-xl uppercase tracking-tighter"
-                            >
-                                LINKEDIN
-                            </a>
-                         </div>
+                            </p>
+                        </div>
+
+                        <Link 
+                            href="/pages/contact" 
+                            style={{ 
+                                display: 'block',
+                                width: '100%',
+                                maxWidth: '350px',
+                                backgroundColor: 'white', 
+                                color: '#9D174D', 
+                                padding: '20px', 
+                                borderRadius: '50px', 
+                                fontWeight: 900, 
+                                textTransform: 'uppercase', 
+                                textDecoration: 'none',
+                                textAlign: 'center',
+                                fontSize: '18px',
+                                boxShadow: '0 15px 30px rgba(0,0,0,0.2)'
+                            }}
+                        >
+                            SAY HELLO
+                        </Link>
+
+                        <a 
+                            href="https://linkedin.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            style={{ 
+                                display: 'block',
+                                width: '100%',
+                                maxWidth: '350px',
+                                backgroundColor: 'black', 
+                                color: 'white', 
+                                padding: '20px', 
+                                borderRadius: '50px', 
+                                fontWeight: 900, 
+                                textTransform: 'uppercase', 
+                                textDecoration: 'none',
+                                textAlign: 'center',
+                                fontSize: '18px'
+                            }}
+                        >
+                            LINKEDIN
+                        </a>
                     </div>
                 </section>
             </div>
