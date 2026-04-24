@@ -62,33 +62,7 @@ export default async function Home() {
                     <div className="w-full bg-[#9D174D] text-white text-center py-4 mt-8 text-[clamp(14px,2vw,20px)] tracking-[2px] z-10 uppercase italic font-bold">
                         Where ambitious minds learn to speak the world
                     </div>
-                    <nav className="hero-nav mt-8 text-center z-10">
-                        <div className="hero-nav-inner">
-                            <Link href="/" className="hero-link" style={{ color: '#D9F060' }}>Home</Link>
-                            <span className="hero-nav-sep">·</span>
-                            <Link href="/pages/about-us" className="hero-link text-white">About Us</Link>
-                            <span className="hero-nav-sep">·</span>
-                            <a href="#programs" className="hero-link text-white">Programs</a>
-                            <span className="hero-nav-sep">·</span>
-                            <Link href="/pages/career-coaching" className="hero-link text-white">Career Coaching</Link>
-                            <span className="hero-nav-sep">·</span>
-                            <a href="#corporate" className="hero-link text-white">Corporate</a>
-                            <span className="hero-nav-sep">·</span>
-                            <a href="#social-proof" className="hero-link text-white">Social Proof</a>
-                            <span className="hero-nav-sep">·</span>
-                            <Link href="/dashboard" className="hero-link" style={{ color: '#D9F060' }}>Client Portal</Link>
-                            <span className="hero-nav-sep">·</span>
-                            <a href="#scholarships" className="hero-link text-white">Scholarships</a>
-                            <span className="hero-nav-sep">·</span>
-                            <Link href="/pages/spotlights" className="hero-link text-white">Spotlights</Link>
-                            <span className="hero-nav-sep">·</span>
-                            <Link href="/pages/insights" className="hero-link text-white">Journal</Link>
-                            <span className="hero-nav-sep">·</span>
-                            <a href="#contact" className="hero-link text-white">Contact</a>
-                            <span className="hero-nav-sep">·</span>
-                            <a href="#careers" className="hero-link text-white">Work with us</a>
-                        </div>
-                    </nav>
+
                     {/* Scroll indicator */}
                     <div className="scroll-indicator">
                         <span>Scroll</span>
@@ -124,11 +98,16 @@ export default async function Home() {
                 <ScrollReveal delay={150}>
                     <section className="py-12 px-[7%] bg-[#FAF7F0] border-t border-[#e8e4dc]">
                         <p className="text-center text-[10px] tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
-                    <div className="flex flex-wrap justify-center items-center max-w-6xl mx-auto">
-                        {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO'].map(company => (
-                            <span key={company} className="text-[14px] font-black tracking-[4px] text-gray-400 uppercase hover:text-[#9D174D] transition-colors mx-12 my-4">{company}</span>
+                    <div className="flex flex-wrap justify-center items-center max-w-6xl mx-auto px-4">
+                        {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO'].map((company, idx, arr) => (
+                            <React.Fragment key={company}>
+                                <span className="text-[14px] font-black tracking-[4px] text-gray-500 uppercase hover:text-[#9D174D] transition-colors py-4">
+                                    {company}
+                                </span>
+                                {idx < arr.length - 1 && <span className="mx-12 text-gray-300">|</span>}
+                            </React.Fragment>
                         ))}
-                        </div>
+                    </div>
                     </section>
                 </ScrollReveal>
 

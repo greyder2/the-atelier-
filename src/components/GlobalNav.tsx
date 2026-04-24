@@ -43,10 +43,9 @@ export default function GlobalNav() {
         }`}></div>
         
         <div className="max-w-[1400px] mx-auto px-[5%] flex justify-between items-center relative z-10">
-          {/* Logo - Sarina font - Stacked for better fit */}
-          <Link href="/" className="flex flex-col font-['Sarina'] text-3xl text-[#9D174D] leading-[0.8] hover:opacity-80 transition-opacity">
-            <span>The</span>
-            <span className="ml-4">Atelier</span>
+          {/* Logo - Sarina font - Explicitly sized to prevent collapse */}
+          <Link href="/" className="font-['Sarina'] text-4xl text-[#9D174D] tracking-tighter hover:opacity-80 transition-opacity whitespace-nowrap min-w-[200px]">
+            The Atelier
           </Link>
 
         {/* Desktop Nav */}

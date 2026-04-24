@@ -86,12 +86,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon-16.webp", sizes: "16x16", type: "image/png" },
-      { url: "/icon-32.webp", sizes: "32x32", type: "image/png" },
+      { url: "/icon.png" },
     ],
-    apple: [{ url: "/apple-touch-icon.webp", sizes: "180x180" }],
-    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    shortcut: "/icon.png",
   },
   manifest: "/site.webmanifest",
 };

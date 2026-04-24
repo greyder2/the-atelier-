@@ -17,7 +17,7 @@ export default function FloatingEmailPopup() {
 
   useEffect(() => {
     if (sessionStorage.getItem('popup-dismissed')) return;
-    const timer = setTimeout(trigger, 30_000);
+    const timer = setTimeout(trigger, 5000);
     const onMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 10) trigger();
     };
@@ -59,7 +59,7 @@ export default function FloatingEmailPopup() {
         style={{
           position: 'fixed', inset: 0,
           background: 'rgba(0,0,0,0.45)',
-          zIndex: 9998,
+          zIndex: 10998,
           opacity: closing ? 0 : 1,
           transition: 'opacity 0.3s ease',
         }}
@@ -71,13 +71,13 @@ export default function FloatingEmailPopup() {
           transform: `translate(-50%, 50%) scale(${closing ? 0.9 : 1})`,
           opacity: closing ? 0 : 1,
           transition: 'transform 0.3s ease, opacity 0.3s ease',
-          zIndex: 9999,
+          zIndex: 10999,
           width: 'min(90vw, 480px)',
           background: '#FAF7F0',
           border: '4px solid #9D174D',
           borderRadius: '24px',
           padding: '40px 36px',
-          boxShadow: '12px 12px 0px rgba(200,0,106,0.25)',
+          boxShadow: '12px 12px 0px rgba(157,23,77,0.25)',
         }}
       >
         <button
