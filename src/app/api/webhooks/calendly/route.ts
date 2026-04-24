@@ -8,7 +8,6 @@ export async function POST(req: Request) {
   try {
     const { eventUri, inviteeUri, clientSanityId, clientName, clientEmail } = await req.json();
 
-    // Calendly'den event detaylarını çek
     let scheduledAt = new Date().toISOString();
     let eventName = 'Atelier Session';
 
@@ -26,7 +25,17 @@ export async function POST(req: Request) {
       }
     }
 
-    // Sanity'e booking yaz
+    // Client + assignedProfessor'ı çek
+    let assignedProfessorId: string | null = null;
+    if (clientSanityId) {
+      const clientDoc = await writeClient.fetch(
+        `*[_type == "client" && _id == $id][0]{ assignedProfessor->{ _id } }`,
+        { id: clientSanityId }
+      );
+      assignedProfessorId = clientDoc?.assignedProfessor?._id || null;
+    }
+
+    // Booking yaz
     const bookingDoc: any = {
       _type: 'booking',
       studentName: clientName || 'Unknown',
@@ -36,14 +45,28 @@ export async function POST(req: Request) {
       status: 'confirmed',
       notes: `Booked via Calendly. Event: ${eventUri || 'N/A'}`,
     };
-
     if (clientSanityId) {
       bookingDoc.client = { _type: 'reference', _ref: clientSanityId };
     }
-
     await writeClient.create(bookingDoc);
 
-    // Admin bildirimi
+    // Lesson otomatik oluştur
+    const lessonDoc: any = {
+      _type: 'lesson',
+      title: eventName,
+      date: scheduledAt,
+      status: 'upcoming',
+      notes: '',
+    };
+    if (clientSanityId) {
+      lessonDoc.client = { _type: 'reference', _ref: clientSanityId };
+    }
+    if (assignedProfessorId) {
+      lessonDoc.professor = { _type: 'reference', _ref: assignedProfessorId };
+    }
+    await writeClient.create(lessonDoc);
+
+    // Admin email
     await resend.emails.send({
       from: 'The Atelier <onboarding@resend.dev>',
       to: process.env.ADMIN_EMAIL || 'theenglishateliere@gmail.com',
@@ -55,12 +78,13 @@ export async function POST(req: Request) {
           <p><strong>Email:</strong> ${clientEmail}</p>
           <p><strong>Time:</strong> ${new Date(scheduledAt).toLocaleString()}</p>
           <p><strong>Session:</strong> ${eventName}</p>
-          <p style="font-size:0.8rem;color:#666;margin-top:16px">Sanity Studio'dan detayları görüntüleyebilirsin.</p>
+          <p><strong>Professor:</strong> ${assignedProfessorId ? 'Assigned automatically' : 'Not assigned — set in Studio'}</p>
+          <p style="font-size:0.8rem;color:#666;margin-top:16px">Lesson otomatik oluşturuldu. Studio'dan kontrol edebilirsin.</p>
         </div>
       `,
     });
 
-    // Müşteriye onay
+    // Müşteri email
     if (clientEmail) {
       await resend.emails.send({
         from: 'The Atelier <onboarding@resend.dev>',
@@ -70,7 +94,7 @@ export async function POST(req: Request) {
           <div style="font-family:sans-serif;padding:20px;border:4px solid #98FFD9;border-radius:12px;background:#FAF7F0">
             <h2 style="color:#D4006A">Session Confirmed ✓</h2>
             <p>Hi ${clientName}, your session on <strong>${new Date(scheduledAt).toLocaleString()}</strong> is confirmed.</p>
-            <p>You'll receive a calendar invite shortly. See you at The Atelier!</p>
+            <p>You can view it in your <a href="${process.env.NEXT_PUBLIC_BASE_URL}/dashboard" style="color:#D4006A;font-weight:bold">Client Portal</a>.</p>
           </div>
         `,
       });
