@@ -19,6 +19,24 @@ const badge = (bg: string): React.CSSProperties => ({
   fontSize: '0.75rem', fontWeight: 'bold', border: '1px solid #111', display: 'inline-block'
 });
 
+function ProgressBar({ value, color = '#D4006A' }: { value: number; color?: string }) {
+  return (
+    <div style={{ backgroundColor: '#eee', borderRadius: '50px', height: '12px', overflow: 'hidden', border: '2px solid #111' }}>
+      <div style={{ width: `${value}%`, backgroundColor: color, height: '100%', borderRadius: '50px', transition: 'width 0.6s ease' }} />
+    </div>
+  );
+}
+
+function StatBox({ label, value, sub, color = '#FAF7F0' }: { label: string; value: string | number; sub?: string; color?: string }) {
+  return (
+    <div style={{ backgroundColor: color, borderRadius: '16px', padding: '1.25rem 1.5rem', border: '2px solid #eee', textAlign: 'center', flex: 1 }}>
+      <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#D4006A', lineHeight: 1 }}>{value}</p>
+      <p style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: '#888', marginTop: '4px', fontWeight: 'bold' }}>{label}</p>
+      {sub && <p style={{ fontSize: '0.75rem', color: '#555', marginTop: '4px' }}>{sub}</p>}
+    </div>
+  );
+}
+
 export default function MyProfile() {
   const { isLoaded, isSignedIn, user } = useUser();
   const [data, setData] = useState<any>(null);
@@ -38,7 +56,13 @@ export default function MyProfile() {
         assignedProfessor->{ name, specialty, bio, image },
         "lessonCount": count(*[_type == "lesson" && client._ref == ^._id]),
         "completedCount": count(*[_type == "lesson" && client._ref == ^._id && status == "completed"]),
-        "upcomingLessons": *[_type == "lesson" && client._ref == ^._id && status == "upcoming"] | order(date asc)[0..2]{ title, date, professor->{ name } }
+        "upcomingCount": count(*[_type == "lesson" && client._ref == ^._id && status == "upcoming"]),
+        "upcomingLessons": *[_type == "lesson" && client._ref == ^._id && status == "upcoming"] | order(date asc)[0..2]{
+          title, date, professor->{ name }
+        },
+        "recentCompleted": *[_type == "lesson" && client._ref == ^._id && status == "completed"] | order(date desc)[0..4]{
+          title, date, notes, professor->{ name }
+        }
       }`,
       { userId: user?.id }
     );
@@ -63,7 +87,15 @@ export default function MyProfile() {
   if (!isLoaded || !isSignedIn) return null;
 
   const displayName = data?.name || user.fullName;
-  const progress = data?.lessonCount > 0 ? Math.round((data.completedCount / data.lessonCount) * 100) : 0;
+  const completed = data?.completedCount || 0;
+  const total = data?.lessonCount || 0;
+  const upcoming = data?.upcomingCount || 0;
+  const progress = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+  // Seviye hesapla (her 5 completed session = 1 level)
+  const levelNum = Math.floor(completed / 5) + 1;
+  const levelProgress = ((completed % 5) / 5) * 100;
+  const sessionsToNextLevel = 5 - (completed % 5);
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#FAF7F0', color: '#111', padding: '2.5rem 1.5rem' }}>
@@ -86,23 +118,54 @@ export default function MyProfile() {
             }
             <div style={{ flex: 1 }}>
               <h2 style={{ fontFamily: "'Pacifico', cursive", fontSize: '2rem', marginBottom: '0.5rem' }}>{displayName}</h2>
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
                 <span style={badge(data?.clientType === 'corporate' ? '#FFD1DC' : '#CCFF00')}>{data?.clientType || 'individual'}</span>
                 <span style={badge('#eee')}>{data?.level || 'Pending Evaluation'}</span>
                 <span style={badge(data?.status === 'active' ? '#98FFD9' : '#eee')}>{data?.status || 'active'}</span>
               </div>
               <p style={{ fontSize: '0.85rem', color: '#555' }}>{user.primaryEmailAddress?.emailAddress}</p>
             </div>
-            <div style={{ textAlign: 'center', backgroundColor: '#FAF7F0', borderRadius: '20px', padding: '1.5rem 2rem', border: '2px solid #eee' }}>
-              <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#D4006A', lineHeight: 1 }}>{progress}%</p>
-              <p style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: '#888', marginTop: '4px' }}>Journey</p>
-              <p style={{ fontSize: '0.75rem', color: '#555', marginTop: '4px' }}>{data?.completedCount || 0} / {data?.lessonCount || 0} sessions</p>
+          </div>
+        </div>
+
+        {/* Progress tracking */}
+        <div style={card('#CCFF00', '#111')}>
+          <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', marginBottom: '1.5rem' }}>My Progress</h3>
+
+          {/* Stat boxes */}
+          <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+            <StatBox label="Completed" value={completed} sub="sessions" color="#f0fff8" />
+            <StatBox label="Upcoming" value={upcoming} sub="sessions" color="#fff0f6" />
+            <StatBox label="Total" value={total} sub="sessions" color="#f9f9f9" />
+            <StatBox label="Level" value={`L${levelNum}`} sub={`${sessionsToNextLevel} to next`} color="#fffbe6" />
+          </div>
+
+          {/* Overall progress bar */}
+          <div style={{ marginBottom: '1.25rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+              <p style={{ fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', color: '#555' }}>Overall Journey</p>
+              <p style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#D4006A' }}>{progress}%</p>
             </div>
+            <ProgressBar value={progress} color="#D4006A" />
+          </div>
+
+          {/* Level progress bar */}
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+              <p style={{ fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', color: '#555' }}>Level {levelNum} Progress</p>
+              <p style={{ fontSize: '0.75rem', color: '#888' }}>{completed % 5} / 5 sessions</p>
+            </div>
+            <ProgressBar value={levelProgress} color="#111" />
+            {completed > 0 && sessionsToNextLevel < 5 && (
+              <p style={{ fontSize: '0.75rem', color: '#666', marginTop: '8px', fontStyle: 'italic' }}>
+                {sessionsToNextLevel} more session{sessionsToNextLevel > 1 ? 's' : ''} to reach Level {levelNum + 1} 🎯
+              </p>
+            )}
           </div>
         </div>
 
         {/* Learning goals */}
-        <div style={card('#CCFF00', '#111')}>
+        <div style={card('#FFD1DC', '#111')}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
             <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem' }}>My Learning Goals</h3>
             {!editing
@@ -150,9 +213,9 @@ export default function MyProfile() {
           </div>
         )}
 
-        {/* Upcoming lessons */}
+        {/* Upcoming sessions */}
         {data?.upcomingLessons?.length > 0 && (
-          <div style={card('#FFD1DC', '#111')}>
+          <div style={card('#98FFD9', '#111')}>
             <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', marginBottom: '1.5rem' }}>Upcoming Sessions</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {data.upcomingLessons.map((l: any, i: number) => (
@@ -164,6 +227,36 @@ export default function MyProfile() {
                   <p style={{ fontSize: '0.85rem', fontWeight: 'bold' }}>
                     {new Date(l.date).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}
                   </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Recent completed */}
+        {data?.recentCompleted?.length > 0 && (
+          <div style={card('#111', '#111')}>
+            <h3 style={{ fontFamily: "'Pacifico', cursive", fontSize: '1.5rem', marginBottom: '1.5rem' }}>Recent Sessions</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {data.recentCompleted.map((l: any, i: number) => (
+                <div key={i} style={{ backgroundColor: '#FAF7F0', borderRadius: '12px', padding: '1rem 1.25rem', border: '2px solid #eee' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <p style={{ fontWeight: 'bold', fontSize: '0.95rem' }}>{l.title}</p>
+                      <p style={{ fontSize: '0.8rem', color: '#666' }}>{l.professor?.name || 'Staff'}</p>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <span style={badge('#98FFD9')}>completed</span>
+                      <p style={{ fontSize: '0.75rem', color: '#888', marginTop: '4px' }}>
+                        {new Date(l.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
+                      </p>
+                    </div>
+                  </div>
+                  {l.notes && (
+                    <p style={{ fontSize: '0.8rem', fontStyle: 'italic', color: '#555', marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid #eee' }}>
+                      "{l.notes}"
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
