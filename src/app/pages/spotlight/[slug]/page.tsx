@@ -2,28 +2,28 @@ import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { spotlights } from '@/data/spotlights';
-import { createClient } from 'next-sanity';
+import { client } from '../../../../../sanity/lib/client';
+import { spotlightBySlugQuery } from '../../../../../sanity/lib/queries';
+import { groq } from 'next-sanity';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const profile = spotlights.find(s => s.slug === slug);
-  const name = profile?.name ?? slug;
+  const sanityData = await client.fetch(spotlightBySlugQuery, { slug });
+  const localData = require('@/data/spotlights').spotlights;
+  const hardcoded = localData.find((s: any) => s.slug === slug);
+  const name = sanityData?.name ?? hardcoded?.name ?? slug;
   return {
     title: `${name} — Atelier Spotlight`,
-    description: `Read ${name}'s story — an Atelier Spotlights graduate. ${profile?.title || 'Discover their language learning and professional growth journey.'}`,
+    description: `Read ${name}'s story — an Atelier Spotlights graduate. Discover their language learning and professional growth journey.`,
   };
 }
 
-const client = createClient({
-  projectId: '1pu795c0',
-  dataset: 'production',
-  apiVersion: '2024-03-12',
-  useCdn: false,
-});
-
 export async function generateStaticParams() {
-  return spotlights.map(s => ({ slug: s.slug }));
+  const slugs = await client.fetch(groq`*[_type == "spotlight"] { "slug": slug.current }`);
+  if (slugs.length > 0) return slugs;
+  const localData = require('@/data/spotlights').spotlights;
+  return localData.map((s: any) => ({ slug: s.slug }));
 }
 
 export default async function SpotlightProfilePage({
@@ -33,22 +33,20 @@ export default async function SpotlightProfilePage({
 }) {
   const { slug } = await params;
 
-  let sanityData: { name?: string; heading?: string; body?: string } | null = null;
+  let sanityData: any = null;
   try {
-    sanityData = await client.fetch(
-      `*[_type == "spotlight" && slug.current == $slug][0]`,
-      { slug }
-    );
+    sanityData = await client.fetch(spotlightBySlugQuery, { slug });
   } catch {
-    // Sanity unavailable — use hardcoded data
+    // Sanity unavailable
   }
 
-  const hardcoded = spotlights.find(s => s.slug === slug);
+  const localData = require('@/data/spotlights').spotlights;
+  const hardcoded = localData.find((s: any) => s.slug === slug);
   if (!sanityData && !hardcoded) notFound();
 
   const name = sanityData?.name ?? hardcoded?.name ?? '';
   const title = sanityData?.heading ?? hardcoded?.title ?? '';
-  const imagePath = hardcoded?.imagePath ?? `/pages/${slug}.webp`;
+  const imagePath = sanityData?.imageUrl ?? hardcoded?.imagePath ?? `/pages/${slug}.webp`;
   const returnPath = hardcoded?.returnPath ?? '/';
 
   const bioParagraphs: string[] = sanityData?.body
@@ -56,7 +54,11 @@ export default async function SpotlightProfilePage({
     : hardcoded?.bio ?? [];
 
   const bulletPoints = hardcoded?.bulletPoints ?? [];
-  const closingQuote = hardcoded?.closingQuote ?? '';
+  const closingQuote = sanityData?.shortQuote ?? hardcoded?.closingQuote ?? '';
+  
+  // Levels
+  const levelBefore = sanityData?.levelBefore || hardcoded?.levelBefore;
+  const levelAfter = sanityData?.levelAfter || hardcoded?.levelAfter;
 
   return (
     <main style={{ backgroundColor: '#C8006A', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif", paddingBottom: '60px' }}>
@@ -94,7 +96,7 @@ export default async function SpotlightProfilePage({
             ))}
             {bulletPoints.length > 0 && (
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 16px 0' }}>
-                {bulletPoints.map((point, i) => (
+                {bulletPoints.map((point: string, i: number) => (
                   <li key={i} style={{ fontSize: '0.75rem', lineHeight: 1.8, color: '#fff', textTransform: 'uppercase', fontWeight: 600 }}>
                     {point}
                   </li>

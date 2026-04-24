@@ -46,6 +46,18 @@ export default {
       type: 'text',
       description: 'The full bio text',
     },
+    {
+      name: 'levelBefore',
+      title: 'Level Before',
+      type: 'string',
+      description: 'e.g., A2',
+    },
+    {
+      name: 'levelAfter',
+      title: 'Level After',
+      type: 'string',
+      description: 'e.g., B2',
+    },
   ],
   preview: {
     select: {

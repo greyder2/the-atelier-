@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import FloatingCTA from '../components/FloatingCTA';
 import DarkModeToggle from '../components/DarkModeToggle';
 import FloatingEmailPopup from '../components/FloatingEmailPopup';
+import GlobalNav from '../components/GlobalNav';
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -169,8 +170,8 @@ export default function RootLayout({
             }}
           />
         </head>
-        <body className="min-h-full flex flex-col pt-3 bg-pale-cream text-black font-dm-sans">
-          <div className="top-bar"></div>
+        <body className="min-h-full flex flex-col pt-[80px] bg-pale-cream text-black font-dm-sans">
+          <GlobalNav />
           {children}
           <FloatingCTA />
           <DarkModeToggle />

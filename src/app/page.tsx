@@ -1,44 +1,48 @@
 import React from 'react';
 import { client } from '../../sanity/lib/client';
+import { groq } from 'next-sanity';
 import InteractiveClient from './InteractiveClient';
 import FloatingEmailPopup from '../components/FloatingEmailPopup';
 import ScrollReveal from '../components/ScrollReveal';
 import Link from 'next/link';
-import { firstGeneration, secondGeneration, spotlights } from '@/data/spotlights';
+// import { firstGeneration, secondGeneration, spotlights } from '@/data/spotlights';
 
 export const revalidate = 3600;
-
-interface Spotlight {
-    name: string;
-    slug: string;
-    category?: string;
-}
 
 const slugToImageFile: Record<string, string> = {
   'sefika-buse': 'sefika buse',
   'maria-fernanda': 'maria fernanda',
-}
+  'arletthe': 'arletthe',
+  'carolina': 'carolina',
+  'gaby': 'gaby',
+  'iris': 'iris',
+  'marwa': 'marwa',
+  'saja': 'saja',
+  'sofia': 'sofia',
+  'valeria': 'valeria',
+  'mayan': 'Mayan',
+  'buse': 'sefika buse',
+  'aya': 'aya'
+};
+
 function getImagePath(slug: string): string {
   const file = slugToImageFile[slug] ?? slug
   return `/pages/${file}.webp`
 }
 
 export default async function Home() {
-    let sanitySpotlights: Spotlight[] = [];
-    try {
-        sanitySpotlights = await client.fetch(`*[_type == "spotlight"]{
-            name,
-            "slug": slug.current,
-            category
-        }`);
-    } catch {
-        // Sanity unavailable — hardcoded data will be used
-    }
+    // Fetch spotlights from Sanity CMS
+    const spotlightsQuery = groq`*[_type == "spotlight"] | order(_createdAt desc) {
+      name, "slug": slug.current, heading, shortQuote, category, "imagePath": image.asset->url
+    }`;
+    const fetchedSpotlights = await client.fetch(spotlightsQuery);
+    
+    // Import fallback locally if Sanity is empty
+    const localData = require('@/data/spotlights');
+    const spotlightsList = fetchedSpotlights.length > 0 ? fetchedSpotlights : localData.spotlights;
 
-    const firstGenSpotlights: Spotlight[] = firstGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'FIRST' }));
-    const secondGenSpotlights: Spotlight[] = secondGeneration.map(s => ({ name: s.name, slug: s.slug, category: 'SECOND' }));
-
-
+    const firstGenSpotlights = spotlightsList.filter((s: any) => s.category === 'FIRST');
+    const secondGenSpotlights = spotlightsList.filter((s: any) => s.category === 'SECOND');
 
     return (
         <main>
@@ -219,12 +223,12 @@ export default async function Home() {
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
-                                {firstGenSpotlights.map((person, idx) => (
+                                {firstGenSpotlights.map((person: any, idx: number) => (
                                     <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#C8006A] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
                                         <div className="bg-white border-b-4 border-[#C8006A] p-2 flex gap-2 font-mono font-bold">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
+                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
                                         <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
@@ -243,12 +247,12 @@ export default async function Home() {
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
-                                {secondGenSpotlights.map((person, idx) => (
+                                {secondGenSpotlights.map((person: any, idx: number) => (
                                     <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#C8006A] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
                                         <div className="bg-white border-b-4 border-[#C8006A] p-2 flex gap-2 font-mono font-bold">
                                             <span className="text-[#C8006A]">x</span> <span className="text-[#C8006A]">o</span> <span className="text-[#C8006A]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
+                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
                                         <div className="bg-white text-[#C8006A] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#C8006A] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>

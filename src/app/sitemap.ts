@@ -1,24 +1,38 @@
 import { MetadataRoute } from 'next';
+import { client } from '../../sanity/lib/client';
+import { groq } from 'next-sanity';
 
-const BASE = 'https://theenglishatelier.vercel.app';
+const BASE_URL = 'https://theenglishatelier.vercel.app';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const routes = [
+    '',
+    '/pages/about-us',
+    '/pages/book-session',
+    '/pages/cohorts',
+    '/pages/corporate-training',
+    '/pages/private-coaching',
+    '/pages/spotlights',
+    '/pages/spotlights/first-generation',
+    '/pages/spotlights/second-generation',
+  ].map((route) => ({
+    url: `${BASE_URL}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: route === '' ? 1 : 0.8,
+  }));
 
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: BASE, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
-    { url: `${BASE}/pages/about-us`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/pages/book-session`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${BASE}/pages/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE}/pages/private-coaching`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/pages/subscriptions`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/pages/corporate-training`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/pages/cohorts`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE}/pages/scholarships`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE}/pages/spotlights`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/pages/insights`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE}/pages/careers`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
-  ];
-
-  return staticRoutes;
+  try {
+    const slugs = await client.fetch(groq`*[_type == "spotlight"] { "slug": slug.current }`);
+    const dynamicRoutes = slugs.map((s: any) => ({
+      url: `${BASE_URL}/pages/spotlight/${s.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }));
+    return [...routes, ...dynamicRoutes];
+  } catch (err) {
+    // If sanity fails, return static routes
+    return routes;
+  }
 }

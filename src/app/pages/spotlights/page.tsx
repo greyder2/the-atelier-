@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { firstGeneration, secondGeneration } from '@/data/spotlights';
+import { client } from '../../../../sanity/lib/client';
+import { groq } from 'next-sanity';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -8,7 +9,19 @@ export const metadata: Metadata = {
   description: 'Meet the women of Atelier Spotlights — an exclusive, by-invitation program exploring leadership, language, and communication through the stories of remarkable women.',
 };
 
-export default function SpotlightsPage() {
+export const revalidate = 3600;
+
+export default async function SpotlightsPage() {
+  const spotlightsQuery = groq`*[_type == "spotlight"] | order(_createdAt asc) {
+    name, "slug": slug.current, heading, shortQuote, category, "imagePath": image.asset->url
+  }`;
+  const fetchedSpotlights = await client.fetch(spotlightsQuery);
+  const localData = require('@/data/spotlights');
+  const spotlights = fetchedSpotlights.length > 0 ? fetchedSpotlights : localData.spotlights;
+  
+  const firstGeneration = spotlights.filter((s: any) => s.category === 'FIRST');
+  const secondGeneration = spotlights.filter((s: any) => s.category === 'SECOND');
+
   return (
     <main style={{ backgroundColor: '#FAF7F0', minHeight: '100vh', fontFamily: "'DM Sans', sans-serif" }}>
       <div style={{ height: '12px', backgroundColor: '#C8006A', width: '100%' }} />
