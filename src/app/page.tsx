@@ -60,21 +60,29 @@ export default async function Home() {
                     <div className="w-full bg-[#C8006A] text-white text-center py-4 mt-8 text-[clamp(14px,2vw,20px)] tracking-[2px] z-10 uppercase italic font-bold">
                         Where ambitious minds learn to speak the world
                     </div>
-                    <nav className="hero-nav mt-8 text-center z-10 px-5 max-w-[900px] w-full">
-                        <div className="mb-4 flex flex-wrap justify-center gap-x-3 gap-y-2">
-                            <Link href="/" className="hero-link text-white font-['Pacifico'] text-xl md:text-2xl px-2 underline underline-offset-4 decoration-[#D9F060]">Home</Link>
-                            <Link href="/pages/about-us" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">About Us</Link>
-                            <a href="#programs" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Programs / Services</a>
-                            <a href="#corporate" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Corporate Training</a>
-                            <a href="#social-proof" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Social Proof</a>
-                            <Link href="/dashboard" className="hero-link font-['Pacifico'] text-2xl px-2 underline underline-offset-4" style={{ color: '#D9F060' }}>CLIENT PORTAL</Link>
-                        </div>
-                        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
-                            <a href="#scholarships" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Scholarships / Grants</a>
-                            <Link href="/pages/spotlights" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Atelier Spotlights</Link>
-                            <Link href="/pages/insights" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Insights / Journal</Link>
-                            <a href="#contact" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Contact</a>
-                            <a href="#careers" className="hero-link text-white font-['Pacifico'] text-2xl px-2 underline underline-offset-4">Work with us</a>
+                    <nav className="hero-nav mt-8 text-center z-10">
+                        <div className="hero-nav-inner">
+                            <Link href="/" className="hero-link" style={{ color: '#D9F060' }}>Home</Link>
+                            <span className="hero-nav-sep">·</span>
+                            <Link href="/pages/about-us" className="hero-link text-white">About Us</Link>
+                            <span className="hero-nav-sep">·</span>
+                            <a href="#programs" className="hero-link text-white">Programs</a>
+                            <span className="hero-nav-sep">·</span>
+                            <a href="#corporate" className="hero-link text-white">Corporate</a>
+                            <span className="hero-nav-sep">·</span>
+                            <a href="#social-proof" className="hero-link text-white">Social Proof</a>
+                            <span className="hero-nav-sep">·</span>
+                            <Link href="/dashboard" className="hero-link" style={{ color: '#D9F060' }}>Client Portal</Link>
+                            <span className="hero-nav-sep">·</span>
+                            <a href="#scholarships" className="hero-link text-white">Scholarships</a>
+                            <span className="hero-nav-sep">·</span>
+                            <Link href="/pages/spotlights" className="hero-link text-white">Spotlights</Link>
+                            <span className="hero-nav-sep">·</span>
+                            <Link href="/pages/insights" className="hero-link text-white">Journal</Link>
+                            <span className="hero-nav-sep">·</span>
+                            <a href="#contact" className="hero-link text-white">Contact</a>
+                            <span className="hero-nav-sep">·</span>
+                            <a href="#careers" className="hero-link text-white">Work with us</a>
                         </div>
                     </nav>
                 </section>
@@ -82,7 +90,7 @@ export default async function Home() {
                 {/* 3. HOME / ABOUT */}
                 <section id="about" className="section-padding bg-white grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="about-left staggered-left">
-                        <h2 className="title text-[4rem] leading-none mb-4 font-['Pacifico']">The Atelier</h2>
+                        <h2 className="title text-[4rem] leading-none mb-4 font-['Cormorant_Garamond']">The Atelier</h2>
                         <div className="subtitle text-[#C8006A] text-2xl mb-8 italic font-bold">Language, Culture & Confidence for the Global Voices.</div>
                         <ul className="list-none space-y-6">
                             <li className="font-bold text-lg"><span className="text-[#C8006A] mr-2">★</span> <i>LANGUAGE EDUCATION</i> — ENGLISH PROGRAMS DESIGNED FOR AMBITIOUS PROFESSIONALS.</li>
@@ -94,14 +102,14 @@ export default async function Home() {
                         <Link href="/pages/book-session" className="speech-bubble bg-[#D9F060] rounded-[24px] rounded-br-0 p-8 font-bold text-center text-xl max-w-[300px] text-black mb-4 shadow-[4px_4px_0px_#C8006A] hover:scale-105 transition-transform no-underline">
                             JOIN THE ATELIER! <br/>BOOK A FREE SESSION HERE
                         </Link>
-                        <div className="hand-cursor text-4xl mt-[-10px] animate-bounce">👈</div>
+                        <span className="animated-arrow">←</span>
                     </div>
                 </section>
 
                 {/* 4. PROGRAMS / SERVICES */}
                 <section id="programs" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="left-col staggered-left">
-                        <h2 className="section-title text-6xl mb-8 font-['Pacifico']">Programs / Services</h2>
+                        <h2 className="section-title text-6xl mb-8 font-['Cormorant_Garamond']">Programs / Services</h2>
                         <div className="flex flex-col space-y-4 text-3xl font-bold">
                             <Link href="/pages/private-coaching" className="underline hover:text-[#C8006A] transition-colors">Private Coaching</Link>
                             <Link href="/pages/subscriptions" className="underline hover:text-[#C8006A] transition-colors">Atelier Subscriptions</Link>
@@ -111,7 +119,7 @@ export default async function Home() {
                     </div>
                     <div className="right-col staggered-card">
                         <div className="bg-[#A8DDD8] p-10 rounded-[24px] border-4 border-[#C8006A] shadow-xl">
-                            <h3 className="text-3xl mb-4 font-['Pacifico']">Our Programs</h3>
+                            <h3 className="text-3xl mb-4 font-['Cormorant_Garamond']">Our Programs</h3>
                             <p className="text-xl italic font-bold leading-relaxed">The Atelier offers a range of programs designed to support different learning goals and lifestyles, from one-on-one sessions to cultural community subscriptions.</p>
                         </div>
                     </div>
@@ -119,22 +127,26 @@ export default async function Home() {
 
                 {/* 6. SOCIAL PROOF (GRID) */}
                 <section id="social-proof" className="section-padding bg-[#C8006A] text-white text-center">
-                    <h2 className="section-title text-black text-6xl mb-4 font-['Pacifico']">Social Proof</h2>
+                    <h2 className="section-title text-black text-6xl mb-4 font-['Cormorant_Garamond']">Social Proof</h2>
                     <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON), AFRICA (LIBYA), AND EUROPE (POLAND).</p>
                     
-                    {/* Testimonial quotes */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 max-w-5xl mx-auto text-left">
-                        <div className="bg-white/10 border-2 border-white/30 rounded-[20px] p-6">
+                    {/* Testimonial quotes — scrollable carousel */}
+                    <div className="testimonial-track mb-14 max-w-5xl mx-auto">
+                        <div className="testimonial-card">
                             <p className="text-white italic text-base leading-relaxed mb-4">"The classes were not only about learning a language, but about learning that, and so many other things."</p>
                             <span className="text-[#D9F060] font-black uppercase text-sm">— Arletthe, Mexico</span>
                         </div>
-                        <div className="bg-white/10 border-2 border-white/30 rounded-[20px] p-6">
+                        <div className="testimonial-card">
                             <p className="text-white italic text-base leading-relaxed mb-4">"I truly like the way you work — you focus on who the person is and what is happening in their life."</p>
                             <span className="text-[#D9F060] font-black uppercase text-sm">— Arletthe, Mexico</span>
                         </div>
-                        <div className="bg-white/10 border-2 border-white/30 rounded-[20px] p-6">
+                        <div className="testimonial-card">
                             <p className="text-white italic text-base leading-relaxed mb-4">"Her journey reflects what the Atelier is about: ambitious professionals using English as a tool for global conversations."</p>
                             <span className="text-[#D9F060] font-black uppercase text-sm">— Gaby, Aviation, Mexico</span>
+                        </div>
+                        <div className="testimonial-card">
+                            <p className="text-white italic text-base leading-relaxed mb-4">"Every session left me with something new — not just English, but a way of seeing the world differently."</p>
+                            <span className="text-[#D9F060] font-black uppercase text-sm">— Atelier Student</span>
                         </div>
                     </div>
                     
@@ -143,7 +155,7 @@ export default async function Home() {
                         <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
-                                <h3 className="font-['Pacifico'] text-3xl text-black">First Generation</h3>
+                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">First Generation</h3>
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
@@ -167,7 +179,7 @@ export default async function Home() {
                         <div>
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
-                                <h3 className="font-['Pacifico'] text-3xl text-black">Second Generation</h3>
+                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">Second Generation</h3>
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
@@ -196,9 +208,9 @@ export default async function Home() {
                 {/* 7. SCHOLARSHIPS / GRANTS */}
                 <section id="scholarships" className="section-padding bg-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-10 items-center border-t-4 border-black">
                     <div className="left-col staggered-left">
-                        <h2 className="section-title text-white text-6xl mb-8 font-['Pacifico']">Scholarships / Grants</h2>
+                        <h2 className="section-title text-white text-6xl mb-8 font-['Cormorant_Garamond']">Scholarships / Grants</h2>
                         <div className="bg-white p-10 rounded-[24px] shadow-2xl border-4 border-black relative">
-                            <h3 className="text-3xl font-['Pacifico'] mb-4 text-[#C8006A]">The Atelier Grants</h3>
+                            <h3 className="text-3xl font-['Cormorant_Garamond'] mb-4 text-[#C8006A]">The Atelier Grants</h3>
                             <p className="text-lg leading-relaxed mb-6 font-bold text-black uppercase italic">We believe in supporting highly motivated students. Our grants cover a significant percentage of programs for language learners who demonstrate commitment and passion.</p>
                             <Link href="/pages/scholarships" className="font-black underline text-[#C8006A] uppercase tracking-widest hover:text-black transition-colors text-xl">learn more here.</Link>
                         </div>
@@ -207,7 +219,7 @@ export default async function Home() {
                          <div className="star-container flex justify-center items-center relative spin-slow">
                             <div className="star-shape w-[400px] h-[400px] bg-[#F4A7C3] flex flex-col justify-center items-center text-center p-8 shadow-2xl border-2 border-black/5" 
                                  style={{ clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" }}>
-                                <div className="font-['Pacifico'] text-[#C8006A] text-2xl mb-1">Atelier</div>
+                                <div className="font-['Cormorant_Garamond'] text-[#C8006A] text-2xl mb-1">Atelier</div>
                                 <div className="font-black text-5xl text-black leading-none mb-2">Grants</div>
                                 <div className="text-[12px] italic text-black uppercase max-w-[140px] font-black leading-tight">Scholarships with purpose</div>
                             </div>
@@ -218,7 +230,7 @@ export default async function Home() {
                 {/* 8. ATELIER SPOTLIGHTS */}
                 <section id="spotlights" className="section-padding bg-[#FAF7F0] border-t-4 border-[#C8006A] grid grid-cols-1 md:grid-cols-2 gap-20">
                     <div className="left-col staggered-left">
-                        <h2 className="section-title text-[#C8006A] text-6xl mb-8 font-['Pacifico']">Atelier Spotlight</h2>
+                        <h2 className="section-title text-[#C8006A] text-6xl mb-8 font-['Cormorant_Garamond']">Atelier Spotlight</h2>
                         <div className="bg-white p-12 rounded-[24px] space-y-8 shadow-2xl border-4 border-[#C8006A] relative overflow-visible">
                              <div className="inline-block bg-[#D9F060] text-black font-black px-4 py-1 text-sm rounded-full shadow-lg transform rotate-3 mb-2">
                                 FEATURED
@@ -229,7 +241,7 @@ export default async function Home() {
                             <Link href="/pages/spotlight/gaby" className="text-2xl font-black underline inline-flex items-center gap-2 text-[#C8006A] hover:text-black transition-all">
                                 view full profile. 
                             </Link>
-                            <div className="hand-cursor text-5xl animate-bounce ml-5 inline-block">👈</div>
+                            <span className="animated-arrow">←</span>
                         </div>
                     </div>
                     <div className="right-col staggered-card h-full">
@@ -256,7 +268,7 @@ export default async function Home() {
 
                 {/* 10. CONTACT */}
                 <section id="contact" className="section-padding bg-[#C8006A] text-white grid grid-cols-1 md:grid-cols-3 gap-16 items-center border-t-4 border-black">
-                    <h2 className="text-7xl md:col-span-3 font-['Pacifico'] mb-10">Reach out</h2>
+                    <h2 className="text-7xl md:col-span-3 font-['Cormorant_Garamond'] mb-10">Reach out</h2>
                     
                     <div className="contact-info space-y-12">
                         <div>
@@ -297,11 +309,32 @@ export default async function Home() {
             </div>
 
             <FloatingEmailPopup />
-            <footer style={{ backgroundColor: '#C8006A', color: 'white', textAlign: 'center', padding: '40px 0' }}>
-                <p>&copy; 2026 The Atelier. All Rights Reserved.</p>
-                <div style={{ marginTop: '10px' }}>
-                  <Link href="/pages/about-us" style={{ color: 'white', margin: '0 10px', textDecoration: 'underline' }}>About Us</Link>
-                  <Link href="/pages/book-session" style={{ color: 'white', margin: '0 10px', textDecoration: 'underline' }}>Join Now</Link>
+            <footer className="footer-enhanced">
+                <div className="footer-grid">
+                    <div>
+                        <div className="footer-brand">The Atelier</div>
+                        <div className="footer-tagline">Where ambitious minds learn to speak the world</div>
+                    </div>
+                    <div className="footer-col">
+                        <div className="footer-col-title">Programs</div>
+                        <Link href="/pages/private-coaching">Private Coaching</Link>
+                        <Link href="/pages/subscriptions">Atelier Subscriptions</Link>
+                        <Link href="/pages/corporate-training">Corporate Training</Link>
+                        <Link href="/pages/cohorts">Cohorts & Special Programs</Link>
+                        <Link href="/pages/scholarships">Scholarships / Grants</Link>
+                    </div>
+                    <div className="footer-col">
+                        <div className="footer-col-title">Connect</div>
+                        <Link href="/pages/about-us">About Us</Link>
+                        <Link href="/pages/spotlights">Atelier Spotlights</Link>
+                        <Link href="/pages/insights">Insights / Journal</Link>
+                        <Link href="/pages/contact">Contact</Link>
+                        <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+                    </div>
+                </div>
+                <div className="footer-bottom">
+                    <span>&copy; 2026 The Atelier. All Rights Reserved.</span>
+                    <Link href="/pages/book-session" style={{ color: 'white', opacity: 1, textDecoration: 'underline', fontWeight: 700 }}>Book a Free Session →</Link>
                 </div>
             </footer>
         </main>

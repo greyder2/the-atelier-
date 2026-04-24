@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Playfair_Display, Sarina } from "next/font/google";
+import { DM_Sans, Cormorant_Garamond, Sarina } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import "./globals.css";
 
@@ -8,8 +8,8 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
 });
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
 });
 
@@ -109,7 +109,7 @@ export default function RootLayout({
     >
       <html
         lang="en"
-        className={`${dmSans.variable} ${playfairDisplay.variable} ${sarina.variable} h-full antialiased`}
+        className={`${dmSans.variable} ${cormorantGaramond.variable} ${sarina.variable} h-full antialiased`}
       >
         <body className="min-h-full flex flex-col pt-3 bg-pale-cream text-black font-dm-sans">
           <div className="top-bar"></div>
