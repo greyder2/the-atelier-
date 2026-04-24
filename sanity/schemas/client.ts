@@ -35,6 +35,14 @@ export default {
       initialValue: 'individual',
     },
     {
+      name: 'company',
+      title: 'Company',
+      type: 'reference',
+      to: [{ type: 'company' }],
+      description: 'For corporate clients only. Assign to link this student to a company dashboard.',
+      hidden: ({ document }: any) => document?.clientType !== 'corporate',
+    },
+    {
       name: 'program',
       title: 'Enrolled Program',
       type: 'string',
@@ -100,18 +108,6 @@ export default {
       name: 'learningGoals',
       title: 'Learning Goals',
       type: 'text',
-    },
-    {
-      name: 'companyName',
-      title: 'Company Name',
-      type: 'string',
-      description: 'For corporate clients only.',
-    },
-    {
-      name: 'teamSize',
-      title: 'Team Size',
-      type: 'number',
-      description: 'Number of employees in program.',
     },
   ],
   preview: {
