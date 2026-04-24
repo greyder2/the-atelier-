@@ -42,10 +42,13 @@ export default async function Home() {
     const spotlightsList = fetchedSpotlights.length > 0 ? fetchedSpotlights : localData.spotlights;
 
     const firstGenSpotlights = spotlightsList.filter((s: any) => 
-        s.category === 'FIRST' || s.generation === 'first'
+        s.slug === 'sofia'
     );
     const secondGenSpotlights = spotlightsList.filter((s: any) => 
         s.category === 'SECOND' || s.generation === 'second'
+    );
+    const otherSpotlights = spotlightsList.filter((s: any) => 
+        s.slug !== 'sofia' && s.category !== 'SECOND' && s.generation !== 'second'
     );
 
     return (
@@ -65,16 +68,34 @@ export default async function Home() {
                     </h1>
                     {/* Original Hero Nav - Restored */}
                     <nav className="hero-nav mt-6">
-                        <div className="hero-nav-inner">
-                            <Link href="#about" className="hero-link">About</Link>
+                        <div className="hero-nav-inner" style={{ gap: '12px 24px' }}>
+                            <Link href="/pages/about-us" className="hero-link">About Us</Link>
                             <span className="hero-nav-sep">/</span>
                             <Link href="#programs" className="hero-link">Programs</Link>
                             <span className="hero-nav-sep">/</span>
                             <Link href="/pages/spotlights" className="hero-link">Spotlights</Link>
                             <span className="hero-nav-sep">/</span>
-                            <Link href="#scholarships" className="hero-link">Scholarships</Link>
+                            <Link href="#scholarships" className="hero-link">Grants</Link>
                             <span className="hero-nav-sep">/</span>
                             <Link href="#contact" className="hero-link">Contact</Link>
+                            
+                            <div className="hidden sm:block" style={{ width: '2px', height: '24px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 10px' }}></div>
+                            
+                            <Link href="/dashboard" className="client-portal-link" style={{
+                                backgroundColor: '#D9F060',
+                                color: '#111',
+                                padding: '8px 24px',
+                                borderRadius: '50px',
+                                fontWeight: '900',
+                                textTransform: 'uppercase',
+                                fontSize: '0.8rem',
+                                letterSpacing: '1.5px',
+                                textDecoration: 'none',
+                                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+                                transition: 'all 0.3s ease'
+                            }}>
+                                CLIENT PORTAL
+                            </Link>
                         </div>
                     </nav>
 
@@ -117,21 +138,20 @@ export default async function Home() {
                 <ScrollReveal delay={150}>
                     <section className="py-12 px-[7%] bg-[#FAF7F0] border-t border-[#e8e4dc]">
                         <p className="text-center text-[10px] tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
-                    <div className="marquee-container">
-                        <div className="marquee-content">
-                            {[...Array(2)].map((_, i) => (
-                                <span key={i} style={{ display: 'inline-flex', alignItems: 'center' }}>
-                                    {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO'].map((company, idx) => (
-                                        <React.Fragment key={company}>
-                                            <span className="gold-shimmer" style={{ fontSize: '18px', letterSpacing: '6px', textTransform: 'uppercase', padding: '0 40px' }}>
-                                                {company}
-                                            </span>
-                                            <span style={{ color: '#ccc', fontSize: '20px', fontWeight: 300 }}>★</span>
-                                        </React.Fragment>
-                                    ))}
-                                </span>
-                            ))}
-                        </div>
+                    <div className="logos-bar" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', maxWidth: '1200px', margin: '0 auto', gap: '30px 60px' }}>
+                        {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO'].map((company) => (
+                            <span key={company} style={{ 
+                                fontSize: '15px', 
+                                letterSpacing: '5px', 
+                                textTransform: 'uppercase', 
+                                fontWeight: '900',
+                                color: '#C5A059',
+                                opacity: 0.8,
+                                transition: 'opacity 0.3s ease'
+                            }} className="hover:opacity-100">
+                                {company}
+                            </span>
+                        ))}
                     </div>
                     </section>
                 </ScrollReveal>
@@ -241,7 +261,7 @@ export default async function Home() {
 
                     {/* Second Generation Section */}
                     {secondGenSpotlights.length > 0 && (
-                        <div>
+                        <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
                                 <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">Second Generation</h3>
@@ -249,6 +269,30 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {secondGenSpotlights.map((person: any, idx: number) => (
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
+                                        <div className="bg-white border-b-4 border-[#9D174D] p-2 flex gap-2 font-mono font-bold">
+                                            <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
+                                        </div>
+                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
+                                        <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#FDF2F8] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
+                                            &lt; view profile &gt;
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* All Other Spotlights Section */}
+                    {otherSpotlights.length > 0 && (
+                        <div>
+                            <div className="flex items-center justify-center gap-4 mb-8">
+                                <div className="h-[4px] w-20 bg-black"></div>
+                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">Spotlights</h3>
+                                <div className="h-[4px] w-20 bg-black"></div>
+                            </div>
+                            <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
+                                {otherSpotlights.map((person: any, idx: number) => (
                                     <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
                                         <div className="bg-white border-b-4 border-[#9D174D] p-2 flex gap-2 font-mono font-bold">
                                             <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
