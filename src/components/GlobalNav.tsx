@@ -29,21 +29,24 @@ export default function GlobalNav() {
       
       <header 
         className={`fixed top-[12px] left-0 right-0 z-[9900] transition-all duration-300 ${
-          scrolled ? "shadow-lg py-4 border-b border-[#9D174D]/30" : "bg-transparent py-7"
+          scrolled ? "shadow-lg py-4 border-b border-[#9D174D]/40" : "py-6"
         }`}
-        style={scrolled ? { 
+        style={{ 
           backgroundImage: "url('/pages/atelier background.webp')", 
           backgroundSize: 'cover', 
           backgroundPosition: 'center' 
-        } : {}}
+        }}
       >
-        {/* Subtle overlay to ensure readability when scrolled */}
-        {scrolled && <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-[-1]"></div>}
+        {/* Semi-transparent overlay to ensure content is readable over the pattern */}
+        <div className={`absolute inset-0 z-[-1] transition-colors duration-300 ${
+          scrolled ? "bg-white/80 backdrop-blur-md" : "bg-white/40"
+        }`}></div>
         
         <div className="max-w-[1400px] mx-auto px-[5%] flex justify-between items-center relative z-10">
-          {/* Logo - Sarina font as requested */}
-          <Link href="/" className="font-['Sarina'] text-4xl text-[#9D174D] tracking-tighter hover:opacity-80 transition-opacity leading-none">
-            The<br/><span className="ml-2">Atelier</span>
+          {/* Logo - Sarina font - Stacked for better fit */}
+          <Link href="/" className="flex flex-col font-['Sarina'] text-3xl text-[#9D174D] leading-[0.8] hover:opacity-80 transition-opacity">
+            <span>The</span>
+            <span className="ml-4">Atelier</span>
           </Link>
 
         {/* Desktop Nav */}

@@ -124,9 +124,9 @@ export default async function Home() {
                 <ScrollReveal delay={150}>
                     <section className="py-12 px-[7%] bg-[#FAF7F0] border-t border-[#e8e4dc]">
                         <p className="text-center text-[10px] tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
-                    <div className="flex flex-wrap justify-center items-center gap-x-24 gap-y-8 max-w-5xl mx-auto">
+                    <div className="flex flex-wrap justify-center items-center max-w-6xl mx-auto">
                         {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO'].map(company => (
-                            <span key={company} className="text-[14px] font-black tracking-[4px] text-gray-400 uppercase hover:text-[#9D174D] transition-colors">{company}</span>
+                            <span key={company} className="text-[14px] font-black tracking-[4px] text-gray-400 uppercase hover:text-[#9D174D] transition-colors mx-12 my-4">{company}</span>
                         ))}
                         </div>
                     </section>
