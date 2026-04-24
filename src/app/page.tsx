@@ -98,13 +98,13 @@ export default async function Home() {
                 <ScrollReveal delay={150}>
                     <section className="py-12 px-[7%] bg-[#FAF7F0] border-t border-[#e8e4dc]">
                         <p className="text-center text-[10px] tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
-                    <div className="flex flex-wrap justify-center items-center max-w-6xl mx-auto px-4">
+                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
                         {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO'].map((company, idx, arr) => (
                             <React.Fragment key={company}>
-                                <span className="text-[14px] font-black tracking-[4px] text-gray-500 uppercase hover:text-[#9D174D] transition-colors py-4">
+                                <span style={{ fontSize: '14px', fontWeight: 900, letterSpacing: '4px', color: '#666', textTransform: 'uppercase', padding: '16px 0' }}>
                                     {company}
                                 </span>
-                                {idx < arr.length - 1 && <span className="mx-12 text-gray-300">|</span>}
+                                {idx < arr.length - 1 && <span style={{ margin: '0 40px', color: '#ccc' }}>|</span>}
                             </React.Fragment>
                         ))}
                     </div>
@@ -205,7 +205,7 @@ export default async function Home() {
                                             <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
-                                        <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
+                                        <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#FDF2F8] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
                                     </Link>
@@ -229,7 +229,7 @@ export default async function Home() {
                                             <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
                                         </div>
                                         <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
-                                        <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#D9F060] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
+                                        <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#FDF2F8] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
                                     </Link>
@@ -239,7 +239,7 @@ export default async function Home() {
                     )}
                     {/* Book Session CTA */}
                     <div className="mt-14 text-center">
-                        <Link href="/pages/book-session" className="inline-block bg-[#D9F060] text-black font-black px-12 py-5 rounded-full text-xl uppercase tracking-widest hover:scale-105 transition-transform no-underline shadow-2xl border-4 border-black">
+                        <Link href="/pages/book-session" className="inline-block bg-black text-white font-black px-12 py-5 rounded-full text-xl uppercase tracking-widest hover:scale-105 transition-transform no-underline shadow-2xl border-4 border-[#9D174D]">
                             Book a Free Session ★
                         </Link>
                     </div>
@@ -273,7 +273,7 @@ export default async function Home() {
                     <div className="left-col staggered-left">
                         <h2 className="section-title text-[#9D174D] text-6xl mb-8 font-['Cormorant_Garamond']">Atelier Spotlight</h2>
                         <div className="bg-white p-12 rounded-[24px] space-y-8 shadow-2xl border-4 border-[#9D174D] relative overflow-visible">
-                             <div className="inline-block bg-[#D9F060] text-black font-black px-4 py-1 text-sm rounded-full shadow-lg transform rotate-3 mb-2">
+                             <div className="inline-block bg-white text-[#9D174D] font-black px-4 py-1 text-sm rounded-full shadow-lg transform rotate-3 mb-2">
                                 FEATURED
                             </div>
                             <p className="text-2xl font-black italic text-black uppercase leading-relaxed">
@@ -313,25 +313,29 @@ export default async function Home() {
                     
                     <div className="contact-info space-y-12">
                         <div>
-                            <div className="font-black text-[#D9F060] uppercase text-xs tracking-widest mb-4">EMAIL</div>
-                            <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic font-black hover:text-[#D9F060] transition-colors break-all">theenglishateliere@gmail.com</a>
+                            <div className="font-black text-[#FDF2F8] uppercase text-xs tracking-widest mb-4">EMAIL</div>
+                            <a href="mailto:theenglishateliere@gmail.com" className="text-xl underline italic font-black hover:text-[#FDF2F8] transition-colors break-all">theenglishateliere@gmail.com</a>
                         </div>
                         <div>
-                            <div className="font-black text-[#D9F060] uppercase text-xs tracking-widest mb-4">CONTACT FORM</div>
-                            <Link href="/pages/contact" className="inline-block bg-white text-[#9D174D] font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest hover:bg-[#D9F060] hover:text-black transition-colors no-underline shadow-lg border-2 border-white">
+                            <div className="font-black text-[#FDF2F8] uppercase text-xs tracking-widest mb-4">CONTACT FORM</div>
+                            <Link href="/pages/contact" className="inline-block bg-white text-[#9D174D] font-black px-8 py-4 rounded-full text-lg uppercase tracking-widest hover:bg-[#FDF2F8] hover:text-[#9D174D] transition-colors no-underline shadow-lg border-2 border-white">
                                 SEND A MESSAGE →
                             </Link>
                         </div>
                         <div>
-                            <div className="font-black text-[#D9F060] uppercase text-xs tracking-widest mb-4">INSTAGRAM</div>
-                            <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="text-xl underline italic font-black hover:text-[#D9F060] transition-colors">@theatelier.lab</a>
+                            <div className="font-black text-[#FDF2F8] uppercase text-xs tracking-widest mb-4">INSTAGRAM</div>
+                            <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="text-xl underline italic font-black hover:text-[#FDF2F8] transition-colors">@theatelier.lab</a>
                         </div>
                     </div>
 
                     {/* PHONE MOCKUP - INSTAGRAM */}
-                    <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline">
+                    <a href="https://www.instagram.com/theatelier.lab/" target="_blank" rel="noopener noreferrer" className="mockup-phone w-[300px] h-[600px] border-[12px] border-white rounded-[50px] mx-auto relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] transform -rotate-1 block no-underline bg-white">
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140px] h-[30px] bg-white rounded-b-3xl z-10"></div>
-                        <div className="absolute inset-0 bg-cover bg-top" style={{ backgroundImage: "url('/pages/instagram-screenshot.webp')" }} />
+                        <img 
+                          src="/pages/instagram-screenshot.webp" 
+                          alt="Instagram Feed"
+                          className="absolute inset-0 w-full h-full object-cover object-top"
+                        />
                         <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-center font-black text-xs py-3 tracking-widest uppercase z-10">
                             ★ follow @theatelier.lab
                         </div>

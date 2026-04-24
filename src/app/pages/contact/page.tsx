@@ -16,13 +16,13 @@ export default function ContactPage() {
                     <div className="contact-info text-white space-y-12">
                         <div>
                             <div className="font-black opacity-60 uppercase text-xs tracking-[0.2em] mb-4">PHONE & WHATSAPP</div>
-                            <p className="text-3xl font-black italic mb-2 tracking-tight">Worldwide:<br/><a href="tel:+525521131676" className="underline hover:text-[#D9F060] transition-colors">(+52) 552 113 1676</a></p>
-                            <p className="text-3xl font-black italic tracking-tight mt-6">Mexico Center:<br/><a href="tel:+525617592347" className="underline hover:text-[#D9F060] transition-colors">(+52) 561 759 2347</a></p>
+                            <p className="text-3xl font-black italic mb-2 tracking-tight">Worldwide:<br/><a href="tel:+525521131676" className="underline hover:text-[#FDF2F8] transition-colors">(+52) 552 113 1676</a></p>
+                            <p className="text-3xl font-black italic tracking-tight mt-6">Mexico Center:<br/><a href="tel:+525617592347" className="underline hover:text-[#FDF2F8] transition-colors">(+52) 561 759 2347</a></p>
                         </div>
                         
                         <div>
                             <div className="font-black opacity-60 uppercase text-xs tracking-[0.2em] mb-4">OFFICIAL EMAIL</div>
-                            <p><a href="mailto:theenglishateliere@gmail.com" className="text-3xl underline italic font-black hover:text-[#D9F060] transition-colors tracking-tight">theenglishateliere@gmail.com</a></p>
+                            <p><a href="mailto:theenglishateliere@gmail.com" className="text-3xl underline italic font-black hover:text-[#FDF2F8] transition-colors tracking-tight">theenglishateliere@gmail.com</a></p>
                         </div>
 
                         <div className="pt-8">
@@ -62,7 +62,7 @@ export default function ContactPage() {
 
                     {/* Right: Action Buttons */}
                     <div className="flex flex-col gap-10 items-start h-full justify-center">
-                        <Link href="/pages/book-session" className="btn-pill bg-[#D9F060] text-black font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl pulse uppercase tracking-tighter">
+                        <Link href="/pages/book-session" className="btn-pill bg-white text-[#9D174D] font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl pulse uppercase tracking-tighter">
                             Book Free Session
                         </Link>
                         <Link href="/pages/careers" className="btn-pill bg-white text-[#9D174D] font-black no-underline shadow-[6px_6px_0px_#000] hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all py-6 px-12 rounded-full text-2xl uppercase tracking-tighter">

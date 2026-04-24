@@ -28,47 +28,94 @@ export default function GlobalNav() {
       <div className="fixed top-0 left-0 w-full h-[12px] bg-[#9D174D] z-[10000]"></div>
       
       <header 
-        className={`fixed top-[12px] left-0 right-0 z-[9900] transition-all duration-300 ${
-          scrolled ? "shadow-lg py-4 border-b border-[#9D174D]/40" : "py-6"
-        }`}
-        style={{ 
+        style={{
+          position: 'fixed',
+          top: '12px',
+          left: 0,
+          right: 0,
+          zIndex: 9900,
+          transition: 'all 0.3s ease',
+          padding: scrolled ? '15px 0' : '25px 0',
           backgroundImage: "url('/pages/atelier background.webp')", 
           backgroundSize: 'cover', 
-          backgroundPosition: 'center' 
+          backgroundPosition: 'center',
+          boxShadow: scrolled ? '0 10px 30px rgba(0,0,0,0.15)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(157,23,77,0.3)' : 'none'
         }}
       >
-        {/* Semi-transparent overlay to ensure content is readable over the pattern */}
-        <div className={`absolute inset-0 z-[-1] transition-colors duration-300 ${
-          scrolled ? "bg-white/80 backdrop-blur-md" : "bg-white/40"
-        }`}></div>
+        {/* Semi-transparent overlay for readability */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: -1,
+          backgroundColor: scrolled ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.4)',
+          backdropFilter: 'blur(8px)',
+          transition: 'background-color 0.3s ease'
+        }}></div>
         
-        <div className="max-w-[1400px] mx-auto px-[5%] flex justify-between items-center relative z-10">
-          {/* Logo - Sarina font - Explicitly sized to prevent collapse */}
-          <Link href="/" className="font-['Sarina'] text-4xl text-[#9D174D] tracking-tighter hover:opacity-80 transition-opacity whitespace-nowrap min-w-[200px]">
+        <div style={{
+          maxWidth: '1400px',
+          margin: '0 auto',
+          padding: '0 5%',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          position: 'relative',
+          zIndex: 10
+        }}>
+          {/* Logo - Sarina font - Forced size */}
+          <Link href="/" style={{ 
+            fontFamily: "'Sarina', cursive", 
+            fontSize: '32px', 
+            color: '#9D174D', 
+            textDecoration: 'none',
+            lineHeight: 1,
+            whiteSpace: 'nowrap'
+          }}>
             The Atelier
           </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 font-dm-sans font-bold text-[13px] tracking-widest uppercase">
-          <Link href="/#about" className="text-black hover:text-[#9D174D] transition-colors">About</Link>
-          <Link href="/#programs" className="text-black hover:text-[#9D174D] transition-colors">Programs</Link>
-          <Link href="/pages/spotlights" className="text-black hover:text-[#9D174D] transition-colors">Spotlights</Link>
-          
-          <div className="w-[1px] h-[16px] bg-gray-300"></div>
-          
-          <Link 
-            href="/pages/book-session" 
-            className="px-5 py-2 border-2 border-[#9D174D] text-[#9D174D] hover:bg-[#9D174D] hover:text-white rounded-full transition-all duration-300"
-          >
-            Book Free Session
-          </Link>
-          <Link 
-            href="/dashboard" 
-            className="px-5 py-2 bg-[#111] text-white hover:bg-[#9D174D] rounded-full transition-all duration-300"
-          >
-            Client Portal
-          </Link>
-        </nav>
+          {/* Desktop Nav - Using flex instead of hidden md:flex for better reliability */}
+          <nav className="hidden md:flex" style={{ alignItems: 'center', gap: '32px' }}>
+            <Link href="/#about" style={{ color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase' }}>About</Link>
+            <Link href="/#programs" style={{ color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase' }}>Programs</Link>
+            <Link href="/pages/spotlights" style={{ color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase' }}>Spotlights</Link>
+            
+            <div style={{ width: '1px', height: '16px', backgroundColor: '#ccc' }}></div>
+            
+            <Link 
+              href="/pages/book-session" 
+              style={{ 
+                padding: '10px 24px', 
+                border: '2px solid #9D174D', 
+                color: '#9D174D', 
+                borderRadius: '50px', 
+                textDecoration: 'none', 
+                fontWeight: 700, 
+                fontSize: '12px',
+                textTransform: 'uppercase',
+                letterSpacing: '1px'
+              }}
+            >
+              Book Free Session
+            </Link>
+            <Link 
+              href="/dashboard" 
+              style={{ 
+                padding: '10px 24px', 
+                backgroundColor: '#111', 
+                color: '#fff', 
+                borderRadius: '50px', 
+                textDecoration: 'none', 
+                fontWeight: 700, 
+                fontSize: '12px',
+                textTransform: 'uppercase',
+                letterSpacing: '1px'
+              }}
+            >
+              Client Portal
+            </Link>
+          </nav>
 
         {/* Mobile Toggle */}
         <button 
