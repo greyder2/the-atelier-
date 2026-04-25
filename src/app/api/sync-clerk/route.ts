@@ -2,15 +2,7 @@
 // Sets referralCode and referredBy after client document is created in Sanity.
 import { NextRequest, NextResponse } from 'next/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
-import { createClient } from '@sanity/client';
-
-const sanity = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
-  apiVersion: '2024-01-01',
-  token: process.env.SANITY_API_TOKEN,
-  useCdn: false,
-});
+import { writeClient } from '@/../sanity/lib/write-client';
 
 // Generates a slug-safe code from the client's name + random suffix
 // e.g. "sofia-a3x9"
@@ -37,7 +29,7 @@ export async function POST(req: NextRequest) {
     const name = `${user.firstName ?? ''} ${user.lastName ?? ''}`.trim() || email;
 
     // Check if client already exists
-    const existing = await sanity.fetch(
+    const existing = await writeClient.fetch(
       `*[_type == "client" && clerkUserId == $userId][0]{ _id, referralCode }`,
       { userId }
     );
@@ -45,7 +37,7 @@ export async function POST(req: NextRequest) {
     if (existing) {
       // If referralCode is missing (old record), patch it in
       if (!existing.referralCode) {
-        await sanity
+        await writeClient
           .patch(existing._id)
           .set({ referralCode: generateReferralCode(name) })
           .commit();
@@ -59,7 +51,7 @@ export async function POST(req: NextRequest) {
 
     let referredByRef: { _type: 'reference'; _ref: string } | undefined;
     if (refCode) {
-      const referrer = await sanity.fetch(
+      const referrer = await writeClient.fetch(
         `*[_type == "client" && referralCode == $code][0]{ _id }`,
         { code: refCode }
       );
@@ -67,7 +59,7 @@ export async function POST(req: NextRequest) {
         referredByRef = { _type: 'reference', _ref: referrer._id };
 
         // Increment the referrer's pending referralCredits by 1
-        await sanity
+        await writeClient
           .patch(referrer._id)
           .inc({ referralCredits: 1 })
           .commit();
@@ -75,7 +67,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Create new client document
-    const newClient = await sanity.create({
+    const newClient = await writeClient.create({
       _type: 'client',
       clerkUserId: userId,
       name,

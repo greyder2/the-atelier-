@@ -1,17 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { writeClient } from '@/../sanity/lib/write-client';
 import { Resend } from 'resend';
-import { createClient } from '@sanity/client';
+import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const sanity = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
-  apiVersion: '2024-01-01',
-  token: process.env.SANITY_API_TOKEN,
-  useCdn: false,
-});
+// writeClient already imported at the top
 
 export async function POST(req: NextRequest) {
   try {
@@ -87,7 +81,7 @@ export async function POST(req: NextRequest) {
 
     // Session credit deduction
     if (clientSanityId) {
-      const clientData = await sanity.fetch(
+      const clientData = await writeClient.fetch(
         `*[_type == "client" && _id == $id][0]{
           _id, sessionTrackingEnabled, sessionCredits
         }`,
@@ -101,7 +95,7 @@ export async function POST(req: NextRequest) {
         typeof clientData.sessionCredits === 'number' &&
         clientData.sessionCredits > 0
       ) {
-        await sanity.patch(clientSanityId).dec({ sessionCredits: 1 }).commit();
+        await writeClient.patch(clientSanityId).dec({ sessionCredits: 1 }).commit();
         console.log(
           `[Calendly] Deducted 1 credit from ${clientSanityId}. Remaining: ${clientData.sessionCredits - 1}`
         );

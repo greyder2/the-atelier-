@@ -270,11 +270,11 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {firstGenSpotlights.map((person: any, idx: number) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-all active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
                                         <div className="bg-white border-b-4 border-[#9D174D] p-2 flex gap-2 font-mono font-bold">
                                             <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
+                                        <div className="flex-1 bg-cover bg-center sp-card-inner" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
                                         <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#FDF2F8] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
@@ -294,11 +294,11 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {secondGenSpotlights.map((person: any, idx: number) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-all active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
                                         <div className="bg-white border-b-4 border-[#9D174D] p-2 flex gap-2 font-mono font-bold">
                                             <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
+                                        <div className="flex-1 bg-cover bg-center sp-card-inner" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
                                         <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#FDF2F8] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
@@ -318,11 +318,11 @@ export default async function Home() {
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
                                 {otherSpotlights.map((person: any, idx: number) => (
-                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-transform hover:scale-110 active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
+                                    <Link key={idx} href={`/pages/spotlight/${person.slug}`} className="sp-card group no-underline flex flex-col border-4 border-[#9D174D] rounded-[12px] overflow-hidden transition-all active:scale-95 border-b-8 border-r-8 shadow-2xl bg-white" style={{minHeight: '220px'}}>
                                         <div className="bg-white border-b-4 border-[#9D174D] p-2 flex gap-2 font-mono font-bold">
                                             <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
+                                        <div className="flex-1 bg-cover bg-center sp-card-inner" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
                                         <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#FDF2F8] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>

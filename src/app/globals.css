@@ -197,27 +197,10 @@
             letter-spacing: 2px;
             z-index: 2;
         }
-        .hero-nav {
-            margin-top: 2rem;
-            text-align: center;
-            z-index: 2;
-            padding: 0 20px;
-            max-width: 1000px;
-            width: 100%;
+        /* Ligatures and kerning for Cormorant Garamond */
+        h1, h2, h3, .cursive, .hero-link {
+            font-feature-settings: 'liga' 1, 'kern' 1;
         }
-        .hero-nav-inner {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px 4px;
-            align-items: center;
-        }
-        .hero-nav a, .hero-link, .hero-nav-item {
-            color: var(--white);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            padding: 4px 12px;
-            font-style: italic;
             transition: all 0.4s var(--ease-premium);
             display: inline-block;
             text-shadow: 1px 1px 0px var(--hot-pink);
@@ -654,6 +637,56 @@
             font-size: 1rem;
             flex-shrink: 0;
             margin-top: 4px;
+        }
+            .hero-nav {
+            margin-top: 2rem;
+            z-index: 2;
+        }
+        .hero-nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            color: rgba(255,255,255,0.7);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        .hero-link {
+            text-decoration: none !important;
+            transition: opacity 0.3s var(--ease-premium);
+        }
+        .hero-nav-sep {
+            opacity: 0.4;
+        }
+
+        /* 3. SOCIAL PROOF CARDS */
+        .sp-card {
+            transition: all 0.4s var(--ease-premium);
+            transform-origin: center;
+            will-change: transform;
+        }
+        .sp-card:hover {
+            transform: translateY(-8px) rotate(-1deg) !important;
+            box-shadow: 12px 16px 0px rgba(0,0,0,0.12) !important;
+        }
+        .sp-card-inner {
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        /* TESTIMONIAL GLASSMORPHISM */
+        .testimonial-card {
+            background: rgba(255,255,255,0.08) !important;
+            backdrop-filter: blur(12px) saturate(150%);
+            border: 1px solid rgba(255,255,255,0.15) !important;
+            border-radius: 20px;
+            padding: 30px;
+            min-width: 300px;
+            transition: transform 0.4s var(--ease-premium);
+            will-change: transform;
+        }
+        .testimonial-card:hover {
+            transform: scale(1.02);
         }
         .program-title {
             font-size: 1.3rem;
