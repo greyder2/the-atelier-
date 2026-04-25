@@ -10,7 +10,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, type, name, company, people, notes } = body;
+    const { email, type, name, company, people, notes, level, goal } = body;
 
     if (!email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
@@ -32,6 +32,19 @@ export async function POST(req: Request) {
         </table>
         <br/>
         <p><em>Follow up with a customized quotation!</em></p>
+      `;
+    } else if (type === 'consultation-application') {
+      subject = `New Mentorship Application — ${name}`;
+      html = `
+        <h2>New Mentorship Application</h2>
+        <table style="border-collapse: collapse; width: 100%;">
+          <tr><td style="padding: 8px; font-weight: bold;">Name</td><td style="padding: 8px;">${name}</td></tr>
+          <tr><td style="padding: 8px; font-weight: bold;">Email</td><td style="padding: 8px;">${email}</td></tr>
+          <tr><td style="padding: 8px; font-weight: bold;">Current Level</td><td style="padding: 8px;">${level}</td></tr>
+          <tr><td style="padding: 8px; font-weight: bold;">Professional Goal</td><td style="padding: 8px;">${goal}</td></tr>
+        </table>
+        <br/>
+        <p><em>Review this high-intent profile!</em></p>
       `;
     } else {
       // Default: email subscription / demo request

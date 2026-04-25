@@ -79,19 +79,19 @@ export default async function Home() {
                     {/* Original Hero Nav - Restored */}
                     <nav className="hero-nav mt-6">
                         <div className="hero-nav-inner" style={{ gap: '12px 24px' }}>
-                            <span className="hero-link">About Us</span>
+                            <Link href="/pages/about-us" className="hero-link">About Us</Link>
                             <span className="hero-nav-sep">/</span>
-                            <span className="hero-link">Programs</span>
+                            <Link href="/#programs" className="hero-link">Programs</Link>
                             <span className="hero-nav-sep">/</span>
-                            <span className="hero-link">Spotlights</span>
+                            <Link href="/#spotlights" className="hero-link">Spotlights</Link>
                             <span className="hero-nav-sep">/</span>
-                            <span className="hero-link">Grants</span>
+                            <Link href="/#scholarships" className="hero-link">Grants</Link>
                             <span className="hero-nav-sep">/</span>
-                            <span className="hero-link">Contact</span>
+                            <Link href="/#contact" className="hero-link">Contact</Link>
                             
                             <div className="hidden sm:block" style={{ width: '2px', height: '24px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 10px' }}></div>
                             
-                            <span className="client-portal-link" style={{
+                            <Link href="/dashboard" className="client-portal-link" style={{
                                 backgroundColor: '#C9B37B',
                                 color: '#111',
                                 padding: '8px 24px',
@@ -106,7 +106,7 @@ export default async function Home() {
                                 fontStyle: 'normal'
                             }}>
                                 CLIENT PORTAL
-                            </span>
+                            </Link>
                         </div>
                     </nav>
 
