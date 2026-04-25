@@ -39,7 +39,7 @@ export default function CorporateTrainingPage() {
                              </Link>
                         </div>
 
-                        <Link href="/pages/book-session" className="btn-pill bg-[#D9F060] text-black p-10 rounded-full font-black text-center text-2xl shadow-[8px_8px_0px_#000] hover:scale-105 transition-transform no-underline pulse uppercase">
+                        <Link href="/pages/book-session" className="btn-pill bg-[#C9B37B] text-black p-10 rounded-full font-black text-center text-2xl shadow-[8px_8px_0px_#000] hover:scale-105 transition-transform no-underline pulse uppercase">
                            Book Demo Session
                         </Link>
                         <div className="hand-cursor text-6xl animate-bounce">👆</div>

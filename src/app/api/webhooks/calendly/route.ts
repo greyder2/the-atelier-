@@ -15,7 +15,17 @@ const sanity = createClient({
 
 export async function POST(req: NextRequest) {
   try {
+    // Verify webhook secret to prevent forged requests
+    const webhookSecret = process.env.CALENDLY_WEBHOOK_SECRET;
+    if (webhookSecret) {
+      const incomingSecret = req.headers.get('x-calendly-secret');
+      if (incomingSecret !== webhookSecret) {
+        return NextResponse.json({ error: 'Invalid webhook secret' }, { status: 401 });
+      }
+    }
+
     const { eventUri, inviteeUri, clientSanityId, clientName, clientEmail } = await req.json();
+
 
     let scheduledAt = new Date().toISOString();
     let eventName = 'Atelier Session';
@@ -34,7 +44,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Client + assignedProfessor'ı çek
+    // Fetch Client + assignedProfessor
     let assignedProfessorId: string | null = null;
     if (clientSanityId) {
       const clientDoc = await writeClient.fetch(
@@ -44,7 +54,7 @@ export async function POST(req: NextRequest) {
       assignedProfessorId = clientDoc?.assignedProfessor?._id || null;
     }
 
-    // Booking yaz
+    // Create Booking record
     const bookingDoc: any = {
       _type: 'booking',
       studentName: clientName || 'Unknown',
@@ -59,7 +69,7 @@ export async function POST(req: NextRequest) {
     }
     await writeClient.create(bookingDoc);
 
-    // Lesson otomatik oluştur
+    // Auto-create Lesson
     const lessonDoc: any = {
       _type: 'lesson',
       title: eventName,

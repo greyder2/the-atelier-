@@ -3,10 +3,9 @@
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { createClient } from "next-sanity";
+import { client as sanity } from "../../../../sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 
-const sanity = createClient({ projectId: "1pu795c0", dataset: "production", apiVersion: "2024-03-12", useCdn: false });
 const builder = imageUrlBuilder(sanity);
 function urlFor(source: any) { return builder.image(source); }
 
@@ -92,7 +91,7 @@ export default function MyProfile() {
   const upcoming = data?.upcomingCount || 0;
   const progress = total > 0 ? Math.round((completed / total) * 100) : 0;
 
-  // Seviye hesapla (her 5 completed session = 1 level)
+  // Calculate level (every 5 completed sessions = 1 level)
   const levelNum = Math.floor(completed / 5) + 1;
   const levelProgress = ((completed % 5) / 5) * 100;
   const sessionsToNextLevel = 5 - (completed % 5);

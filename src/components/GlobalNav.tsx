@@ -79,7 +79,9 @@ export default function GlobalNav() {
           <nav className="hidden md:flex" style={{ alignItems: 'center', gap: '32px' }}>
             <Link href="/pages/about-us" style={{ color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase' }}>About Us</Link>
             <Link href="/#programs" style={{ color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase' }}>Programs</Link>
-            <Link href="/pages/spotlights" style={{ color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase' }}>Spotlights</Link>
+            <Link href="/#spotlights" style={{ color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase' }}>Spotlights</Link>
+            <Link href="/#scholarships" style={{ color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase' }}>Grants</Link>
+            <Link href="/#contact" style={{ color: '#000', textDecoration: 'none', fontWeight: 700, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase' }}>Contact</Link>
             
             <div style={{ width: '1px', height: '16px', backgroundColor: '#ccc' }}></div>
             
@@ -103,7 +105,7 @@ export default function GlobalNav() {
               href="/dashboard" 
               style={{ 
                 padding: '10px 24px', 
-                backgroundColor: '#D9F060', 
+                backgroundColor: '#C9B37B', 
                 color: '#111', 
                 borderRadius: '50px', 
                 textDecoration: 'none', 
@@ -217,7 +219,9 @@ export default function GlobalNav() {
           <Link href="/" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>Home</Link>
           <Link href="/pages/about-us" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>About Us</Link>
           <Link href="/#programs" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>Programs</Link>
-          <Link href="/pages/spotlights" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>Spotlights</Link>
+          <Link href="/#spotlights" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>Spotlights</Link>
+          <Link href="/#scholarships" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>Grants</Link>
+          <Link href="/#contact" onClick={() => setIsOpen(false)} style={{ color: '#000', textDecoration: 'none', fontWeight: 900, fontSize: '20px', textTransform: 'uppercase', letterSpacing: '4px' }}>Contact</Link>
           
           <div style={{ width: '40px', height: '2px', backgroundColor: '#9D174D', margin: '20px 0' }}></div>
           
@@ -231,7 +235,7 @@ export default function GlobalNav() {
           <Link 
             href="/dashboard" 
             onClick={() => setIsOpen(false)}
-            style={{ padding: '12px 32px', backgroundColor: '#D9F060', color: '#111', borderRadius: '50px', textDecoration: 'none', fontWeight: 900, fontSize: '12px', textTransform: 'uppercase' }}
+            style={{ padding: '12px 32px', backgroundColor: '#C9B37B', color: '#111', borderRadius: '50px', textDecoration: 'none', fontWeight: 900, fontSize: '12px', textTransform: 'uppercase' }}
           >
             Client Portal
           </Link>

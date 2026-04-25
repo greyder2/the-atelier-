@@ -6,7 +6,8 @@ import client from './schemas/client'
 import professor from './schemas/professor'
 import lesson from './schemas/lesson'
 import company from './schemas/company'
+import siteSettings from './schemas/siteSettings'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [spotlight, program, booking, client, professor, lesson, company],
+  types: [spotlight, program, booking, client, professor, lesson, company, siteSettings],
 }

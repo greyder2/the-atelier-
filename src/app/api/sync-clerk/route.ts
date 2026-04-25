@@ -1,7 +1,5 @@
-// Bu kod mevcut /api/sync-clerk/route.ts dosyana eklenecek.
-// Clerk user create/sync işleminden SONRA çalışır.
-// Sanity'de client dökümanı oluşturulduktan sonra referralCode ve referredBy set eder.
-
+// Runs AFTER Clerk user create/sync process.
+// Sets referralCode and referredBy after client document is created in Sanity.
 import { NextRequest, NextResponse } from 'next/server';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { createClient } from '@sanity/client';

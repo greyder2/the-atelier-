@@ -68,7 +68,7 @@ export default function CareerCoachingPage() {
                   'Anyone who wants to communicate their value with confidence',
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3 text-[14px] text-[#333]">
-                    <span className="w-2 h-2 rounded-full bg-[#D9F060] flex-shrink-0 inline-block mt-1.5"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#C9B37B] flex-shrink-0 inline-block mt-1.5"></span>
                     {item}
                   </div>
                 ))}

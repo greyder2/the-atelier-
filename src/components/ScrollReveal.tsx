@@ -7,13 +7,17 @@ interface ScrollRevealProps {
   threshold?: number;
   delay?: number;
   className?: string;
+  staggerChildren?: boolean;
+  staggerDelay?: number;
 }
 
 export default function ScrollReveal({ 
   children, 
   threshold = 0.1, 
   delay = 0,
-  className = "" 
+  className = "",
+  staggerChildren = false,
+  staggerDelay = 200
 }: ScrollRevealProps) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -23,7 +27,6 @@ export default function ScrollReveal({
       ([entry]) => {
         if (entry.isIntersecting) {
           setTimeout(() => setIsVisible(true), delay);
-          // Unobserve once visible so it only animates once
           if (ref.current) {
             observer.unobserve(ref.current);
           }
@@ -50,13 +53,51 @@ export default function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ease-out ${className}`}
+      className={`scroll-reveal ${isVisible ? 'is-visible' : ''} ${className}`}
       style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+        transition: 'none' // We'll handle transition on children if staggering
       }}
     >
-      {children}
+      {staggerChildren ? (
+        // Apply staggering to direct children
+        Array.isArray(children) ? (
+          children.map((child, i) => (
+            <div 
+              key={i}
+              className="reveal-child"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: `all 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${i * staggerDelay}ms`,
+                willChange: 'opacity, transform'
+              }}
+            >
+              {child}
+            </div>
+          ))
+        ) : (
+          <div 
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: `all 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0ms`
+            }}
+          >
+            {children}
+          </div>
+        )
+      ) : (
+        <div
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+            transition: 'all 1s cubic-bezier(0.22, 1, 0.36, 1)',
+            willChange: 'opacity, transform'
+          }}
+        >
+          {children}
+        </div>
+      )}
     </div>
   );
 }

@@ -103,45 +103,32 @@ export default function FloatingEmailPopup() {
         ) : (
           <>
             <div style={{ fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9D174D', fontWeight: 900, marginBottom: 10 }}>
-              EXCLUSIVE OFFER
+              PRIVATE MENTORSHIP
             </div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(1.6rem, 4vw, 2rem)', lineHeight: 1.15, marginBottom: 10, color: '#111' }}>
-              Get our free Language & Career Starter Guide
+              Apply for The Atelier
             </h2>
             <p style={{ fontSize: '0.92rem', color: '#555', marginBottom: 24, lineHeight: 1.65 }}>
-              Join ambitious professionals from various countries around the world. No spam — only curated insights.
+              Ready to elevate your communication and career? Book a complimentary assessment to see if our programs are the right fit.
             </p>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <input
-                type="email"
-                required
-                placeholder="your@email.com"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                style={{
-                  width: '100%', padding: '12px 20px',
-                  borderRadius: '50px', border: '2px solid #ddd',
-                  fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem',
-                  outline: 'none', background: '#fff', color: '#111',
-                }}
-                onFocus={e => (e.target.style.borderColor = '#9D174D')}
-                onBlur={e => (e.target.style.borderColor = '#ddd')}
-              />
-              <button
-                type="submit"
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <a
+                href="/pages/book-session"
+                onClick={dismiss}
                 style={{
                   width: '100%', padding: '14px 20px',
                   borderRadius: '50px', border: 'none', cursor: 'pointer',
                   background: '#9D174D', color: '#fff',
                   fontFamily: "'DM Sans', sans-serif", fontWeight: 900,
                   fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase',
+                  textDecoration: 'none', textAlign: 'center', display: 'block'
                 }}
               >
-                GET FREE GUIDE
-              </button>
-            </form>
+                BOOK FREE ASSESSMENT
+              </a>
+            </div>
             <p style={{ fontSize: '0.7rem', color: '#999', textAlign: 'center', marginTop: 14, letterSpacing: '0.08em' }}>
-              Unsubscribe anytime. No spam, ever.
+              High-intent mentorship tailored for ambitious professionals.
             </p>
           </>
         )}

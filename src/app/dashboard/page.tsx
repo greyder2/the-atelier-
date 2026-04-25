@@ -3,15 +3,8 @@
 import { UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from 'react';
-import { createClient } from 'next-sanity';
+import { client as sanityClient } from "../../../sanity/lib/client";
 import imageUrlBuilder from '@sanity/image-url';
-
-const sanityClient = createClient({
-  projectId: "1pu795c0",
-  dataset: "production",
-  apiVersion: "2024-03-12",
-  useCdn: false,
-});
 
 const builder = imageUrlBuilder(sanityClient);
 function urlFor(source: any) { return builder.image(source); }

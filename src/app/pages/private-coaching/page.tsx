@@ -36,7 +36,7 @@ export default function PrivateCoachingPage() {
                         <div className="retro-browser w-full max-w-[500px] border-4 border-black rounded-xl overflow-hidden shadow-2xl">
                              <div className="bg-black p-2 flex gap-2">
                                 <div className="w-3 h-3 rounded-full bg-[#9D174D]"></div>
-                                <div className="w-3 h-3 rounded-full bg-[#D9F060]"></div>
+                                <div className="w-3 h-3 rounded-full bg-[#C9B37B]"></div>
                                 <div className="w-3 h-3 rounded-full bg-[#A8DDD8]"></div>
                              </div>
                              <div className="p-8 bg-[#A8DDD8] text-black font-bold italic text-center">

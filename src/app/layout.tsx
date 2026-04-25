@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Cormorant_Garamond, Sarina } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
-import FloatingCTA from '../components/FloatingCTA';
 import DarkModeToggle from '../components/DarkModeToggle';
 import FloatingEmailPopup from '../components/FloatingEmailPopup';
 import GlobalNav from '../components/GlobalNav';
@@ -171,7 +170,6 @@ export default function RootLayout({
         <body className="min-h-full flex flex-col pt-[80px] bg-pale-cream text-black font-dm-sans">
           <GlobalNav />
           {children}
-          <FloatingCTA />
           <DarkModeToggle />
           <FloatingEmailPopup />
         </body>

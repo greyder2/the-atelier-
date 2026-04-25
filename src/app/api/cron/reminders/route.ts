@@ -13,14 +13,14 @@ const sanity = createClient({
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function GET(req: Request) {
-  // Vercel Cron güvenliği
+  // Vercel Cron security check
   const authHeader = req.headers.get('authorization');
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   try {
-    // Yarın olan upcoming lesson'ları bul (24 saat penceresi)
+    // Find upcoming lessons for tomorrow (24-hour window)
     const now = new Date();
     const in23h = new Date(now.getTime() + 23 * 60 * 60 * 1000).toISOString();
     const in25h = new Date(now.getTime() + 25 * 60 * 60 * 1000).toISOString();

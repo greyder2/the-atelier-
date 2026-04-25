@@ -47,6 +47,33 @@ export default {
       description: 'The full bio text',
     },
     {
+      name: 'language',
+      title: 'Language Studied',
+      type: 'string',
+      description: 'e.g., ENG, ESP — shown on the level badge',
+      options: {
+        list: [
+          { title: 'English', value: 'ENG' },
+          { title: 'Spanish', value: 'ESP' },
+          { title: 'French', value: 'FRA' },
+          { title: 'Other', value: 'OTHER' },
+        ],
+      },
+    },
+    {
+      name: 'tier',
+      title: 'Social Proof Tier',
+      type: 'string',
+      description: 'Which section this person appears in on the homepage.',
+      options: {
+        list: [
+          { title: 'Founding Circle', value: 'founding' },
+          { title: 'International Cohort', value: 'international' },
+          { title: 'Atelier Alumni', value: 'alumni' },
+        ],
+      },
+    },
+    {
       name: 'levelBefore',
       title: 'Level Before',
       type: 'string',

@@ -2,9 +2,9 @@ import React from 'react';
 import { client } from '../../sanity/lib/client';
 import { groq } from 'next-sanity';
 import InteractiveClient from './InteractiveClient';
-import FloatingEmailPopup from '../components/FloatingEmailPopup';
 import ScrollReveal from '../components/ScrollReveal';
 import Link from 'next/link';
+import FloatingEmailPopup from '../components/FloatingEmailPopup';
 // import { firstGeneration, secondGeneration, spotlights } from '@/data/spotlights';
 
 export const revalidate = 3600;
@@ -36,6 +36,16 @@ export default async function Home() {
       name, "slug": slug.current, heading, shortQuote, category, "imagePath": image.asset->url
     }`;
     const fetchedSpotlights = await client.fetch(spotlightsQuery);
+
+    // Fetch programs from Sanity CMS
+    const programsQuery = groq`*[_type == "program"] | order(order asc) {
+      title, "slug": slug.current, tagline, icon
+    }`;
+    const fetchedPrograms = await client.fetch(programsQuery);
+
+    // Fetch site settings from Sanity CMS
+    const settingsQuery = groq`*[_type == "siteSettings"][0]`;
+    const settings = await client.fetch(settingsQuery);
     
     // Import fallback locally if Sanity is empty
     const localData = require('@/data/spotlights');
@@ -69,20 +79,20 @@ export default async function Home() {
                     {/* Original Hero Nav - Restored */}
                     <nav className="hero-nav mt-6">
                         <div className="hero-nav-inner" style={{ gap: '12px 24px' }}>
-                            <Link href="/pages/about-us" className="hero-link">About Us</Link>
+                            <span className="hero-link">About Us</span>
                             <span className="hero-nav-sep">/</span>
-                            <Link href="#programs" className="hero-link">Programs</Link>
+                            <span className="hero-link">Programs</span>
                             <span className="hero-nav-sep">/</span>
-                            <Link href="/pages/spotlights" className="hero-link">Spotlights</Link>
+                            <span className="hero-link">Spotlights</span>
                             <span className="hero-nav-sep">/</span>
-                            <Link href="#scholarships" className="hero-link">Grants</Link>
+                            <span className="hero-link">Grants</span>
                             <span className="hero-nav-sep">/</span>
-                            <Link href="#contact" className="hero-link">Contact</Link>
+                            <span className="hero-link">Contact</span>
                             
                             <div className="hidden sm:block" style={{ width: '2px', height: '24px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 10px' }}></div>
                             
-                            <Link href="/dashboard" className="client-portal-link" style={{
-                                backgroundColor: '#D9F060',
+                            <span className="client-portal-link" style={{
+                                backgroundColor: '#C9B37B',
                                 color: '#111',
                                 padding: '8px 24px',
                                 borderRadius: '50px',
@@ -92,10 +102,11 @@ export default async function Home() {
                                 letterSpacing: '1.5px',
                                 textDecoration: 'none',
                                 boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-                                transition: 'all 0.3s ease'
+                                transition: 'all 0.4s var(--ease-premium)',
+                                fontStyle: 'normal'
                             }}>
                                 CLIENT PORTAL
-                            </Link>
+                            </span>
                         </div>
                     </nav>
 
@@ -113,7 +124,7 @@ export default async function Home() {
                 </section>
 
                 {/* 3. HOME / ABOUT */}
-                <ScrollReveal>
+                <ScrollReveal staggerChildren staggerDelay={200}>
                 <section id="about" className="section-padding bg-white grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="about-left staggered-left">
                         <h2 className="title text-[4rem] leading-none mb-4 font-['Cormorant_Garamond']">The Atelier</h2>
@@ -136,16 +147,16 @@ export default async function Home() {
 
                 {/* COMPANY LOGOS BAR — Social Proof */}
                 <ScrollReveal delay={150}>
-                    <section className="py-12 px-[7%] bg-[#FAF7F0] border-t border-[#e8e4dc]">
+                    <section className="py-12 px-[7%] bg-[#FAF7F0] border-t border-b border-[#e8e4dc]">
                         <p className="text-center text-[10px] tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
                     <div className="logos-bar" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', maxWidth: '1200px', margin: '0 auto', gap: '30px 60px' }}>
-                        {['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO'].map((company) => (
+                        {(settings?.trustedCompanies || ['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO']).map((company: string) => (
                             <span key={company} style={{ 
                                 fontSize: '15px', 
                                 letterSpacing: '5px', 
                                 textTransform: 'uppercase', 
                                 fontWeight: '900',
-                                color: '#C5A059',
+                                color: '#C9B37B',
                                 opacity: 0.8,
                                 transition: 'opacity 0.3s ease'
                             }} className="hover:opacity-100">
@@ -157,46 +168,60 @@ export default async function Home() {
                 </ScrollReveal>
 
                 {/* 4. PROGRAMS / SERVICES */}
-                <ScrollReveal>
+                <ScrollReveal staggerChildren staggerDelay={150}>
                     <section id="programs" className="section-padding bg-[#FAF7F0] border-t-4 border-[#9D174D] grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="left-col staggered-left">
                         <h2 className="section-title text-6xl mb-10 font-['Cormorant_Garamond']">Programs / Services</h2>
                         <div className="flex flex-col">
-                            <Link href="/pages/private-coaching" className="program-item no-underline text-black group">
-                                <div className="program-icon">✦</div>
-                                <div>
-                                    <span className="program-title group-hover:text-[#9D174D]">Private Coaching</span>
-                                    <span className="program-tagline">One-on-one sessions tailored to your goals</span>
-                                </div>
-                            </Link>
-                            <Link href="/pages/subscriptions" className="program-item no-underline text-black group">
-                                <div className="program-icon">◈</div>
-                                <div>
-                                    <span className="program-title group-hover:text-[#9D174D]">Atelier Subscriptions</span>
-                                    <span className="program-tagline">Ongoing cultural & language membership</span>
-                                </div>
-                            </Link>
-                            <Link href="/pages/corporate-training" className="program-item no-underline text-black group">
-                                <div className="program-icon">⬡</div>
-                                <div>
-                                    <span className="program-title group-hover:text-[#9D174D]">Corporate Language Training</span>
-                                    <span className="program-tagline">English for global teams & executives</span>
-                                </div>
-                            </Link>
-                            <Link href="/pages/cohorts" className="program-item no-underline text-black group">
-                                <div className="program-icon">★</div>
-                                <div>
-                                    <span className="program-title group-hover:text-[#9D174D]">Cohorts & Special Programs</span>
-                                    <span className="program-tagline">Curated group learning experiences</span>
-                                </div>
-                            </Link>
-                            <Link href="/pages/career-coaching" className="program-item no-underline text-black group">
-                                <div className="program-icon">◆</div>
-                                <div>
-                                    <span className="program-title group-hover:text-[#9D174D]">Career Coaching</span>
-                                    <span className="program-tagline">CV building, interview prep & professional branding</span>
-                                </div>
-                            </Link>
+                            {fetchedPrograms.map((prog: any, idx: number) => (
+                                <Link key={idx} href={`/programs/${prog.slug}`} className="program-item no-underline text-black group">
+                                    <div className="program-icon">{prog.icon || '✦'}</div>
+                                    <div>
+                                        <span className="program-title group-hover:text-[#9D174D]">{prog.title}</span>
+                                        <span className="program-tagline">{prog.tagline}</span>
+                                    </div>
+                                </Link>
+                            ))}
+                            {/* Fallback if no programs are in Sanity yet */}
+                            {fetchedPrograms.length === 0 && (
+                                <>
+                                    <Link href="/pages/private-coaching" className="program-item no-underline text-black group">
+                                        <div className="program-icon">✦</div>
+                                        <div>
+                                            <span className="program-title group-hover:text-[#9D174D]">Private Coaching</span>
+                                            <span className="program-tagline">One-on-one sessions tailored to your goals</span>
+                                        </div>
+                                    </Link>
+                                    <Link href="/pages/subscriptions" className="program-item no-underline text-black group">
+                                        <div className="program-icon">◈</div>
+                                        <div>
+                                            <span className="program-title group-hover:text-[#9D174D]">Atelier Subscriptions</span>
+                                            <span className="program-tagline">Ongoing cultural & language membership</span>
+                                        </div>
+                                    </Link>
+                                    <Link href="/pages/corporate-training" className="program-item no-underline text-black group">
+                                        <div className="program-icon">⬡</div>
+                                        <div>
+                                            <span className="program-title group-hover:text-[#9D174D]">Corporate Language Training</span>
+                                            <span className="program-tagline">English for global teams & executives</span>
+                                        </div>
+                                    </Link>
+                                    <Link href="/pages/cohorts" className="program-item no-underline text-black group">
+                                        <div className="program-icon">★</div>
+                                        <div>
+                                            <span className="program-title group-hover:text-[#9D174D]">Cohorts & Special Programs</span>
+                                            <span className="program-tagline">Curated group learning experiences</span>
+                                        </div>
+                                    </Link>
+                                    <Link href="/pages/career-coaching" className="program-item no-underline text-black group">
+                                        <div className="program-icon">◆</div>
+                                        <div>
+                                            <span className="program-title group-hover:text-[#9D174D]">Career Coaching</span>
+                                            <span className="program-tagline">CV building, interview prep & professional branding</span>
+                                        </div>
+                                    </Link>
+                                </>
+                            )}
                         </div>
                     </div>
                     <div className="right-col staggered-card">
@@ -211,8 +236,8 @@ export default async function Home() {
                 {/* 6. SOCIAL PROOF (GRID) */}
                 <ScrollReveal>
                 <section id="social-proof" className="section-padding bg-[#9D174D] text-white text-center">
-                    <h2 className="section-title text-black text-6xl mb-4 font-['Cormorant_Garamond']">Social Proof</h2>
-                    <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON), AFRICA (LIBYA), AND EUROPE (POLAND).</p>
+                    <h2 className="section-title text-black text-6xl mb-4 font-['Cormorant_Garamond']">{settings?.socialProofTitle || 'Social Proof'}</h2>
+                    <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">{settings?.socialProofSubtitle || 'TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON), AFRICA (LIBYA), AND EUROPE (POLAND).'}</p>
                     
                     {/* Testimonial quotes — scrollable carousel */}
                     <div className="carousel-hint max-w-5xl mx-auto">swipe to explore</div>
@@ -240,7 +265,7 @@ export default async function Home() {
                         <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
-                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">First Generation</h3>
+                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">{settings?.tierLabelFounding || 'Founding Circle'}</h3>
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
@@ -264,7 +289,7 @@ export default async function Home() {
                         <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
-                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">Second Generation</h3>
+                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">{settings?.tierLabelInternational || 'International Cohort'}</h3>
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
@@ -288,7 +313,7 @@ export default async function Home() {
                         <div>
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
-                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">Spotlights</h3>
+                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">{settings?.tierLabelAlumni || 'Atelier Alumni'}</h3>
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
@@ -505,7 +530,7 @@ export default async function Home() {
                         </Link>
 
                         <a 
-                            href="https://linkedin.com" 
+                            href="https://www.linkedin.com/company/the-atelier-global/" 
                             target="_blank" 
                             rel="noopener noreferrer" 
                             style={{ 

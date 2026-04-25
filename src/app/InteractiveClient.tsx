@@ -30,6 +30,21 @@ export default function InteractiveClient() {
             );
         });
 
+        // Hero parallax
+        const heroSection = document.getElementById('hero');
+        if (heroSection) {
+            gsap.to(heroSection, {
+                backgroundPosition: `50% ${50 + 20}%`,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: heroSection,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        }
+
         // Scroll-aware active state for hero nav links
         const sections = ['about', 'programs', 'corporate', 'social-proof', 'scholarships', 'spotlights', 'contact', 'careers'];
         const navLinks = document.querySelectorAll('.hero-link[href^="#"]');

@@ -55,7 +55,7 @@ export default function AboutUs() {
             <div className="space-y-3 mb-6">
               {['Curious', 'Cultural', 'Intellectual', 'Practical', 'Human'].map((item) => (
                 <div key={item} className="flex items-center gap-3 text-[15px] font-bold text-[#9D174D]">
-                  <span className="w-2 h-2 rounded-full bg-[#D9F060] flex-shrink-0 inline-block"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#C9B37B] flex-shrink-0 inline-block"></span>
                   {item}
                 </div>
               ))}
@@ -90,7 +90,7 @@ export default function AboutUs() {
                   />
                 </div>
                 <div
-                  className="absolute -bottom-3 -right-3 bg-[#D9F060] text-black text-[11px] font-black uppercase tracking-[2px] px-4 py-2 rounded-full"
+                  className="absolute -bottom-3 -right-3 bg-[#C9B37B] text-black text-[11px] font-black uppercase tracking-[2px] px-4 py-2 rounded-full"
                   style={{ transform: 'rotate(3deg)' }}
                 >
                   Founder ★
@@ -101,7 +101,7 @@ export default function AboutUs() {
             {/* Bio */}
             <div>
               <h3 className="font-[family-name:var(--font-cormorant)] text-[36px] text-black mb-1 leading-tight">Mayan</h3>
-              <p className="text-[11px] tracking-[3px] uppercase font-bold text-[#9D174D] border-b-2 border-[#D9F060] pb-4 mb-7 inline-block">
+              <p className="text-[11px] tracking-[3px] uppercase font-bold text-[#9D174D] border-b-2 border-[#C9B37B] pb-4 mb-7 inline-block">
                 Founder &amp; Lead Educator · The Atelier
               </p>
 
@@ -154,7 +154,7 @@ export default function AboutUs() {
           </p>
           <Link
             href="/pages/book-session"
-            className="inline-block bg-[#D9F060] text-black text-[13px] font-black tracking-[2px] uppercase px-10 py-4 rounded-full no-underline hover:scale-105 transition-transform"
+            className="inline-block bg-[#C9B37B] text-black text-[13px] font-black tracking-[2px] uppercase px-10 py-4 rounded-full no-underline hover:scale-105 transition-transform"
           >
             Book a Free Session
           </Link>
