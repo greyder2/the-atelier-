@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .text-charcoal { color: var(--charcoal); }
+  .bg-charcoal { background-color: var(--charcoal); }
+}
+
+
+
+
 
         :root {
             --hot-pink: #9D174D;
@@ -248,7 +256,7 @@
             transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
         }
         .speech-bubble:hover {
-            background: var(--black);
+            background: #333333;
             color: var(--lime);
             transform: translateY(-2px);
         }

@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-charcoal { color: var(--charcoal) !important; }
+  .bg-charcoal { background-color: var(--charcoal) !important; }
+}
+
+:root {
+    --hot-pink: #9D174D;
+    --light-pink: #FDF2F8;
+    --pale-cream: #FAF7F0;
+    --mint: #A8DDD8;
+    --brass: #C9B37B;
+    --black: #111111;
+    --charcoal: #2C2420;
+    --white: #FFFFFF;
+    
+    --radius-btn: 50px;
+    --radius-card: 24px;
+    --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+}

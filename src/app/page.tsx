@@ -148,7 +148,7 @@ export default async function Home() {
                 {/* COMPANY LOGOS BAR — Social Proof */}
                 <ScrollReveal delay={150}>
                     <section className="py-12 px-[7%] bg-[#FAF7F0] border-t border-b border-[#e8e4dc]">
-                        <p className="text-center text-[10px] tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
+                        <p className="text-center text-charcoal tracking-[4px] uppercase font-bold text-gray-400 mb-8">Trusted by professionals at</p>
                     <div className="logos-bar" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', maxWidth: '1200px', margin: '0 auto', gap: '30px 60px' }}>
                         {(settings?.trustedCompanies || ['AEROMEXICO', 'KRAFT HEINZ', 'MERSIN UNIVERSITY', 'AZS REFRACTORY', 'LALLEMAND MEXICO']).map((company: string) => (
                             <span key={company} style={{ 
@@ -174,7 +174,7 @@ export default async function Home() {
                         <h2 className="section-title text-6xl mb-10 font-['Cormorant_Garamond']">Programs / Services</h2>
                         <div className="flex flex-col">
                             {fetchedPrograms.map((prog: any, idx: number) => (
-                                <Link key={idx} href={`/programs/${prog.slug}`} className="program-item no-underline text-black group">
+                                <Link key={idx} href={`/programs/${prog.slug}`} className="program-item no-underline text-charcoal group">
                                     <div className="program-icon">{prog.icon || '✦'}</div>
                                     <div>
                                         <span className="program-title group-hover:text-[#9D174D]">{prog.title}</span>
@@ -185,35 +185,35 @@ export default async function Home() {
                             {/* Fallback if no programs are in Sanity yet */}
                             {fetchedPrograms.length === 0 && (
                                 <>
-                                    <Link href="/pages/private-coaching" className="program-item no-underline text-black group">
+                                    <Link href="/pages/private-coaching" className="program-item no-underline text-charcoal group">
                                         <div className="program-icon">✦</div>
                                         <div>
                                             <span className="program-title group-hover:text-[#9D174D]">Private Coaching</span>
                                             <span className="program-tagline">One-on-one sessions tailored to your goals</span>
                                         </div>
                                     </Link>
-                                    <Link href="/pages/subscriptions" className="program-item no-underline text-black group">
+                                    <Link href="/pages/subscriptions" className="program-item no-underline text-charcoal group">
                                         <div className="program-icon">◈</div>
                                         <div>
                                             <span className="program-title group-hover:text-[#9D174D]">Atelier Subscriptions</span>
                                             <span className="program-tagline">Ongoing cultural & language membership</span>
                                         </div>
                                     </Link>
-                                    <Link href="/pages/corporate-training" className="program-item no-underline text-black group">
+                                    <Link href="/pages/corporate-training" className="program-item no-underline text-charcoal group">
                                         <div className="program-icon">⬡</div>
                                         <div>
                                             <span className="program-title group-hover:text-[#9D174D]">Corporate Language Training</span>
                                             <span className="program-tagline">English for global teams & executives</span>
                                         </div>
                                     </Link>
-                                    <Link href="/pages/cohorts" className="program-item no-underline text-black group">
+                                    <Link href="/pages/cohorts" className="program-item no-underline text-charcoal group">
                                         <div className="program-icon">★</div>
                                         <div>
                                             <span className="program-title group-hover:text-[#9D174D]">Cohorts & Special Programs</span>
                                             <span className="program-tagline">Curated group learning experiences</span>
                                         </div>
                                     </Link>
-                                    <Link href="/pages/career-coaching" className="program-item no-underline text-black group">
+                                    <Link href="/pages/career-coaching" className="program-item no-underline text-charcoal group">
                                         <div className="program-icon">◆</div>
                                         <div>
                                             <span className="program-title group-hover:text-[#9D174D]">Career Coaching</span>
@@ -236,7 +236,7 @@ export default async function Home() {
                 {/* 6. SOCIAL PROOF (GRID) */}
                 <ScrollReveal>
                 <section id="social-proof" className="section-padding bg-[#9D174D] text-white text-center">
-                    <h2 className="section-title text-black text-6xl mb-4 font-['Cormorant_Garamond']">{settings?.socialProofTitle || 'Social Proof'}</h2>
+                    <h2 className="section-title text-charcoal text-6xl mb-4 font-['Cormorant_Garamond']">{settings?.socialProofTitle || 'Social Proof'}</h2>
                     <p className="mb-10 text-lg max-w-[800px] mx-auto italic uppercase font-bold text-white">{settings?.socialProofSubtitle || 'TESTIMONIALS FROM THE AMERICAS (MEXICO), ASIA (TÜRKİYE, LEBANON), AFRICA (LIBYA), AND EUROPE (POLAND).'}</p>
                     
                     {/* Testimonial quotes — scrollable carousel */}
@@ -265,7 +265,7 @@ export default async function Home() {
                         <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
-                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">{settings?.tierLabelFounding || 'Founding Circle'}</h3>
+                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-charcoal">{settings?.tierLabelFounding || 'Founding Circle'}</h3>
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
@@ -274,7 +274,13 @@ export default async function Home() {
                                         <div className="bg-white border-b-4 border-[#9D174D] p-2 flex gap-2 font-mono font-bold">
                                             <span className="text-[#9D174D]">x</span> <span className="text-[#9D174D]">o</span> <span className="text-[#9D174D]">—</span>
                                         </div>
-                                        <div className="flex-1 bg-cover bg-center sp-card-inner" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}></div>
+                                        <div className="flex-1 bg-cover bg-center sp-card-inner relative" style={{ backgroundImage: `url('${person.imagePath || getImagePath(person.slug)}')`, minHeight: '140px' }}>
+                                            {(person.levelBefore || person.levelAfter) && (
+                                                <div className="absolute bottom-2 right-2 bg-black/80 text-white px-2 py-1 rounded text-[10px] font-bold tracking-tighter backdrop-blur-sm border border-white/20">
+                                                    {person.language && `(${person.language}) `}{person.levelBefore || '?'} → {person.levelAfter || '?'}
+                                                </div>
+                                            )}
+                                        </div>
                                         <div className="bg-white text-[#9D174D] font-black text-xs py-2 group-hover:bg-[#FDF2F8] transition-colors border-t-2 border-[#9D174D] uppercase italic text-center shrink-0">
                                             &lt; view profile &gt;
                                         </div>
@@ -289,7 +295,7 @@ export default async function Home() {
                         <div className="mb-12">
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
-                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">{settings?.tierLabelInternational || 'International Cohort'}</h3>
+                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-charcoal">{settings?.tierLabelInternational || 'International Cohort'}</h3>
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
@@ -313,7 +319,7 @@ export default async function Home() {
                         <div>
                             <div className="flex items-center justify-center gap-4 mb-8">
                                 <div className="h-[4px] w-20 bg-black"></div>
-                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-black">{settings?.tierLabelAlumni || 'Atelier Alumni'}</h3>
+                                <h3 className="font-['Cormorant_Garamond'] text-3xl text-charcoal">{settings?.tierLabelAlumni || 'Atelier Alumni'}</h3>
                                 <div className="h-[4px] w-20 bg-black"></div>
                             </div>
                             <div className="sp-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5">
@@ -346,8 +352,8 @@ export default async function Home() {
                         <h2 className="section-title text-white text-6xl mb-8 font-['Cormorant_Garamond']">Scholarships / Grants</h2>
                         <div className="bg-white p-10 rounded-[24px] shadow-2xl border-4 border-black relative">
                             <h3 className="text-3xl font-['Cormorant_Garamond'] mb-4 text-[#9D174D]">The Atelier Grants</h3>
-                            <p className="text-lg leading-relaxed mb-6 font-bold text-black uppercase italic">We believe in supporting highly motivated students. Our grants cover a significant percentage of programs for language learners who demonstrate commitment and passion.</p>
-                            <Link href="/pages/scholarships" className="font-black underline text-[#9D174D] uppercase tracking-widest hover:text-black transition-colors text-xl">learn more here.</Link>
+                            <p className="text-lg leading-relaxed mb-6 font-bold text-charcoal uppercase italic">We believe in supporting highly motivated students. Our grants cover a significant percentage of programs for language learners who demonstrate commitment and passion.</p>
+                            <Link href="/pages/scholarships" className="font-black underline text-[#9D174D] uppercase tracking-widest hover:text-charcoal transition-colors text-xl">learn more here.</Link>
                         </div>
                     </div>
                     <div className="right-col flex justify-center items-center h-full min-h-[400px]">
@@ -355,8 +361,8 @@ export default async function Home() {
                             <div className="star-shape w-[400px] h-[400px] bg-[#FDF2F8] flex flex-col justify-center items-center text-center p-8 shadow-2xl border-2 border-black/5" 
                                  style={{ clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)" }}>
                                 <div className="font-['Cormorant_Garamond'] text-[#9D174D] text-2xl mb-1">Atelier</div>
-                                <div className="font-black text-5xl text-black leading-none mb-2">Grants</div>
-                                <div className="text-[12px] italic text-black uppercase max-w-[140px] font-black leading-tight">Scholarships with purpose</div>
+                                <div className="font-black text-5xl text-charcoal leading-none mb-2">Grants</div>
+                                <div className="text-[12px] italic text-charcoal uppercase max-w-[140px] font-black leading-tight">Scholarships with purpose</div>
                             </div>
                         </div>
                     </div>
@@ -370,10 +376,10 @@ export default async function Home() {
                              <div className="inline-block bg-white text-[#9D174D] font-black px-4 py-1 text-sm rounded-full shadow-lg transform rotate-3 mb-2">
                                 FEATURED
                             </div>
-                            <p className="text-2xl font-black italic text-black uppercase leading-relaxed">
+                            <p className="text-2xl font-black italic text-charcoal uppercase leading-relaxed">
                                 AN EXCLUSIVE, 'BY INVITATION ONLY' PROGRAM FOCUSED ON STUDYING THE LIVES AND COMMUNICATION STYLES OF REMARKABLE WOMEN FROM HISTORY, SCIENCE, AND ART.
                             </p>
-                            <Link href="/pages/spotlight/gaby" className="text-2xl font-black underline inline-flex items-center gap-2 text-[#9D174D] hover:text-black transition-all">
+                            <Link href="/pages/spotlight/gaby" className="text-2xl font-black underline inline-flex items-center gap-2 text-[#9D174D] hover:text-charcoal transition-all">
                                 view full profile. 
                             </Link>
                             <span className="animated-arrow">←</span>
@@ -537,7 +543,7 @@ export default async function Home() {
                                 display: 'block',
                                 width: '100%',
                                 maxWidth: '350px',
-                                backgroundColor: 'black', 
+                                backgroundColor: 'var(--charcoal)', 
                                 color: 'white', 
                                 padding: '20px', 
                                 borderRadius: '50px', 
